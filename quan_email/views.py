@@ -40,7 +40,7 @@ class EmailSnap :
 			返回值为("错误信息", 邮件对应EmailInfo)
 		'''
 		nickname = '=?utf-8?B?%s?=' % \
-			base64.b64encode('十一圈'.encode('utf-8')).decode()
+			base64.b64encode('十二圈'.encode('utf-8')).decode()
 		sender = {
 			'HCCSERVER': 	lambda x: '"%s" <shiyiquan@shiyiquan.net>' % x, 
 			'HCCSERVER-B': 	lambda x: '"%s" <shiyiquan@hcc.io>' % x, 
@@ -119,7 +119,7 @@ class EmailViews :
 			image = ''
 			content = get_template('email/password_reset_email.html').render \
 				({ 'code': code, 'image': image })
-			result = EmailSnap.sendmail(username, '十一圈密码重置链接', 
+			result = EmailSnap.sendmail(username, '十二圈密码重置链接', 
 										content, subtype='html')
 			if result[1] :
 				result[1].account_id = qry2[0].id

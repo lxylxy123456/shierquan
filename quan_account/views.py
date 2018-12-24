@@ -64,7 +64,7 @@ class UserAuthority :
 				return view_func(request, *args, **kwargs)
 			UserAgentSnap.record(request)
 			if request.META.get('HTTP_AJAX') == 'true' :
-				raise Http403('请登录十一圈后再进行操作')
+				raise Http403('请登录十二圈后再进行操作')
 			else :
 				url = parse.quote(request.get_full_path())
 				return Snap.redirect('/login/?url=%s' % url)
@@ -608,7 +608,7 @@ class ClubSnap:
 			raise Snap.error('没有输入任何姓名')
 		uid = UserSnap.uid_find_by_fname(fname)
 		if uid == None :
-			raise Snap.error('社团的新社长尚未在十一圈落户')
+			raise Snap.error('社团的新社长尚未在十二圈落户')
 		qry_new = AccountRelation.objects.filter(account_id_A=uid, 
 				account_id_B=cid, relation__in=('member', 'vice'))
 		qry_old = AccountRelation.objects.filter(account_id_B=cid, 
@@ -635,7 +635,7 @@ class ClubSnap:
 			raise Snap.error('没有输入任何姓名')
 		uid = UserSnap.uid_find_by_fname(fname)
 		if uid == None :
-			raise Snap.error('指派的副社长尚未在十一圈落户')
+			raise Snap.error('指派的副社长尚未在十二圈落户')
 		qry_new = AccountRelation.objects.filter(account_id_A=uid, 
 				account_id_B=cid, relation='member')
 		qry_old = AccountRelation.objects.filter(account_id_B=cid, 
@@ -768,7 +768,7 @@ class ClubSnap:
 	def category_list() :
 		'''
 			返回社团联盟列表
-			最好将这里的更新同步到: http://zh.hcc.wikia.com/wiki/十一圈/社团联盟列表
+			最好将这里的更新同步到: http://zh.hcc.wikia.com/wiki/十二圈/社团联盟列表
 		'''
 		if get_language() == 'en' :
 			return [

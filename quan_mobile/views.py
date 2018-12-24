@@ -89,7 +89,7 @@ class MobileViews :
 	def privacy(request) :
 		'显示隐私政策'
 		dict_render = UserAgentSnap.record(request)
-		content = ('为了确保十一圈客户端正常工作，此应用必须向服务器传输一些数据，'
+		content = ('为了确保十二圈客户端正常工作，此应用必须向服务器传输一些数据，'
 					'例如登录的用户名和密码。我们不会传输您的任何私人数据。')
 		if request.GET.get('client', '') :
 			return Snap.success(request, content)

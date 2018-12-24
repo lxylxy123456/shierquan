@@ -251,7 +251,7 @@ class UserAgentSnap:
 		'''
 			访问者是否疑似自动访问器（爬虫）
 			日志
-				m 在很久以前发现 YisouSpider 等爬虫的存在会让十一圈的某些数据 smd
+				m 在很久以前发现 YisouSpider 等爬虫的存在会让十二圈的某些数据 smd
 				l 在 20170130 发现 "Yahoo! Slurp" 是一种爬虫
 		'''
 		agent = request.META.get('HTTP_USER_AGENT', '')
@@ -347,7 +347,7 @@ class UserAgentSnap:
 
 	def grade_adhere() :
 		int('a')
-		# 已禁用。除非有人再次犯下了十一圈某原维护者的错误，将年级全部删除了，可删除上一行
+		# 已禁用。除非有人再次犯下了十二圈某原维护者的错误，将年级全部删除了，可删除上一行
 		from quan_account.views import UserAccount
 		from django.contrib.auth.models import User
 		BASE_DIR = os.path.dirname(__file__)

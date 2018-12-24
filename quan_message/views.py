@@ -45,7 +45,7 @@ class PublicMessageAction :
 			}[action]
 		elif source == 'user' :
 			return {
-				'new': 		' registers in BNDS Circle ', 
+				'new': 		' registers in Twelve Circle ', 
 				'follow': 	' follows user ', 
 				'edit': 	' modifies personal profile ', 
 				'update': 	' updates status ', 
@@ -116,7 +116,7 @@ class PublicMessageAction :
 			}[action]()
 		elif source == 'user' :
 			return {
-				'new': 		lambda: mcim(head='新成员', body='落户十一圈'), 
+				'new': 		lambda: mcim(head='新成员', body='落户十二圈'), 
 				'follow': 	lambda: mcim(body='跟随用户'), 
 				'edit': 	lambda: mcim(body='修改了个人资料'), 
 				'update': 	lambda: mcim(body='更新了状态'), 

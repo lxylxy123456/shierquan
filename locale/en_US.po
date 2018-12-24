@@ -1,8 +1,8 @@
 msgid "十一论坛"
-msgstr "BNDS Forum"
+msgstr "Twelve Forum"
 
 msgid "十一圈"
-msgstr "BNDS Circle"
+msgstr "Twelve Circle"
 
 msgid "回到个人主页"
 msgstr "User Homepage"
@@ -221,7 +221,7 @@ msgid "修改个人头像"
 msgstr "Modify User Avatar"
 
 msgid "您已经成功落户十一圈"
-msgstr "You have successfully signed up in BNDS Circle"
+msgstr "You have successfully signed up in Twelve Circle"
 
 msgid "我"
 msgstr "Me"
@@ -251,7 +251,7 @@ msgid "初二"
 msgstr "8"
 
 msgid "加入十一圈"
-msgstr "Join BNDS Circle"
+msgstr "Join Twelve Circle"
 
 msgid "重复密码"
 msgstr "Repeat"
@@ -369,7 +369,7 @@ msgid "操作"
 msgstr "Operation"
 
 msgid "（十一圈将会重新整理数据格式并排序，所以不必担心格式不美观）"
-msgstr "(BNDS Circle will indent in back-end)"
+msgstr "(Twelve Circle will indent in back-end)"
 
 msgid "返回"
 msgstr "Return"
@@ -633,7 +633,7 @@ msgid "资金类型"
 msgstr "Foundation Type"
 
 msgid "如果以上信息有误，请在十一论坛中反馈"
-msgstr "If any information beyond is incorrect, please feedback in BNDS Forum"
+msgstr "If any information beyond is incorrect, please feedback in Twelve Forum"
 
 msgid "新建申请"
 msgstr "New Application"
@@ -945,7 +945,7 @@ msgid "寻找..."
 msgstr "Look For ..."
 
 msgid "写下对十一圈的建议"
-msgstr "Write down advises for BNDS Circle"
+msgstr "Write down advises for Twelve Circle"
 
 msgid "暂时没有任何分享"
 msgstr "Currently no shares available"
@@ -981,7 +981,7 @@ msgid "暂时没有参与的活动"
 msgstr "This user is currently not joining any events"
 
 msgid "该用户于"
-msgstr "This user joins BNDS Circle "
+msgstr "This user joins Twelve Circle "
 
 msgid "拒绝申请"
 msgstr "Reject"
@@ -1293,7 +1293,7 @@ msgid "热门帖子"
 msgstr "Hot Threads"
 
 msgid "欢迎来到十一论坛"
-msgstr "Welcome to BNDS Forum"
+msgstr "Welcome to Twelve Forum"
 
 msgid "私密论坛板块仅社联和发布者可见"
 msgstr "Private groups are only visible to Club Union and the creator"
@@ -1461,10 +1461,10 @@ msgid "次关注"
 msgstr "people followed"
 
 msgid "十一圈名录"
-msgstr "BNDS Circle Club List"
+msgstr "Twelve Circle Club List"
 
 msgid "家社团在十一圈落户。"
-msgstr " clubs have registered in BNDS Circle. "
+msgstr " clubs have registered in Twelve Circle. "
 
 msgid "，已经有"
 msgstr ", "

@@ -29,7 +29,7 @@ msgid "成功为%s补签，请刷新页面"
 msgstr "Successfully signed up for %s, please refresh the page"
 
 msgid "十一圈中似乎还没有活动"
-msgstr "Cannot find any events in BNDS Circle"
+msgstr "Cannot find any events in Twelve Circle"
 
 msgid "关注成功"
 msgstr "Followed successfully"

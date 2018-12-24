@@ -9,7 +9,7 @@ handler500 = 'defaults.server_error'
 handler403 = 'defaults.permission_denied'
 handler400 = 'defaults.bad_request'
 
-admin.site.site_header = '十一圈后台'
+admin.site.site_header = '十二圈后台'
 admin.site.index_title = '站点管理'
 
 urlpatterns = [

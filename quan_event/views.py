@@ -754,7 +754,7 @@ class EventViews:
 			evid = qry.order_by('-time_create')[0].id
 			return Snap.redirect("/event/%d/" % evid)
 		except IndexError :
-			raise Http404('十一圈中似乎还没有活动')
+			raise Http404('十二圈中似乎还没有活动')
 
 	@vary_on_cookie
 	def event_next(request) :

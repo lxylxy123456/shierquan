@@ -196,7 +196,7 @@ overflow: auto;" id="contact_club_group" >
                   <form id="message_send" method="post" action="/message/private/">
                     {% csrf_token %}
                     <div class="form-group">
-                      <textarea id="message_content" placeholder="{% t_ '写下对十一圈的建议' %}" class="form-control" rows="3"></textarea>
+                      <textarea id="message_content" placeholder="{% t_ '写下对十二圈的建议' %}" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="form-group pull-right">
                       <button class="btn btn-default" onclick="locate_attachment(event);">
@@ -457,7 +457,7 @@ overflow: auto;" id="contact_club_group" >
 		}
 		else if(src == 'system'){
 			club_last_id = aid;
-			$("#message_content").attr('placeholder', '{% t_ '写下对十一圈的建议' %}');
+			$("#message_content").attr('placeholder', '{% t_ '写下对十二圈的建议' %}');
 		}
 		else {
 			user_last_id = aid;

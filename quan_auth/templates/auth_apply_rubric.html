@@ -1,0 +1,69 @@
+{% extends 'form_simp_base.html' %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          {% t_ '编辑评分' %}
+        </div>
+        <div class="panel-body">
+          <form id="rubric_form" action="" method="post">
+            {% csrf_token %}
+            {% if best_score %}
+              <div class="form-group">
+                <label for="data">{% t_ '满分' %}</label>
+                <input disabled="disabled" class="form-control" 
+                       value="{{ best_score }}" />
+              </div>
+            {% endif %}
+            <div class="form-group">
+              <label for="data">{% t_ '数据表格' %}</label>
+              <textarea id="data" name="data" class="form-control" 
+                        rows="10">{{ form_data }}</textarea>
+            </div>
+            <div class="btn-group btn-group-justified">
+              <div class="btn-group">
+                <button id="submit" class="btn btn-success" type="submit">
+                  <span class="glyphicon glyphicon-ok-sign"></span> {% t_ '提交' %}
+                </button>
+              </div>
+              <div class="btn-group">
+                <a href="#help-info" class="btn btn-info">
+                  <span class="glyphicon glyphicon-question-sign"></span> {% t_ '帮助' %}
+                </a>
+              </div>
+              <div class="btn-group">
+                <a href="/auth/apply/" class="btn btn-warning">
+                  <span class="glyphicon glyphicon-remove-sign"></span> {% t_ '返回' %}
+                </a>
+              </div>
+            </div>
+          </form>
+          
+          <hr />
+          
+          <h5 id="help-info"><b>{% t_ '说明和示例' %}</b></h5>
+          <p>{% t_ '通过输入一个表格来编辑评分标准。表格竖方向用回车分隔，横向用空格或Tab分隔' %}</p>
+          <p>{% t_ '每行代表一个评分标准，第一列是标准说明，其他列是标准的分数选项。' %}</p>
+          <p>{% t_ '（十一圈将会重新整理数据格式并排序，所以不必担心格式不美观）' %}</p>
+          <p>{% t_ '示例：' %}</p>
+          <pre>{% include 'auth_apply_rubric.txt' %}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#rubric_form").on("submit", function (event) {
+	event.preventDefault();
+	ajaxBanner("/auth/apply/rubric/{{ category }}/", {
+		data: $("#data").val()
+	}, "#rubric_form");
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load translate %}
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="text-center">{% t_ '添加签到' %}</h3>
+        <form id="club_prv_signup" class="form" method="POST" action="/event/signup/create/">
+        {% csrf_token %}
+          <div class="caption">
+            <div class="form-group">
+              <label for="quest">{% t_ '问题' %}</label>
+              <input name="quest" type="text" class="form-control" placeholder="{% t_ '标题' %}" />
+            </div>
+            <div class="form-group">
+              <label for="OptionA">{% t_ '选项' %}</label>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">A.</div>
+                <input class="form-control" type="text" name="option_A" id="option_A"  placeholder="{% t_ '选项A' %}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">B.</div>
+                <input class="form-control" type="text" name="option_B" id="option_B"  placeholder="{% t_ '选项B' %}">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">C.</div>
+                <input class="form-control" type="text" name="option_C" id="option_C"  placeholder="{% t_ '选项C' %}">
+              </div>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="row">
+              <div class="col-sm-6 col-md-8">
+                <div class="form-group">
+                  <label for="answer">{% t_ '答案' %}</label>
+                  <div class="btn-group" data-toggle="buttons" id="answer">
+                    <label class="btn btn-primary active">
+                      <input type="radio" value="A" name="answer" id="option1" autocomplete="off" checked>A
+                    </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" value="B" name="answer" id="option2" autocomplete="off">B
+                    </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" value="C" name="answer" id="option3" autocomplete="off">C  
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="btn-group ">
+                  <input type="submit" class="btn btn-lg btn-info" value="{% t_ '设置签到' %}" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$("#club_prv_signup").on("submit", function(event) {
+			event.preventDefault();
+			ajaxBanner(this.action, {
+				data: getFormJson(this), 
+				aid: {{ club.id }},
+				src: 'club',
+			}, "#club_prv_signup");
+		});
+	});
+    </script>

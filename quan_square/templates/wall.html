@@ -1,0 +1,68 @@
+{% extends "form_fluid_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <h3>
+        <span class="glyphicon glyphicon-bookmark"></span> {% t_ '十一圈名录' %}
+        <small>{% t_ '根据社团名称拼音排序' %}</small>
+      </h3>
+      <hr />
+      <div class="row masonry-container">
+      {% for section in club_section %}
+        {% if section.1 %}
+        <div class="item col-sm-4 col-md-2" >
+          <a href="#{{ section.0 }}" class="h3">{{ section.0 }}</a>
+          {% for club in section.1 %}
+          <div class="media">
+            <div class="media-left">
+              <img src="{{ club.avatar }}" style="width:32px;height:32px;" class="thumbnail">
+            </div>
+            <div class="media-body">
+              <a href="/club/{{ club.data.simp_name }}/">{{ club.data.full_name }}</a>
+            </div>
+          </div>
+          {% endfor %}
+          <hr>
+        </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+      <br />
+      <h3 class="text-center">
+        <small>{% t_ '截止到' %}{{ current_date }}{% t_ '，已经有' %}{{ club_num }}{% t_ '家社团在十一圈落户。' %}</small>
+      </h3>
+      <hr />
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var $container = $('.masonry-container');
+	$container.imagesLoaded( function () {
+		$container.masonry({
+			columnWidth: function( containerWidth ) {
+				// do nothing for browsers with no media query support
+				// .container will always be 940px
+				if($(".container").width() == 940) {
+					return 240;
+				}
+
+				var width = $(window).width();
+				var col = 300;
+
+				if(width < 1200 && width >= 980) {
+					col = 240;
+				} else if(width < 980 && width >= 768) {
+					col = 186;
+				}
+				return col;
+			},
+			itemSelector: '.item',
+		});
+	});
+</script>
+{% endblock %}

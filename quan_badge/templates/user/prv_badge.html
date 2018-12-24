@@ -1,0 +1,47 @@
+{% load translate %}
+
+<div class="modal fade" id="badge-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{% t_ '创建徽章' %}</h4>
+      </div>
+      <div class="modal-body">
+          <form id="user_prv_badge" method="post" class="form" action="/badge/create/">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="headName">{% t_ '标题' %}</label>
+              <div id="headName" class="input-group">
+                <span class="input-group-btn">
+                <a href="#" id="popover" tabindex="0" class="btn btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{% t_ '关于徽章' %}" data-container="body" data-content="{% t_ '徽章是一个用来个人身份的标识。' %}">{% t_ '徽章是神马？' %}</a>
+                </span>
+                <input name="name" type="text" class="form-control" placeholder="{% t_ '例：蓝翔高级技工' %}">
+              </div><!-- /input-group -->
+            </div>
+            <div class="form-group">
+              <label for="promptName">{% t_ '提示' %}</label>
+              <div class="input-group">
+                <span class="input-group-addon">{% t_ '这个用户喜欢' %}</span>
+                <input name="desc" type="text" id="promptName" class="form-control" placeholder="...">
+              </div>
+            </div>
+            <input type="submit" value="{% t_ '添加' %}" class="btn btn-block btn-lg btn-default" />
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#user_prv_badge").on("submit", function(event) {
+		event.preventDefault();
+		ajaxBanner(this.action, {
+			data: getFormJson(this), 
+			src: 'user', 
+			aid: {{ request.user.id }},
+		}, "#user_prv_badge");
+	});
+});
+</script>

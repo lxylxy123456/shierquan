@@ -1,0 +1,108 @@
+msgid "活动签到成功"
+msgstr "Signed up successfully"
+
+msgid "找不到活动"
+msgstr "Event not found"
+
+msgid "成功关联分享"
+msgstr "Successfully related this event with the share"
+
+msgid "您已经赞过这个活动"
+msgstr "You have already voted this event"
+
+msgid "找不到用户"
+msgstr "User not found"
+
+msgid " - %s - %s的活动"
+msgstr " - %s - by %s"
+
+msgid "成功创建签到"
+msgstr "Sign-up created successfully"
+
+msgid "已经签到"
+msgstr "You have already signed up"
+
+msgid "成功为活动点赞"
+msgstr "Successfully voted this event"
+
+msgid "成功为%s补签，请刷新页面"
+msgstr "Successfully signed up for %s, please refresh the page"
+
+msgid "十一圈中似乎还没有活动"
+msgstr "Cannot find any events in BNDS Circle"
+
+msgid "关注成功"
+msgstr "Followed successfully"
+
+msgid "您没有活动的管理权限"
+msgstr "You do not have the administrative permission for this event"
+
+msgid "表单不完整，可向HCC汇报此错误"
+msgstr "Incomplete form, report this bug to HCC Computer Community"
+
+msgid "方法错误"
+msgstr "Method error"
+
+msgid "您输入的内容不合法。"
+msgstr "Illegal input"
+
+msgid "成功取消分享关联"
+msgstr "Connection successfully canceled"
+
+msgid "您没有权限"
+msgstr "You do not have the corresponding permission"
+
+msgid "没有设置签到"
+msgstr "Sign-up not set"
+
+msgid "活动不合法"
+msgstr "Illegal event"
+
+msgid " - %s"
+msgstr " - %s"
+
+msgid "时间信息不完整"
+msgstr "Incomplete time information"
+
+msgid "没有找到这个活动，似乎过期了？"
+msgstr "Cannot find this event, maybe antiquated?"
+
+msgid "已成功移除活动"
+msgstr "Event successfully cancled"
+
+msgid "活动不存在"
+msgstr "The event does not exist"
+
+msgid "输入内容不完整或字数过多"
+msgstr "Incomplete or too long input"
+
+msgid "您没有分享的管理权限"
+msgstr "You do not have the administrative permission for the share"
+
+msgid "活动已成功提交"
+msgstr "Event submitted successfully"
+
+msgid "投递事件数量超标"
+msgstr "Too many events"
+
+msgid "活动签到失败"
+msgstr "Failed to sign up"
+
+msgid "投递事件太频繁"
+msgstr "Frequently Submitting events"
+
+msgid "或许信息太长了？"
+msgstr "Perhaps the content is too long?"
+
+msgid "开始时间>结束时间？"
+msgstr "Starting time > Ending time?"
+
+msgid "请检查输入是否存在空白或超出长度限制"
+msgstr "Please check that whether the input content is blank or is too long"
+
+msgid "成功"
+msgstr "Success"
+
+msgid "失败"
+msgstr "Fail"
+

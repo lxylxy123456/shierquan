@@ -1,0 +1,35 @@
+msgid "找不到文件"
+msgstr "File not found"
+
+msgid "参数错误"
+msgstr "Param Error"
+
+msgid "SECURITY_ERROR: 严格检测失败"
+msgstr "SECURITY_ERROR: Strict testing failed (403:STF)"
+
+# Deprecated
+msgid "找不到页面"
+msgstr "404 Page Not Found"
+
+# Deprecated
+msgid "或许忘记登录？"
+msgstr "403 Forbidden (Perhaps not logged in?)"
+
+msgid "不到一分钟"
+msgstr "Less than one minute"
+
+msgid "%d分钟"
+msgstr "%d minutes"
+
+msgid "%d小时"
+msgstr "%d hours"
+
+msgid "前"
+msgstr " earlier"
+
+msgid "后"
+msgstr " later"
+
+msgid "%d天"
+msgstr "%d days"
+

@@ -1,0 +1,159 @@
+{% load translate %}
+
+{% verbatim %}
+  <script id="file_info" type="x-tmpl-mustache">
+    <div class="row" id="filebox-{{ i }}">
+      <div class="col-xs-12">
+        <h5 style="padding-left:4px;">
+          <b class="text-warning">#{{ i }}</b> 
+          <b>{{ filename }}</b>
+           - 
+          <span>{{ filesize }} KiB</span>
+        </h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ calcFileSize }}%; " id="progressbar-{{ i }}">
+              {{ calcFileSize }}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+{% endverbatim %}
+<script type="text/javascript">
+var attach_uuid = "";
+var progress_activated = 0;
+var interval_id = 0;
+var update_finished = false;
+
+function gen_uuid() {	// 生成32位随机uuid
+	var uuid = "";
+	for (var i=0; i < 32; i++) {
+		uuid += Math.floor(Math.random() * 16).toString(16); 
+	}
+	return uuid;
+}
+
+function updateProgressBar(i, current_size) {
+	bar = $("#progressbar-" + (i + 1).toString());
+	if(current_size == -1) {
+		var percentage = "100%"
+		bar.css("width", percentage);
+		bar.html(percentage);
+		$("#filebox-" + (i + 1).toString()).fadeOut();
+	//	console.log(i.toString() + " finished upload.");
+	} else {
+		var inputFile = $("#inputFile");
+		var fileGroup = inputFile[0].files;
+		var total_size = fileGroup[i].size;
+		var base = parseInt(current_size) / parseInt(total_size) * 100;
+		var progress= base.toFixed(2);
+		var percentage = progress.toString() + "%"
+		bar.css("width", percentage);
+		bar.html(percentage);
+	}
+}
+
+function showFileBox() {
+	var template = $('#file_info').html();
+	Mustache.parse(template);   // 可选，加速Mustache处理
+	var inputFile = $("#inputFile");
+	var fileGroup = inputFile[0].files;
+	for(var i = 0; i < fileGroup.length; i += 1) {
+		var file = fileGroup[i];
+		var KBsize = file.size / 1024;
+		console.log(file.size);
+		var view = {
+			i: i + 1,
+			filename: file.name,
+			filesize: KBsize.toFixed(2),
+			calcFileSize: function () {
+				return 0 / file.size;
+			}
+		};
+		var rendered = Mustache.render(template, view);
+		$('#file_info_group').append(rendered);
+	}
+}
+
+function buttonClear(){			// 提交后清空表单
+	$("#inputFile").remove();
+	$("#file_info_group").empty();
+	$("#inputFileDiv").empty();
+	$("#inputFileDiv").append($("#inputFileTemplate").html());
+
+	$("contain_form").attr("action", "/share/upload/?status=query");
+	attach_uuid = "";
+	progress_activated = 0;
+	update_finished = false;
+}
+
+function testBtn() {
+	$("#auto_submit_div").fadeIn();
+	progress_activated = 1;
+
+	var uuid = gen_uuid(); 		// 随机id，用来跟踪进度
+
+	$('#content_submit').attr('disabled', 'disabled');
+
+	// Append X-Progress-ID uuid form action
+	var dataForm = $('#contain_form');
+	var action = dataForm.attr('action');
+	
+	dataForm.attr('action', action += (action.indexOf('?') == -1 ? '?' : '&') + 'X-Progress-ID=' + uuid);
+
+	showFileBox();
+	$('#contain_form').submit();
+	$('#inputFile').fadeOut();
+	function update_progress_info() {
+		if (update_finished) {
+			return
+		}
+		ajaxBanner("/share/upload/progress/", {
+			'X-Progress-ID': uuid, 
+		}, "", function(msg) {
+			if (msg["status"] != "success") {
+				console.log("Error loading queue");
+				return;
+			}
+			if (msg["q"]) {	// 还在上传
+				for(var i = 0; i < msg["q"].length; i += 1) {
+					updateProgressBar(i, msg["q"][i]["size"]);
+				}
+			} else {			// 上传完成
+				var fileGroup = $("#inputFile")[0].files;
+				for(var i = 0; i < fileGroup.length; i += 1) {
+					updateProgressBar(i, -1);
+				}
+				$('#content_submit').removeAttr('disabled');
+				ajaxBanner("/share/upload/complete/", {
+					'X-Progress-ID': uuid,
+				}, "", function(msg){
+					if (msg["status"] == "success") {
+						attach_uuid = msg["attach_uuid"];
+					}
+					else {
+						alert(msg["content"]);
+					}
+				});
+				if($("#auto_submit").length) {
+					if($("#auto_submit")[0].checked){
+						setTimeout('$("#content_submit").click();', 3000);
+					}
+				}
+				$("#auto_submit_div").fadeOut();
+				update_finished = true;
+				clearInterval(interval_id);
+			}
+		});
+	};
+	interval_id = window.setInterval(update_progress_info, 1000);
+	// 防止关闭页面
+	window.onbeforeunload = onbeforeunload_handler;
+	function onbeforeunload_handler(){
+		if (progress_activated) {
+			return "{% t_ '确定要关闭此页吗？' %}";
+		}
+	}
+}
+</script>
+<iframe id="upload_frame" name="upload_frame" style="display:none;"></iframe>

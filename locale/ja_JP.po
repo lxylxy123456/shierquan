@@ -1,0 +1,1797 @@
+msgid "使用微信“扫一扫”功能签到。"
+msgstr "サインアップする微信の「扫一扫」機能を使用します。"
+
+msgid "请阐明来意"
+msgstr "あなたは誰？"
+
+msgid "查看所有分享"
+msgstr "すべてのシェアを見る"
+
+msgid "无额外错误信息。"
+msgstr "追加のエラーメッセージなし。"
+
+msgid "热门帖子"
+msgstr "人気のテーマ"
+
+msgid "查看更多"
+msgstr "もっと見る"
+
+msgid "来自"
+msgstr "由来して"
+
+msgid "登录后开启天台"
+msgstr "コメントをするにはログインしてください"
+
+msgid "提交综合评分"
+msgstr "総合のスコアリングを提出する"
+
+msgid "（简称为"
+msgstr "（略称は"
+
+msgid "结束时间"
+msgstr "終了時間"
+
+msgid "新申请数量"
+msgstr "新しいアプリケーション数"
+
+msgid "设置副社长"
+msgstr "設定する副社長"
+
+msgid "初二"
+msgstr "中二"
+
+msgid "用户设置"
+msgstr "ユーザー設定"
+
+msgid "邮箱"
+msgstr "メールアドレス"
+
+msgid "修改个人头像"
+msgstr "個人アバターを変更"
+
+msgid "还没有社团提交申请"
+msgstr "送信されたアプリケーションはありません"
+
+msgid "示例："
+msgstr "例えば"
+
+msgid "比例"
+msgstr "比率"
+
+msgid "向前翻"
+msgstr "前のページ"
+
+msgid "社团资金申请审核"
+msgstr "クラブ資金のアプリケーションのレビュー"
+
+msgid "暂时没有标签"
+msgstr "タグなし"
+
+msgid "好友请求"
+msgstr "友達リクエスト"
+
+msgid "一句话介绍你的社团（不多于30字）"
+msgstr "あなたのコミュニティの単語の説明（30個未満の単語）"
+
+msgid "活动进行中"
+msgstr "活動中"
+
+msgid "上一页"
+msgstr "前のページ"
+
+msgid "便捷的社团活动发布&amp;管理平台。"
+msgstr "じゅういちけん"
+
+msgid "以更改"
+msgstr "をクリックしてください"
+
+msgid "显示附件（"
+msgstr "添付ファイルを表示する（"
+
+msgid "清空消息"
+msgstr "メッセージをクリアする"
+
+msgid "地点"
+msgstr "位置"
+
+msgid "日期："
+msgstr "日付："
+
+msgid "新社团名称"
+msgstr "新しいクラブ名"
+
+msgid "设置签到的方法"
+msgstr "サインアップの設定方法"
+
+msgid "继续阅读"
+msgstr "読み続けて"
+
+msgid "默认排版"
+msgstr "デフォルトのレイアウト"
+
+msgid "载入历史"
+msgstr "履歴を読み込む"
+
+msgid "活动"
+msgstr "活動"
+
+msgid "最新"
+msgstr "最新"
+
+msgid "输入好友昵称或姓名"
+msgstr "友達の愛称を入力"
+
+msgid "视频转换失败"
+msgstr "動画の変換に失敗しました"
+
+msgid "日期"
+msgstr "日付"
+
+msgid "管理社团成员"
+msgstr "クラブ会員を管理する"
+
+msgid "资料"
+msgstr "資料"
+
+msgid "视频还在转换中，请稍候"
+msgstr "動画が処理中です、お待ちください"
+
+msgid "申请社团"
+msgstr "クラブ"
+
+msgid "社团一览"
+msgstr "クラブ一覧"
+
+msgid "折叠全部关系"
+msgstr "すべての関係を隠す"
+
+msgid "最近的活动"
+msgstr "最近の活動"
+
+msgid "星级申报材料"
+msgstr "評価アプリケーションの資料"
+
+msgid "查看更多社团"
+msgstr "その他のクラブズ"
+
+msgid "登录"
+msgstr "ログイン"
+
+msgid "订阅列表"
+msgstr "フォローのリスト"
+
+msgid "截止到"
+msgstr " "
+
+msgid "手机"
+msgstr "電話番号"
+
+msgid "说明内容"
+msgstr "説明内容"
+
+msgid "社团成员构成"
+msgstr "メンバー作り上げる"
+
+msgid "选择您选择申报的星级"
+msgstr "あなたの選択の評価を選択"
+
+msgid "访问数量"
+msgstr "訪問数"
+
+msgid "这个用户喜欢"
+msgstr "好きの物わ"
+
+msgid "请使用小写与连线符组合"
+msgstr "文字とマイナス記号を使用してください"
+
+msgid "服务器返回了一个400。可能你在试图上传一个大文件"
+msgstr "サーバーは400を返します。多分あなたは巨大なファイルをアップロードしています"
+
+msgid "您的请求被锯了"
+msgstr "あなたのリクエストは拒否されます"
+
+msgid "暂时没有参与的活动"
+msgstr "このユーザーは現在どの活動にも参加していません"
+
+msgid "时间："
+msgstr "時刻："
+
+msgid "成功更新动态"
+msgstr "ダイナミックを正常に更新しました"
+
+msgid "留言板"
+msgstr "掲示板"
+
+msgid "社团活动"
+msgstr "クラブの活動"
+
+msgid "评分标准"
+msgstr "ルーブリック"
+
+msgid "选择附加文件"
+msgstr "添付ファイルを選択します"
+
+msgid "暂时没有通知"
+msgstr "一時的に予告なし"
+
+msgid "天前"
+msgstr "日前"
+
+msgid "分层显示"
+msgstr "レイヤー単位で表示"
+
+msgid "不过你已经进行过签到"
+msgstr "しかし、あなたはすでにサインアップしています"
+
+msgid "回到个人主页"
+msgstr "ユーザーのホームページに戻る"
+
+msgid "否"
+msgstr "いいえ"
+
+msgid "拒绝申请"
+msgstr "アプリケーションを拒否"
+
+msgid "社团星级申报"
+msgstr "クラブ評価のアプリケーション"
+
+msgid "无额外错误信息。不过...谢谢单击！"
+msgstr "追加のエラーメッセージなし。しかし、クリックに感謝！"
+
+msgid "（十一圈将会重新整理数据格式并排序，所以不必担心格式不美观）"
+msgstr "（十一圏はバックエンドでインデントされます）"
+
+msgid "请剪切AttachID。"
+msgstr "AttachIDを切ってください。"
+
+msgid "学分"
+msgstr "クレジット"
+
+msgid "重复密码"
+msgstr "パスワード再入力"
+
+msgid "分享密码"
+msgstr "シェアのパスワード"
+
+msgid "空空如也"
+msgstr "何もない"
+
+msgid "例：蓝翔高级技工"
+msgstr "例えば山東蓝翔職業学校のエンジニア"
+
+msgid "分类"
+msgstr "分類"
+
+msgid "设置签到"
+msgstr "サインアップを設定"
+
+msgid "讨论"
+msgstr "雑談"
+
+msgid "查看全部"
+msgstr "全てを見ます"
+
+msgid "”"
+msgstr "”が選択されていません"
+
+msgid "收件箱"
+msgstr "受信箱"
+
+msgid "新闻模块"
+msgstr "ニュースモジュール"
+
+msgid "社长似乎没有上传任何活动图片"
+msgstr "部長は、すべての活動の写真をアップロードしていません"
+
+msgid "十一圈名录"
+msgstr "クラブ一覧"
+
+msgid "社长姓名"
+msgstr "部長のフルネーム"
+
+msgid "编辑信息"
+msgstr "情報の編集"
+
+msgid "提示"
+msgstr "ヒント"
+
+msgid "申请表"
+msgstr "申込書"
+
+msgid "所有申请"
+msgstr "全てアプリケーション"
+
+msgid "加为好友"
+msgstr "友達になる"
+
+msgid "社团资金申请"
+msgstr "クラブ資金のアプリケーション"
+
+msgid "申请列表"
+msgstr "アプリケーションリスト"
+
+msgid "/static/js/obj2json.js"
+msgstr "/static/js/obj2json.ja.js"
+
+msgid "然后，点击上传按钮。"
+msgstr "そして、アップロードボタンを押させて"
+
+msgid "满分"
+msgstr "満点"
+
+msgid "您确定删除吗？这个动作不可逆。"
+msgstr "あなたはこれを削除してもよろしいですか？この操作は回復できません。"
+
+msgid "私密论坛板块仅社联和发布者可见"
+msgstr "プライベートグループは、クラブユニオンとクリエイターのみが見ることができます"
+
+msgid "打包机"
+msgstr "パッカー"
+
+msgid "暂时没有关注者"
+msgstr "フォロワーなし"
+
+msgid "更改密码"
+msgstr "パスワードを変更"
+
+msgid "更改社团信息"
+msgstr "クラブ情報を変更"
+
+msgid "杂烩"
+msgstr "混合"
+
+msgid "暂时没有会话内容"
+msgstr "セッションの内容がありません"
+
+msgid "然后，点击绿色按钮上传。"
+msgstr "そして、グリーンアップロードボタンを押させて"
+
+msgid "分数计算"
+msgstr "得点の計算"
+
+msgid "提交时间"
+msgstr "投稿時間"
+
+msgid "喜欢"
+msgstr "好き"
+
+msgid "发送邀请"
+msgstr "招待状を送ります"
+
+msgid "编辑"
+msgstr "編集"
+
+msgid "快讯"
+msgstr "ニュース"
+
+msgid "发表回复"
+msgstr "ポスト返信"
+
+msgid "是"
+msgstr "はい"
+
+msgid "提交"
+msgstr "送信"
+
+msgid "添加签到"
+msgstr "サインアップを追加する"
+
+msgid "高二"
+msgstr "高二"
+
+msgid "回复帖子"
+msgstr "返信"
+
+msgid "媒体中心"
+msgstr "メディアセンター"
+
+msgid "换一换"
+msgstr "次のページ"
+
+msgid "材料不足"
+msgstr "材料の不足"
+
+msgid "创建群组"
+msgstr "グループを作成します"
+
+msgid "回到社团主页以修改信息"
+msgstr "戻るホームページにクラブ情報を変更します"
+
+msgid "基本信息"
+msgstr "基本情報"
+
+msgid "搜索"
+msgstr "検索"
+
+msgid "您可以通过添加"
+msgstr "あなたは"
+
+msgid "主页"
+msgstr "ホーム"
+
+msgid "请输入一个签名"
+msgstr "署名を入力してください。"
+
+msgid "帮助手册"
+msgstr "ヘルプマニュアル"
+
+msgid "确定要删除社团"
+msgstr "あなたは"
+
+msgid "移除"
+msgstr "取り除く"
+
+msgid "添加新社团"
+msgstr "新しいクラブを追加します。"
+
+msgid "吗？"
+msgstr "を削除してもよろしいですか？"
+
+msgid "管理"
+msgstr "管理"
+
+msgid "选项A"
+msgstr "選択肢A"
+
+msgid "徽章是一个用来个人身份的标识。"
+msgstr "バッジは、人の身元を識別するために使用されます。"
+
+msgid "综合评分"
+msgstr "総合の得点"
+
+msgid "联系人"
+msgstr "コンタクト"
+
+msgid "我"
+msgstr "わたし"
+
+msgid "晓得"
+msgstr "了解"
+
+msgid "邀请同学加入吧！"
+msgstr "学生の参加を呼びかけましょう！"
+
+msgid "加入十一圈"
+msgstr "十一圏に参加"
+
+msgid "发表回复前请先登录"
+msgstr "ポスト返信する前にログインしてください"
+
+msgid "签到失败"
+msgstr "サインアップ失敗する"
+
+msgid "没有加入的社团"
+msgstr "コミュニティに参加しませんでした"
+
+msgid "暂时没有聊天。"
+msgstr "チャットなし。"
+
+msgid "关联分享"
+msgstr "シェアを関連"
+
+msgid "分享的视频"
+msgstr "シェアのビデオ"
+
+msgid "审核进度"
+msgstr "評価レビュー"
+
+msgid "您选择申报的星级为"
+msgstr "あなたの選択の評価は"
+
+msgid "申请时间"
+msgstr "申請時間"
+
+msgid "撤回"
+msgstr "引き揚げる"
+
+msgid "编辑新闻标题"
+msgstr "新聞のタイトルを変更"
+
+msgid "板块在论坛主页所属的分组，名称需要和别的板块一致"
+msgstr "これは他のグループと同じ名前でなければならないグループのトピックです"
+
+msgid "楼主"
+msgstr "投稿者"
+
+msgid "社团主页留言："
+msgstr "のマインページにメッセージを残します："
+
+msgid "全部社员"
+msgstr "全部の部員"
+
+msgid "输入用户主页的链接，例如 shiyiquan-test"
+msgstr "ホームページのリンクを入力、例えば shiyiquan-test"
+
+msgid "欢迎"
+msgstr "ようこそ"
+
+msgid "授予徽章"
+msgstr "バッジを受賞"
+
+msgid "出错了耶..."
+msgstr "しまった〜"
+
+msgid "在不久的将来"
+msgstr "近い将来に"
+
+msgid "次活动"
+msgstr "回活動"
+
+msgid "操作"
+msgstr "オペレーティング"
+
+msgid "补签"
+msgstr "サプリメントにサインアップ"
+
+msgid "类型"
+msgstr "タイプ"
+
+msgid "提交审核"
+msgstr "アプリケーションを提出する"
+
+msgid "通过添加链接让同学们快速访问社团网站"
+msgstr "短いリンクを追加することで、より速くクラブを見ることができます"
+
+msgid "附件"
+msgstr "添付ファイル"
+
+msgid "主题"
+msgstr "テーマ"
+
+msgid "发布分享并重新点击“刷新”按钮"
+msgstr "共有投稿し、「更新」ボタンを再度クリックしてください"
+
+msgid "搜索社团"
+msgstr "クラブ検索"
+
+msgid "材料缺失"
+msgstr "資料なし"
+
+msgid "照片数量不足"
+msgstr "写真の数が不足"
+
+msgid "确定要关闭此页吗？"
+msgstr "このページを閉じてもよろしいですか？"
+
+msgid "首先，选择需要存储的文件。"
+msgstr "まず、保存するファイルを選択します。"
+
+msgid "社团星级评价资料"
+msgstr "クラブ評価の資料"
+
+msgid "输入姓名"
+msgstr "フルネームを入力"
+
+msgid "加入十一圈。"
+msgstr "に十一圏に参加します"
+
+msgid "发表"
+msgstr "公開する"
+
+msgid "资金类型"
+msgstr "資金の種類"
+
+msgid "成员补签"
+msgstr "メンバーのサプリメントにサインアップ"
+
+msgid "授予时间"
+msgstr "受賞の時間"
+
+msgid "通过输入一个表格来编辑评分标准。表格竖方向用回车分隔，横向用空格或Tab分隔"
+msgstr "ルーブリックを編集するフォームを入力します。 行とスペースにはEnterを使用し、列にはタブを使用します。"
+
+msgid "隐私政策"
+msgstr "個人情報保護方針"
+
+msgid "项目："
+msgstr "プロジェクト"
+
+msgid "接下来将参加"
+msgstr "次は参加します"
+
+msgid "徽章是神马？"
+msgstr "バッジは何ですか？"
+
+msgid "0 人关注"
+msgstr "フォロワーなし"
+
+msgid "所有社长"
+msgstr "全て部長"
+
+msgid "查看"
+msgstr "見せて"
+
+msgid "内容中包含非法字符"
+msgstr "無効な文字があります"
+
+msgid "开始时间"
+msgstr "開始時間"
+
+msgid "修改密码"
+msgstr "パスワードの変更"
+
+msgid "请输入成员姓名"
+msgstr "メンバーのフルネームを入力"
+
+msgid "没有创建徽章"
+msgstr "バッジなし"
+
+msgid "活动内容"
+msgstr "活動の内容"
+
+msgid "签到二维码"
+msgstr "サインアップの二次元コード"
+
+msgid "关于徽章"
+msgstr "バッジについて"
+
+msgid "缎带"
+msgstr "リボン"
+
+msgid "请输入一个昵称"
+msgstr "愛称を入力"
+
+msgid "打招呼"
+msgstr "あいさつ"
+
+msgid "发布时间："
+msgstr "発表の時刻："
+
+msgid "有什么想法？"
+msgstr "何を考えていますか？"
+
+msgid "年级"
+msgstr "学年"
+
+msgid "撰写个性评分标准"
+msgstr "个性のルーブリックを書き"
+
+msgid "尚未审核"
+msgstr "審査しません"
+
+msgid "TA的主页被访问过"
+msgstr "彼のホームは"
+
+msgid "关注 + 推广"
+msgstr "フォローとプロモーション"
+
+msgid "还没有人获得过这个徽章"
+msgstr "誰もこのバッジを受け取っていません"
+
+msgid "探索"
+msgstr "探す"
+
+msgid "添加附件"
+msgstr "添付ファイルを追加する"
+
+msgid "在"
+msgstr " "
+
+msgid "主页链接"
+msgstr "ホームページのリンク"
+
+msgid "申请活动区域"
+msgstr "活動の場所を申請する"
+
+msgid "，此操作无法恢复。"
+msgstr "を削除するつもりです、この操作は回復できません。"
+
+msgid "暂时没有群聊。"
+msgstr "グループチャットなし。"
+
+msgid "社团全称"
+msgstr "クラブのフルネーム"
+
+msgid "高三"
+msgstr "高三"
+
+msgid "发帖"
+msgstr "テーマ発表"
+
+msgid "如果忘记邮箱，可以在输入姓名后点击“重置密码”来获取提示"
+msgstr "あなたのメールアドレスを忘れた場合は、実際の名前を入力してヒントを得るために「パスワードリセット」をクリックしてください"
+
+msgid "活动简介"
+msgstr "活動の概要"
+
+msgid "社团联合会通知"
+msgstr "クラブユニオンの告示"
+
+msgid "拒绝"
+msgstr "拒否する"
+
+msgid "人被授予徽章"
+msgstr "人がこのバッジを受け取りました"
+
+msgid "编辑封面"
+msgstr "カバーを編集する"
+
+msgid "徽章"
+msgstr "バッジ"
+
+msgid "选项C"
+msgstr "選択肢C"
+
+msgid "下载表格"
+msgstr "フォームのダウンロード"
+
+msgid "修改内容"
+msgstr "コンテンツを編集する"
+
+msgid "取消活动"
+msgstr "活動をキャンセルする"
+
+msgid "近期活动"
+msgstr "最近の活動"
+
+msgid "文件描述"
+msgstr "ファイル説明"
+
+msgid "提交个性评分"
+msgstr "个性のスコアリングを提出する"
+
+msgid "次关注"
+msgstr "回フォロー"
+
+msgid "投递新闻"
+msgstr "ニュースを送信"
+
+msgid "审核通过"
+msgstr "受理する"
+
+msgid "没有未审核成员。"
+msgstr "認証されていないメンバーはいません"
+
+msgid "人准备参加这个活动"
+msgstr "人がこの活動に参加する用意があります"
+
+msgid "取消订阅"
+msgstr "フォローを解除"
+
+msgid "资金申请"
+msgstr "資金アプリケーション"
+
+msgid "写下消息内容"
+msgstr "メッセージの内容を書き留め"
+
+msgid "已通过"
+msgstr "受理する"
+
+msgid "查看详情"
+msgstr "詳細を見ます"
+
+msgid "分享标题"
+msgstr "シェアのタイトル"
+
+msgid "警告"
+msgstr "しまった"
+
+msgid "尚未撰写评分标准"
+msgstr "ルーブリックはありません"
+
+msgid "加为联系人"
+msgstr "連絡先に追加"
+
+msgid "您确定要删除吗？此操作将无法恢复"
+msgstr "あなたはこれを削除してもよろしいですか？この操作は回復できません。"
+
+msgid "社团简介"
+msgstr "クラブの概要"
+
+msgid "落户时间"
+msgstr "登録時間"
+
+msgid "投递分享"
+msgstr "シェアを送信"
+
+msgid "社团概况"
+msgstr "クラブプロフィール"
+
+msgid "人参加了活动"
+msgstr "人が活動に出席しました"
+
+msgid "对一个经常被访问的板块而言这可能是一个重大与唐突的更改；请在行动前先确定您了解其所可能带来的后果"
+msgstr "これはホットグループにとって大きな変更になるかもしれません、変更する前にお考えください"
+
+msgid "附件下载"
+msgstr "添付ファイルをダウンロードする"
+
+msgid "经计算，您可以申报的星级为"
+msgstr "計算した後、あなたは可能な選択の評価は"
+
+msgid "板块组"
+msgstr "ブロックのグループ"
+
+msgid "创建新徽章"
+msgstr "新しいバッジ"
+
+msgid "未处理申请"
+msgstr "未処理のアプリケーション"
+
+msgid "登录以发表观点"
+msgstr "意見を投稿するにはログインしてください"
+
+msgid "个性评分"
+msgstr "个性の得点"
+
+msgid "探讨事宜"
+msgstr "話題"
+
+msgid "新社团概况"
+msgstr "新しいクラブプロフィール"
+
+msgid "最后发表"
+msgstr "最終投稿"
+
+msgid "帮助"
+msgstr "ヘルプ"
+
+msgid "地点："
+msgstr "場所："
+
+msgid "天台"
+msgstr "プラットフォーム"
+
+msgid "，已经有"
+msgstr "のように、ここで定住"
+
+msgid "编辑评分"
+msgstr "ルーブリックを編集"
+
+msgid "删除活动"
+msgstr "活動を削除"
+
+msgid "暂时没有分享图片"
+msgstr "シェアの写真はありません"
+
+msgid "点击查看详情"
+msgstr "詳細を見ます"
+
+msgid "人参与 / 共计"
+msgstr "人が参加しました / 合計で"
+
+msgid "您已经成功落户十一圈"
+msgstr "十一圏にサインアップしました"
+
+msgid "在上方输入查询内容"
+msgstr "上部にクエリを入力します。"
+
+msgid "管理员"
+msgstr "アドミニストレータ"
+
+msgid "链接"
+msgstr "リンク"
+
+msgid "审核过往签到"
+msgstr "過去のサインアップを審査"
+
+msgid "注册账户"
+msgstr "アカウント作成"
+
+msgid "暂时没有成员。邀请同学加入吧！"
+msgstr "部員なし。学生の参加を呼びかけましょう！"
+
+msgid "申请材料"
+msgstr "アプリケーションの資料"
+
+msgid "更新"
+msgstr "更新"
+
+msgid "服务器返回了一个404。嗯，页面 not Found！"
+msgstr "サーバが403を返さ。そう、お探しのページが見つかりませんでした。"
+
+msgid "处罚"
+msgstr "処罰し"
+
+msgid "警告: 这是一个实验功能"
+msgstr "これは実験的な機能であります"
+
+msgid "向你打招呼"
+msgstr "あなたに挨拶"
+
+msgid "展开关系"
+msgstr "関係を展開"
+
+msgid "活动搜索"
+msgstr "活動検索"
+
+msgid "名称"
+msgstr "名前"
+
+msgid "标题"
+msgstr "タイトル"
+
+msgid "分享至微信"
+msgstr "微信にシェア"
+
+msgid "活动材料"
+msgstr "活動の資料"
+
+msgid "推荐社团"
+msgstr "推奨クラブ"
+
+msgid "申请项目摘要"
+msgstr "アプリケーションプロジェクト概要"
+
+msgid "服务器返回了一个403。嗯，访问 Forbidden"
+msgstr "サーバが403を返さ。そう、アクセス禁止"
+
+msgid "下一页"
+msgstr "次のページ"
+
+msgid "社团借款（暂不可用）"
+msgstr "クラブ融資（社团借款）（まだ利用できません）"
+
+msgid "选项"
+msgstr "選択肢"
+
+msgid "目前没有任何链接"
+msgstr "リンクなし"
+
+msgid "预览"
+msgstr "プレビューを表示"
+
+msgid "私密"
+msgstr "私有"
+
+msgid "随机帖子"
+msgstr "ランダムなテーマ"
+
+msgid "位成员"
+msgstr "メンバー"
+
+msgid "添加社团活动"
+msgstr "クラブ活動に追加する"
+
+msgid "初三"
+msgstr "中三"
+
+msgid "个历史活动和分享来达到要求"
+msgstr "歴史的な活動やシェアを添加することによって要件を満たすことができます"
+
+msgid "七嘴八舌"
+msgstr "雑談"
+
+msgid "分享材料"
+msgstr "シェアの資料"
+
+msgid "还没有提交申请"
+msgstr "アプリケーションを提出ません"
+
+msgid "点击返回"
+msgstr "戻り"
+
+msgid "管理交接"
+msgstr "権限管理"
+
+msgid "成员总数"
+msgstr "総メンバー"
+
+msgid "展开全部关系"
+msgstr "すべての関係を拡大"
+
+msgid "填写30个以内的大小写字母或减号"
+msgstr "30文字またはマイナス記号未満の入力"
+
+msgid "社团名录"
+msgstr "クラブ一覧"
+
+msgid "查看说明"
+msgstr "説明を表示する"
+
+msgid "删除申请"
+msgstr "アプリケーションを削除します"
+
+msgid "发布时间"
+msgstr "公開の時間"
+
+msgid "参与情况"
+msgstr "参加ステータス"
+
+msgid "人报名"
+msgstr "名がサインアップ"
+
+msgid "写下对社团的建议"
+msgstr "クラブのための提案を書きます"
+
+msgid "分享的图片"
+msgstr "シェアのフォト"
+
+msgid "小时前"
+msgstr "時間前"
+
+msgid "请求和你成为好友"
+msgstr "あなたと友達になりたい"
+
+msgid "初一"
+msgstr "中一"
+
+msgid "社团概况（不多于100字）"
+msgstr "クラブプロフィール（100個未満の単語）"
+
+msgid "系统通知"
+msgstr "システム通知"
+
+msgid "外星人"
+msgstr "宇宙人"
+
+msgid "取消"
+msgstr "キャンセル"
+
+msgid "副社长"
+msgstr "副部長"
+
+msgid "社团分类"
+msgstr "クラブ分類"
+
+msgid "群发邮件"
+msgstr "バルクメール"
+
+msgid "关闭"
+msgstr "閉じる"
+
+msgid "提交星级申报材料"
+msgstr "評価アプリケーションの資料を提出する"
+
+msgid "分钟前"
+msgstr "分前"
+
+msgid "联系方式"
+msgstr "コンタクト"
+
+msgid "社联反馈意见"
+msgstr "クラブユニオンの見解"
+
+msgid "重置密码"
+msgstr "パスワードを再設定します"
+
+msgid "活动开始时间"
+msgstr "活動開始時間"
+
+msgid "创建徽章"
+msgstr "新しいバッジ"
+
+msgid "主题："
+msgstr "タイトル："
+
+msgid "个）"
+msgstr "枚）"
+
+msgid "进入"
+msgstr "入る"
+
+msgid "修改时间"
+msgstr "変更時刻"
+
+msgid "活动总计"
+msgstr "活動合計"
+
+msgid "记录"
+msgstr "レコード"
+
+msgid "正确答案"
+msgstr "答え"
+
+msgid "根据社团名称拼音排序"
+msgstr "クラブ名のアルファベット順によると"
+
+msgid "删除确认"
+msgstr "削除の確認"
+
+msgid "退出社团"
+msgstr "クラブを辞める"
+
+msgid "申请"
+msgstr "アプリケーション"
+
+msgid "参与率"
+msgstr "参加の比率"
+
+msgid "资料标题"
+msgstr "資料のタイトル"
+
+msgid "建议使用小写"
+msgstr "小文字を使用することをお勧めします"
+
+msgid "当前状态"
+msgstr "現在の状態"
+
+msgid "次。"
+msgstr "回訪問されました。"
+
+msgid "内容中包含非法字符，请将以下内容反馈给HCC"
+msgstr "無効な文字があります、HCCに次のようなフィードバックを与えてください。"
+
+msgid "请勿同时编辑两个评分项目"
+msgstr "一度に2つのスコアリングを変更しないでください"
+
+msgid "没有找到相关结果。"
+msgstr "相対的な結果が見つかりません"
+
+msgid "附件损坏"
+msgstr "破損した添付ファイル"
+
+msgid "发起会话"
+msgstr "セッションを開始する"
+
+msgid "新闻列表"
+msgstr "ニュース一覧"
+
+msgid "欢迎来到十一论坛"
+msgstr "十一フォーラムようこそ"
+
+msgid "审核不通过"
+msgstr "受理されない"
+
+msgid "姓名"
+msgstr "フルネーム"
+
+msgid "社团分享"
+msgstr "クラブのシェア"
+
+msgid "身份"
+msgstr "アイデンティティ"
+
+msgid "发送邀约"
+msgstr "招待状を送ります"
+
+msgid "收件人"
+msgstr "受信者"
+
+msgid "社团主页链接"
+msgstr "クラブのホームのリンク"
+
+msgid "公告"
+msgstr "発表"
+
+msgid "移出核心"
+msgstr "コアから削除"
+
+msgid "恭喜"
+msgstr "おめでとう"
+
+msgid "所有用户"
+msgstr "全てユーザー"
+
+msgid "注册"
+msgstr "アカウント作成"
+
+msgid "通过“寻找...”模块搜索并添加好友"
+msgstr "「……の検索」タブで友達を検索する"
+
+msgid "进入主页"
+msgstr "ホームへ"
+
+msgid "去广场逛逛"
+msgstr "クラブリストを見る"
+
+msgid "该用户于"
+msgstr "このユーザーは"
+
+msgid "签到状况"
+msgstr "チェックインのステータス"
+
+msgid "赞"
+msgstr "良い"
+
+msgid "申请失败"
+msgstr "アプリケーションが失敗します"
+
+msgid "管理成员"
+msgstr "部員管理"
+
+msgid "我的关注"
+msgstr "私のフォロー"
+
+msgid "返回社团主页"
+msgstr "クラブのホームページに戻ります"
+
+msgid "分享搜索"
+msgstr "シェア検索"
+
+msgid "写下对十一圈的建议"
+msgstr "十一圏の提案を書き留めてください"
+
+msgid "加入"
+msgstr "参加する"
+
+msgid "修改头像"
+msgstr "アバターを変更します"
+
+msgid "动态"
+msgstr "ダイナミクス"
+
+msgid "添加附件（活动的记录资料）"
+msgstr "添付ファイルを追加します（活動に関する情報を記録します）"
+
+msgid "原密码"
+msgstr "元のパスワード"
+
+msgid "请简要列举你要申请资金项目"
+msgstr "基礎を必要とするプロジェクトをリストアップしてください"
+
+msgid "单击下载"
+msgstr "クリックしてダウンロードする"
+
+msgid "编"
+msgstr "編"
+
+msgid "新增"
+msgstr "新しい"
+
+msgid "更改个人信息"
+msgstr "個人情報を変更"
+
+msgid "关注"
+msgstr "フォロー"
+
+msgid "交接"
+msgstr "引き継ぎ"
+
+msgid "没有关注的社团"
+msgstr "フォローのクラブなし"
+
+msgid "发送成功"
+msgstr "送信成功する"
+
+msgid "统计信息"
+msgstr "統計情報"
+
+msgid "输入社团名称"
+msgstr "クラブ名を入力"
+
+msgid "如果以上信息有误，请在十一论坛中反馈"
+msgstr "上記の情報は間違っている場合は、十一フォーラムにフィードバックをしてください"
+
+msgid "关注TA"
+msgstr "フォロー"
+
+msgid "关键词"
+msgstr "キーワード"
+
+msgid "等"
+msgstr "たち"
+
+msgid "申请通过"
+msgstr "アプリケーションが認識する"
+
+msgid "关注者"
+msgstr "フォロワー"
+
+msgid "寻找..."
+msgstr "……の検索"
+
+msgid "写下群聊内容"
+msgstr "チャット情報を書き留める"
+
+msgid "添加链接"
+msgstr "リンクを追加する"
+
+msgid "不到一分钟前"
+msgstr "一分未満"
+
+msgid "上传"
+msgstr "アップロード"
+
+msgid "内容"
+msgstr "内容"
+
+msgid "社长"
+msgstr "部長"
+
+msgid "使用微信“扫一扫”功能将活动分享到朋友圈中。"
+msgstr "共有する微信の「扫一扫」機能を使用します。"
+
+msgid "交接社长"
+msgstr "部長の変更"
+
+msgid "输入社团关键词"
+msgstr "クラブのキーワードを入力"
+
+msgid "不通过"
+msgstr "拒絶する"
+
+msgid "修改个人信息"
+msgstr "個人情報を変更します"
+
+msgid "暂无"
+msgstr "ありません"
+
+msgid "人数"
+msgstr "人数"
+
+msgid "未通过"
+msgstr "拒絶する"
+
+msgid "更改"
+msgstr "変更"
+
+msgid "活动名称"
+msgstr "活動名"
+
+msgid "人关注"
+msgstr "人フォロー"
+
+msgid "全部"
+msgstr "全部"
+
+msgid "家社团在十一圈落户。"
+msgstr "のクラブがありました。"
+
+msgid "发布于"
+msgstr "投稿"
+
+msgid "已经渲染消息"
+msgstr "ニュースをレンダリングしています"
+
+msgid "收件人列表"
+msgstr "受取人リスト"
+
+msgid "手气不错"
+msgstr "I'm Feeling Lucky"
+
+msgid "帖数"
+msgstr "総テーマ数"
+
+msgid "社团"
+msgstr "クラブ"
+
+msgid "午餐邀请"
+msgstr "ランチ招待"
+
+msgid "跳转链接"
+msgstr "ジャンプリンク"
+
+msgid "存储文件清单"
+msgstr "ファイルリスト"
+
+msgid "请在上传全部完成后发送消息以携带附件"
+msgstr "すべてのファイルがアップロードされたらメッセージを送信してください"
+
+msgid "填写中"
+msgstr "書き込みます"
+
+msgid "你获得了徽章"
+msgstr "あなたはバッジを取得します："
+
+msgid "处罚次数"
+msgstr "処罰の数"
+
+msgid "暂时没有活动"
+msgstr "活動なし"
+
+msgid "添加活动"
+msgstr "活動を追加"
+
+msgid "详细信息"
+msgstr "詳細"
+
+msgid "邀请就餐"
+msgstr "ランチ招待"
+
+msgid "发表帖子"
+msgstr "テーマ発表"
+
+msgid "问题"
+msgstr "問題"
+
+msgid "管理社团群"
+msgstr "クラブ管理"
+
+msgid "被授予成员姓名"
+msgstr "メンバーのフルネーム"
+
+msgid "暂无分类"
+msgstr "分類なし"
+
+msgid "正在想什么？"
+msgstr "何を考えていますか？"
+
+msgid "参加的活动"
+msgstr "活動に参加"
+
+msgid "新建申请"
+msgstr "新しいアプリケーション"
+
+msgid "被授予缘由"
+msgstr "受賞の理由"
+
+msgid "十一论坛"
+msgstr "十一フォーラム"
+
+msgid "每行代表一个评分标准，第一列是标准说明，其他列是标准的分数选项。"
+msgstr "すべての行が視点を表します。 最初の列は紹介であり、他の行はスコアの選択肢です。"
+
+msgid "社团ID"
+msgstr "クラブID"
+
+msgid "寻找"
+msgstr "探す"
+
+msgid "暂时没有帖子，为何不创建一个呢？"
+msgstr "テーマなし、なぜそれを作成しませんか？"
+
+msgid "等级"
+msgstr "レベル"
+
+msgid "投递"
+msgstr "送信"
+
+msgid "社团星级评价申请"
+msgstr "クラブの評価のアプリケーション"
+
+msgid "社团状态"
+msgstr "クラブの状態"
+
+msgid "查看协议"
+msgstr "契約を見る"
+
+msgid "上传新分享"
+msgstr "新しいシェアをアップロード"
+
+msgid "下一次活动"
+msgstr "次の活動"
+
+msgid "折叠关系"
+msgstr "関係を折ります"
+
+msgid "人订阅"
+msgstr "人フォロワー"
+
+msgid "社团新闻"
+msgstr "クラブのニュース"
+
+msgid "申请资金"
+msgstr "資金のアプリケーション"
+
+msgid "获取二维码"
+msgstr "二次元コードを取得します"
+
+msgid "影响力"
+msgstr "影響"
+
+msgid "编辑活动资料"
+msgstr "編集活動資料"
+
+msgid "出勤率"
+msgstr "出席の比率"
+
+msgid "创建签到问题"
+msgstr "サインアップ質問を作成する"
+
+msgid "加入新社团"
+msgstr "新しいクラブに参加"
+
+msgid "标签"
+msgstr "タグ"
+
+msgid "登出"
+msgstr "ログオフ"
+
+msgid "密码"
+msgstr "パスワード"
+
+msgid "添加封面"
+msgstr "カバーを追加する"
+
+msgid "APP下载"
+msgstr "アプリケーションダウンロード"
+
+msgid "对应年级"
+msgstr "学年"
+
+msgid "社团搜索"
+msgstr "クラブ検索"
+
+msgid "添加随文图片及附件"
+msgstr "写真や添付ファイルを追加します"
+
+msgid "暂时没有分享"
+msgstr "シェアなし"
+
+msgid "打包下载"
+msgstr "パッケージとしてダウンロード"
+
+msgid "人准备参与活动"
+msgstr "人が活動に参加する用意があります"
+
+msgid "暂时没有帖子"
+msgstr "テーマなし"
+
+msgid "活动一览"
+msgstr "活動一覧"
+
+msgid "新昵称"
+msgstr "新しい愛称"
+
+msgid "新社团简介"
+msgstr "新しいクラブの概要"
+
+msgid "："
+msgstr "："
+
+msgid "签到成功"
+msgstr "サインアップ成功する"
+
+msgid "申请前台"
+msgstr "アプリケーション受付"
+
+msgid "该社团申报的星级是"
+msgstr "このクラブの選択の評価は"
+
+msgid "关闭页面"
+msgstr "ページを閉じ"
+
+msgid "新签名"
+msgstr "新しい署名"
+
+msgid "修改社团头像"
+msgstr "クラブアバターを変更"
+
+msgid "发送"
+msgstr "送信"
+
+msgid "添加分享"
+msgstr "シェアを追加する"
+
+msgid "足迹"
+msgstr "フットプリント"
+
+msgid "本社团没有进行任何活动。"
+msgstr "このクラブは活動にありません"
+
+msgid "您的浏览器看似不支持在线播放视频"
+msgstr "あなたのブラウザはオンラインでビデオを見ることをサポートしていません"
+
+msgid "午饭邀请"
+msgstr "ランチ招待"
+
+msgid "时间"
+msgstr "時間"
+
+msgid "提交修改"
+msgstr "変更をコミット"
+
+msgid "撰写综合评分标准"
+msgstr "综合のルーブリックを書き"
+
+msgid "暂时没有任何分享"
+msgstr "シェアなし"
+
+msgid "添加到我的关注列表"
+msgstr "私のフォローのリストに追加する"
+
+msgid "查"
+msgstr "表"
+
+msgid "返回"
+msgstr "戻り"
+
+msgid "社团广场"
+msgstr "クラブスクエア"
+
+msgid "所属社团"
+msgstr "クラブに属します"
+
+msgid "编辑介绍"
+msgstr "説明を編集"
+
+msgid "高一"
+msgstr "高一"
+
+msgid "错误"
+msgstr "エラー"
+
+msgid "活动结束时间"
+msgstr "活動終了時間"
+
+msgid "选择头像"
+msgstr "アバターを選択"
+
+msgid "刷新"
+msgstr "リフレッシュ"
+
+msgid "登录十一圈"
+msgstr "十一圏のログイン"
+
+msgid "问候"
+msgstr "あいさつ"
+
+msgid "数据表格"
+msgstr "データテーブル"
+
+msgid "上传后自动发送"
+msgstr "アップロード後自動的に送信する"
+
+msgid "十一圈"
+msgstr "十一圏"
+
+msgid "没有下一次活动"
+msgstr "次の活動ありません"
+
+msgid "通过"
+msgstr "受理する"
+
+msgid "答案"
+msgstr "答え"
+
+msgid "社团概况&活动情况&历史等（不多于100字）"
+msgstr "クラブの概要と活動と歴史（100個未満の単語）"
+
+msgid "查看所有关注者"
+msgstr "すべてのフォロワーを見ます"
+
+msgid "创建社团"
+msgstr "新しいクラブ"
+
+msgid "个人分享"
+msgstr "個人シェア"
+
+msgid "订阅"
+msgstr "フォロー"
+
+msgid "二维码"
+msgstr "二次元コード"
+
+msgid "首先，单击下面的按钮选择一张图片。"
+msgstr "まず、画像を選択するには、以下のボタンをクリックしてください。"
+
+msgid "添加评论"
+msgstr "コメントを追加"
+
+msgid "但是社长似乎仍未设置签到"
+msgstr "しかし、部長はサインアップに設定されていないようです"
+
+msgid "对社团的一句话简介（不多于30字）"
+msgstr "あなたのコミュニティの単語の説明（30個未満の単語）"
+
+msgid "删除"
+msgstr "削除"
+
+msgid "随便看看"
+msgstr "さりげなく見えます"
+
+msgid "共计"
+msgstr "合計"
+
+msgid "活动签到"
+msgstr "活動のサインアップ"
+
+msgid "授予"
+msgstr "授与"
+
+msgid "回复"
+msgstr "返信"
+
+msgid "更多"
+msgstr "詳細"
+
+msgid "选项B"
+msgstr "選択肢B"
+
+msgid "状态"
+msgstr "状態"
+
+msgid "强迫症刷新"
+msgstr "強制リフレッシュ"
+
+msgid "头像"
+msgstr "アバター"
+
+msgid "您将要删除"
+msgstr "あなたは"
+
+msgid "社团联合会"
+msgstr "クラブユニオン"
+
+msgid "取消关注"
+msgstr "フォローを解除"
+
+msgid "参与人数"
+msgstr "参加者の数"
+
+msgid "Hello, 我是..."
+msgstr "こんにちは、私は……"
+
+msgid "个人主页"
+msgstr "個人ホームページ"
+
+msgid "设为核心"
+msgstr "コアに追加します"
+
+msgid "私密群组的帖子只有社联核心成员和发帖者可见"
+msgstr "クラブユニオンのクリエイターとコアメンバーだけがプライベートグループのスレッドを見ることができます"
+
+msgid "创建时间"
+msgstr "作成時間"
+
+msgid "加载中"
+msgstr "読み込み中"
+
+msgid "活动地点"
+msgstr "活動場所"
+
+msgid "徽章信息"
+msgstr "バッジの情報"
+
+msgid "暂时没有添加任何人为好友"
+msgstr "友達"
+
+msgid "分享"
+msgstr "シェア"
+
+msgid "点击"
+msgstr "変更するには"
+
+msgid "请求被华丽丽地忽略了"
+msgstr "要求は無視されます"
+
+msgid "使用微信“扫一扫”功能将分享转发到朋友圈中。"
+msgstr "共有する微信の「扫一扫」機能を使用します。"
+
+msgid "暂时没有二维码。"
+msgstr "二次元コードなし"
+
+msgid "社团名称"
+msgstr "クラブ名"
+
+msgid "AttachID已生成，请剪切它。"
+msgstr "ATTACHIDが生成されている、それをカットしてください。"
+
+msgid "新社团分类"
+msgstr "新しいクラブ分類"
+
+msgid "论"
+msgstr "話"
+
+msgid "说明和示例"
+msgstr "解説と事例"
+
+msgid "社团发展基金"
+msgstr "クラブ開発基金（社团发展基金）"
+
+msgid "所在年级"
+msgstr "学年"
+
+msgid "没有选择“"
+msgstr "“"
+
+msgid "选择上传文件"
+msgstr "アップロードするファイルを選択"
+
+msgid "添加"
+msgstr "追加する"
+
+msgid "准备参与者"
+msgstr "参加者を準備します"
+
+msgid "次下载"
+msgstr "回ダウンロード"
+
+msgid "签到"
+msgstr "サインアップ"
+
+msgid "审核状态"
+msgstr "アプリケーションの状態"
+
+msgid "载入更多动态"
+msgstr "ダイナミクスを読み込み"
+
+msgid "已发送"
+msgstr "送信されました"
+
+msgid "English"
+msgstr "English"
+
+msgid "http://en.shiyiquan.net"
+msgstr "http://en.shiyiquan.net"
+
+msgid "）"
+msgstr "）"
+
+msgid "http://ja.shiyiquan.net"
+msgstr "http://shiyiquan.net"
+
+msgid "日本語"
+msgstr "中文"
+

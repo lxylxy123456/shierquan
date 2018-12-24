@@ -1,0 +1,42 @@
+{% extends 'material_base.html' %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+      <div class="row">
+        <div class="col-sm-12 col-md-7 col-lg-8 col-md-offset-1 col-lg-offset-2">
+          {% for news in news_list %}
+          <h2>{{ news.data.subject }}</h2>
+          <p>{{ news.prompt }}...</p>
+		  {% if news.image %}
+          <img src="{{ news.image.url }}" style="width: 100%; height: 100%;">
+          {% endif %}
+          <p><small>{% t_ '发布时间：' %}{{ news.date.0 }}{{ news.date.1 }}</small></p>
+          <a href="/news/{{ news.data.id }}/" class="btn btn-default btn-raised">{% t_ '继续阅读' %}</a>
+          <hr />
+          {% endfor %}
+          <ul class="pagination">
+            {% if not page_pre %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% else %}
+            <li><a href="?category={{ category }}&index=1">&laquo;</a></li>
+            {% endif %}
+            {% for i in page_list %}
+            <li{% ifequal i page_index %} class="active"{% endifequal %}>
+              <a href="?category={{ category }}&index={{ i }}">{{ i }}</a>
+            </li>
+            {% endfor %}
+            {% if not page_next %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% else %}
+            <li><a href="?category={{ category }}&index={{ page_len }}">&raquo;</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

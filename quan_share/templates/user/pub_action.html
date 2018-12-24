@@ -1,0 +1,16 @@
+{% load translate %}
+
+<div class="col-sm-4 col-md-4">
+  <div class="thumbnail">
+    <div class="caption">
+      <h3>{% t_ '动态' %}</h3>
+    </div>
+    <!--美食 链接 活动 -->
+    <div class="list-group">
+      {% for item in post_list %}
+      <a href="{{ link }}" class="list-group-item">{{ item }}</a>
+      {% endfor %}
+      <a href="#" class="list-group-item">{% t_ '查看更多' %}</a>
+    </div>
+  </div>
+</div>

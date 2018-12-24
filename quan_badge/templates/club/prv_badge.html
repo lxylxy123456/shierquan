@@ -1,0 +1,66 @@
+{% load translate %}
+
+<div class="modal fade" id="badge_add_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="fintro_label">{% t_ '创建徽章' %} - {{ club.full_name }}</h4>
+      </div>
+      <form id="club_prv_badge" method="post" class="form" action="/badge/create/">
+        <div class="modal-body" id="club_prv_badge_modal">
+          <div class="caption">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="colorScheme">{% t_ '缎带' %}</label>
+              <div class="btn-group btn-group-justified" data-toggle="buttons" id="colorScheme">
+                <label class="btn btn-default">
+                  <input type="radio" name="rank" value="default" autocomplete="off" checked /> Lv.1
+                </label>
+                <label class="btn btn-info">
+                  <input type="radio" name="rank" value="info" autocomplete="off" /> Lv.2
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="rank" value="primary" autocomplete="off" /> Lv.3
+                </label>
+                <label class="btn btn-success">
+                  <input type="radio" name="rank" value="success" autocomplete="off" /> Lv.4
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="rank" value="warning" autocomplete="off" /> Lv.5
+                </label>
+                <label class="btn btn-danger">
+                  <input type="radio" name="rank" value="danger" autocomplete="off" /> Lv.6
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="headName">{% t_ '名称' %}</label>
+              <input name="name" type="text" id="headName" class="form-control" placeholder="{% t_ '名称' %}">
+            </div>
+            <div class="form-group">
+              <label for="promptName">{% t_ '提示' %}</label>
+              <input name="desc" type="text" id="promptName" class="form-control" placeholder="{% t_ '提示' %}">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" value="{% t_ '添加' %}" class="btn btn-primary" />
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '取消' %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#club_prv_badge").on("submit", function(event) {
+		event.preventDefault();
+		ajaxBanner(this.action, {
+			data: getFormJson(this), 
+			src: 'club',
+			aid: {{ club.id }},
+		}, "#club_prv_badge_modal");
+	});
+});
+</script>

@@ -1,0 +1,148 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-body">
+          <div class="page-header">
+            <h2 class="text-center">
+              {% t_ '社团资金申请' %} - {{ club.full_name }}
+            </h2>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-12 hidden-sm hidden-xs">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-info-sign"></span> 
+                    {% t_ '基本信息' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="" style="margin-left:2em;">
+                    <br />
+                    <dl class="dl-horizontal">
+                      <dt>{% t_ '社团全称' %}</dt>
+                      <dd>{{ club.full_name }}</dd>
+                      <dt>{% t_ '社长姓名' %}</dt>
+                      <dd>{{ head.first_name }}</dd>
+                      <dt>{% t_ '联系方式' %}</dt>
+                      <dd>{{ head_phone }}</dd>
+                      <dt>{% t_ '所在年级' %}</dt>
+                      <dd>{{ head_grade }}</dd>
+                    </dl>
+                    <div class="row hidden-sm hidden-xs">
+                      <div class="thumbnail col-md-10 col-md-offset-1">
+                        <img src="{{ avatar }}" class="img-responsive">
+                      </div>
+                    </div>
+                    <h5>
+                      <strong>{% t_ '社团概况' %}</strong>
+                    </h5>
+                    <p style="text-indent:2em;">{{ club.full_intro }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+              <div class="col-md-12">
+                <h4>
+                  <span class="glyphicon glyphicon-list"></span> 
+                  {% t_ '申请资金' %}
+                </h4>
+              </div>
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h3 class="text-center">
+                      {{ extra.0 }}
+                      <small>{{ funds_type }}</small>
+                    </h3>
+                    {% for i in funds_form %}
+                      <h5>{{ i.1 }}</h5>
+                      <p style="text-indent: 2em">{{ i.4 }}</p>
+                    {% endfor %}
+                    <h5>{% t_ '当前状态' %}</h5>
+                    <p style="text-indent: 2em">{{ status }}</p>
+                    {% if union_comment %}
+                      <h5>{% t_ '社联反馈意见' %}</h5>
+                      <p style="text-indent: 2em">{{ union_comment }}</p>
+                    {% endif %}
+                    <hr />
+                    <div id="change_info">
+                    </div>
+                    <div class="row">
+                      {% if is_union %}
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label for="union_comment">{% t_ '社联反馈意见' %}</label>
+                            <textarea id="union_comment" name="union_comment" class="form-control" rows="10" placeholder="{% t_ '社联反馈意见' %}">{{ union_comment }}</textarea>
+                          </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 1em; ">
+                          <button class="btn btn-block btn-success quan-badge{% ifequal data.data 'granted' %} disabled{% endifequal %}" onclick="change_status('granted')">{% t_ '申请通过' %}</button>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 1em; ">
+                          <button class="btn btn-block btn-warning quan-badge{% ifequal data.data 'rejected' %} disabled{% endifequal %}" onclick="change_status('rejected')">{% t_ '申请失败' %}</button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button class="btn btn-block btn-info quan-badge{% ifequal data.data 'droped' %} disabled{% endifequal %}" onclick="change_status('droped')">{% t_ '材料缺失' %}</button>
+                        </div>
+                      {% else %}
+                        <div class="col-sm-6" style="margin-bottom: 1em; ">
+                          <a class="btn btn-block btn-primary" href="/auth/funds/modify/{{ data.stars }}/">{% t_ '修改内容' %}</a>
+                        </div>
+                        <div class="col-sm-6">
+                          <a class="btn btn-block btn-danger" data-toggle="modal" data-target="#modal-delete">{% t_ '删除申请' %}</a>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <a href="/auth/funds/download/{{ data.stars }}/" class="btn btn-default btn-block" style="margin-top: 1em; ">{% t_ '下载表格' %}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function change_status(target) {
+	ajaxBanner("/auth/funds/show/{{ data.stars }}/", {
+		data: target, 
+		union_comment: $("#union_comment").val()
+	}, "#change_info");
+}
+function modal_delete() {
+	ajaxBanner("/auth/funds/delete/{{ data.stars }}/", 
+		{}, "#delete_info");
+}
+
+</script>
+
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="modal-delete-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="modal-delete-label">{% t_ '删除申请' %}</h4>
+      </div>
+      <div class="modal-body">
+        <p>{% t_ '您将要删除' %}{{ extra.0 }}{% t_ '，此操作无法恢复。' %}</p>
+        <div id="delete_info"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '关闭' %}</button>
+        <button type="button" class="btn btn-danger" onclick="modal_delete();">{% t_ '删除' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

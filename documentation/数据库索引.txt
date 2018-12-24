@@ -1,0 +1,16 @@
+CREATE INDEX IndexAccountRelation ON "AccountRelation" (relation, "account_id_A", "account_id_B");
+CREATE INDEX IndexAvatarAccount ON "AvatarAccount" (account_id, relation, time_update);
+CREATE INDEX IndexBadgeInfo ON "BadgeInfo" (id, account_id, relation);
+CREATE INDEX IndexBadgeRelation ON "BadgeRelation" (send_id, recv_id, send_relation, recv_relation);
+CREATE INDEX IndexClubAccount ON "ClubAccount" (id, simp_name, category);
+CREATE INDEX IndexEventInfo ON "EventInfo" (id, relation, category, account_id, time_set, time_end, status);
+CREATE INDEX IndexEventRelation ON "EventRelation" (account_id, relation, event_id);
+CREATE INDEX IndexForumResponse ON "ForumResponse" (thread_id);
+CREATE INDEX IndexForumThread ON "ForumThread" (group_id);
+CREATE INDEX IndexGlobalMessage ON "GlobalMessage" (id, major_id, major_relation, minor_id, minor_relation);
+CREATE INDEX IndexNewsInfo ON "NewsInfo" (category);
+CREATE INDEX IndexPrivateMessage ON "PrivateMessage" (id, conn_id, conn_relation, recv_id, recv_relation, time_update);
+CREATE INDEX IndexShareAttach ON "ShareAttach" (id, attach_uuid);
+CREATE INDEX IndexShareInfo ON "ShareInfo" (id, attach_uuid, category, status);
+CREATE INDEX IndexUserAccount ON "UserAccount" (id);
+

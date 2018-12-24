@@ -1,0 +1,69 @@
+msgid "标题或内容不全"
+msgstr ""
+
+msgid "参数不完整"
+msgstr ""
+
+msgid "[附件] 不允许的操作"
+msgstr ""
+
+msgid "请选择论坛是否私密"
+msgstr ""
+
+msgid "请输入正确的用户链接"
+msgstr ""
+
+msgid "链接已被注册"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid " - 旧版本论坛"
+msgstr ""
+
+msgid " - 创建或编辑对象"
+msgstr ""
+
+msgid "找不到群组"
+msgstr ""
+
+msgid "数据已损坏"
+msgstr ""
+
+msgid "您没有权限查看本页面"
+msgstr ""
+
+msgid "标题或内容过长"
+msgstr ""
+
+msgid "[附件] 无法找到这个AttachID"
+msgstr ""
+
+msgid "附件已被分享"
+msgstr ""
+
+msgid " - %s"
+msgstr ""
+
+msgid "请使用小写字母和连线符组合链接 如：test-forum"
+msgstr ""
+
+msgid "您没有权限"
+msgstr ""
+
+msgid "删除成功"
+msgstr ""
+
+msgid "内容已经被回复，无法删除"
+msgstr ""
+
+msgid "找不到对象"
+msgstr ""
+
+msgid "内容中包含非法字符"
+msgstr ""
+
+msgid "请输入论坛所属群组"
+msgstr ""
+

@@ -1,0 +1,201 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{% t_ '管理社团成员' %}</div>
+        <div class="panel-body">
+          <ul class="nav nav-pills" role="tablist" id="manage-panel">
+            <li id="manage-member" role="presentation" class="active">
+              <a class="pannel-button" href="#member">{% t_ '全部社员' %}</a>
+            </li>
+            <li id="manage-wait" role="presentation">
+              <a class="pannel-button" href="#waiting">
+                {% t_ '未处理申请' %} 
+                {% if member_wait_num %}
+                <span class="badge">{{ member_wait_num }}</span>
+                {% endif %}
+              </a>
+            </li>
+            <li id="manage-switch" role="presentation">
+              <a class="pannel-button" href="#exchange">{% t_ '管理交接' %}</a>
+            </li>
+          </ul>
+
+          <br />
+
+          <div id="pjax-container" class="row tab-content">
+            <div class="tab-pane col-sm-12 col-md-6 col-md-offset-2" id="exchange">
+              <form id="head-change" class="form-horizontal" role="form" action="/club/{{ sname }}/alter/">
+                <div class="form-group">
+                  <label class="col-xs-3 control-label">{% t_ '交接社长' %}</label>
+                  <div class="col-xs-6">
+                    <input id="head_fname" type="text" class="form-control" placeholder="{% t_ '输入姓名' %}" name="fname">
+                  </div>
+                  <div class="col-xs-3">
+                    <button type="submit" class="btn btn-danger btn-block">{% t_ '交接' %}</button>
+                  </div>
+                </div>
+              </form>
+              <form id="vice-change" class="form-horizontal" role="form" action="/club/{{ sname }}/alter/">
+                <div class="form-group">
+                  <label class="col-xs-3 control-label">{% t_ '设置副社长' %}</label>
+                  <div class="col-xs-6">
+                    <input id="vice_fname" type="text" class="form-control" placeholder="{% t_ '输入姓名' %}">
+                  </div>
+                  <div class="col-xs-3">
+                    <button type="submit" class="btn btn-default btn-block">{% t_ '添加' %}</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div role="tabpanel" class="tab-pane active" id="member">
+              {% if member %}
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><h5 class="text-center">{% t_ '姓名' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '年级' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '参与率' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '学分' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '身份' %}</h5></th>
+                    <th><h5>{% t_ '操作' %}</h5></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in member %}
+                  <tr id="member{{ i.uid }}">
+                    <td><h5 class="text-center">{{ i.name }}</h5></td>
+                    <td><h5 class="text-center">{{ i.grade }}</h5></td>
+                    <td><h5 class="text-center">{{ i.ratio }}%</h5></td>
+                    <td><h5 class="text-center">{{ i.score }}</h5></td>
+                    <td><h5 class="text-center">{{ i.identity.1 }}</h5></td>
+                    <td>
+                      {% ifnotequal i.identity.0 'head' %}
+                      <button type="button" class="btn btn-danger quan-badge" onclick="mem_remove({{ i.uid }});">
+                        <span class="glyphicon glyphicon-remove"></span> {% t_ '移除' %}
+                      </button>
+                      {% endifnotequal %}
+                      {% ifequal i.identity.0 'member' %}
+                      <button type="button" class="btn btn-primary quan-badge" onclick="mem_core({{ i.uid }});">
+                        <span class="glyphicon glyphicon-ok"></span> {% t_ '设为核心' %}
+                      </button>
+                      {% endifequal %}
+                      {% ifequal i.identity.0 'core' %}
+                      <button type="button" class="btn btn-info quan-badge" onclick="mem_core({{ i.uid }});">
+                        <span class="glyphicon glyphicon-remove"></span> {% t_ '移出核心' %}
+                      </button>
+                      {% endifequal %}
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+                <p class="text-center">{% t_ '暂时没有成员。邀请同学加入吧！' %}</p>
+              {% endif %}
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="waiting">
+              {% if member_wait %}
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th><h5 class="text-center">{% t_ '姓名' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '年级' %}</h5></th>
+                    <th><h5 class="text-center">{% t_ '申请时间' %}</h5></th>
+                    <th><h5>{% t_ '操作' %}</h5></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in member_wait %}
+                  <tr id="wait{{ i.id }}">
+                    <td><h5 class="text-center">{{ i.name }}</h5></td>
+                    <td><h5 class="text-center">{{ i.grade }}</h5></td>
+                    <td><h5 class="text-center">{{ i.date }}</h5></td>
+                    <td>
+                      <button type="button" class="btn btn-success quan-badge" onclick="mem_member({{ i.id }})">
+                        <span class="glyphicon glyphicon-ok"></span> {% t_ '通过' %}
+                      </button>
+                      <button type="button" class="btn btn-danger quan-badge" onclick="mem_reject({{ i.id }})">
+                        <span class="glyphicon glyphicon-remove"></span> {% t_ '拒绝' %}
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+                <h4 class="text-center">{% t_ '邀请同学加入吧！' %}</h4>
+                <h4 class="text-center">
+                  <small>{% t_ '没有未审核成员。' %}</small>
+                </h4>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$('#manage-panel a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+
+		$('#vice-change').submit(function(event){
+			event.preventDefault();
+			ajaxBanner(this.action, {
+				type: 'vice', 
+				fname: $('#vice_fname').val(), 
+			}, '#head-change');
+		});
+		$('#head-change').submit(function(event){
+			event.preventDefault();
+			ajaxBanner(this.action, {
+				type: 'head', 
+				fname: $('#head_fname').val(), 
+			}, '#head-change');
+		});
+	});
+	function mem_core(uid){
+		ajaxBanner('/club/{{ sname }}/alter/', {
+			type: 'core', 
+			uid: uid, 
+		}, '#member');
+	}
+	function mem_remove(uid){
+		ajaxBanner('/club/{{ sname }}/alter/', {
+			type: 'remove', 
+			uid: uid, 
+		}, '#member', function(data){
+			$("#member" + uid).fadeOut(3000);
+		});
+	}
+	function mem_member(uid){
+		ajaxBanner('/club/{{ sname }}/alter/', {
+			type: 'member', 
+			uid: uid, 
+		}, '#waiting', function(data){
+			$("#wait" + uid).fadeOut(3000);
+		});
+
+	}
+	function mem_reject(uid){
+		ajaxBanner('/club/{{ sname }}/alter/', {
+			type: 'reject', 
+			uid: uid, 
+		}, '#waiting', function(data){
+			$("#wait" + uid).fadeOut(3000);
+		});
+	}
+	
+	$(document).pjax('.pannel-button', '#pjax-container');
+    </script>
+  </div>
+</div>
+{% endblock %}

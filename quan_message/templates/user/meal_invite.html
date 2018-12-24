@@ -1,0 +1,28 @@
+{% load translate %}
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p><strong>{% t_ '午饭邀请' %}</strong></p>
+
+    <div class="form-group">
+      <div class="input-group date form_datetime" data-date-format="yyyy/mm/dd hh:ii" data-link-field="dtp_input1" >
+        <input name="time_set" class="form-control" size="16" type="text" style="background-color:White;color:#000;" value="" placeholder="{% t_ '时间' %}" readonly>
+        <span style="background-color:SkyBlue;" class="input-group-addon">
+          <span class="glyphicon glyphicon-th"></span>
+        </span>
+      </div>
+    </div>
+
+	<div class="row">
+	  <div class="col-lg-6">
+		<div class="input-group">
+		  <input type="text" class="form-control" placeholder="{% t_ '探讨事宜' %}">
+		  <span class="input-group-btn">
+		    <button class="btn btn-default" type="button">{% t_ '发送邀请' %}</button>
+		  </span>
+		</div>
+	  </div>
+	</div>
+
+  </div>
+</div>

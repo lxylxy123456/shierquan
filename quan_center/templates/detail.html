@@ -1,0 +1,89 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4 col-md-3">
+
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+                {% ifequal src 'user' %}
+                <li role="presentation"{% ifequal category 'sent' %} class="active"{% endifequal %}>
+              	<a href="?category=sent">
+              	<span class="glyphicon glyphicon-send"></span> {% t_ '已发送' %}
+                </a></li>
+                <li role="presentation"{% ifequal category 'inbox' %} class="active"{% endifequal %}>
+              	<a href="?category=inbox">
+              	  <span class="glyphicon glyphicon-fire"></span> {% t_ '动态' %}
+              	</a>
+                </li>
+                <li role="presentation"{% ifequal category 'follow' %} class="active"{% endifequal %}>
+              	<a href="?category=follow">
+              	  <span class="glyphicon glyphicon-eye-open"></span> {% t_ '我的关注' %}
+              	</a>
+                </li>
+                {% else %}
+                <li role="presentation"{% ifequal category 'event' %} class="active"{% endifequal %}>
+              	<a href="?category=event">
+              	  <span class="glyphicon glyphicon-flag"></span> {% t_ '社团活动' %}
+              	</a>
+                </li>
+                <li role="presentation"{% ifequal category 'share' %} class="active"{% endifequal %}>
+              	<a href="?category=share">
+              	  <span class="glyphicon glyphicon-share"></span> {% t_ '社团分享' %}
+              	</a>
+                </li>
+                {% endifequal %}
+              </ul>
+
+<!--
+    <div class="btn-group-vertical btn-block">
+      <button type="button" class="btn btn-default btn-block btn-lg"><span class="glyphicon glyphicon-send"></span> {% t_ '已发送' %}</button>
+      <button type="button" class="btn btn-default btn-block btn-lg"><span class="glyphicon glyphicon-import"></span> {% t_ '收件箱' %}</button>
+<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-import"></span> {% t_ '个人分享' %}</button>
+              </div>
+  -->
+              <br>
+            </div>
+            <div class="col-sm-8 col-md-9">
+              <div class="list-group">
+                {% for item in detail_list %}
+                <a href="{{ item.link }}" target="_blank" class="list-group-item">
+                  <h4 class="list-group-item-heading">{{ item.data.subject }}</h4>
+                  <p class="list-group-item-text">{{ item.date }} {{ item.time }}</p>
+                </a>
+                {% endfor %}
+              </div>
+              <nav>
+                <ul class="pagination">
+                  {% if not page_pre %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                  {% else %}
+                  <li><a href="?category={{ category }}&index=1">&laquo;</a></li>
+                  {% endif %}
+                  {% for i in page_list %}
+                  <li{% ifequal i page_index %} class="active"{% endifequal %}>
+                    <a href="?category={{ category }}&index={{ i }}">{{ i }}</a>
+                  </li>
+                  {% endfor %}
+                  {% if not page_next %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                  {% else %}
+                  <li><a href="?category={{ category }}&index={{ page_len }}">&raquo;</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

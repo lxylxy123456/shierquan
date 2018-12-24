@@ -1,0 +1,84 @@
+msgid "您尚未登录天台"
+msgstr ""
+
+msgid "收件箱"
+msgstr ""
+
+msgid "操作成功，请刷新页面"
+msgstr ""
+
+msgid "分享"
+msgstr ""
+
+msgid "成功将%s设置为副社长"
+msgstr ""
+
+msgid " - %s的主页"
+msgstr ""
+
+msgid "找不到用户"
+msgstr ""
+
+msgid " - %s - 订阅用户"
+msgstr ""
+
+msgid "同意申请"
+msgstr ""
+
+msgid "动态不能为空"
+msgstr ""
+
+msgid "成功将%s设置为社长"
+msgstr ""
+
+msgid "加为好友"
+msgstr ""
+
+msgid "，"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid "成功更新动态"
+msgstr ""
+
+msgid "取消好友"
+msgstr ""
+
+msgid "正在等待对方审核"
+msgstr ""
+
+msgid "活动"
+msgstr ""
+
+msgid "或许你希望创建一个社团？"
+msgstr ""
+
+msgid " - %s"
+msgstr ""
+
+msgid " - %s - 相册"
+msgstr ""
+
+msgid "您没有权限"
+msgstr ""
+
+msgid "操作失败"
+msgstr ""
+
+msgid "订阅社团"
+msgstr ""
+
+msgid "动态请求有误"
+msgstr ""
+
+msgid "发件箱"
+msgstr ""
+
+msgid " - %s - %s"
+msgstr ""
+
+msgid " - %s - 成员管理"
+msgstr ""
+

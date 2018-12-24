@@ -1,0 +1,127 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 col-md-8">
+      {% include "club/shr_intro.html" %}
+    </div>
+    <div class="col-sm-4 col-md-4">
+      {% include "club/shr_status.html" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" id="event_div">
+      {% include inc_event %}
+    </div>
+    {% include "club/prv_badge.html" %}
+    <div class="col-sm-6 col-md-4" id="share_div">
+      {% include "club/prv_share.html" %}
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 15px;">
+            <li role="presentation" class="active"><a href="#tab-follower" aria-controls="tab-follower" role="tab" data-toggle="tab" class="active">{% t_ '关注者' %}</a></li>
+            <li role="presentation"><a href="#tab-qrcode" aria-controls="tab-qrcode" role="tab" data-toggle="tab">{% t_ '二维码' %}</a></li>
+            <li role="presentation"><a href="#tab-redirect" aria-controls="tab-redirect" role="tab" data-toggle="tab">{% t_ '跳转链接' %}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="tab-qrcode">
+              {% if picture.qrcode %}
+              <img data-holder-rendered="true" src="{{ picture.qrcode }}" style="display: block;width:100%;">
+              {% else %}
+              <h4 class="text-center">{% t_ '暂时没有二维码。' %}</h4>
+              {% endif %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab-redirect">
+              {% if alias_list %}
+              <h5>{% t_ '点击查看详情' %}</h5>
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% for i in alias_list %}
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="alias_heading_{{ i.alias }}" onclick="if($('#alias_collapse_{{ i.alias }}').hasClass('in')) { $('#alias_collapse_{{ i.alias }}').collapse('hide'); } else { $('#alias_collapse_{{ i.alias }}').collapse('show'); }">
+                      <h4 class="panel-title">
+                        /club/{{ i.alias }}/
+                      </h4>
+                    </div>
+                    <div id="alias_collapse_{{ i.alias }}" class="alias-collapse panel-collapse collapse in" role="tabpanel" aria-labelledby="alias_heading_{{ i.alias }}">
+                      <div class="panel-body">
+                        <a href="/club/{{ i.alias }}/" class="btn btn-link btn-block btn-lg" style="margin-top: -10px; ">
+                          http://shiyiquan.net/club/{{ i.alias }}/
+                        </a>
+                        <button class="btn btn-danger btn-block" onclick="alias_delete('{{ i.alias }}');">
+                          {% t_ '删除' %}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              {% else %}
+              <h3 class="text-center">
+                <span class="text-center glyphicon glyphicon-link"></span>
+                {% t_ '目前没有任何链接' %}
+              </h3>
+              <p class="text-center">{% t_ '通过添加链接让同学们快速访问社团网站' %}</p>
+              {% endif %}
+              <hr />
+              <h5>{% t_ '添加链接' %}</h5>
+              <form id="alias_append_form">
+                <div class="input-group">
+                  <input id="new_alias" name="new_alias" type="text" class="form-control" placeholder="{% t_ '填写30个以内的大小写字母或减号' %}" maxlength="30" value="">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                      <span class="glyphicon glyphicon-plus"></span> {% t_ '新增' %}
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="tab-follower">
+              <div class="row">
+                {% for follower in follower_list %}
+                <div class="col-xs-6 col-md-4">
+                  <div class="thumbnail">
+                    <img src="{{ follower.avatar }}" class="img-rounded">
+                    <p class="text-center">
+                      <a href="/user/{{ follower.sname }}/">{{ follower.nickname }}</a>
+                    </p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <a href="/club/{{ club.simp_name }}/follower/" class="btn btn-warning btn-block text-center">
+                {% t_ '查看所有关注者' %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#alias_append_form").on("submit", function(event){
+	event.preventDefault();
+	ajaxBanner("/club/{{ club.simp_name }}/alias/", {
+		new_alias: $("#new_alias").val(), 
+		action: "add", 
+	}, "#tab-redirect");
+});
+
+function alias_delete(alias) {
+	ajaxBanner("/club/{{ club.simp_name }}/alias/", {
+		alias: alias, 
+		action: "delete", 
+	}, "#tab-redirect");
+}
+
+$(document).ready(function(){
+	$(".alias-collapse").collapse("hide");
+});
+</script>
+
+{% endblock %}

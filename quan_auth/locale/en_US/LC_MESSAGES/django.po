@@ -1,0 +1,165 @@
+msgid "数据错误: 长度不一致"
+msgstr "Data error: invalid content length"
+
+msgid "似乎在对我做一些不好的事情"
+msgstr "Seems to be doing something bad to me"
+
+msgid "您没有权限更改状态"
+msgstr "You do not have the permission to change the status"
+
+msgid "“影响力”没有填写全"
+msgstr "\"Influence\" field is not complete"
+
+msgid "删除成功"
+msgstr "Deleted successfully"
+
+msgid " - 资金申请"
+msgstr " - Funds Applying"
+
+msgid "不是联盟长"
+msgstr "Not the head of club category"
+
+msgid "您没有权限查看此页面"
+msgstr "You do not have the permission to view this page"
+
+msgid " - 资金申请状态 - %s"
+msgstr " - Funds Application Status - %s"
+
+msgid " - 申请星级 - %s"
+msgstr " - Applying for Rating - %s"
+
+msgid "表单填写不全，请不要留空任何一项"
+msgstr "Incomplete form, please fill in every box"
+
+msgid "更改成功"
+msgstr "Changed successfully"
+
+msgid "打分成功"
+msgstr "Scored successfully"
+
+msgid "成功执行请求。"
+msgstr "Request processed successfully"
+
+msgid "成功对涉事社团进行处罚，请刷新页面"
+msgstr "Punished the club successfully, please refresh the page"
+
+msgid "提交成功"
+msgstr "Submitted successfully"
+
+msgid "保存成功"
+msgstr "Saved successfully"
+
+msgid " - 星级评价"
+msgstr " - Rating"
+
+msgid "请先撰写评分表"
+msgstr "Please compose the rubric first"
+
+msgid "没有找到相关社团"
+msgstr "Club not found"
+
+msgid " - 编辑星级评分表"
+msgstr " - Editing Rating Rubric"
+
+msgid "第%d行没有数据"
+msgstr "Data not found in line %d"
+
+msgid "第%d行有重复数据"
+msgstr "Redundant data in line %d"
+
+msgid "表格尚未公开"
+msgstr "This form is not published yet"
+
+msgid "您没有联盟管理权限"
+msgstr "You do not have the permission to administrate club categories"
+
+msgid " - 资金申请列表 - %s"
+msgstr " - Funds Applications - %s"
+
+msgid "根据社联方面的要求，只有社长和社联成员才能查看此页面。请确认登录状态"
+msgstr "According to the requirements made by the Club Union, only the president and members in the Club Union can view this page. Please make sure to log in"
+
+msgid "第%d行%d列数据有误"
+msgstr "Invalid data at line %d column %d"
+
+msgid "成功删除社团，请刷新页面"
+msgstr "Club successfully deleted, please refresh the page"
+
+msgid "“%s”数据有误"
+msgstr "Invalid data at \"%s\" "
+
+msgid "此页面只接收POST请求"
+msgstr "This page only accepts POST requests"
+
+msgid "金额必须是整数"
+msgstr "Amount must be an integer"
+
+msgid "修改成功"
+msgstr "Successfully modified"
+
+msgid " - 资金申请列表"
+msgstr " - Funds Applications"
+
+msgid "第%d行%d列：只能精确到0.5"
+msgstr "Line %d column %d: the precision can only be a half (0.5)"
+
+msgid "如果为社联成员，请检查登录情况。"
+msgstr "Please make sure to login first"
+
+msgid "参数错误"
+msgstr "Parameter Error"
+
+msgid "请选择资金类型"
+msgstr "Please choose the category of funds"
+
+msgid "数据错误，请联系HCC社团"
+msgstr "Data error, please contact HCC Computer Community"
+
+msgid "请输入反馈意见"
+msgstr "Please input your "
+
+msgid " - 活动空间申请"
+msgstr " - Event Space Applying"
+
+msgid " - 管理社团"
+msgstr " - Managing Club"
+
+msgid "忘记填写标题？"
+msgstr "Empty subject"
+
+msgid "内容不合法"
+msgstr "Invalid content"
+
+msgid "表单内容不全"
+msgstr "Incomplete form content"
+
+msgid "成功提交"
+msgstr "Submitted successfully"
+
+msgid "数据错误"
+msgstr "Data error"
+
+msgid "不是社联成员"
+msgstr "Not a member of Club Union"
+
+msgid "由于此功能太危险，目前已经被禁用"
+msgstr "Disabled function: too dangerous"
+
+msgid "星级太高"
+msgstr "Rating too high"
+
+msgid "不是社长"
+msgstr "You are not the president"
+
+msgid "您没有社联管理权限"
+msgstr "You do not have the administration permission for Club Union"
+
+msgid "表单信息有误"
+msgstr "Incorrect form content"
+
+msgid "成功更改星级"
+msgstr "Rating successfully modified"
+
+msgid "综合"
+msgstr "General"
+

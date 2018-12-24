@@ -1,0 +1,60 @@
+{% load translate %}
+
+<div class="col-md-3 hidden-xs hidden-sm">
+  <div id="side-div">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div align="center">
+          <h3>{% t_ '欢迎来到十一论坛' %}</h3>
+          {% if request.user.id %}
+            <a href="/forum/special/random/">
+              <button type="button" class="btn btn-primary">{% t_ '随机帖子' %}</button>
+            </a>
+          {% else %}
+            <a href="/login/?url={{ request.path }}">
+              <button type="button" class="btn btn-primary">{% t_ '登录' %}</button>
+            </a>
+          {% endif %}
+          <p></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <br />
+        <img class="img-responsive img-rounded center-block" src="/static/images/quan_blue.png" height="128px" width="128px" />
+        <br />
+        <p class="text-center">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          {% t_ '私密论坛板块仅社联和发布者可见' %}
+        </p>
+        <br />
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% t_ '热门帖子' %}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="list-group" style="margin-bottom: 0px; ">
+          {% for i in thread_latest %}
+            <a href="{{ i.url }}" class="list-group-item">
+              {{ i.data.subject }}
+            </a>
+          {% empty %}
+            <li class="list-group-item">
+              {% t_ '暂无' %}
+            </li>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+	$('#side-div').sticky({topSpacing:20})
+});
+</script>

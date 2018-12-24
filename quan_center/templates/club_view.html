@@ -1,0 +1,106 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-8 col-md-8">
+      {% include "club/shr_intro.html" %}
+    </div>
+    <div class="col-sm-4 col-md-4">
+      {% include "club/shr_status.html" %}
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          {% if core %}
+            {% include "club/prv_share.html" %}
+          {% else %}
+            {% include "club/pub_share.html" %}
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col-md-6">
+          {% include inc_event %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 15px;">
+            <li role="presentation" class="active"><a href="#tab-leave" aria-controls="tab-leave" role="tab" data-toggle="tab">{% t_ '留言板' %}</a></li>
+            <li role="presentation"><a href="#tab-qrcode" aria-controls="tab-qrcode" role="tab" data-toggle="tab">{% t_ '二维码' %}</a></li>
+            <li role="presentation"><a href="#tab-follower" aria-controls="tab-follower" role="tab" data-toggle="tab" class="active">{% t_ '关注者' %}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab-leave">
+              <form method="post" action="/message/leave/" id="leave_form">
+                <div class="form-group">
+                  <textarea id="leave_content" class="form-control" rows="3" placeholder="{% t_ '写下对社团的建议' %}"></textarea>
+                </div>
+                <div class="form-group text-right">
+                  <button class="btn btn-danger btn-block" type="button" onclick="leave_send();">
+                    {% t_ '发送' %}
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab-qrcode">
+              {% if picture.qrcode %}
+              <img data-holder-rendered="true" src="{{ picture.qrcode }}" style="display: block;width:100%;">
+              {% else %}
+              <h4 class="text-center">{% t_ '暂时没有二维码。' %}</h4>
+              {% endif %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab-follower">
+              <div class="row">
+                {% for follower in follower_list %}
+                <div class="col-xs-6 col-md-4">
+                  <div class="thumbnail">
+                    <img src="{{ follower.avatar }}" class="img-rounded">
+                    <p class="text-center">
+                      <a href="/user/{{ follower.sname }}/">{{ follower.nickname }}</a>
+                    </p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <a href="/club/{{ club.simp_name }}/follower/" class="btn btn-warning btn-block text-center">
+                {% t_ '查看所有关注者' %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {# include "club/pub_album.html" #}
+    <!--协作-->
+  </div>
+
+</div>
+
+<script type="text/javascript">
+function leave_send(){
+	ajaxBanner('/message/leave/', {
+		content: $("#leave_content").val(), 
+		aid: {{ club.id }}, 
+		src: 'club', 
+	}, "#leave_form", function (msg){
+		if (msg["status"] == "success") {
+			$("#leave_content").val("");
+		}
+	});
+}
+</script>
+
+{% endblock %}

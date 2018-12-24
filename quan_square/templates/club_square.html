@@ -1,0 +1,72 @@
+{% extends "form_fluid_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" id="category_all" class="active">
+        <a onclick="fetch_category('all');">{% t_ '社团一览' %}</a></li>
+        {% for i in category_list %}
+          <li role="presentation" id="category_{{ i.0 }}">
+          <a onclick="fetch_category('{{ i.0 }}');">{{ i.1 }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="refresh">
+      {% include 'club_fetch.html' %}
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function container_flush() {
+	var $container = $('#container');
+	$container.imagesLoaded(function(){
+		$container.masonry({
+			itemSelector : '.masonry-club-item',
+			//columnWidth : 380,
+		});
+	});
+}
+container_flush();
+function follow(sname){
+	ajaxBanner("/club/" + sname + "/follow/", {}, "", function(msg) {
+		if (msg["status"] == "success") {
+			window.location.reload();
+		}
+		else {
+			alert("{% t_ '警告' %} " + msg["content"]);
+		}
+	});
+}
+
+var original_index = "{{ page_index }}";
+var original_category = "{{ category }}";
+
+function content_reload() {
+	ajaxGet("/square/club/fetch/", {
+		category: original_category, 
+		index: original_index, 
+	}, "html", function(data){
+		$("#refresh").html(data);
+		container_flush();
+	});
+}
+
+function fetch_category(category) {
+	$("#category_" + original_category).removeClass('active');
+	original_category = category;
+	original_index = 1;
+	$("#category_" + category).addClass('active');
+	content_reload();
+}
+
+function fetch_index(index) {
+	original_index = index;
+	content_reload();
+}
+</script>
+
+{% endblock %}

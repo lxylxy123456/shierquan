@@ -1,0 +1,8 @@
+{% load translate %}
+
+{% for msg in msg_box %}
+  <a href="/{{ msg.conn_relation }}/{{ msg.conn_id }}/" id="message-pop" class="list-group-item active" style="display:None;">
+    <h4 class="list-group-item-heading">{{ msg.subject }}</h4>
+    <p class="list-group-item-text">{{ msg.content }}</p>
+  </a>
+{% endfor %}

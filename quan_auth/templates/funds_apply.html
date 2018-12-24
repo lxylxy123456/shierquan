@@ -1,0 +1,119 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-body">
+          <div class="page-header">
+            <h2 class="text-center">
+              {% t_ '社团资金申请' %} - {{ club.full_name }}
+            </h2>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-info-sign"></span> 
+                    {% t_ '基本信息' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="" style="margin-left:2em;">
+                    <br />
+                    <dl class="dl-horizontal">
+                      <dt>{% t_ '社团全称' %}</dt>
+                      <dd>{{ club.full_name }}</dd>
+                      <dt>{% t_ '社长姓名' %}</dt>
+                      <dd>{{ head.first_name }}</dd>
+                      <dt>{% t_ '联系方式' %}</dt>
+                      <dd>{{ head_phone }}</dd>
+                      <dt>{% t_ '所在年级' %}</dt>
+                      <dd>{{ head_grade }}</dd>
+                    </dl>
+                    <div class="row hidden-sm hidden-xs">
+                      <div class="thumbnail col-md-10 col-md-offset-1">
+                        <img src="{{ avatar }}" class="img-responsive">
+                      </div>
+                    </div>
+                    <h5>
+                      <strong>{% t_ '社团概况' %}</strong>
+                    </h5>
+                    <p style="text-indent:2em;">{{ club.full_intro }}</p>
+                    <h4><small class="text-mute">{% t_ '如果以上信息有误，请在十一论坛中反馈' %}</small></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-list"></span> 
+                    {% t_ '申请资金' %}
+                  </h4>
+                </div>
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <form class="form" action="{% if funds_id %}/auth/funds/modify/{{ funds_id }}/{% else %}/auth/funds/{{ club.simp_name }}/apply/{% endif %}" method="POST" id="funds_form">
+                        <div class="form-group">
+                          <label for="title">{% t_ '申请项目摘要' %}</label>
+                          <input type="text" class="form-control" name="title" id="title" placeholder="{% t_ '请简要列举你要申请资金项目' %}"/ value="{{ extra.0 }}">
+                        </div>
+                        <div class="form-group">
+                          <label for="type-choice">{% t_ '资金类型' %}</label>
+                          <br />
+                          <label class="radio-inline">
+                            <input type="radio" name="type-choice" id="type-funds" value="funds"{% if choose_funds %} checked="checked"{% endif %}> {% t_ '社团发展基金' %}
+                          </label>
+                          <label class="radio-inline">
+                            <input type="radio" name="type-choice" id="type-borrow" value="borrow" disabled="disabled"{% if choose_borrow %} checked="checked"{% endif %}> {% t_ '社团借款（暂不可用）' %}
+                          </label>
+                        </div>
+                        {% for i in funds_form %}
+                          <div class="form-group">
+                            <label for="content{{ i.0 }}">{{ i.1 }}</label>
+                            <textarea name="content{{ i.0 }}" id="content{{ i.0 }}" class="form-control" rows="{{ i.3 }}" placeholder="{{ i.2 }}" style="margin-bottom: 1em; ">{{ i.4 }}</textarea>
+                          </div>
+                        {% endfor %}
+                        <div class="form-group" id="submit_div">
+                          <input value="{% t_ '提交' %}" class="btn btn-block btn-lg btn-primary" type="submit" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#funds_form").on("submit", function(event){
+	event.preventDefault();
+	fund_type = ""; 
+	if ($("#type-funds")[0].checked) {
+		fund_type = "funds"; 
+	}
+	if ($("#type-borrow")[0].checked) {
+		fund_type = "borrow"; 
+	}
+	ajaxBanner(this.action, {
+		title: $("#title").val(), 
+		type: fund_type, 
+		{% for i in funds_form %}
+		content{{ i.0 }}: $("#content{{ i.0 }}").val(), 
+		{% endfor %}
+	}, "#submit_div")
+})
+</script>
+
+{% endblock %}

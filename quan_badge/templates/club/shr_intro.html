@@ -1,0 +1,262 @@
+{% load translate %}
+
+<div class="modal fade" id="fintro_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="fintro_label">{% t_ '社团概况' %} - {{ club.full_name }}</h4>
+      </div>
+      <div class="modal-body">
+        <!--<p class="text-center"><small>{{ club.simp_intro }}</small></p>-->
+        <h5 style="line-height:1.5;text-indent: 2em;">{{ club.full_intro }}</h5>
+      </div>
+      <div class="modal-footer">
+        {% if inc_admin %}
+        <a type="button" class="btn btn-primary" href="/club/{{ club.simp_name }}/edit/">{% t_ '编辑' %}</a>
+        {% endif %}
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '关闭' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="badge-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">
+          <span id="badge-modal-title">{% t_ '徽章' %}</span> 
+         </h4>
+      </div>
+      <div id="badge_loading" class="modal-body">
+        <h2 class="text-center">
+          <span class="glyphicon glyphicon-refresh"></span> {% t_ '加载中' %}
+        </h2>
+      </div>
+      <div id="modal_append"></div>
+    </div>
+  </div>
+</div>
+
+<script id="badge_modal_template" type="x-tmpl-mustache">
+  <div class="modal-body" id="badge_feedback">
+    {% r_ '{{ #name_empty }}' %}
+      <h5 class="text-center">{% t_ '还没有人获得过这个徽章' %}</h5>
+    {% r_ '{{ /name_empty }}' %}
+    {% r_ '{{ #name_len }}' %}
+      <table class="table table-striped">
+        <caption class="text-center">{% t_ '共计' %}<span id="badge-grant-user">{% r_ '{{ name_len }}' %}</span>{% t_ '人被授予徽章' %}<span id="badge-name"></span></caption>
+        <thead>
+          <tr>
+            <th>#</th> <th>{% t_ '姓名' %}</th> <th>{% t_ '授予时间' %}</th> <th>{% t_ '操作' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% r_ '{{ #name_list }}' %}
+            <tr>
+              <th scope="row">{% r_ '{{ counter }}' %}</th>
+              <td>{% r_ '{{ fname }}' %}</td>
+              <td>{% r_ '{{ grant_time }}' %}</td>
+              <td>
+                <a id="badge_popover_{% r_ '{{ uid }}' %}" href="#" tabindex="0" role="button" data-toggle="badge_popover_{% r_ '{{ uid }}' %}" data-placement="top" data-trigger="focus" title="" data-content="{% r_ '{{ reason }}' %}" class="btn btn-default badge_popover">{% t_ '查看说明' %}</a>
+                {% if inc_admin %}
+                  <button class="btn btn-danger" onclick="badge_withdraw({% r_ '{{ uid }}' %})">{% t_ '撤回' %}</button>
+                {% endif %}
+              </td>
+            </tr>
+          {% r_ '{{ /name_list }}' %}
+        </tbody>
+      </table>
+    {% r_ '{{ /name_len }}' %}
+  </div>
+	{% if inc_admin %}
+		<hr style="margin: 1px;" />
+		<form method="post" action="/badge/grant/" onsubmit="badge_grant(event);">
+		  <div class="modal-body" id="badge_grant">
+		    <div class="form-group has-feedback">
+		      <label for="recipient-name">{% t_ '授予徽章' %}</label>
+		      <input id="recipient-name" type="text" class="form-control" name="recipient-name" placeholder="{% t_ '被授予成员姓名' %}" />
+		      <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+		      <span id="inputError2Status" class="sr-only">(error)</span>
+		    </div>
+		    <div class="form-group">
+		      <textarea rows="4" class="form-control" id="message-text" placeholder="{% t_ '被授予缘由' %}"></textarea>
+		    </div>
+		  </div>
+		  <div class="modal-footer">
+		    <button type="button" class="btn btn-danger" onclick="badge_remove();">
+		      <span class="glyphicon glyphicon-trash"></span> {% t_ '删除' %}
+		    </button>
+		    <button type="button" class="btn btn-default" data-dismiss="modal">
+		      <span class="glyphicon glyphicon-remove-sign"></span> {% t_ '取消' %}
+		    </button>
+		    <button type="submit" class="btn btn-primary">
+		      <span class="glyphicon glyphicon-certificate"></span> {% t_ '授予' %}
+		    </button>
+		  </div>
+		</form>
+	{% endif %}
+</script>
+
+{# 以上为弹出窗口 #}
+
+<div class="thumbnail">
+  <div class="row" style="padding:10px;">
+    <div class="col-xs-12 col-sm-4">
+      <img src="{{ avatar }}" class="img-responsive img-circle" style="margin:0px auto;width:260px;">
+    </div>
+    <div class="col-xs-12 col-sm-8" id="intro-head">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h1 class="text-center">{{ club.full_name }}</h1>
+          <p class="h4" style="line-height:1.5;text-indent:2em;cursor:crosshair;" data-toggle="modal" data-target="#fintro_box">{{ club.simp_intro }}</p>
+          <div class="form-group text-center" id="intro_form">
+            {% if inc_admin %}
+            <a class="btn btn-default" href="/club/{{club.simp_name}}/edit/">
+              <span class="glyphicon glyphicon-pencil"></span> {% t_ '编辑信息' %}
+            </a>
+            {% else %}
+              {% if followed %}
+              <button id="follow_button" class="btn btn-default" onclick="club_follow();">
+                <span class="glyphicon glyphicon-remove"></span> {% t_ '取消订阅' %}
+              </button>
+              {% else %}
+              <button id="follow_button" class="btn btn-default" onclick="club_follow();">
+                <span class="glyphicon glyphicon-check"></span> {% t_ '订阅' %} 
+                <span class="badge" id="follow_number">{{ club_follower_total }}</span>
+              </button>
+              {% endif %}
+            {% endif %}
+            {% if inc_admin %}
+            <a class="btn btn-danger" href="/club/{{ club.simp_name }}/manage/">
+              {% if club_wait_num %}
+              <span class="glyphicon glyphicon-user"></span> {% t_ '管理' %}
+              <span class="badge">{{ club_wait_num }}</span>
+              {% else %}
+              <span class="glyphicon glyphicon-user"></span> {% t_ '管理成员' %}
+              {% endif %}
+            </a>
+            <span id="button_split"></span>
+            <script type="text/javascript">
+			// 1053 -> 1052
+			// 767 -> 768
+			// 485 -> 484
+			function button_split_manage() {
+				var w = window.innerWidth;
+				//console.log(w);
+				if((w <= 1052 && w >= 768) || w <= 484){
+					$("#button_split").empty();
+					$("#button_split").append('<div style="margin:1px; height:1px;"></div>');
+				}
+				else{
+					$("#button_split").empty();
+				}
+			}
+			button_split_manage();
+			window.onresize = button_split_manage
+			//<div style="margin:1px; height:1px;"></div>
+            </script>
+            <!--
+            <a class="btn btn-info" href="/auth/empty/{{ club.simp_name }}/">
+              <span class="glyphicon glyphicon-star"></span> {% t_ '提交审核' %}
+            </a>
+            -->
+            <a class="btn btn-warning" href="/auth/funds/{{ club.simp_name }}/list/">
+              <span class="glyphicon glyphicon-jpy"></span> {% t_ '资金申请' %}
+            </a>
+            
+            {% else %}
+              {% if joined %}
+              <button id="join_button" class="btn btn-default btn-warning" onclick="club_join();">
+                <span class="glyphicon glyphicon-minus"></span> {% t_ '退出社团' %} 
+              </button>
+              {% else %}
+              <button id="join_button" class="btn btn-default btn-warning" onclick="club_join();">
+                <span class="glyphicon glyphicon-plus-sign"></span> {% t_ '加入' %} 
+                <span class="badge" id="join_number">{{ club_member_total }}</span>
+              </button>
+              {% endif %}
+            {% endif %}
+            {% if inc_admin %}
+              <a type="button" href="#" class="btn btn-success" data-toggle="modal" data-target="#badge_add_box" title="{% t_ '创建新徽章' %}" role="button" onclick="">
+                <span class="glyphicon glyphicon-certificate"></span> {% t_ '创建徽章' %}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+          <div class="well">
+            {% for badge in badge_list %}
+            <button type="button" id="example" class="btn btn-{{ badge.rank }} quan-badge" data-toggle="tooltip" data-placement="top" title="{{ badge.desc }}@{{ club.full_name }}" role="button" onclick="loadBadge({{ badge.id }}, '{{ badge.name }}');">{{ badge.name }}</button>
+            {% empty %}
+            <a id="popover" href="#" tabindex="0" class="btn btn-success quan-badge" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" title="" data-content="{% t_ '没有创建徽章' %}">{% t_ '空空如也' %}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	function club_follow(){
+		ajaxBanner("/club/{{ club.simp_name }}/follow/", 
+			{}, "#intro_form", function(msg){
+				$("#follow_number").html(msg["follower"]);
+			});
+	}
+	
+	function club_join(){
+		ajaxBanner("/club/{{ club.simp_name }}/join/", 
+			{}, "#intro_form");
+	}
+	
+	var badge_id = 0;
+	function loadBadge(bid, bname) {
+		badge_id = bid;
+		$("#badge-modal").modal('toggle');
+		{% if inc_admin %}
+		$("#badge-modal-title").html("{% t_ '授予徽章' %} - " + bname);
+		{% else %}
+		$("#badge-modal-title").html("{% t_ '徽章信息' %} - " + bname);
+		{% endif %}
+		$("#badge_loading").show();
+		$("#modal_append").empty();
+		ajaxBanner("/badge/list/", {
+			bid: bid, 
+		}, "#modal_append", function(msg){
+			$("#badge_loading").hide();
+			if (msg["status"] == "error") {
+				return;
+			}
+			template = $("#badge_modal_template").html();
+			$("#modal_append").append(Mustache.render(template, msg));
+			$(".badge_popover").popover();
+			return "preventDefault";
+		});
+	}
+	
+	function badge_grant(event){
+		event.preventDefault();
+		ajaxBanner("/badge/grant/", {
+			'fname': $('#recipient-name').val(), 
+			'reason': $('#message-text').val(), 
+			'bid': badge_id, 
+		}, "#badge_grant");
+	}
+	
+	function badge_remove(){
+		ajaxBanner('/badge/remove/', {
+			'bid': badge_id, 
+		}, "#badge_grant");
+	}
+	
+	function badge_withdraw(uid) {
+		ajaxBanner("/badge/withdraw/", {
+			bid: badge_id, 
+			uid: uid, 
+		}, "#badge_feedback");
+	}
+</script>
+

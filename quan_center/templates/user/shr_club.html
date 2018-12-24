@@ -1,0 +1,48 @@
+{% load translate %}
+
+    <div class="col-sm-4 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#club-attend" role="tab" data-toggle="tab">参与社团</a></li>
+            <li role="presentation"><a href="#club-follow" role="tab" data-toggle="tab">关注社团</a></li>
+          </ul>
+        </div>
+        <div class="caption">
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="club-attend">
+              {% for club in attend_list %}
+              <div class="row">
+                <div class="col-xs-6 col-md-8">
+                   <h4><span class="glyphicon glyphicon-hand-right"></span> <abbr title="{{ club.simp_intro }}">{{ club.full_name }}</abbr> </h4>
+                </div>
+                <div class="col-xs-6 col-md-4"> 
+                  <a href="/club/{{ club.simp_name }}/" class="btn btn-primary btn-block" role="button">进入 <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+                </div>
+              </div>
+              {% endfor %}
+              {% if not attend_list %}
+              <a href="/square/club/" class="btn btn-info btn-block btn-lg quan-badge" data-toggle="tooltip" data-placement="top" title="尚未加入任何社图...点击我看看！" role="button"><span class="glyphicon glyphicon-home"></span> 归宅部</a>
+              <a href="/create/" class="btn btn-success btn-block btn-lg quan-badge" data-toggle="tooltip" data-placement="top" title="或许希望创建一个社团？" role="button"><span class="glyphicon glyphicon-plus"></span> 创建社团</a>
+              {% endif %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="club-follow">
+              {% for club in follow_list %}
+              <div class="row">
+                <div class="col-xs-6 col-md-8">
+                   <h4><span class="glyphicon glyphicon-hand-right"></span> <abbr title="{{ club.simp_intro }}">{{ club.full_name }}</abbr> </h4>
+                </div>
+                <div class="col-xs-6 col-md-4"> 
+                  <a href="/club/{{ club.simp_name }}/" class="btn btn-primary btn-block" role="button">进入 <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+                </div>
+              </div>
+              {% endfor %}
+              {% if not follow_list %}
+              <a href="/square/club/" class="btn btn-info btn-block btn-lg quan-badge" role="button"><span class="glyphicon glyphicon-th-large"></span> 前往广场</a>
+              <a href="/create/" class="btn btn-success btn-block btn-lg quan-badge" role="button"><span class="glyphicon glyphicon-plus"></span> 创建社团</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

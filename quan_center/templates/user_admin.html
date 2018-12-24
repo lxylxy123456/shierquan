@@ -1,0 +1,801 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<style type="text/css">
+.text-hidden {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: pre-line;
+}
+
+.nav-pills > li.active > a:hover {
+  color: #f3f3f3;
+  background-color:#3465a4;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color:#5bc0de;
+}
+
+</style>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          {% for i, j in tab_list %}
+            <li role="presentation"
+           	  {% ifequal i tab_active %}class="active"{% endifequal %}>
+              <a id="tab_btn_{{ i }}" href="#tab_{{ i }}" aria-controls="tab_{{ i }}" class="p_tag" data-toggle="tab" onclick="history.pushState({ tag: '{{ i }}' }, '', '?tag={{ i }}'); ">
+                {{ j }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+        <br>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'messages' %}active{% endifequal %}" id="tab_messages">
+            <div class="row">
+              <!-- $("#test")[0].scrollTop=$("#test")[0].scrollHeight; -->
+              <div class="col-md-4">
+                <div role="tabpanel">
+                  <ul class="nav nav-pills" role="tablist">
+                    <li id="button-club" role="presentation" class="active">
+                      <a href="#club-contact" aria-controls="club-contact" role="tab" data-toggle="tab"  class="tab-contact" onclick="contact_category('club')">
+                        <span class="glyphicon glyphicon-home"></span> 
+                        {% t_ '社团' %}
+                      </a>
+                    </li>
+                    <li id="button-user" role="presentation">
+                      <a href="#user-contact" aria-controls="user-contact" role="tab" data-toggle="tab" class="tab-contact" onclick="contact_category('user')">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        {% t_ '联系人' %}
+                      </a>
+                    </li>
+                    <li id="button-search" role="presentation">
+                      <a href="#find-contact" aria-controls="find-contact" role="tab" data-toggle="tab" class="tab-contact">
+                        <span class="glyphicon glyphicon-search"></span>
+                        {% t_ '寻找...' %}
+                      </a>
+                    </li>
+                    <li role="presentation">
+                      <a target="_blank" href="/square/club/" class="tab-contact">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        {% t_ '加入新社团' %}
+                      </a>
+                    </li>
+                  </ul>
+                  <br>
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="club-contact">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <div class="btn-group-vertical" role="group" style="max-height: 640px;
+overflow: auto;" id="contact_club_group" >
+                            <button type="button" class="btn btn-default active contact-button" onclick="contact_switch('system', '0')" id="contact_system_0" aid="0">
+                              <div class="media">
+                                <div class="media-left media-middle">
+                                  <img id="system-button-avatar" class="media-object" style="width:64px;height:64px;" src="{{ system_avatar.medium }}">
+                                </div>
+                                <div class="media-body">
+                                  <h4 class="text-left">{% t_ '系统通知' %}</h4>
+                                  <p class="text-left text-hidden" id="context_box_system_0">{% t_ '暂时没有通知' %}</p>
+                                </div>
+                              </div>
+                            </button>
+{% for club in contact_club %}
+  <button type="button" class="btn btn-default contact-button" onclick="contact_switch('club', '{{ club.data.id }}')" id="contact_club_{{ club.data.id }}" aid="{{ club.data.id }}">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object" src="{{ club.avatar.medium }}" style="width:64px;height:64px;">
+      </div>
+      <div class="media-body">
+        <h4 class="text-left">{{ club.data.full_name }}</h4>
+        <p class="text-left" id="context_box_club_{{ club.data.id }}">
+          {% t_ '暂时没有群聊。' %}
+        </p>
+      </div>
+    </div>
+  </button>
+{% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="user-contact">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          {% if not contact_user %}
+                            <div class="well well-lg" id="contact_user_empty">
+                              <h3 class="text-center">
+                                <span class="glyphicon glyphicon-search"></span> 
+                                <small>{% t_ '通过“寻找...”模块搜索并添加好友' %}</small>
+                              </h3>
+                            </div>
+                          {% endif %}
+                          <div class="btn-group-vertical" role="group" aria-label="..." id="contact_user_group">
+{% for user in contact_user %}
+  <button type="button" class="btn btn-default contact-button" onclick="contact_switch('user', '{{ user.data.id }}')" id="contact_user_{{ user.data.id }}" aid="{{ user.data.id }}">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object" src="{{ user.avatar.medium }}" style="width:64px;height:64px;">
+      </div>
+      <div class="media-body">
+        <h4 class="text-left">{{ user.nickname }}</h4>
+        <p class="text-left" id="context_box_user_{{ user.data.id }}">
+          {% t_ '暂时没有聊天。' %}
+        </p>
+      </div>
+    </div>
+  </button>
+{% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="find-contact">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="{% t_ '输入好友昵称或姓名' %}" id="find_query">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button" onclick="contact_find();">
+                            <span class="glyphicon glyphicon-search"></span>
+                            {% t_ '寻找' %}
+                          </button>
+                        </span>
+                      </div>
+                      <div style="margin-top: 1em; " id="find_contact_feedback"></div>
+                      <div style="margin-top: 1em; display: none; " class="panel panel-default" id="find_contact">
+                        <div class="panel-body">
+                          <div class="btn-group-vertical" role="group" id="find_contact_append">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8" id="messageBox">
+                <div class="form-group">
+                  <a target="_blank" id="club_jump_button" href="/club/hcc-computer-community/" class="btn btn-default">
+                    <span class="glyphicon glyphicon-menu-right"></span> 
+                    {% t_ '进入主页' %}
+                  </a>
+                  <button id="contact_clear_button" onclick="contact_clear('system', 0);" class="btn btn-default">
+                    <span class="glyphicon glyphicon-erase"></span> 
+                    {% t_ '清空消息' %}
+                  </button>
+                  <button id="antique_render" onclick="antique_render();" class="btn btn-default">
+                    <span class="glyphicon glyphicon-repeat"></span> 
+                    {% t_ '载入历史' %}
+                  </button>
+                  <button id="locate_textarea" onclick="locate_textarea();" class="btn btn-default">
+                    <span class="glyphicon glyphicon-edit"></span> 
+                    {% t_ '发起会话' %}
+                  </button>
+                </div>
+                <div class="well well-lg" style="overflow:auto;max-height:800px;" id="message_box_group">
+                  <h3 class="text-center" id="empty-content">
+                    <small>{% t_ '暂时没有会话内容' %}</small>
+                  </h3>
+                  <div class="row message-box" id="message_box_system_0" box-empty="true" time_last="0.0" sname="hcc-computer-community">
+                  </div>
+{% for club in contact_club %}
+  <div class="row message-box hidden" id="message_box_club_{{ club.data.id }}" box-empty="true" time_update="0.0" time_last="0.0" sname="{{ club.data.simp_name }}">
+  </div>
+{% endfor %}
+{% for user in contact_user %}
+  <div class="row message-box hidden" id="message_box_user_{{ user.data.id }}" box-empty="true" time_update="0.0" time_last="0.0" sname="{{ user.data.last_name }}">
+  </div>
+{% endfor %}
+                  <div id="message_box_end"></div>
+                </div>
+                <div id="sender_group">
+                  <form id="message_send" method="post" action="/message/private/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <textarea id="message_content" placeholder="{% t_ '写下对十一圈的建议' %}" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group pull-right">
+                      <button class="btn btn-default" onclick="locate_attachment(event);">
+                        {% t_ '添加附件' %}
+                      </button>
+                      <button id="content_submit" class="btn btn-primary" type="button" onclick="message_submit();">
+                        <span class="glyphicon glyphicon-send"></span> 
+                        {% t_ '发送' %}
+                      </button>
+                    </div>
+                  </form>
+                  <div class="collapse" id="collapseExample" style="margin-top:60px;" collapse="true">
+                    <div class="bg-primary" style="border-radius:4px; padding: 20px; margin-bottom: 20px;">
+                      <p class="text-center">{% t_ '请在上传全部完成后发送消息以携带附件' %}</p>
+                      <form id="contain_form" method="post" action="/share/upload/?status=query" enctype="multipart/form-data" target="upload_frame">
+                        {% csrf_token %}
+                        <div id="inputFileDiv" class="form-group text-center">
+                          <input name="multiple-file" type="file" multiple="multiple" class="btn btn-info" id="inputFile" title="{% t_ '选择附加文件' %}" onchange="testBtn();" data-filename-placement="inside">
+                        </div>
+                      </form>
+                      <div id="file_info_group"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'club' %}active{% endifequal %}" id="tab_club">
+            <div class="row">
+              {% if not club_join %}
+              <div class="col-md-12">
+                <div class="well">
+                  <h1 class="text-center">
+                    <span class="glyphicon glyphicon-home" style="font-size:3em;"></span>
+                  </h1>
+                  <h2 class="text-center">
+                    {% t_ '没有加入的社团' %}
+                    <a target="_blank" href="/random/" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-question-sign"></span> 
+                      {% t_ '随便看看' %}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+              {% endif %}
+              {% for club in club_join %}
+              <div class="col-sm-6">
+                <div class="media">
+                  <div class="media-left">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/">
+                      <img data-holder-rendered="true" src="{{ club.avatar.medium }}" style="width: 64px; height: 64px;" class="media-object img-rounded" data-src="holder.js/64x64" alt="64x64">
+                    </a>
+                  </div>
+                  <div class="media-body media-middle">
+                    <h4 id="media-heading" class="media-heading">
+                      <a target="_blank" style="text-decoration: none;" href="/club/{{ club.data.simp_name }}/">
+                        {{ club.data.full_name }}
+                      </a> 
+                      <small>
+                        - {{ club.position }}
+                      </small>
+                    </h4>
+                    <h5>
+                      <abbr title="{{ club.member_nickname }}{% if member_gt_3 %}{% t_ '等' %}{% endif %}">{{ club.member_num }}</abbr> 
+                      {% t_ '位成员' %} / {{ club.event_num }} {% t_ '次活动' %}
+                    </h5>
+                    {% for event in club.event_list %}
+                    <h5>
+                      <span class="label label-primary">{{ event.join }}</span> 
+                      <a target="_blank" href="/event/{{ event.data.id }}/">{{ event.data.subject }}</a> 
+                        - 
+                      <small>{{ event.datetime }}</small>
+                    </h5>
+                    {% empty %}
+                    <h5><small>{% t_ '本社团没有进行任何活动。' %}</small></h5>
+                    {% endfor %}
+                  </div>
+                  <div class="media-right media-center">
+                    <a target="_blank" class="btn btn-primary" href="/club/{{ club.data.simp_name }}/">{% t_ '进入' %}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'footprint' %}active{% endifequal %}" id="tab_footprint">
+            <div id="footprint"> {# global的major是自己 #}
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'friends' %}active{% endifequal %}" id="tab_friends" box-empty="true">
+            <div class="well well-lg"> {# global的自己朋友和关注 #}
+              <h1 class="text-center" style="font-size:8em;">
+                <span class="glyphicon glyphicon-hand-left"></span> 
+              </h1>
+              <h3 class="text-center">
+                <small>{% t_ '暂时没有添加任何人为好友' %}</small>
+              </h3>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'settings' %}active{% endifequal %}" id="tab_settings">
+            <div class="col-xs-6 col-sm-1">
+              <img src="{{ user_avatar.large }}" class="img-responsive img-rounded" style="margin:10px;">
+            </div>
+            <div class="col-xs-6 col-sm-11">
+              <h3 id="nickname">
+                <span id="nickname-text">{{ nickname }}</span>
+              </h3>
+              <a target="_blank" href="/user/{{ request.user.last_name }}/edit/" class="btn btn-default">
+                {% t_ '修改个人信息' %}
+              </a>
+              <a target="_blank" href="/user/{{ request.user.last_name }}/reset/" class="btn btn-danger">
+                {% t_ '修改密码' %}
+              </a>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'follow' %}active{% endifequal %}" id="tab_follow">
+            <div class="row">
+              {% if not club_follow %}
+              <div class="col-md-12">
+                <div class="well">
+                  <h1 class="text-center">
+                    <span class="glyphicon glyphicon-camera" style="font-size:3em;"></span>
+                  </h1>
+                  <h2 class="text-center">
+                    {% t_ '没有关注的社团' %}
+                    <a target="_blank" href="/square/club/" class="btn btn-default">
+                      <span class="glyphicon glyphicon-share-alt"></span> 
+                      {% t_ '去广场逛逛' %}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+              {% endif %}
+              {% for club in club_follow %}
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="media">
+                  <div class="media-left media-middle" style="padding:4px;">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/">
+                      <img data-holder-rendered="true" src="{{ club.avatar.medium }}" class="media-object img-rounded">
+                    </a>
+                  </div>
+                  <div class="media-body media-middle">
+                    <h4 id="media-heading" class="media-heading">
+                      <a target="_blank" style="text-decoration: none;" href="/club/{{ club.data.simp_name }}/">
+                        {{ club.data.full_name }}
+                      </a>
+                    </h4>
+                    <abbr title="{{ club.follower_nickname }}{% if follower_gt_3 %}{% t_ '等' %}{% endif %}">{{ club.follower_num }}</abbr> {% t_ '人订阅' %}
+                  </div>
+                  <div class="media-right media-middle">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/" class="btn btn-success">{% t_ '进入' %}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane {% ifequal tab_active 'share' %}active{% endifequal %}" id="tab_share">
+            {% if not share_list %}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="jumbotron">
+                  <h3 class="text-center">
+                    <span class="glyphicon glyphicon-inbox"></span> 
+                    {% t_ '暂时没有任何分享' %}
+                  </h3>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <div class="list-group">
+            {% for share in share_list %}
+              <a target="_blank" href="/share/{{ share.data.attach_uuid }}/" class="list-group-item " id="item-{{ share.data.simp_name }}">
+                <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-file"></span> {{ share.data.subject }}</h4>
+                <p class="list-group-item-text">{{ share.date.0 }}{{ share.date.1 }}</p>
+              </a>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'comp/footprint.html' %}
+
+{% include 'comp/message-block.html' %}
+
+{% verbatim %}
+
+<script id="contact-button" type="x-tmpl-mustache">
+  <button type="button" class="btn btn-default contact-button" onclick="contact_switch('{{ src }}', '{{ data.id }}')" id="contact_{{ src }}_{{ data.id }}" aid="{{ data.id }}">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object" src="{{ avatar.medium }}" style="width:64px;height:64px;">
+      </div>
+      <div class="media-body">
+        <h4 class="text-left">{{ nickname }}</h4>
+        <p class="text-left" id="context_box_{{ src }}_{{ data.id }}">
+          {{ placeholder }}
+        </p>
+      </div>
+    </div>
+  </button>
+</script>
+
+<script id="message-box" type="x-tmpl-mustache">
+  <div class="row message-box hidden" id="message_box_{{ src }}_{{ data.id }}" box-empty="true" time_update="0.0" time_last="0.0" sname="{{ sname }}">
+  </div>
+</script>
+
+<script id="contact-search" type="x-tmpl-mustache">
+  <a type="button" class="btn btn-default contact-search" href="{{ a }}" target="_blank">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object" src="{{ i }}" style="width:64px;height:64px;">
+      </div>
+      <div class="media-body">
+        <h4 class="text-left">{{ s }} {{ h }}</h4>
+        <p class="text-left">{{ p }}</p>
+      </div>
+    </div>
+  </a>
+</script>
+{% endverbatim %}
+
+<script type="text/javascript">
+	var friends_time_update = 0.0;
+	ajaxSlow(public_message_url, function (){
+		return {
+			'time_update': friends_time_update,
+			'uid': {{ user.id }}, 
+			'msg_type': 'global', 
+			'relation': 'friends_follower', 
+		};
+	}, "json", function(data){
+		friends_time_update = data['time_update'];
+		box = $("#tab_friends");
+		if (data['msglist'].length && box.attr("box-empty") == "true") {
+			box.empty();
+			box.attr("box-empty", "false");
+		}
+		public_message_render($("#tab_friends"), data, 1, false);
+	}, 12000);
+
+	var club_last_id = 0;
+	var contact_current = 'system';
+	var user_last_id = "{{ contact_user.0.data.id }}";
+	function contact_switch(src, aid){
+		//refresh data
+		contact_current = src;
+		if(src == 'club'){
+			club_last_id = aid;
+			$("#message_content").attr('placeholder', '{% t_ '写下群聊内容' %}');
+		}
+		else if(src == 'system'){
+			club_last_id = aid;
+			$("#message_content").attr('placeholder', '{% t_ '写下对十一圈的建议' %}');
+		}
+		else {
+			user_last_id = aid;
+			$("#message_content").attr('placeholder', '{% t_ '写下消息内容' %}');
+		}
+		//button
+		$(".contact-button").removeClass('active');
+		$("#contact_" + src + "_" + aid).addClass('active');
+		//message box
+		$(".message-box").addClass('hidden');
+		var msg_box = $("#message_box_" + src + "_" + aid);
+		msg_box.removeClass('hidden');
+		//empty
+		if(msg_box.attr("box-empty") == "false"){
+			$("#empty-content").addClass('hidden');
+		}
+		else{
+			$("#empty-content").removeClass('hidden');
+		}
+		//contact_clear_button
+		$("#contact_clear_button").attr("onclick", "contact_clear('" + src + "', '" + aid + "');");
+		//button "home page" and input box
+		if(src == 'system'){
+			$("#club_jump_button").attr("href","/club/hcc-computer-community/");
+			$("#club_jump_button").attr("disabled", "disabled");
+			$("#locate_textarea").attr("disabled", "disabled");
+			$("#sender_group").fadeOut();
+		}
+		else {
+			sname = msg_box.attr("sname");
+			$("#club_jump_button").attr("href", "/" + src + "/" + sname + "/");
+			$("#club_jump_button").removeAttr("disabled");
+			$("#locate_textarea").removeAttr("disabled");
+			$("#sender_group").fadeIn();
+		}
+		// roll
+		messave_box_group_roll();
+	}
+	
+	function contact_category(src){
+		if(src == 'club' || src == 'system') {
+			if(club_last_id == 0){
+				src = 'system';
+			}
+			contact_switch(src, club_last_id);
+		}
+		else{
+			contact_switch(src, user_last_id);
+		}
+	}
+	
+	//contact_switch('system', 0);
+	
+	var contact_time_update = 0.0;
+	function contact_refresh(){
+		ajaxBanner('/message/private/', {
+			time_update: contact_time_update, 
+		}, "", function(data){
+			contact_time_update = data['time_update'];
+			for(var i = data['msglist'].length - 1; i >= 0; i -= 1) {
+				contact_render(data['msglist'][i], 1);
+			}
+			if (data['msglist'].length) {
+				messave_box_group_roll();
+			}
+			time_render(data['msglist']);
+			$(".message").fadeIn("slow");
+		});
+	}
+	
+	function time_render(msglist){
+		for (var i = 0; i < msglist.length; i += 1){
+			msg = msglist[i];
+			obj = $('#message_box_' + msg.host_src + '_' + msg.host_id);
+			val = obj.attr("time_last");
+			if (val > msg.time_stamp || val == 0.0) {
+				obj.attr("time_last", msg.time_stamp)
+			}
+		}
+	}
+	
+	function contact_render(info, fresh){
+		//testing time
+		if ($("#prv_msg_" + info.time_stamp).length) {
+			console.log("{% t_ '已经渲染消息' %}" + info.time_stamp);
+			return;
+		}
+		//begin rendering
+		template = $('#contact-' + info.type).html();
+		var rendered = Mustache.render(template, info);
+		var msg_box = $("#message_box_" + info.host_src + "_" + info.host_id);
+		if (fresh || msg_box.attr("box-empty") == "true"){
+			msg_box.append(rendered);
+		}
+		else{
+			msg_box.prepend(rendered);
+			return;
+		}
+		//not empty
+		msg_box.attr("box-empty", "false");
+		if(!msg_box.hasClass('hidden')){
+			$("#empty-content").addClass('hidden');
+		}
+		//context
+		var context = ""
+		if (info.content.length > 10){
+			context = info.content.substring(0, 10) + '...';
+		}
+		else {
+			context = info.content;
+		}
+		$("#context_box_" + info.host_src + "_" + info.host_id).html(context);
+		return 0;
+	}
+	
+	var async_threads = 0;
+	function contact_init(){
+		initialize_render('', 0, 0);
+		setInterval('contact_refresh();', 10000);
+	}
+	
+	function initialize_render(src, aid, clear_send){
+		//其中一个的最开始的 4 个，返回更新时间
+		async_threads += 1;
+		ajaxBanner('/message/private/', {
+			time_update: 0.0, 
+			send_id: aid, 
+			send_src: src, 
+		}, "", function(data){
+			for(var i = data['msglist'].length - 1; i >= 0; i -= 1) {
+				contact_render(data['msglist'][i], 1);
+			}
+			time_render(data['msglist']);
+			if(!clear_send){
+				contact_time_update = data.time_update;
+			}
+			$(".message").fadeIn("slow");
+			async_threads -=1;
+			messave_box_group_roll();
+		});
+	}
+	
+	function antique_render(){
+		var src = contact_current
+		var aid = 0;
+		if(src == 'user'){
+			aid = user_last_id;
+		}
+		else{
+			aid = club_last_id;
+		}
+		var box = $("#message_box_" + src + "_" + aid)
+		ajaxBanner('/message/private/', {
+			time_update: String(0 - parseFloat(box.attr("time_last"))), 
+			send_id: aid, 
+			send_src: src, 
+		}, "", function(data){
+			for(var i = 0; i < data['msglist'].length; i += 1) {
+				contact_render(data['msglist'][i], 0);
+			}
+			$(".message").fadeIn("slow");
+			box.attr("time_last", data['time_last']);
+		});
+	}
+	
+	function locate_textarea() {
+		$('html, body').animate({
+			scrollTop: $("#content_submit").offset().top
+		}, 1000);
+	}
+	
+	function locate_attachment(event) {
+		event.preventDefault();
+		if ($("#collapseExample").attr("collapse") == "true") {
+			$("#collapseExample").show();
+			$("#collapseExample").attr("collapse", "false");
+			$('html, body').animate({
+				scrollTop: $("#collapseExample").offset().top
+			}, 1000);
+		}
+		else {
+			$("#collapseExample").hide();
+			$("#collapseExample").attr("collapse", "true");
+		}
+	}
+	
+	function contact_agree(uid, avatar, nickname, sname){
+		ajaxBanner('/friend/user/', { uid: uid }, "#messageBox", function(data){
+			if (data.status != 'success'){
+				return;
+			}
+			if ($("#contact_user_group").children().length == 0){
+				user_last_id = uid;
+			}
+			renderdict = {
+				id: uid, 
+				avatar: { large: avatar }, 
+				nickname: nickname, 
+				sname: sname, 
+				src: "user", 
+				data: { id: uid }, 
+				placeholder: "{% t_ '暂时没有聊天。' %}", 
+			};
+			rendered = Mustache.render($("#contact-button").html(), renderdict);
+			$("#contact_user_group").append(rendered);
+			rendered = Mustache.render($("#message-box").html(), renderdict);
+			$("#message_box_group").prepend(rendered);
+			initialize_render('user', uid, 0);
+			$(".friend_button_" + uid).attr('disabled', 'disabled');
+			$("#contact_user_empty").addClass("hidden");
+			$("#contact_user_group").removeClass("hidden");
+			$("#button-user").children().tab('show')	// 从“社团”跳转到“联系人”
+			contact_switch("user", uid);
+			return "preventDefault";
+		});
+	}
+	
+	function contact_reject(uid){
+		ajaxBanner('/friend/user/', {
+			'uid': uid, 
+			'break': 'break', 
+		}, "#messageBox", function(data){
+			if (data["status"] == 'success'){
+				$(".friend_button_" + uid).attr('disabled', 'disabled');
+				return "preventDefault";
+			}
+		});
+	}
+	
+	function contact_clear(src, aid){
+		var box = $("#message_box_" + src + "_" + aid);
+		box.html("");
+		box.attr("box-empty", "true");
+		box.attr("time_last", "0.0");
+		contact_category(contact_current);
+		initialize_render(src, aid, 1);
+	}
+	
+	function message_submit(){
+		var src = contact_current;
+		var aid = 0;
+		if (src == 'user'){
+			aid = user_last_id;
+		}
+		else {
+			aid = club_last_id;
+		}
+		ajaxBanner('/message/send/', {
+			recv_src: src, 
+			recv_id: aid, 
+			content: $("#message_content").val(), 
+			subject: $("#message_content").val(), 
+			attach_uuid: attach_uuid, 
+		}, "#message_send", function(msg){
+			if (msg["status"] == "success") {
+				$("#message_content").val('');
+				buttonClear();
+				contact_refresh();
+				return "preventDefault";
+			}
+		});
+	}
+	
+	function contact_find(){
+		ajaxBanner('/search/all/', {
+			query: $("#find_query").val(), 
+		}, "#find_contact_feedback", function(msg) {
+			if (msg["status"] != "success") {
+				$("#find_contact").hide();
+				$("#find_contact_feedback").show();
+				return
+			}
+			$("#find_contact").show();
+			$("#find_contact_feedback").hide();
+			$("#find_contact_append").html("");
+			for (var i = 0; i < msg["obj"].length; i += 1) {
+				var template = $("#contact-search").html();
+				var rendered = Mustache.render(template, msg["obj"][i]);
+				$("#find_contact_append").append(rendered);
+			}
+			return "preventDefault";
+		});
+	}
+	
+	function resize_message_box_group(){
+		var target = window.innerHeight - 100;
+		if (target > 500){
+			target = 500;
+		}
+		$("#message_box_group").height(target);
+	}
+	window.onresize = resize_message_box_group;
+	resize_message_box_group();
+
+	function messave_box_group_roll(){
+		var msg_box = $('#message_box_group')[0];
+		if (navigator.userAgent.indexOf("Trident") < 0 && navigator.userAgent.indexOf("Webkit") < 0){
+			msg_box.scrollTo(0, msg_box.scrollHeight);
+		}
+		else {
+			$("#message_box_end")[0].scrollIntoView();
+		}
+	}
+
+	contact_init();
+	contact_switch('system', 0);
+
+	window.onpopstate = function(event) {
+		a = "&" + document.location.search.substr(1);
+		f = "&tag="
+		b = a.indexOf(f);
+		if (b >= 0) {
+			c = a.substr(b + f.length);
+			d = c.indexOf("&");
+			if (d >= 0) {
+				e = c.substr(0, d);
+			}
+			else {
+				e = c;
+			}
+		}
+		else {
+			e = "messages";
+		}
+		{# 以上获取目标的 tag 名 #}
+		$("#tab_btn_" + e).tab("show");
+	};
+</script>
+
+{% verbatim %}
+<script id="inputFileTemplate" type="x-tmpl-mustache">
+  <a class="file-input-wrapper btn btn-default  btn btn-info">
+    <span>{% t_ '选择附加文件' %}</span>
+    <input name="multiple-file" multiple="multiple" class="btn btn-info" id="inputFile" title="{% t_ '选择附加文件' %}" onchange="testBtn();" data-filename-placement="inside" type="file">
+  </a>
+</script>
+{% endverbatim %}
+
+{% include "comp/progress.html" %}
+
+{% endblock %}

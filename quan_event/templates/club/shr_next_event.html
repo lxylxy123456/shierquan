@@ -1,0 +1,87 @@
+{% load translate %}
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4 class="text-center">{% t_ '下一次活动' %}</h4>
+        </div>
+        
+        <div class="panel-body" id="next-event-head">
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <p><strong>{% t_ '主题：' %}</strong>{{ event.subject }}</p>
+              <p><strong>{% t_ '地点：' %}</strong>{{ event.location }}</p>
+              <p><strong>{% t_ '日期：' %}</strong>{{ event_date }}</p>
+              <p><strong>{% t_ '时间：' %}</strong>{{ event_time }}</p>
+            </div>
+            {% if inc_admin %}
+            <div class="col-sm-6 col-md-6">
+              <button class="btn btn-danger btn-block" type="button" id="cancel-button">
+                {% t_ '取消活动' %}
+              </button>
+              <a href="/event/{{ event.id }}/" class="btn btn-default btn-block" role="button">
+                {% t_ '查看' %}
+              </a>
+            </div>
+            {% else %}
+            <div class="col-sm-6 col-md-6">
+              <button id="event_nice" class="btn btn-primary btn-block " type="button" onclick="event_nice({{ event.id }});" {% if niced %}disabled="disabled"{% endif %}>
+                {% t_ '赞' %} <span class="badge" id="number_nice">{{ nice_total }}</span>
+              </button>
+              <button id="event_follow" class="btn btn-info btn-block" type="button" onclick="event_follow({{ event.id }});" {% if followed %}disabled="disabled"{% endif %}>
+                {% t_ '关注' %} <span class="badge" id="number_follow">{{ follower_total }}</span>
+              </button>
+              <a href="/event/{{ event.id }}/" class="btn btn-default btn-block" role="button">
+                {% t_ '查看' %}
+              </a>
+            </div>
+            {% endif %}
+            <div class="col-sm-12 col-md-12 hidden-xs">
+              <pre>{{ event.content }}</pre>
+            </div>
+          </div>
+        </div>
+        <div class="list-group">
+          {% for event in ev_list %}
+          <a href="/event/{{ event.data.id }}/" id="message-pop" class="list-group-item">
+            <h4 class="list-group-item-heading">[{{ event.date }}] {{ event.data.subject }}</h4>
+            <p class="list-group-item-text">{% t_ '地点：' %}{{ event.data.location }}</p>
+          </a>
+          {% endfor %}
+          <a href="/club/{{ club.simp_name }}/detail/?category=event;" class="list-group-item list-group-item-info">
+            {% t_ '查看更多' %}
+          </a>
+        </div>
+      </div>
+<script type="text/javascript">
+function event_follow(evid){
+	ajaxBanner("/event/follow/", {
+		'evid': evid
+	}, "#next-event-head", function(msg){
+		$("#number_follow").html(msg.follower_total);
+		if (msg["status"] == "success") {
+			$("#event_follow").attr("disabled", "disabled");
+			return "preventDefault";
+		}
+	});
+}
+function event_nice(evid){
+	ajaxBanner("/event/nice/", {
+		'evid': evid
+	}, "#next-event-head", function(msg){
+		$("#number_nice").html(msg.nice_total);
+		if (msg["status"] == "success") {
+			$("#event_nice").attr("disabled", "disabled");
+			return "preventDefault";
+		}
+	});
+}
+$(document).ready(function(){
+	$("#cancel-button").click(function(){
+		ajaxBanner("/event/cancel/", {
+			src: "club", 
+			aid: {{ club.id }},
+			evid: {{ event.id }},
+		}, "#next-event-head");
+	});
+});
+</script>

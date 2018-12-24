@@ -1,0 +1,335 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-8 col-md-8">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <div class="center-block" style="display:table;">
+                <img src="{{ avatar.large }}" class="img-responsive img-circle">
+                <h3 id="nickname" class="text-center">
+                  <strong style="border-bottom: 1px dotted #777;">{{ nickname }}</strong>
+                </h3>
+              </div>
+              <div class="text-center" id="relation_button">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  {% if followed %}
+                  <button class="btn btn-primary" onclick="follow();">
+                    <span class="glyphicon glyphicon-eye-open"></span> 
+                    {% t_ '取消关注' %}
+                  </button>
+                  {% else %}
+                  <button class="btn btn-primary" onclick="follow();">
+                    <span class="glyphicon glyphicon-eye-open"></span> 
+                    {% t_ '关注TA' %}
+                  </button>
+                  {% endif %}
+                  {% ifequal friend_status 'friend' %}
+                  <button class="btn btn-danger {{ friend_active_tag }}" onclick="friend('break');">
+                  {% else %}
+                  <button class="btn btn-danger {{ friend_active_tag }}" onclick="friend('');">
+                  {% endifequal %}
+                    <span class="glyphicon glyphicon-user"></span> 
+                    {{ friend_status_text }}
+                  </button>
+                  {% if friend_need_verify %}
+                  <button class="btn btn-danger" onclick="friend('break');">
+                    <span class="glyphicon glyphicon-user"></span> 
+                    {% t_ '拒绝申请' %}
+                  </button>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#footprint_tabpanel" aria-controls="footprint_tabpanel" class="myTab" data-toggle="tab">{% t_ '足迹' %}</a></li>
+          <li role="presentation"><a href="#club" aria-controls="club" class="myTab" data-toggle="tab">{% t_ '所属社团' %}</a></li>
+          <li role="presentation"><a href="#follow" aria-controls="follow" class="myTab" data-toggle="tab">{% t_ '订阅列表' %}</a></li>
+          <li role="presentation"><a href="#activity" aria-controls="activity" class="myTab" data-toggle="tab">{% t_ '参加的活动' %}</a></li>
+        </ul>
+        <br>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane" id="club">
+            <div class="row">
+              {% if not club_join %}
+              <div class="col-md-12">
+                <div class="well">
+                  <h1 class="text-center">
+                    <span class="glyphicon glyphicon-home" style="font-size:3em;"></span>
+                  </h1>
+                  <h2 class="text-center">
+                    {% t_ '没有加入的社团' %}
+                    <a target="_blank" href="/random/" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-question-sign"></span> 
+                      {% t_ '随便看看' %}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+              {% endif %}
+              {% for club in club_join %}
+              <div class="col-sm-12">
+                <div class="media">
+                  <div class="media-left">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/">
+                      <img data-holder-rendered="true" src="{{ club.avatar.medium }}" style="width: 64px; height: 64px;" class="media-object img-rounded" data-src="holder.js/64x64" alt="64x64">
+                    </a>
+                  </div>
+                  <div class="media-body media-middle">
+                    <h4 id="media-heading" class="media-heading">
+                      <a target="_blank" style="text-decoration: none;" href="/club/{{ club.data.simp_name }}/">
+                        {{ club.data.full_name }}
+                      </a> 
+                      <small>
+                        - {{ club.position }}
+                      </small>
+                    </h4>
+                    <h5>
+                      <abbr title="{{ club.member_nickname }}{% if member_gt_3 %}{% t_ '等' %}{% endif %}">{{ club.member_num }}</abbr> 
+                      {% t_ '位成员' %} / {{ club.event_num }} {% t_ '次活动' %}
+                    </h5>
+                    {% for event in club.event_list %}
+                    <h5>
+                      <span class="label label-primary">{{ event.join }}</span> 
+                      <a target="_blank" href="/event/{{ event.data.id }}/">{{ event.data.subject }}</a> 
+                        - 
+                      <small>{{ event.datetime }}</small>
+                    </h5>
+                    {% empty %}
+                    <h5><small>{% t_ '本社团没有进行任何活动。' %}</small></h5>
+                    {% endfor %}
+                  </div>
+                  <div class="media-right media-center">
+                    <a target="_blank" class="btn btn-primary" href="/club/{{ club.data.simp_name }}/">{% t_ '进入' %}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="activity">
+            <div class="row">
+              {% if not event_list %}
+              <div class="col-md-12">
+                <div class="jumbotron">
+                  <h3 class="text-center">
+                    <span class="glyphicon glyphicon-flag"></span> 
+                    {% t_ '暂时没有参与的活动' %}
+                  </h3>
+                </div>
+              </div>
+              {% endif %}
+              {% for event in event_list %}
+              <div class="col-sm-3">
+                <a target="_blank" class="btn btn-info btn-lg" href="/event/{{ event.data.id }}/" style="margin-top: 20px;">
+                  {{ event.datetime.0 }} <span class="badge">{{ event.datetime.1 }}</span>
+                </a>
+              </div>
+              <div class="col-sm-9">
+                <h3>
+                  <img style="width:32px;height:32px;" class="img-rounded" src="{{ event.club_avatar.small  }}">
+                  <a target="_blank" href="/event/{{ event.data.id }}/" style="text-decoration:none;">{{ event.data.subject }}</a> 
+                </h3>
+                <h4 style="text-indent: 2em;">
+                  <span class="glyphicon glyphicon-home"></span> 
+                  <a target="_blank" href="/club/{{ event.club.simp_name }}/" style="text-decoration:none;">{{ event.club.full_name }}</a>
+                </h4>
+                <h4 style="text-indent: 2em;">
+                  <span class="glyphicon glyphicon-map-marker"></span> 
+                  {{ event.data.location }}
+                </h4>
+                <h4 style="text-indent: 2em;">
+                  <span class="glyphicon glyphicon-bullhorn"></span> 
+                  {{ event.join_num }}{% t_ '人参加了活动' %}
+                </h4>
+              </div>
+              {% endfor %}
+            </div>
+            <!-- 参加过的活动 -->
+          </div>
+          <div id="footprint_tabpanel" role="tabpanel" class="tab-pane active">
+            <div class="row" id="footprint">
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="follow">
+            <div class="row">
+              {% if not club_follow %}
+              <div class="col-md-12">
+                <div class="well">
+                  <h1 class="text-center">
+                    <span class="glyphicon glyphicon-camera" style="font-size:3em;"></span>
+                  </h1>
+                  <h2 class="text-center">
+                    {% t_ '没有关注的社团' %}
+                    <a target="_blank" href="/square/club/" class="btn btn-default">
+                      <span class="glyphicon glyphicon-share-alt"></span> 
+                      {% t_ '去广场逛逛' %}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+              {% endif %}
+              {% for club in club_follow %}
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/">
+                      <img data-holder-rendered="true" src="{{ club.avatar.medium }}" class="media-object img-rounded">
+                    </a>
+                  </div>
+                  <div class="media-body media-middle">
+                    <h4 id="media-heading" class="media-heading">
+                      <a target="_blank" style="text-decoration: none;" href="/club/{{ club.data.simp_name }}/">
+                        {{ club.data.full_name }}
+                      </a>
+                    </h4>
+                    <abbr title="{{ club.follower_nickname }}{% if follower_gt_3 %}{% t_ '等' %}{% endif %}">{{ club.follower_num }}</abbr> {% t_ '人订阅' %}
+                  </div>
+                  <div class="media-right media-middle">
+                    <a target="_blank" href="/club/{{ club.data.simp_name }}/" class="btn btn-success">{% t_ '进入' %}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4">
+      {% if badge_list %}
+      <div class="well">
+        {% for badge in badge_list %}
+        <button type="button" id="example" class="btn btn-{{ badge.badge.rank }} quan-badge" data-toggle="tooltip" data-placement="top" title="{{ badge.badge.desc }}@{{ badge.club }}" role="button" onclick="loadModal({{ badge.badge.id }}, '{{ badge.badge.name }}');">{{ badge.badge.name }}</button>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          {% if event_next %}
+          <strong>{% t_ '接下来将参加' %}</strong>
+          <h3 class="text-center">
+            {{ event_next.data.subject }}
+          </h3>
+          <h3 class="text-center">
+            <img style="width:32px;height:32px;" class="img-rounded" src="{{ event_next.club_avatar.small }}">
+            <a target="_blank" href="/club/{{ event_next.club.simp_name }}/" style="text-decoration:none;">{{ event_next.club.full_name }}</a> 
+          </h3>
+          <h2 class="text-center">
+            <span class="label label-primary">{{ event_next.datetime.0 }}</span> 
+            <span class="label label-info">{{ event_next.datetime.1 }}</span>
+          </h2>
+          {% else %}
+            {% t_ '没有下一次活动' %}
+          {% endif %}
+        </div>
+      </div>
+            
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong>{% t_ '统计信息' %}</strong>
+          <h3 style="text-indent: 2em;">
+            <small>{% t_ '该用户于' %}</small>
+            {{ join_time }}
+            <small>{% t_ '加入十一圈。' %}</small>
+          </h3>
+          <h3 style="text-indent: 2em;">
+            <small>{% t_ 'TA的主页被访问过' %}</small>
+            <code>{{ visit_count }}</code>
+            <small>{% t_ '次。' %}</small>
+          </h3>
+          <!--<p>该用户被机器人判断为夜猫子</p>-->
+          <!-- 注册时间 加为好友 关注... -->
+        </div>
+      </div>
+      {% if not friends %}
+      <div class="panel panel-default">
+        <div class="panel-body" id="hi-div">
+          <h5><strong>{% t_ '打招呼' %}</strong></h5>
+          <form method="post" action="/message/hi/">
+            <div class="form-group">
+              <textarea id="hi-content" class="form-control" rows="3" placeholder="{% t_ '请阐明来意' %}">{% t_ 'Hello, 我是...' %}</textarea>
+            </div>
+            <div class="form-group pull-right">
+              <button type="button" class="btn btn-danger" onclick="hi_send('real');">{% t_ '加为联系人' %}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+      {% if 0 %}
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h5><strong>{% t_ '邀请就餐' %}</strong></h5>
+          <form method="post" action="/message/invite/">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="datetimepicker12"></div>
+                  <button class="btn btn-success btn-block" type="submit">
+                    {% t_ '发送邀约' %}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+      <script type="text/javascript">
+			$(function () {
+				$('#datetimepicker12').datetimepicker({
+					inline: true,
+					sideBySide: true
+				});
+			});
+			function follow(){
+				ajaxBanner('/follow/user/', {
+					{% if followed %}'break': 'break', {% endif %}
+					'uid': '{{ user.id }}', 
+				}, "#relation_button");
+			}
+			function friend(status){
+				ajaxBanner('/friend/user/', {
+					'break': status, 
+					'uid': '{{ user.id }}', 
+				}, "#relation_button", function(msg){
+					if (msg["status"] == "success") {
+						window.location.reload();
+					}
+				});
+			}
+			function hi_send(status){
+				ajaxBanner('/message/hi/', {
+					status: status, 
+					content: $("#hi-content").val(), 
+					uid: "{{ user.id }}", 
+				}, "#hi-div", function(msg){
+					if (msg["status"] == "success") {
+						$("#hi-content").val("");
+					}
+				});
+			}
+      </script>
+    </div>
+  </div>
+</div>
+
+{% include 'comp/footprint.html' %}
+
+{% endblock %}

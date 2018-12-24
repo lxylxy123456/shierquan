@@ -1,0 +1,54 @@
+msgid "标题太长"
+msgstr ""
+
+msgid "内容太长"
+msgstr ""
+
+msgid "成功删除"
+msgstr ""
+
+msgid "包含非法字符"
+msgstr ""
+
+msgid " - 编辑新闻"
+msgstr ""
+
+msgid "找不到用户/社团"
+msgstr ""
+
+msgid " - %s"
+msgstr ""
+
+msgid "找不到新闻"
+msgstr ""
+
+msgid "不是新闻作者"
+msgstr ""
+
+msgid " - 发表新闻"
+msgstr ""
+
+msgid "请写一点内容"
+msgstr ""
+
+msgid "冒充别人"
+msgstr ""
+
+msgid "无法找到这个AttachID"
+msgstr ""
+
+msgid "找不到对象"
+msgstr ""
+
+msgid "无法找到更改项目"
+msgstr ""
+
+msgid "请写一点标题"
+msgstr ""
+
+msgid "投递成功"
+msgstr ""
+
+msgid " - 新闻"
+msgstr ""
+

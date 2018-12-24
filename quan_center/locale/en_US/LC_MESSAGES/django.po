@@ -1,0 +1,84 @@
+msgid "您没有权限"
+msgstr "You do not have the corresponding permission"
+
+msgid "动态请求有误"
+msgstr "Invalid dynamic request"
+
+msgid "操作失败"
+msgstr "Operation error"
+
+msgid "成功将%s设置为副社长"
+msgstr "Successfully assigned %s as the vice president"
+
+msgid "或许你希望创建一个社团？"
+msgstr "Maybe you would like to create a club?"
+
+msgid " - %s的主页"
+msgstr " - %s's Homepage"
+
+msgid "参数错误"
+msgstr "Parameter error"
+
+msgid "成功更新动态"
+msgstr "Successfully updated dynamics"
+
+msgid " - %s - 订阅用户"
+msgstr " - %s - Follower List"
+
+msgid " - %s - 相册"
+msgstr " - %s - Album"
+
+msgid "操作成功，请刷新页面"
+msgstr "Successfully operated, please refresh the page"
+
+msgid "动态不能为空"
+msgstr "Empty content"
+
+msgid " - %s"
+msgstr " - %s"
+
+msgid " - %s - %s"
+msgstr " - %s - %s"
+
+msgid "发件箱"
+msgstr "Sent"
+
+msgid "收件箱"
+msgstr "User not found"
+
+msgid "您尚未登录天台"
+msgstr "You have not logged in"
+
+msgid "成功将%s设置为社长"
+msgstr "Successfully assigned %s as the president"
+
+msgid " - %s - 成员管理"
+msgstr " - %s - Member Management"
+
+msgid "找不到用户"
+msgstr "User not found"
+
+msgid "订阅社团"
+msgstr "Follow Club"
+
+msgid "活动"
+msgstr "Event"
+
+msgid "分享"
+msgstr "Share"
+
+msgid "加为好友"
+msgstr "Add as Contact"
+
+msgid "正在等待对方审核"
+msgstr "Waiting for Your Friend"
+
+msgid "取消好友"
+msgstr "Cancel Friendship"
+
+msgid "同意申请"
+msgstr "Verify Friendship"
+
+msgid "，"
+msgstr ", "
+

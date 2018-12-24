@@ -1,0 +1,165 @@
+msgid " - 资金申请列表 - %s"
+msgstr ""
+
+msgid "您没有社联管理权限"
+msgstr ""
+
+msgid "您没有权限更改状态"
+msgstr ""
+
+msgid "此页面只接收POST请求"
+msgstr ""
+
+msgid " - 资金申请状态 - %s"
+msgstr ""
+
+msgid "成功执行请求。"
+msgstr ""
+
+msgid "成功提交"
+msgstr ""
+
+msgid "更改成功"
+msgstr ""
+
+msgid " - 活动空间申请"
+msgstr ""
+
+msgid "您没有联盟管理权限"
+msgstr ""
+
+msgid "第%d行没有数据"
+msgstr ""
+
+msgid "内容不合法"
+msgstr ""
+
+msgid " - 编辑星级评分表"
+msgstr ""
+
+msgid "不是联盟长"
+msgstr ""
+
+msgid "“%s”数据有误"
+msgstr ""
+
+msgid "由于此功能太危险，目前已经被禁用"
+msgstr ""
+
+msgid "成功更改星级"
+msgstr ""
+
+msgid "数据错误"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid "保存成功"
+msgstr ""
+
+msgid "金额必须是整数"
+msgstr ""
+
+msgid "第%d行%d列：只能精确到0.5"
+msgstr ""
+
+msgid "星级太高"
+msgstr ""
+
+msgid "打分成功"
+msgstr ""
+
+msgid "表格尚未公开"
+msgstr ""
+
+msgid "根据社联方面的要求，只有社长和社联成员才能查看此页面。请确认登录状态"
+msgstr ""
+
+msgid "成功删除社团，请刷新页面"
+msgstr ""
+
+msgid "不是社联成员"
+msgstr ""
+
+msgid "请选择资金类型"
+msgstr ""
+
+msgid " - 申请星级 - %s"
+msgstr ""
+
+msgid " - 资金申请"
+msgstr ""
+
+msgid " - 资金申请列表"
+msgstr ""
+
+msgid " - 星级评价"
+msgstr ""
+
+msgid "综合"
+msgstr ""
+
+msgid "成功对涉事社团进行处罚，请刷新页面"
+msgstr ""
+
+msgid "表单内容不全"
+msgstr ""
+
+msgid "没有找到相关社团"
+msgstr ""
+
+msgid "您没有权限查看此页面"
+msgstr ""
+
+msgid "表单信息有误"
+msgstr ""
+
+msgid "似乎在对我做一些不好的事情"
+msgstr ""
+
+msgid "表单填写不全，请不要留空任何一项"
+msgstr ""
+
+msgid "第%d行%d列数据有误"
+msgstr ""
+
+msgid "提交成功"
+msgstr ""
+
+msgid "数据错误，请联系HCC社团"
+msgstr ""
+
+msgid "删除成功"
+msgstr ""
+
+msgid "请输入反馈意见"
+msgstr ""
+
+msgid "“影响力”没有填写全"
+msgstr ""
+
+msgid "不是社长"
+msgstr ""
+
+msgid "第%d行有重复数据"
+msgstr ""
+
+msgid "数据错误: 长度不一致"
+msgstr ""
+
+msgid "忘记填写标题？"
+msgstr ""
+
+msgid "修改成功"
+msgstr ""
+
+msgid "如果为社联成员，请检查登录情况。"
+msgstr ""
+
+msgid "请先撰写评分表"
+msgstr ""
+
+msgid " - 管理社团"
+msgstr ""
+

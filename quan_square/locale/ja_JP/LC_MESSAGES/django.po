@@ -1,0 +1,30 @@
+msgid " - %s搜索"
+msgstr ""
+
+msgid " - 社团广场"
+msgstr ""
+
+msgid "成功发送反馈"
+msgstr ""
+
+msgid "反馈发送失败"
+msgstr ""
+
+msgid " - 活动一览"
+msgstr ""
+
+msgid "社团"
+msgstr ""
+
+msgid " - 帮助手册"
+msgstr ""
+
+msgid "分享"
+msgstr ""
+
+msgid "活动"
+msgstr ""
+
+msgid " - 社团名录"
+msgstr ""
+

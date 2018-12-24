@@ -1,0 +1,39 @@
+msgid "论坛"
+msgstr ""
+
+msgid "头像更新成功"
+msgstr ""
+
+msgid "一个神秘的错误出现了"
+msgstr ""
+
+msgid " - 上传%s头像"
+msgstr ""
+
+msgid "社团"
+msgstr ""
+
+msgid "你确定是在上传图片？"
+msgstr ""
+
+msgid "似乎没选择任何文件？"
+msgstr ""
+
+msgid "用户"
+msgstr ""
+
+msgid "很抱歉，您的头像格式无法被处理"
+msgstr ""
+
+msgid "您的头像朱军画质，像素渣渣"
+msgstr ""
+
+msgid "您没有权限"
+msgstr ""
+
+msgid "这个文件过大[已抛弃]"
+msgstr ""
+
+msgid "出现了一个神秘的错误"
+msgstr ""
+

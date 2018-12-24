@@ -1,0 +1,48 @@
+msgid " - 邮件群发"
+msgstr ""
+
+msgid "发送成功"
+msgstr ""
+
+msgid "验证码已使用，请重新生成"
+msgstr ""
+
+msgid "验证码已经过期，请尝试重新生成"
+msgstr ""
+
+msgid " 或 "
+msgstr ""
+
+msgid "验证码无效"
+msgstr ""
+
+msgid " - 密码重置"
+msgstr ""
+
+msgid "请输入密码"
+msgstr ""
+
+msgid "内容不全"
+msgstr ""
+
+msgid "请输入正确的邮箱，可能是 %s"
+msgstr ""
+
+msgid "成功更改密码"
+msgstr ""
+
+msgid "subtype 不正确"
+msgstr ""
+
+msgid "收信人不正确"
+msgstr ""
+
+msgid "邮件已经发送，请查收"
+msgstr ""
+
+msgid "此用户尚未注册，请尝试注册"
+msgstr ""
+
+msgid " - 找回密码"
+msgstr ""
+

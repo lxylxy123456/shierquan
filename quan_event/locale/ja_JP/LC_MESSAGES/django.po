@@ -1,0 +1,108 @@
+msgid "活动签到失败"
+msgstr ""
+
+msgid "投递事件数量超标"
+msgstr ""
+
+msgid "失败"
+msgstr ""
+
+msgid "成功为%s补签，请刷新页面"
+msgstr ""
+
+msgid "请检查输入是否存在空白或超出长度限制"
+msgstr ""
+
+msgid "开始时间>结束时间？"
+msgstr ""
+
+msgid "已经签到"
+msgstr ""
+
+msgid "活动签到成功"
+msgstr ""
+
+msgid "成功关联分享"
+msgstr ""
+
+msgid "找不到活动"
+msgstr ""
+
+msgid "找不到用户"
+msgstr ""
+
+msgid "活动已成功提交"
+msgstr ""
+
+msgid "十一圈中似乎还没有活动"
+msgstr ""
+
+msgid "没有找到这个活动，似乎过期了？"
+msgstr ""
+
+msgid "活动不合法"
+msgstr ""
+
+msgid "成功为活动点赞"
+msgstr ""
+
+msgid "您没有活动的管理权限"
+msgstr ""
+
+msgid " - %s - %s的活动"
+msgstr ""
+
+msgid "表单不完整，可向HCC汇报此错误"
+msgstr ""
+
+msgid "方法错误"
+msgstr ""
+
+msgid "成功创建签到"
+msgstr ""
+
+msgid "您没有分享的管理权限"
+msgstr ""
+
+msgid "您输入的内容不合法。"
+msgstr ""
+
+msgid "活动不存在"
+msgstr ""
+
+msgid "已成功移除活动"
+msgstr ""
+
+msgid " - %s"
+msgstr ""
+
+msgid "时间信息不完整"
+msgstr ""
+
+msgid "关注成功"
+msgstr ""
+
+msgid "您没有权限"
+msgstr ""
+
+msgid "输入内容不完整或字数过多"
+msgstr ""
+
+msgid "或许信息太长了？"
+msgstr ""
+
+msgid "成功取消分享关联"
+msgstr ""
+
+msgid "投递事件太频繁"
+msgstr ""
+
+msgid "没有设置签到"
+msgstr ""
+
+msgid "成功"
+msgstr ""
+
+msgid "您已经赞过这个活动"
+msgstr ""
+

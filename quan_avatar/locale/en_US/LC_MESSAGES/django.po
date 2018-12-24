@@ -1,0 +1,51 @@
+msgid "您的头像朱军画质，像素渣渣"
+msgstr "The resolution of your avatar is too low"
+
+msgid "您没有权限"
+msgstr "Permission denied"
+
+# Deprecated
+msgid " - 上传社团头像"
+msgstr " - Club Avatar Upload"
+
+# Deprecated
+msgid " - 上传用户头像"
+msgstr " - User Avatar Upload"
+
+# Deprecated
+msgid " - 上传论坛头像"
+msgstr " - Forum Avatar Upload"
+
+msgid "一个神秘的错误出现了"
+msgstr "A mysterious error occurred"
+
+msgid "你确定是在上传图片？"
+msgstr "Are you sure that you are uploading a picture?"
+
+msgid "很抱歉，您的头像格式无法被处理"
+msgstr "Your avatar has an indistinguishable format"
+
+msgid "头像更新成功"
+msgstr "Avatar successfully updated"
+
+msgid "似乎没选择任何文件？"
+msgstr "Not selected any files?"
+
+msgid "这个文件过大[已抛弃]"
+msgstr "Dropped: file too large"
+
+msgid "出现了一个神秘的错误"
+msgstr "A mysterious error occurred"
+
+msgid " - 上传%s头像"
+msgstr " - Upload %s Avatar"
+
+msgid "社团"
+msgstr "Club"
+
+msgid "论坛"
+msgstr "Forum"
+
+msgid "用户"
+msgstr "User"
+

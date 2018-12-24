@@ -1,0 +1,560 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-body">
+          <div class="page-header">
+            <h2 class="text-center">
+              {% t_ '社团星级评价申请' %} - {{ club.full_name }}
+            </h2>
+          </div>
+          {% if star_tend %}
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-list"></span> 
+                    {% t_ '社团' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                  <div class="" style="margin-left:2em;">
+                    <h5><strong>{% t_ '社长姓名' %}</strong> {{ head.first_name }}</h5>
+                    <h5><strong>{% t_ '所在年级' %}</strong> {{ head_grade }}</h5>
+                    <br />
+                    <div class="thumbnail">
+                      <img src="{{ avatar }}" class="img-responsive">
+                      {% if is_head %}
+                      <p class="text-center">
+                        <a class="btn btn-info" href="/avatar/club/{{ club.simp_name }}/">{% t_ '修改头像' %}</a>
+                      </p>
+                      {% endif %}
+                    </div>
+                    <h5>
+                      <strong>{% t_ '社团概况' %}</strong> 
+                      {% if is_head %}
+                      <small class="text-mute">{% t_ '回到社团主页以修改信息' %}</small>
+                      {% endif %}
+                    </h5>
+                    <p style="text-indent:2em;">{{ club.full_intro }}</p>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-hdd"></span> 
+                    {% t_ '编辑活动资料' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                  <div class="panel">
+                    {% for share in share_list %}
+                    {% ifnotequal share.data.category 'form' %}
+                    <a href="/share/{{ share.data.attach_uuid }}/" class="list-group-item">
+                      {% ifequal share.data.category 'handout' %}
+                      <span class="glyphicon glyphicon-file"></span>
+                      {% t_ '活动材料' %} - 
+                      {% endifequal %}
+                      {% ifequal share.data.category 'knowledge' %}
+                      <span class="glyphicon glyphicon-heart"></span>
+                      {% t_ '分享材料' %} - 
+                      {% endifequal %}
+                      {% ifequal share.data.category 'event' %}
+                      <span class="glyphicon glyphicon-flag"></span>
+                      {% t_ '申请材料' %} - 
+                      {% endifequal %}
+                      {% ifequal share.data.category 'news' %}
+                      <span class="glyphicon glyphicon-picture"></span>
+                      {% t_ '星级申报材料' %} - 
+                      {% endifequal %}
+                      {{ share.data.subject }}</a>
+                    {% endifnotequal %}
+                    {% endfor %}
+                  </div>
+                  {% if is_head %}
+                  <div class="panel panel-success">
+                    <div class="panel-body">
+                      <form id="contain_form" method="post" class="form" action="/share/upload/?status=query" enctype="multipart/form-data" target="upload_frame">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <div class="btn-group btn-group-justified" data-toggle="buttons" id="postCategory">
+                            <label class="btn btn-success active">
+                              <input type="radio" name="category" value="handout" autocomplete="off" checked>{% t_ '活动' %}
+                            </label>
+                            <label class="btn btn-success">
+                              <input type="radio" name="category" value="knowledge" autocomplete="off">{% t_ '分享' %}
+                            </label>
+                            <label class="btn btn-success">
+                              <input type="radio" name="category" value="event" autocomplete="off">{% t_ '申请' %}
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group has-success">
+                          <!--
+                          <label for="headName">{% t_ '标题' %}</label>
+                          -->
+                          <input name="subject" type="text" id="shareSubject" class="form-control" placeholder="{% t_ '资料标题' %}" value="{{ shareSubject }}">
+                        </div>
+                        <div class="form-group has-success">
+                          <textarea name="content" id="contentName" class="form-control hidden" rows="3">[{{ club.full_name }}] {% t_ '社团星级评价资料' %}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <div id="inputFileDiv">
+                            <input name="multiple-file" type="file" multiple="multiple" class="btn btn-success btn-block" id="inputFile" title="{% t_ '添加附件（活动的记录资料）' %}" onchange="testBtn();" data-filename-placement="inside">
+                          </div>
+                          <script id="inputFileTemplate" type="x-tmpl-mustache">
+                            <a class="file-input-wrapper btn btn-default  btn btn-success btn-block"><span>{% t_ '添加附件（活动的记录资料）' %}</span><input style="left: -32.3333px; top: 5.60001px;" name="multiple-file" multiple="multiple" class="btn btn-success btn-block" id="inputFile" title="{% t_ '添加附件（活动的记录资料）' %}" onchange="testBtn();" data-filename-placement="inside" type="file"></a>
+                          </script>
+                          <hr>
+                          <div id="file_info_group"></div>
+                          <button id="content_submit" type="button" class="btn btn-warning btn-block btn-lg" onclick="share_submit()">{% t_ '投递' %}</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <script type="text/javascript">
+					var attach_uuid = "";
+					var submit_processing = false;
+					function share_submit(){
+						if (submit_processing) {
+							return;
+						}
+						var form = getFormJson($("#contain_form"));
+						submit_processing = true;
+						ajaxBanner("/share/create/", {
+							'data': form, 
+							'attach_uuid': attach_uuid, 
+							'password': $("#password").val(), 
+							'subject': $("#shareSubject").val(), 
+							'content': $("#contentName").val(), 
+							'src': 'club', 
+							'aid': {{ club.id }}, 
+							'category': 'event', 
+						}, "#contain_form", function(msg){
+							if (msg["status"] == "success") {
+								buttonClear();
+								setTimeout('conceal_form_submit(1);', 1000);
+							}
+							submit_processing = false;
+						});
+					}
+                  </script>
+                  {% endif %}
+                </div>
+                {% include 'comp/progress.html' %}
+
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-user"></span> 
+                    {% t_ '社团成员构成' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                  <div class="progress">
+                    {% for i in member_makeup %}
+                    <div class="progress-bar{{ i.style }}" style="width: {{ i.percent }}%">
+                      <span class="sr-only">students</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>{% t_ '对应年级' %}</th>
+                        <th>{% t_ '比例' %}</th>
+                        <th>{% t_ '人数' %}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in member_makeup %}
+                      <tr>
+                        <th scope="row">{{ i.name }}</th>
+                        <td>{{ i.percent }}%</td>
+                        <td>{{ i.value }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-list"></span> 
+                    {% t_ '影响力' %}
+                  </h4>
+                </div>
+                {% if is_head %}
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                  {% for i in impact %}
+                  <h5><strong>{{ i.1 }}</strong></h5>
+                  <textarea name="impact{{ i.0 }}" id="impact{{ i.0 }}" class="form-control" rows="3" placeholder="{{ i.3 }}" style="margin-bottom: 1em; ">{{ i.2 }}</textarea>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                  {% for i in impact %}
+                  <h5><strong>{{ i.1 }}</strong></h5>
+                  <p style="text-indent: 2em; line-height: 1.5em; word-wrap: break-word; ">{{ i.2 }}</p>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-flag"></span> 
+                    {% t_ '添加社团活动' %} 
+                  </h4>
+                  {% if is_head %}
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <form id="club_prv_event" class="form" method="POST" action="/event/create/history/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <input id="event_subject" name="subject" type="text" class="form-control" placeholder="{% t_ '活动名称' %}" value="{{ event_subject }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="event_location" name="location" class="form-control" placeholder="{% t_ '活动地点' %}" value="{{ event_location }}">
+                        </div>
+                        <div class="form-group">
+                          <input type='text' placeholder="{% t_ '活动开始时间' %}" class="form-control" name='time_set' data-date-format="YYYY/MM/DD HH:mm" id="time_set" value="{{ time_set }}" />
+                        </div>
+            			<script type="text/javascript">
+							$(function () {
+								$('#time_set').datetimepicker();
+							});
+                        </script>
+                        <div class="form-group">
+                          <input type="submit" value="{% t_ '添加' %}" class="btn btn-block btn-lg btn-primary" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  {% endif %}
+                  <div class="row">
+                    {% for event in event_list %}
+                    <div class="col-sm-4 col-md-3 col-md-offset-1">
+                      <a class="btn btn-info btn-sm quan-badge" href="/event/{{ event.data.id }}/" style="margin-top: 20px;">
+                        {{ event.datetime.0 }} <span class="badge">{{ event.datetime.1 }}</span>
+                      </a>
+                    </div>
+                    <div class="col-sm-8">
+                      <h4>{{ event.data.subject }}</h4>
+                      <h5 style="text-indent: 1em;">
+                        <span class="glyphicon glyphicon-map-marker"></span> 
+                        {{ event.data.location }}
+                      </h5>
+                      <h5 style="text-indent: 1em;">
+                        <span class="glyphicon glyphicon-bullhorn"></span> 
+                        {{ event.join_num }}{% t_ '人参加了活动' %}
+                      </h5>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  {% if is_union or is_category_admin %}
+                  <h4>
+                    <span class="glyphicon glyphicon-sort"></span> 
+                    {% t_ '分数计算' %}
+                  </h4>
+                  <div class="col-md-10 col-md-offset-1">
+                    {% if is_union and is_category_admin %}
+                      <div class="alert alert-info alert-dismissible fade in" role="alert" id="warning-message">
+                        <button type="button" class="close" data-dismiss="alert">
+                          <span aria-hidden="true">&times;</span>
+                          <span class="sr-only">Close</span>
+                        </button>
+                        <strong>{% t_ '提示' %}</strong> {% t_ '请勿同时编辑两个评分项目' %}
+                      </div>
+                    {% endif %}
+                    <h4 style="margin-bottom: 1.5em; ">
+                      {% t_ '综合评分' %} {{ global_score }}
+                    </h4>
+                    <form id="score_global" class="form-horizontal" onsubmit="event.preventDefault();">
+                      {% for i in global_rubric %}
+                        <div class="form-group">
+                          <label id="score-global-label-{{ forloop.counter0 }}" class="col-sm-3">
+                            {{ i.0.0 }}
+                          </label>
+                          <div class="btn-group col-sm-9" id="score-global-{{ forloop.parentloop.counter0 }}">
+                            {% for j in i.0.1 %}
+                              <button class="btn btn-default
+                              {% ifequal j i.1 %}
+                                active
+                              {% else %}
+                                {% if not is_union %} disabled{% endif %}
+                              {% endifequal %}
+                              score-global-{{ forloop.parentloop.counter0 }}
+                              score-global-{{ forloop.parentloop.counter0 }}-{{ forloop.counter0 }}" data="{{ j }}" onclick="score('global', {{ forloop.parentloop.counter0 }}, {{ forloop.counter0 }});">
+                                {{ j }}
+                              </button>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% empty %}
+                        {% if is_union %}
+                          <a class="btn btn-warning btn-block btn-lg" href="/auth/apply/rubric/global/">
+                            {% t_ '撰写综合评分标准' %}
+                          </a>
+                        {% else %}
+                          <a class="btn btn-warning btn-block btn-lg disabled">
+                            {% t_ '尚未撰写评分标准' %}
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                      {% if is_union and global_rubric %}
+                        <button class="btn btn-success btn-block" onclick="score_submit('global')">
+                          {% t_ '提交综合评分' %}
+                        </button>
+                      {% endif %}
+                    </form>
+                    <hr />
+                    <h4 style="margin-bottom: 1.5em; ">
+                      {% t_ '个性评分' %} {{ category_score }}
+                    </h4>
+                    <form id="score_category" class="form-horizontal" onsubmit="event.preventDefault();">
+                      {% for i in category_rubric %}
+                        <div class="form-group">
+                          <label id="score-category-label-{{ forloop.counter0 }}" class="col-sm-3">
+                            {{ i.0.0 }}
+                          </label>
+                          <div class="btn-group col-sm-9">
+                            {% for j in i.0.1 %}
+                              <button class="btn btn-default
+                              {% ifequal j i.1 %}
+                                active
+                              {% else %}
+                                {% if not is_category_admin %}
+                                  disabled
+                                {% endif %}
+                              {% endifequal %}
+                              score-category-{{ forloop.parentloop.counter0 }}
+                              score-category-{{ forloop.parentloop.counter0 }}-{{ forloop.counter0 }}" data="{{ j }}" onclick="score('category', {{ forloop.parentloop.counter0 }}, {{ forloop.counter0 }});">
+                                {{ j }}
+                              </button>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% empty %}
+                        {% if is_category_admin %}
+                          <a class="btn btn-warning btn-block btn-lg" href="/auth/apply/rubric/{{ club.category }}/">
+                            {% t_ '撰写个性评分标准' %}
+                          </a>
+                        {% else %}
+                          <a class="btn btn-warning btn-block btn-lg disabled">
+                            {% t_ '尚未撰写评分标准' %}
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                      {% if is_category_admin and category_rubric %}
+                        <button class="btn btn-success btn-block" onclick="score_submit('category')">
+                          {% t_ '提交个性评分' %}
+                        </button>
+                      {% endif %}
+                    </form>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" id="star-info">
+              {% if not is_available and is_head %}
+              <h2 class="text-center">
+                <small>{% t_ '经计算，您可以申报的星级为' %}</small>
+              </h2>
+              <h1 class="text-center">
+                {% for i in star_list %}
+                  {% ifequal i 0 %}
+                  <span class="glyphicon glyphicon-star" onclick="star_change({{ forloop.counter }});"></span>
+                  {% else %}
+                  <span class="glyphicon glyphicon-star-empty" onclick="star_change({{ forloop.counter }});"></span>
+                  {% endifequal %}
+                {% endfor %}
+              </h1>
+              {% endif %}
+              <h2 class="text-center">
+                {% if is_head %}
+                  {% if star_tend %}
+                  <small>{% t_ '您选择申报的星级为' %} 
+                    <small class="text-info">{% t_ '点击' %}
+                      <span class="glyphicon glyphicon-star-empty"></span>
+                      {% t_ '以更改' %}
+                    </small>
+                  </small>
+                  {% else %}
+                  <small>{% t_ '选择您选择申报的星级' %}</small>
+                  {% endif %}
+                {% else %}
+                  <small>{% t_ '该社团申报的星级是' %}</small>
+                {% endif %}
+              </h2>
+              <h1 class="text-center">
+                {% for i in star_tend_list %}
+                  {% ifequal i 0 %}
+                  <span class="glyphicon glyphicon-star" onclick="star_change({{ forloop.counter }});"></span>
+                  {% else %}
+                  <span class="glyphicon glyphicon-star-empty" onclick="star_change({{ forloop.counter }});"></span>
+                  {% endifequal %}
+                {% endfor %}
+              </h1>
+              {% if is_failed and is_head %}
+              <h2 class="text-center">
+                <small>{% t_ '您可以通过添加' %}{{ requirement_p1d2 }}{% t_ '个历史活动和分享来达到要求' %}</small>
+              </h2>
+              {% endif %}
+              {% if star_tend %}
+              <div class="text-center">
+                {% if is_head %}
+                {% if not is_failed and changeable %}
+                <button class="btn btn-primary" onclick="submit_information();">
+                {% else %}
+                <button class="btn btn-primary" onclick="submit_information();" disabled="disabled">
+                {% endif %}
+                  <span class="glyphicon glyphicon-ok"></span> 
+                  {% t_ '提交星级申报材料' %}
+                </button>
+                <button class="btn btn-success" onclick="conceal_form_submit(0);">
+                  <span class="glyphicon glyphicon-refresh"></span> 
+                  {% t_ '强迫症刷新' %}
+                </button>
+                {% endif %}
+              </div>
+              {% endif %}
+              <hr>
+            </div>
+            <div class="col-md-offset-4 col-md-4" id="submit_div">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel-footer">
+  <br />
+  <div class="row">
+    <!--<span>友情链接：<a href="/"></a></span>-->
+    <h5 class="text-right">
+      <kbd>HCC Computer Community</kbd> x <kbd>{% t_ '社团联合会' %}</kbd> 
+    </h5>
+    <h5 class="text-right">
+      All rights reserved.
+    </h5>
+  </div>
+</div>
+
+<form class="hidden" id="conceal_form" method="GET" action="">
+  <input type="text" id="conceal_event_subject" name="event_subject">
+  <input type="text" id="conceal_time_set" name="time_set">
+  <input type="text" id="conceal_event_location" name="event_location">
+  <input type="text" id="conceal_shareSubject" name="shareSubject">
+  {% for i in impact %}
+  <input type="text" id="conceal_impact{{ i.0 }}" name="impact{{ i.0 }}">
+  {% endfor %}
+</form>
+
+<script type="text/javascript">
+var aid = {{ club.id }};
+
+$("#club_prv_event").on("submit", 
+	function(event) {
+		event.preventDefault();
+		ajaxBanner(this.action, {
+			data: getFormJson(this), 
+			aid: aid,
+			src: 'club',
+		}, "#club_prv_event", function(msg){
+			if (msg["status"] == "success") {
+				setTimeout('conceal_form_submit(0);', 1000);
+			}
+		});
+	}
+);
+
+function submit_information(){
+	if( progress_activated == 1){
+		alert("{% t_ '发布分享并重新点击“刷新”按钮' %}");
+		return;
+	}
+	ajaxBanner('/auth/empty/{{ club.simp_name }}/', {
+		{% for i in impact %}
+		impact{{ i.0 }} : $("#impact{{ i.0 }}").val(), 
+		{% endfor %}
+	}, "#submit_div");
+}
+
+function conceal_form_submit(share){
+	{% if star_tend %}
+	if( progress_activated == 1 && share == 0){
+		alert("{% t_ '发布分享并重新点击“刷新”按钮' %}");
+		return;
+	}
+	{% endif %}
+	$("#conceal_event_subject").val($("#event_subject").val());
+	$("#conceal_event_location").val($("#event_location").val());
+	$("#conceal_time_set").val($("#time_set").val());
+	$("#conceal_shareSubject").val($("#shareSubject").val());
+	{% for i in impact %}
+	$("#conceal_impact{{ i.0 }}").val($("#impact{{ i.0 }}").val());
+	{% endfor %}
+	$("#conceal_form").submit();
+}
+
+function star_change(value){
+	ajaxBanner('', {
+		star: value, 
+	}, "#submit_div", function(msg){
+		if (msg["status"] == "success") {
+			setTimeout('conceal_form_submit(0);', 1000);
+		}
+	});
+}
+
+{% if is_union or is_category_admin %}
+function score(field, row, col) {
+	$(".score-" + field + "-" + row).removeClass("active");
+	$(".score-" + field + "-" + row + "-" + col).addClass("active");
+}
+
+function score_submit(field) {
+	if (field == "global") {
+		len = {{ global_rubric_len }};
+	}
+	else {
+		len = {{ category_rubric_len }};
+	}
+	info = [];
+	for (var i = 0; i < len; i += 1) {
+		info[i] = $(".active.score-" + field + "-" + i).attr("data");
+		if (! info[i]) {
+			if (field == "global") {
+				label = $("#score-global-label-" + i).html();
+			}
+			else {
+				label = $("#score-category-label-" + i).html();
+			}
+			id = 'banner-message-' + Date.now();
+			rendered = banner_render("error", id, "{% t_ '没有选择“' %}" + label + "{% t_ '”' %}");
+			$("#score_" + field).prepend(rendered);
+			$("#" + id).fadeOut(3000);
+			return;
+		}
+	}
+	ajaxBanner("/auth/empty/{{ club.simp_name }}/", {
+		score: field, 
+		data: JSON.stringify(info), 
+	}, "#score_" + field);
+}
+{% endif %}
+</script>
+{% endblock %}

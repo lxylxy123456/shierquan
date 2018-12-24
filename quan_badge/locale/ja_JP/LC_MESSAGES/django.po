@@ -1,0 +1,33 @@
+msgid "不合规定的操作#badge"
+msgstr ""
+
+msgid "徽章删除成功"
+msgstr ""
+
+msgid "成功撤回了授予的徽章"
+msgstr ""
+
+msgid "徽章内容不完整"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid "找不到徽章"
+msgstr ""
+
+msgid "提交频率过高"
+msgstr ""
+
+msgid "已成功创建徽章"
+msgstr ""
+
+msgid "已经向%s授予过这枚徽章了"
+msgstr ""
+
+msgid "找不到接受者，请检查姓名拼写"
+msgstr ""
+
+msgid "徽章授予成功"
+msgstr ""
+

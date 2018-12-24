@@ -1,0 +1,31 @@
+{% load translate %}
+
+    <!--用户私有活动预告模块-->
+    <div class="col-sm-4 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h4 class="text-center">{% t_ '下一次活动' %}</h4>
+        </div>
+        <div class="caption">
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <p><strong>{% t_ '项目：' %}</strong>{{ event.subject }}</p>
+              <p><strong>{% t_ '时间：' %}</strong>{{ event_time }}</p>
+              <p><strong>{% t_ '地点：' %}</strong>{{ event_area }}</h5>
+              <p>{{ event_desc }}</p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <button class="btn btn-primary btn-block" type="button">
+                  {% t_ '添加到我的关注列表' %} <span class="badge">{{ event_watch }}</span>
+                </button>
+                <a href="http://shiyiquan.net/event/{{ event_id }}" class="btn btn-default btn-block" role="button">{% t_ '查看' %}</a>
+                <a href="http://shiyiquan.net/event/{{ event_id }}" class="btn btn-default btn-block" role="button">{% t_ '取消活动' %}</a>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default">{% t_ '创建签到问题' %}</button>
+              <button type="button" class="btn btn-default">{% t_ '审核过往签到' %}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

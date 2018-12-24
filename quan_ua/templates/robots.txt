@@ -1,0 +1,2 @@
+Sitemap: http://{{ request.META.HTTP_HOST }}/shiyiquan-sitemap.xml
+

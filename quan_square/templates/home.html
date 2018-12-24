@@ -1,0 +1,372 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block body %}
+  {% if background %}
+    {% if background_path %}
+  <body style="background: url('/static/images/{{ background_path }}') fixed;">
+    {% endif %}
+    {% if background_color %}
+  <body style="background-color: {{ background_color }};">
+    {% endif %}
+  {% else %}
+  <body>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+.thumbnail {
+	max-width: none;
+}
+</style>
+
+{% include 'comp/public-message.html' %}
+
+<div class="container-fluid">
+  {# original: #76925D #483F3F #5BC0DE winter:rgba(146, 115, 93, 0.9) #}
+  {% if request.user.is_authenticated %}
+  <div class="jumbotron" style="padding:40px;background-color: #007CB9; color:#F8F8F8">
+  {% else %}
+  <div class="jumbotron" style="padding:40px;background-color: #483F3F; color:#F8F8F8">
+  {% endif %}
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-7">
+        <h1 style="margin-top:0px;">{% t_ '十一圈' %}{# port #}</h1>
+        <p class="hidden-xs">{% t_ '便捷的社团活动发布&amp;管理平台。' %}</p>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        {% if request.user.is_authenticated %}
+        <p><a class="btn btn-default btn-lg btn-block" href="/user/{{ request.user.last_name }}/" role="button">{% t_ '回到个人主页' %}</a></p>
+        <p><a class="btn btn-success btn-lg btn-block" href="/create/" role="button">{% t_ '创建社团' %}</a></p>
+        {% else %}
+        <p><a class="btn btn-default btn-lg btn-block" href="/login/" role="button">{% t_ '登录' %}</a></p>
+        <p><a class="btn btn-danger btn-lg btn-block" href="/signup/" role="button">{% t_ '注册' %}</a></p>
+        {% endif %}
+      </div>
+      <div class="col-xs-12 visible-xs-block">
+        <p><small>{% t_ '便捷的社团活动发布&amp;管理平台。' %}</small></p>
+        {% if request.user.is_authenticated %}
+        <a href="/user/{{ request.user.last_name }}/" class="h1"><span class="glyphicon glyphicon-home"></span></a>
+        <span style="margin:8px;"></span>
+        <a href="/user/{{ request.user.last_name }}/edit/" class="h1"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% else %}
+        <a href="/login/" class="h1"><span class="glyphicon glyphicon-home"></span></a>
+        <span style="margin:8px;"></span>
+        <a href="/square/club/" class="h1"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+        {% endif %}
+        <span style="margin:8px;"></span>
+        <a href="/square/" class="h1"><span class="glyphicon glyphicon-flag"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <div class="panel panel-danger">
+        <div class="panel-body">
+          <p><strong>{% t_ '最近的活动' %}</strong></p>
+          <h3 class="text-center" style="margin:20px;">
+            <span class="glyphicon glyphicon-bell"></span> 
+            <a style="border-bottom: 1px dotted #777;text-decoration:None;line-height:1.5em;" href="/event/{{ event_list.0.data.id }}/" target="_blank">
+              {{ event_list.0.data.subject }}
+            </a>
+          </h3>
+          <dt><h4><span class="glyphicon glyphicon-map-marker"></span> {% t_ '地点' %}</h4></dt>
+          <dd><h4 style="text-indent:1em;">{{ event_list.0.data.location }}</h4> </dd>
+          <dt><h4><span class="glyphicon glyphicon-time"></span> {% t_ '时间' %}</h4></dt>
+          <dd><h4 style="text-indent:1em;">{{ event_list.0.date }}{{ event_list.0.time }}</h4> </dd>
+          <h4 class="text-right">
+            <small>Posted by 
+              <a href="/club/{{ event_list.0.sname }}/">
+                <span class="glyphicon glyphicon-new-window"></span>
+                {{ event_list.0.fname }}
+              </a>
+            </small>
+          </h4>
+        </div>
+        <div class="list-group">
+          {% if event_list.1 %}
+          <a href="/event/{{ event_list.1.data.id }}/" class="list-group-item text-left">
+            <span class="glyphicon glyphicon-flag"></span>
+            {{ event_list.1.data.subject }}
+          </a>
+          {% endif %}
+          {% if event_list.2 %}
+          <a href="/event/{{ event_list.2.data.id }}/" class="list-group-item text-left">
+            <span class="glyphicon glyphicon-flag"></span>
+            {{ event_list.2.data.subject }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="panel panel-warning">
+        <div class="panel-body">
+          <p><strong>{% t_ '社团广场' %}</strong></p>
+          <div class="row">
+            {% for club_dict in club_list %}
+            <div class="col-xs-12 col-sm-4 col-md-12">
+              <div class="media">
+                <div class="media-left">
+                  <img style="width: 64px; height: 64px;" src="{{ club_dict.avatar }}" class="thumbnail img-responsive">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    {{ club_dict.data.full_name }} 
+                    <a href="/club/{{ club_dict.data.simp_name }}/">
+                      <span class="glyphicon glyphicon-log-in"></span>
+                    </a>
+                  </h4>
+                  <p class="text-left">
+                    {% if club_dict.follower %}
+                    <abbr title="{{ club_dict.followee }}等关注">{{ club_dict.follower }}</abbr> 
+                    {% t_ '人关注' %}
+                    {% else %}
+                    {% t_ '0 人关注' %}
+                    {% endif %}
+                  </p>
+                  <p class="text-left"><small>
+                    {% ifequal club_dict.data.category 'other' %}
+                    {% t_ '暂无分类' %}
+                    {% else %}
+                    {% t_ '来自' %}{{ club_dict.category }}{% t_ '分类' %}
+                    {% endifequal %}
+                  </small></p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="list-group">
+          <a href="/wall/" class="list-group-item text-center list-group-item-warning">
+            <span class=""></span>{% t_ '查看更多社团' %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+		var time_update = 0.0;
+		var time_last = 0.0;
+
+		ajaxSlow(public_message_url, function(){
+			return { time_update: time_update }; 
+		}, "json", function(data){
+			time_update = data['time_update'];
+			if (time_last == 0.0){
+				time_last = data['time_last'];
+			}
+			public_message_render($("#msg-insert"), data, 1, true);
+		}, 12000);
+
+		function signature_modify(event){
+			event.preventDefault();
+			ajaxBanner("/user/{{ request.user.last_name }}/signature/", {
+				signature: $("#signature").val(), 
+			}, "", function(msg){
+				$("#status-text").html(msg["content"])
+				$("#status-text").fadeIn();
+				$("#status-text").fadeOut(3000);
+				$("#signature").val("");
+				ajaxGet(public_message_url, {
+					time_update: time_update, 
+				}, "json", function(data){
+					time_update = data['time_update'];
+					if (time_last == 0.0){
+						time_last = data['time_last'];
+					}
+					public_message_render($("#msg-insert"), data, 1, true);
+				});
+			});
+		}
+
+		function updateOriginStatus(){
+			if (time_last == 0.0) {
+				return;
+			}
+			ajaxGet(public_message_url, {
+				time_update: -time_last,
+			}, "json", function(data){
+				time_last = data['time_last']
+				public_message_render($("#msg-insert"), data, 0, true);
+			});
+		}
+		
+    </script>
+    <div id="signature_modify_div" class="col-sm-12 col-md-5">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p><strong>{% t_ '天台' %}</strong></p>
+          {% if request.user.is_authenticated %}
+          <form action="/user/{{ request.user.last_name }}/signature/" method="POST" id="signature_modify" onsubmit="signature_modify(event);">
+            {% csrf_token %}
+            <div class="form-group" style="margin-bottom:10px;">
+              <textarea name="signature" id="signature" class="form-control" rows="2" placeholder="{% t_ '正在想什么？' %}" onkeydown="character_verify('full_intro', 1000);"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-9">
+                <h5 class="text-info" id="status-text" style="display:None;">
+                  {% t_ '成功更新动态' %}
+                </h5>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-block btn-primary">
+                  <span class="glyphicon glyphicon-retweet"></span> {% t_ '更新' %} 
+                </button>
+              </div>
+            </div>
+            <br>
+          </form>
+          {% else %}
+          <div class="form-group text-center" style="margin-bottom:10px;">
+            <a href="/login/?url=/" class="btn btn-default">{% t_ '登录后开启天台' %}</a>
+          </div>
+          {% endif %}
+          <div class="row" id="msg-insert">
+          </div>
+        </div>
+        <div class="list-group">
+          <a onclick="updateOriginStatus();" class="list-group-item text-center">
+            <span class="glyphicon glyphicon-chevron-up"></span> {% t_ '载入更多动态' %}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+{# start of 搜索 #}
+      <div class="thumbnail">
+        <div class="caption">
+          <div class="row">
+            <div class="col-md-12">
+              <p><strong>{% t_ '搜索社团' %}</strong></p>
+            </div>
+            <div class="col-md-12">
+              <form method="get" action="/search/">
+                <div class="input-group">
+                  <input name="query" type="text" class="form-control" placeholder="{% t_ '输入社团关键词' %}">
+                  <span class="input-group-btn">
+                    {% if request.user.is_authenticated %}
+                    <button class="btn btn-success" type="submit">
+                    {% else %}
+                    <button class="btn btn-danger" type="submit">
+                    {% endif %}
+                      <span class="glyphicon glyphicon-menu-right"></span> {% t_ '探索' %}
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+              </form>
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        </div>
+      </div>
+{# end of 搜索 #}
+{# start of 通知 #}
+      <div class="list-group">
+        <div class="modal-content">
+          <div class="modal-header">
+          {% if note %}
+            <h4 class="modal-title">{{ note.data.subject }}</h4>
+          {% else %}
+            <h4 class="modal-title">{% t_ '社团联合会通知' %}</h4>
+          {% endif %}
+          </div>
+          <div class="modal-body">
+          {% if note %}
+            <p style="line-height:2em;">{{ note.data.content }}</p>
+            {% if note.file_list %}
+              <hr style="border-top: 1px dashed rgb(178, 181, 185);" />
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+              {% for i in note.file_list %}
+                <li role="presentation">
+                  <a href="{{ i.url }}"><span class="glyphicon glyphicon-link"></span> {{ i.name }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
+          {% else %}
+            <p>{% t_ '暂时没有通知' %}</p>
+          {% endif %}
+          <div id="notice_status"></div>
+          </div>
+          <div class="modal-footer">
+            <a type="button" href="/share/{{ note.data.attach_uuid }}/" class="btn btn-default">{% t_ '查看详情' %}</a>
+            <button id="note_read_button" type="button" class="btn btn-primary" onclick="note_known();"{% if note_read %} disabled="disabled"{% endif %}>{% t_ '晓得' %}</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+{# end of 通知 #}
+{# start of APP #}
+      <div class="thumbnail">
+        <div class="caption">
+          <div class="row">
+            <div class="col-md-12">
+              <p><strong>{% t_ 'APP下载' %}</strong></p>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-sm-3 text-center" style="padding-right: 7.5px; ">
+                  <a class="btn btn-default btn-block quan-badge disabled" href="" target="_blank">
+                    iOS
+                  </a>
+                </div>
+                <div class="col-sm-4 text-center" style="padding-right: 7.5px; padding-left: 7.5px; ">
+                  <a class="btn btn-success btn-block quan-badge" href="http://c.hcc.io/f/shiyiquan-release/?download_file=3973727" target="_blank">
+                    Android<!-- 安卓版本1.17结束 -->
+                  </a>
+                </div>
+                <div class="col-sm-5 text-center" style="padding-left: 7.5px; ">
+                  <a class="btn btn-primary btn-block quan-badge" href="https://www.microsoft.com/zh-cn/store/apps/十一圈/9nblgggzxtpd" target="_blank">
+                    Windows Phone
+                  </a>
+                </div>
+              </div>
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        </div>
+      </div>
+{# end of APP #}
+      <br />
+    </div>
+    <div class="col-sm-12 col-md-12"></div>
+    <!--
+    <div class="col-sm-12 col-md-3" data-spy="affix" data-offset-top="1200" >
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <p><strong>快速链接</strong></p>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
+
+<div class="panel-footer">
+  <br />
+  <div class="row">
+    <!--<span>友情链接：<a href="/"></a></span>-->
+    <h5 class="text-right">
+      <kbd>HCC Computer Community</kbd> x <kbd>{% t_ '社团联合会' %}</kbd> 
+    </h5>
+    <h5 class="text-right">
+      All rights reserved.
+    </h5>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('.quan-badge').tooltip('hide')
+function note_known(){
+	ajaxBanner("/home/note-read/", {}, "#notice_status", function(msg){
+		if (msg["status"] == "success"){
+			$("#note_read_button").attr("disabled", "disabled");
+		}
+	});
+}
+</script>
+
+{% endblock %}

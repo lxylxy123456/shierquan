@@ -1,0 +1,27 @@
+msgid "%d天"
+msgstr "%d日"
+
+msgid "%d小时"
+msgstr "%d時間"
+
+msgid "前"
+msgstr "前"
+
+msgid "参数错误"
+msgstr "パラメータエラー"
+
+msgid "SECURITY_ERROR: 严格检测失败"
+msgstr "SECURITY_ERROR: 厳格なテストの失敗"
+
+msgid "%d分钟"
+msgstr "%d分"
+
+msgid "找不到文件"
+msgstr "ファイル未検出"
+
+msgid "不到一分钟"
+msgstr "一分未満"
+
+msgid "后"
+msgstr "後"
+

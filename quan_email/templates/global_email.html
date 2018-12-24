@@ -1,0 +1,148 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div id="send_form" class="col-sm-offset-2 col-md-offset-3 col-sm-8 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{% t_ '群发邮件' %}</div>
+        <div class="panel-body">
+          <div id="mainbody"></div>
+          <form class="form-horizontal" role="form" method="post" action="/global/" id="signup-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="reciever" class="col-sm-2 control-label">{% t_ '收件人' %}</label>
+            <div class="col-sm-8">
+              <label class="radio-inline">
+                <input type="radio" name="reciever" id="reciever_head" value="head" checked> {% t_ '所有社长' %}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="reciever" id="reciever_all" value="all"> {% t_ '所有用户' %}
+              </label>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="reciever" class="col-sm-2 control-label">{% t_ '类型' %}</label>
+            <div class="col-sm-8">
+              <label class="radio-inline">
+                <input type="radio" name="subtype" id="type_html" value="html" checked> html
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="subtype" id="type_plain" value="plain"> plain
+              </label>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="col-sm-2 control-label">{% t_ '标题' %}</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="content" class="col-sm-2 control-label">{% t_ '内容' %}</label>
+            <div class="col-sm-8">
+              <textarea type="email" class="form-control" id="content" name="content" placeholder="Content"></textarea>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <button type="submit" class="btn btn-primary btn-block">{% t_ '发送' %}</button>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+{# 以上为表单，以下为结果 #}
+    <div id="result" class="col-sm-12 col-md-12 hidden">
+       <div class="jumbotron list-group-item-info" style="padding:24px;">
+          <script type="text/javascript">
+			$(document).ready(function(){
+				$("#save-as-picset").click(function(){
+					$("#upload-to").attr("value",'picset');
+ 				});
+				$("#save-as-fileset").click(function(){
+					$("#upload-to").attr("value",'fileset');
+ 				});
+			});
+          </script>
+          <h1 class="text-center">
+            {% t_ '发送成功' %}
+            <small>Hello, {{ request.user.first_name }}! </small>
+          </h1>
+          <hr />
+          <div class="row">
+            <div class="col-sm-10 col-md-10 col-sm-offset-1">
+              <h3>{% t_ '收件人列表' %}</h3>
+              <table class="table">
+                <thead>
+                  <tr class="bold">
+                    <th>#</th>
+                    <th>{% t_ '姓名' %}</th>
+                    <th>{% t_ '邮箱' %}</th>
+                    <th>{% t_ '状态' %}</th>
+                  </tr>
+                </thead>
+                <tbody id="result_tbody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% verbatim %}
+<script id="result_template" type="x-tmpl-mustache">
+  <tr {{ #k }}class="danger"{{ /k }}>
+    <th class="row">{{ forloop.counter }}</th>
+    <td>{{ i }}</td>
+    <td>{{ j }}</td>
+    <td>
+      {{ #k }}{{ k }}{{ /k }}
+      {{ #not_k }}{% t_ '发送成功' %}{{ /not_k }}
+    </td>
+  </tr>
+</script>
+{% endverbatim %}
+
+<script type="text/javascript">
+$("#signup-form").on("submit", function (event) {
+	event.preventDefault();
+	ajaxBanner(this.action, {
+		data: getFormJson(this), 
+	}, "#mainbody", function (msg){
+		if (msg["status"] == "success") {
+			$("#send_form").hide();
+			template = $("#result_template").html()
+			Mustache.parse(template);
+			result_list = msg["result_list"];
+			for (var i = 0; i < result_list.length; i += 1) {
+				dict = {
+					i: result_list[i][0], 
+					j: result_list[i][1], 
+					k: result_list[i][2], 
+					not_k: !result_list[i][2], 
+				}
+				$("#result_tbody").append(Mustache.render(template, dict))
+			}
+			$("#result").removeClass("hidden");
+			return "preventDefault";
+		}
+	});
+});
+</script>
+
+{% endblock %}

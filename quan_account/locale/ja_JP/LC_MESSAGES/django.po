@@ -1,0 +1,192 @@
+msgid "社团的新社长尚未在十一圈落户"
+msgstr ""
+
+msgid "Authentication error"
+msgstr ""
+
+msgid "请通过传输break确认"
+msgstr ""
+
+msgid " - 编辑%s的信息"
+msgstr ""
+
+msgid "链接太多了，请删除几个再试"
+msgstr ""
+
+msgid " - 创建社团"
+msgstr ""
+
+msgid "指派的副社长尚未在十一圈落户"
+msgstr ""
+
+msgid "请重新输入邮箱地址"
+msgstr ""
+
+msgid "副社长非本社团成员"
+msgstr ""
+
+msgid "请指定被跟随者"
+msgstr ""
+
+msgid "请登录十一圈后再进行操作"
+msgstr ""
+
+msgid "成功退出社团，请刷新"
+msgstr ""
+
+msgid "年级输入有误"
+msgstr ""
+
+msgid "填写30个以内的大小写字母或减号"
+msgstr ""
+
+msgid "该姓名不存在于学校数据库中"
+msgstr ""
+
+msgid "该姓名已被注册。"
+msgstr "30文字またはマイナス記号未満の入力"
+
+msgid "UA not found, please contact the admin"
+msgstr ""
+
+msgid "Service Unavailable"
+msgstr ""
+
+msgid "昵称已被注册"
+msgstr ""
+
+msgid "表单填写不全"
+msgstr ""
+
+msgid "密码修改成功，请重新登录"
+msgstr ""
+
+msgid "链接添加成功"
+msgstr ""
+
+msgid "社长不可以退出社团"
+msgstr ""
+
+msgid "数据错误"
+msgstr ""
+
+msgid "请输入查询内容"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid "没能找到相关信息"
+msgstr ""
+
+msgid "请使用小写字母和连线符组合链接 如：test-user"
+msgstr ""
+
+msgid "成功注册。重定向至shiyiquan.net/login/"
+msgstr ""
+
+msgid "找不到记录，请刷新页面"
+msgstr ""
+
+msgid "链接删除成功"
+msgstr ""
+
+msgid "请指定好友"
+msgstr ""
+
+msgid "没有输入任何姓名"
+msgstr ""
+
+msgid "Login Success"
+msgstr ""
+
+msgid "这个名称已经被占用了"
+msgstr ""
+
+msgid "登录成功，正在跳转"
+msgstr ""
+
+msgid "请使用小写字母和连线符组合链接 如：test-club"
+msgstr ""
+
+msgid "操作成功"
+msgstr ""
+
+msgid " - 登录"
+msgstr ""
+
+msgid "将社团新社长指派给原社长"
+msgstr ""
+
+msgid "输入内容不完整或过长"
+msgstr ""
+
+msgid "昵称已被保留，无法注册"
+msgstr ""
+
+msgid "表单输入有误，请重新输入"
+msgstr ""
+
+msgid "成功修改个人信息"
+msgstr ""
+
+msgid "手机号码输入有误"
+msgstr ""
+
+msgid "副社长已被指派"
+msgstr ""
+
+msgid "请选择分类"
+msgstr ""
+
+msgid " - 修改密码"
+msgstr ""
+
+msgid "请耐心等待对方确认"
+msgstr ""
+
+msgid "密码不可为空"
+msgstr ""
+
+msgid "您没有社团管理权限"
+msgstr ""
+
+msgid "您的请求被认为可能是攻击，请稍后重试"
+msgstr ""
+
+msgid " - 注册"
+msgstr ""
+
+msgid "社团名称已被注册"
+msgstr ""
+
+msgid "给别的社团的人？"
+msgstr ""
+
+msgid "社团创建成功"
+msgstr ""
+
+msgid "成功提交申请，请等待审核"
+msgstr ""
+
+msgid "邮箱重复或表单输入有误"
+msgstr ""
+
+msgid "修改成功"
+msgstr ""
+
+msgid "如果为社联成员，请检查登录情况。"
+msgstr ""
+
+msgid "您输入的字数已经超出限制"
+msgstr ""
+
+msgid "邮箱地址或密码错误"
+msgstr ""
+
+msgid "原密码错误"
+msgstr ""
+
+msgid " - 编辑个人信息"
+msgstr ""
+

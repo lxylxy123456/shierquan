@@ -1,0 +1,59 @@
+{% extends "form_fluid_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+          {% if presentation_list %}
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            {% for share in presentation_list %}
+              {% if forloop.counter0 %}
+              <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"></li>
+              {% else %}
+              <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+              {% endif %}
+            {% endfor %}
+            </ol>
+            <div class="carousel-inner" role="listbox">
+            {% for share in presentation_list %}
+              {% if forloop.counter0 %}
+              <div class="item">
+              {% else %}
+              <div class="item active">
+              {% endif %}
+                <img src="{{ share.link }}" class="img-rounded" style="margin:0px auto;">
+                <div class="carousel-caption">
+                {{ share.title }}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+        
+            <a class="carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control" style="right: 0px;left: auto;" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          {% else %}
+          <div class="col-xs-10 col-md-10 col-md-offset-1">
+            <p class="text-center">{% t_ '暂时没有分享图片' %}</p>
+          </div>
+          {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+msgid "验证码已使用，请重新生成"
+msgstr "The Certification code is already used, please generate it again"
+
+msgid " - 邮件群发"
+msgstr " - Batch Sender"
+
+msgid "请输入正确的邮箱，可能是 %s"
+msgstr "Please input the correct email address. It maybe %s"
+
+msgid " 或 "
+msgstr " or "
+
+msgid "发送成功"
+msgstr "Successfully sent"
+
+msgid "邮件已经发送，请查收"
+msgstr "The email is already sent, please follow the instructions included"
+
+msgid "验证码已经过期，请尝试重新生成"
+msgstr "The certification code is antiquated, please generate it again"
+
+msgid "此用户尚未注册，请尝试注册"
+msgstr "This user is not registered, please try to register"
+
+msgid "成功更改密码"
+msgstr "Password changed correctly"
+
+msgid "内容不全"
+msgstr "Incomplete content"
+
+msgid "收信人不正确"
+msgstr "Incorrect receiver"
+
+msgid "验证码无效"
+msgstr "Invalid certification code"
+
+msgid "subtype 不正确"
+msgstr "Invalid subtype"
+
+msgid " - 找回密码"
+msgstr " - Password Reset"
+
+msgid " - 密码重置"
+msgstr " - Password Reset"
+
+msgid "请输入密码"
+msgstr "Please input the password"
+

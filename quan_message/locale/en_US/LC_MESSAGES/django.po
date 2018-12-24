@@ -1,0 +1,33 @@
+msgid "请先登录"
+msgstr "Please login first"
+
+msgid "请写内容"
+msgstr "Empty Content"
+
+msgid "您还没有登录"
+msgstr "You have not logged in yet"
+
+msgid "权限错误"
+msgstr "Permission error"
+
+msgid "参数错误"
+msgstr "Parameter error"
+
+msgid "请先登录再发送消息"
+msgstr "Please log in before writing"
+
+msgid "请求方法不正确"
+msgstr "Invalid request method"
+
+msgid "投递成功"
+msgstr "Successfully posted"
+
+msgid "请指明收件人"
+msgstr "Please indicate reciever"
+
+msgid "参数错误，请联系HCC社团以解决"
+msgstr "Parameter error, please contact HCC Computer Community"
+
+msgid "不能发送空白消息"
+msgstr "Cannot send blank message"
+

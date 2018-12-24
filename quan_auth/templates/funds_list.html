@@ -1,0 +1,157 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-body">
+          <div class="page-header">
+            <h2 class="text-center">
+              {% t_ '社团资金申请' %} - {{ club.full_name }}
+            </h2>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-12 hidden-sm hidden-xs">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>
+                    <span class="glyphicon glyphicon-info-sign"></span> 
+                    {% t_ '基本信息' %}
+                  </h4>
+                </div>
+                <div class="col-sm-12">
+                  <div class="" style="margin-left:2em;">
+                    <br />
+                    <dl class="dl-horizontal">
+                      <dt>{% t_ '社团全称' %}</dt>
+                      <dd>{{ club.full_name }}</dd>
+                      <dt>{% t_ '社长姓名' %}</dt>
+                      <dd>{{ head.first_name }}</dd>
+                      <dt>{% t_ '联系方式' %}</dt>
+                      <dd>{{ head_phone }}</dd>
+                      <dt>{% t_ '所在年级' %}</dt>
+                      <dd>{{ head_grade }}</dd>
+                    </dl>
+                    <div class="row hidden-sm hidden-xs">
+                      <div class="thumbnail col-md-10 col-md-offset-1">
+                        <img src="{{ avatar }}" class="img-responsive">
+                      </div>
+                    </div>
+                    <h5>
+                      <strong>{% t_ '社团概况' %}</strong>
+                    </h5>
+                    <p style="text-indent:2em;">{{ club.full_intro }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+              <div class="col-md-12">
+                <h4>
+                  <span class="glyphicon glyphicon-list"></span> 
+                  {% t_ '申请列表' %}
+                </h4>
+              </div>
+              <div class="col-md-12">
+                {% if funds_list %}
+                  <div class="row">
+                    <div class="col-xs-6" style="padding-right: 5px; ">
+                      <button data-toggle="modal" data-target="#modal-agreement" class="btn btn-info btn-block" style="margin-bottom: 10px; margin-right: 5px; ">
+                        <span class="glyphicon glyphicon-file"></span> {% t_ '查看协议' %}
+                      </button>
+                    </div>
+                    <div class="col-xs-6" style="padding-left: 5px; ">
+                      <a href="/auth/funds/{{ club.simp_name }}/apply/" class="btn btn-success btn-block" style="margin-bottom: 10px; ">
+                        <span class="glyphicon glyphicon-plus"></span> {% t_ '新建申请' %}
+                      </a>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <td><h5>{% t_ '标题' %}</h5></td>
+                          <td><h5>{% t_ '类型' %}</h5></td>
+                          <td><h5>{% t_ '状态' %}</h5></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in funds_list %}
+                          <tr onclick="window.location = '/auth/funds/show/{{ i.data.stars }}/'; ">
+                            <td><h5><a href="/auth/funds/show/{{ i.data.stars }}/">{{ i.extra.0 }}</a></h5></td>
+                            <td><h5>{{ i.type }}</h5></td>
+                            <td><h5>{{ i.status }}</h5></td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                {% else %}
+                  <h1 class="text-center" style="padding-top: 20px; font-size: 10em; ">
+                    <span class="glyphicon glyphicon-inbox" style=""></span>
+                  </h1>
+                  <h1 class="text-center" style="padding-bottom: 20px; ">{% t_ '还没有提交申请' %}</h1>
+                  <hr />
+                  <h1 class="text-center">
+                    <a href="/auth/funds/{{ club.simp_name }}/apply/" class="btn btn-success btn-lg">
+                      <span class="glyphicon glyphicon-send"></span> {% t_ '新建申请' %}
+                    </a>
+                  </h1>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-agreement" tabindex="-1" role="dialog" aria-labelledby="modal-agreement-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        {% if funds_list %}
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {% endif %}
+        <h4 class="modal-title text-center" id="modal-agreement-label">社团资金申请协议</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li>我承诺按照《<a href="/share/download/?uuid=2e645ff0&tid=8022482;">社团资金申请方案</a>》的各项条款执行，不做出违背《<a href="/share/download/?uuid=2e645ff0&tid=8022482;">社团资金申请方案</a>》的行为</li>
+          <li>我同意不晚于活动结束后一个月之内呈现社团活动成果，将成果证明发布（如照片等）到社交平台或提交给社联，超过一个月我愿意承担相关后果，包括但不限于降低本社团星级评选分数，严重者还将会取消本社团参选星级评价的资格</li>
+          <li>我将会提供相关的材料证明资金去处（如发票、交易记录等），愿意接受社团联合会对资金去处的审查，保证资金合理用到本次活动当中。若未上交相关资料同意将此项目的资金在活动结束一个月前全部归还至社团联合会中</li>
+          <li>若本人违背《<a href="/share/download/?uuid=2e645ff0&tid=8022482;">社团资金申请方案</a>》，我会按照《<a href="/share/download/?uuid=2e645ff0&tid=8022482;">社团资金申请方案</a>》的相关惩罚措施执行，包括但不限于降低本社团星级评选分数、收回项目资金、剥夺资金申请权利、收取违约金</li>
+          <li>我明白社团联合会对《<a href="/share/download/?uuid=2e645ff0&tid=8022482;">社团资金申请方案</a>》具有最终解释权。</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        {% if funds_list %}
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '关闭' %}</button>
+        {% else %}
+          <button type="button" class="btn btn-success btn-block" onclick="modal_close();">我已经阅读并同意《社团资金申请方案》和以上条款</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if not funds_list %}
+<script type="text/javascript">
+var agreement_read = false;
+$("#modal-agreement").modal('show');
+$("#modal-agreement").on("hidden.bs.modal", function(e) {
+	if (!agreement_read) {
+		$("#modal-agreement").modal('show');
+	}
+});
+function modal_close() {
+	agreement_read = true;
+	$("#modal-agreement").modal('hide');
+}
+</script>
+{% endif %}
+{% endblock %}
+

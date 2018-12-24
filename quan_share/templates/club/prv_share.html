@@ -1,0 +1,172 @@
+{% load translate %}
+
+<div class="panel panel-success">
+  <div class="panel-body">
+    <div class="col-xs-2 col-md-2"></div>
+    <div class="col-xs-8 col-md-8">
+      <h4 class="text-center">{% t_ '分享' %}</h4>
+    </div>
+    <div class="col-xs-2 col-md-2">
+    	<a type="button" class="btn btn-default" data-toggle="modal" data-target="#share_add_box" title="{% t_ '添加分享' %}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
+  <div class="panel-body">
+  </div>
+    {% if presentation_list %}
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+      {% for share in presentation_list %}
+        {% if forloop.counter0 %}
+        <div class="item">
+        {% else %}
+        <div class="item active">
+        {% endif %}
+          <img src="{{ share.link }}" class="img-rounded" style="margin:0px auto;">
+          <!--
+          <div class="carousel-caption">
+          {{ share.title }}
+          </div>
+          -->
+        </div>
+        {% endfor %}
+      </div>
+  
+      <a class="carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control" style="right: 0px;left: auto;" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="list-group">
+    {% for share in share_box %}
+    <a href="{{ share.link }}" class="list-group-item">
+    {% ifequal share.data.category 'handout' %}
+      <span class="glyphicon glyphicon-file"></span> 
+    {% endifequal %}
+    {% ifequal share.data.category 'knowledge' %}
+      <span class="glyphicon glyphicon-heart"></span> 
+    {% endifequal %}
+    {% ifequal share.data.category 'event' %}
+      <span class="glyphicon glyphicon-flag"></span> 
+    {% endifequal %}
+    {% ifequal share.data.category 'news' %}
+      <span class="glyphicon glyphicon-picture"></span> 
+    {% endifequal %}
+    {% ifequal share.data.category 'form' %}
+      <span class="glyphicon glyphicon-inbox"></span> 
+    {% endifequal %}
+    {{ share.data.subject }}</a>
+    {% endfor %}
+    {% if not share_box %}
+    <a href="#" class="list-group-item">{% t_ '暂时没有分享' %}</a>
+    <!-- <a href="#" class="list-group-item">{% t_ '上传新分享' %}</a> -->
+    {% else %}
+    <a href="/club/{{ club.simp_name }}/detail/?category=share;" class="list-group-item list-group-item-success">
+      {% t_ '查看所有分享' %}
+    </a>
+    <!--<a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#share_add_box"> {% t_ '添加分享' %} </a>-->
+    {% endif %}
+  </div>
+</div>
+
+<div class="modal fade" id="share_add_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="fintro_label">{% t_ '投递分享' %} - {{ club.full_name }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="caption">
+          <form id="contain_form" method="post" class="form" action="/share/upload/?status=query" enctype="multipart/form-data" target="upload_frame">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="btn-group btn-group-justified" data-toggle="buttons" id="postCategory">
+                <label class="btn btn-success active">
+                  <input type="radio" name="category" value="handout" autocomplete="off" checked>{% t_ '资料' %}
+                </label>
+                <label class="btn btn-success">
+                  <input type="radio" name="category" value="knowledge" autocomplete="off">{% t_ '快讯' %}
+                </label>
+                <label class="btn btn-success">
+                  <input type="radio" name="category" value="event" autocomplete="off">{% t_ '记录' %}
+                </label>
+<!--
+                <label class="btn btn-success">
+                  <input type="radio" name="category" value="form" autocomplete="off">{% t_ '申请表' %}
+                </label>
+-->
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <!--
+              <label for="headName">{% t_ '标题' %}</label>
+              -->
+              <input name="subject" type="text" id="shareSubject" class="form-control" placeholder="{% t_ '分享标题' %}">
+            </div>
+            <div class="form-group has-success">
+              <!--
+              <label for="contentName">{% t_ '内容' %}</label>
+              -->
+              <textarea name="content" id="contentName" class="form-control" rows="3" placeholder="{% t_ '说明内容' %}"></textarea>
+            </div>
+            <!--
+            <div class="form-group has-success">
+              <input name="password" type="text" id="password" class="form-control" placeholder="{% t_ '分享密码' %}">
+            </div> 
+            -->
+            <div class="form-group">
+              <div id="inputFileDiv">
+                <input name="multiple-file" type="file" multiple="multiple" class="btn btn-success btn-block" id="inputFile" title="{% t_ '添加附件' %}" onchange="testBtn();" data-filename-placement="inside">
+              </div>
+              <div id="auto_submit_div" class="checkbox" style="display: none;">
+                <label>
+                  <input type="checkbox" id="auto_submit"/>
+                  {% t_ '上传后自动发送' %} [{% t_ '警告: 这是一个实验功能' %}]
+                </label>
+              </div>
+              <script id="inputFileTemplate" type="x-tmpl-mustache">
+                <a class="file-input-wrapper btn btn-default  btn btn-success btn-block"><span>{% t_ '添加附件' %}</span><input style="left: -32.3333px; top: 5.60001px;" name="multiple-file" multiple="multiple" class="btn btn-success btn-block" id="inputFile" title="{% t_ '添加附件' %}" onchange="testBtn();" data-filename-placement="inside" type="file"></a>
+              </script>
+              <div id="file_info_group"></div>
+            </div>
+          </form>
+        </div>
+        <script type="text/javascript">
+		var attach_uuid = "";
+		var submit_processing = false;
+		function share_submit(){
+			if (submit_processing) {
+				return;
+			}
+			var form = getFormJson($("#contain_form"));
+			submit_processing = true;
+			ajaxBanner("/share/create/" , {
+				'data': form, 
+				'attach_uuid': attach_uuid, 
+				'password': $("#password").val(), 
+				'subject': $("#shareSubject").val(), 
+				'content': $("#contentName").val(), 
+				'src': 'club', 
+				'aid': {{ club.id }}, 
+			}, "#contain_form", function(msg){
+				if (msg["status"] == "success") {
+					buttonClear();
+				}
+				submit_processing = false;
+			});
+		}
+        </script>
+        {% include 'comp/progress.html' %}
+      </div>
+      <div class="modal-footer">
+        <button id="content_submit" type="button" class="btn btn-success" onclick="share_submit()">{% t_ '投递' %}</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '取消' %}</button>
+      </div>
+    </div>
+  </div>
+</div>

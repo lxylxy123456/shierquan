@@ -1,0 +1,16 @@
+{% include 'comp/public-message.html' %}
+{% load translate %}
+
+<script type="text/javascript">
+	var footprint_time_update = 0.0;
+	ajaxSlow(public_message_url, function (){
+		return {
+			'time_update': footprint_time_update,
+			'uid': {{ user.id }}, 
+			'relation': 'self', 
+		};
+	}, "json", function(data){
+		footprint_time_update = data['time_update'];
+		public_message_render($("#footprint"), data, 1, false);
+	}, 10000);
+</script>

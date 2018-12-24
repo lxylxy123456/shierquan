@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/user/sitemap.xml</loc>
+   </sitemap>
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/club/sitemap.xml</loc>
+   </sitemap>
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/event/sitemap.xml</loc>
+   </sitemap>
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/forum/sitemap.xml</loc>
+   </sitemap>
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/news/sitemap.xml</loc>
+   </sitemap>
+   <sitemap>
+      <loc>http://{{ request.META.HTTP_HOST }}/share/sitemap.xml</loc>
+   </sitemap>
+</sitemapindex>

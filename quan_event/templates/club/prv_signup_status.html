@@ -1,0 +1,40 @@
+{% include 'club/prv_event_list.html' %}
+{% load translate %}
+
+<div class="modal fade" id="event_signup_status_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="fintro_label">{% t_ '签到状况' %} - {{ club.full_name }}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{% t_ '姓名' %}</th>
+              <th>{% t_ '年级' %}</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in event.club_member %}
+            {% ifequal i.status_en 'success' %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ i.name }}</td>
+              <td>{{ i.grade }}</td>
+            </tr>
+            {% endifequal %}
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+            <a href="/event/{{ event.id }}/" class="btn btn-default">{% t_ '查看详情' %}</a>
+            <a href="/event/{{ event.id }}/" class="btn btn-warning">{% t_ '补签' %}</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '关闭' %}</button>
+      </div>
+    </div>
+  </div>
+</div>

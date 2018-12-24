@@ -1,0 +1,236 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<!--社团联合会核心成员均可以进入该页面-->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">{% t_ '社团星级申报' %}</div>
+        <div class="panel-body">
+<!----
+          <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active">
+              <a href="/auth/apply/">
+                <span class="glyphicon glyphicon-inbox"></span>
+                {% if is_auth %}
+                {% t_ '申请前台' %}
+                {% else %}
+                {% t_ '所有申请' %}
+                {% endif %}
+              </a>
+            </li>
+            <li role="presentation" class="dropdown" disable="disable">
+              <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                {% t_ '审核状态' %} <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#" id="granted">{% t_ '已通过' %}</a></li>
+                {# <li role="presentation"><a href="#" id="denied">{% t_ '未通过' %}</a></li> #}
+                <li class="divider"></li>
+                <li role="presentation"><a href="#" id="droped">{% t_ '材料不足' %}</a></li>
+                <li role="presentation"><a href="#" id="broken">{% t_ '附件损坏' %}</a></li>
+                <li class="divider"></li>
+                <li role="presentation"><a href="#" id="waiting">{% t_ '尚未审核' %}</a></li>
+                <li role="presentation"><a href="#" id="general">{% t_ '查看全部' %}</a></li>
+              </ul>
+            </li>
+            <li role="presentation">
+              <a href="/auth/apply/">
+                <span class="glyphicon glyphicon-refresh"></span> {% t_ '刷新' %}
+              </a>
+            </li>
+            {% for category in category_manage %}
+            <li role="presentation">
+              <a href="/auth/apply/rubric/{{ category.0 }}/">
+                <span class="glyphicon glyphicon-edit"></span>
+                {% t_ '编辑' %} {{ category.1 }} {% t_ '评分标准' %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+<!---->
+{# 上下为两个不同的前端布局 #}
+{# 注意：下方的有某些更新，但是上方没有同步 #}
+<!---->
+          <button class="btn btn-primary" onclick="window.location.reload();">
+            <span class="glyphicon glyphicon-inbox"></span>
+            {% if is_auth %}
+            {% t_ '申请前台' %}
+            {% else %}
+            {% t_ '所有申请' %}
+            {% endif %}
+          </button>
+          <div class="dropdown" disable="disable" style="display: inline">
+            <a aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+              <span id="status_content">{% t_ '审核状态' %}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" style="margin-top: 1em">
+              <li role="presentation"><a href="#" onclick="status_filter('granted', '{% t_ '已通过' %}');">{% t_ '已通过' %}</a></li>
+              <li class="divider"></li>
+              <li role="presentation"><a href="#" onclick="status_filter('droped', '{% t_ '材料不足' %}');">{% t_ '材料不足' %}</a></li>
+              <li role="presentation"><a href="#" onclick="status_filter('broken', '{% t_ '附件损坏' %}');">{% t_ '附件损坏' %}</a></li>
+              <li role="presentation"><a href="#" onclick="status_filter('denied', '{% t_ '未通过' %}');">{% t_ '未通过' %}</a></li>
+              <li class="divider"></li>
+              {% if not is_auth %}
+              <li role="presentation"><a href="#" onclick="status_filter('preparing', '{% t_ '填写中' %}');">{% t_ '填写中' %}</a></li>
+              {% endif %}
+              <li role="presentation"><a href="#" onclick="status_filter('waiting', '{% t_ '尚未审核' %}');">{% t_ '尚未审核' %}</a></li>
+              <li role="presentation"><a href="#" onclick="status_filter('general', '{% t_ '审核状态' %}');">{% t_ '查看全部' %}</a></li>
+            </ul>
+          </div>
+          <div class="dropdown" disable="disable" style="display: inline">
+            <a aria-expanded="false" class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+              <span id="category_content">{% t_ '社团分类' %}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" style="margin-top: 1em">
+              <li role="presentation">
+                <a href="#" onclick="category_filter('general', '{% t_ '社团分类' %}');">{% t_ '查看全部' %}</a>
+              </li>
+              <li class="divider"></li>
+              {% for category in category_dict %}
+              <li role="presentation">
+                <a href="#" onclick="category_filter('{{ category.0 }}', '{{ category.1 }}');">
+                  {{ category.1 }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <button class="btn btn-success" onclick="window.location.reload();">
+            <span class="glyphicon glyphicon-refresh"></span> {% t_ '刷新' %}
+          </button>
+          {% for category in category_manage %}
+          <a class="btn btn-default" href="/auth/apply/rubric/{{ category.0 }}/">
+            <span class="glyphicon glyphicon-edit"></span>
+            {% t_ '编辑' %} {{ category.1 }} {% t_ '评分标准' %}
+          </a>
+          {% endfor %}
+<!---->
+        </div>
+        {% if is_auth %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th><h5 class="text-center">{% t_ '社团ID' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '名称' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '分类' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '处罚' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '提交时间' %}</h5></th>
+              <th><h5>{% t_ '操作' %}</h5></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in record_list %}
+            <tr id="record_general_{{ record.data.id }}" class="record-general record-{{ record.data.data }} record-{{ record.club.category }}">
+              <td><h5 class="text-center">{{ record.data.account_id }}</h5></td>
+              <td><h5 class="text-center">
+                <a href="/club/{{ record.club.simp_name }}/">
+                  {{ record.club.full_name }} 
+                </a>
+              </h5></td>
+              <td><h5 class="text-center">{{ record.zhcn_category }}</h5></td>
+              <td><h5 class="text-center">{{ record.amercement }}</h5></td>
+              <td><h5 class="text-center">{{ record.date }}</h5></td>
+              <td id="record-{{ record.data.id }}">
+                <a id="record_button_{{ record.data.id }}" type="button" class="btn btn-{{ record.label_type }} quan-badge" href="/auth/empty/{{ record.club.simp_name }}/"{% if is_auth %} target="_blank"{% endif %}>
+                  <span class="glyphicon glyphicon-screenshot"></span>
+                  <span id="record_label_{{ record.data.id }}">{{ record.zhcn_label }}</span>
+                </a>
+                <div class="btn-group quan-badge">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog"></span> {% t_ '操作' %} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a onclick="operate('granted', '{{ record.data.id }}', 'success', '{% t_ '审核通过' %}');">{% t_ '通过' %}</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="operate('droped', '{{ record.data.id }}', 'warning', '{% t_ '材料不足' %}');">{% t_ '材料不足' %}</a></li>
+                    <li><a onclick="operate('broken', '{{ record.data.id }}', 'warning', '{% t_ '附件损坏' %}');">{% t_ '附件损坏' %}</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="operate('denied', '{{ record.data.id }}', 'danger', '{% t_ '审核不通过' %}');">{% t_ '不通过' %}</a></li>
+                  </ul>
+                </div>
+                <!--<button class="btn btn-{{ record.label_type }} quan-badge">{{ record.zhcn_label }}</button>-->
+              </td>
+            </tr>
+            <script type="text/javascript">
+			function operate(result, pid, color, label){
+				ajaxBanner(this.action, {
+					result: result, 
+					pid: pid, 
+				}, "", function(msg) {
+					$("#record_label_" + pid).html(label);
+					$("#record_button_" + pid).removeClass("btn-warning");
+					$("#record_button_" + pid).removeClass("btn-success");
+					$("#record_button_" + pid).removeClass("btn-danger");
+					$("#record_button_" + pid).addClass("btn-" + color);
+					$("#record_general_" + pid).removeClass("record-granted");
+					$("#record_general_" + pid).removeClass("record-droped");
+					$("#record_general_" + pid).removeClass("record-broken");
+					$("#record_general_" + pid).removeClass("record-denied");
+					$("#record_general_" + pid).removeClass("record-waiting");
+					$("#record_general_" + pid).addClass("record-" + result);
+				});
+			}
+            </script>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th><h5 class="text-center">#</h5></th>
+              <th><h5 class="text-center">{% t_ '申请社团' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '修改时间' %}</h5></th>
+              <th><h5 class="text-center">{% t_ '当前状态' %}</h5></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--record_status: info/success/warning(warning)/danger-->
+            <!--record_comment: 待审核/通过/材料损坏（材料不足）/不通过-->
+            {% for record in record_list %}
+            <tr id="record_general_{{ record.data.id }}" class="record-general record-{{ record.data.data }} record-{{ record.club.category }}">
+              <td><h5 class="text-center">{{ forloop.counter }}</h5></td>
+              <td><h5 class="text-center"><a href="/club/{{ record.club.simp_name }}/">{{ record.club.full_name }}</a></h5></td>
+              <td><h5 class="text-center">{{ record.date }}</h5></td>
+              <td class="text-center">
+                <a type="button" class="btn btn-{{ record.label_type }} quan-badge" href="/auth/empty/{{ record.club.simp_name }}/">
+                  <span class="glyphicon glyphicon-screenshot"></span> {{ record.zhcn_label }}
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+    <script type="text/javascript">
+	var current_status = "general";
+	var current_category = "general";
+	
+	function refresh_filter() {
+		$(".record-general").hide();
+		$(".record-" + current_status + '.record-' + current_category).show();
+	}
+	
+	function status_filter(status, zhcn) {
+		current_status = status;
+		$("#status_content").html(zhcn);
+		refresh_filter();
+	}
+	
+	function category_filter(category, zhcn) {
+		current_category = category;
+		$("#category_content").html(zhcn);
+		refresh_filter();
+	}
+    </script>
+  </div>
+</div>
+{% endblock %}

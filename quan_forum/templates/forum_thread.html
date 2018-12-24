@@ -1,0 +1,401 @@
+{% extends 'form_comp_base.html' %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+
+      <div class="col-md-9">
+        <ol class="breadcrumb">
+          <li><a href="/forum/">{% t_ '十一论坛' %}</a></li>
+          <li><a href="/forum/{{ group_data.simp_name }}/">{{ group_data.subject }}</a></li>
+          <li class="active">{{ thread_data.subject }}</li>
+        </ol>
+        
+        <h1 id="subject" class="text-center">{{ thread_data.subject }}</h1>
+        
+        {% ifnotequal page_len 1 %}
+          <div align="right">
+            <nav>
+              <ul class="pagination">
+                {% if not page_pre %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% else %}
+                <li><a href="?index=1">&laquo;</a></li>
+                {% endif %}
+                {% for i in page_list %}
+                <li{% ifequal i page_index %} class="active"{% endifequal %}>
+                  <a href="?index={{ i }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                {% if not page_next %}
+                <li class="disabled"><span>&raquo;</span></li>
+                {% else %}
+                <li><a href="?index={{ page_len }}">&raquo;</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        {% endifnotequal %}
+
+        {% for i in response_list %}
+          <hr />
+          <div id="{{ i.relation }}-{{ i.data.id }}" class="media level-is-margin-left" level="{{ i.level }}">
+            <div class="media-left">
+              <a href="/user/{{ i.sname }}/"><img class="media-object img-circle" src="{{ i.avatar.medium }}" alt="{{ i.nickname }}"></a>
+            </div>
+            <div class="media-body">
+              {% ifequal i.relation 'thread' %}
+                <div class="pull-right" style="margin: 10px; ">
+                  <a class="btn btn-default" href="#contain_form">
+                    {% t_ '回复帖子' %}
+                  </a>
+                </div>
+              {% endifequal %}
+              <p><small>
+                <a href="/user/{{ i.sname }}/">{{ i.nickname }}</a>
+                - {{ i.time_create.0 }}{{ i.time_create.1 }}
+                {% if i.can_delete %}
+                  - <a data-toggle="modal" data-target="#delete-warning" onclick="forum_delete('{{ i.relation }}', '{{ i.data.id }}')">{% t_ '删除' %}</a>
+                {% endif %}
+              </small></p>
+              
+              {% autoescape off %}
+                {{ i.data.content }}
+              {% endautoescape %}
+              
+              {% if i.attach %}
+                <div id="attach-button-{{ i.data.attach_uuid }}" class="visible-sm-block visible-xs-block">
+                  <button class="btn btn-default btn-block" onclick="attach_show('{{ i.data.attach_uuid }}');">
+                    {% t_ '显示附件（' %}{{ i.attach_len }}{% t_ '个）' %}
+                  </button>
+                </div>
+                <div class="row" style="margin: 0px; ">
+                  <div id="attach-{{ i.data.attach_uuid }}" class="masonry-needed hidden-sm hidden-xs">
+                    {% for attach in i.attach %}
+                      <div class="col-sm-6 col-md-4" style="margin-bottom: 15px; padding: 0px 7.5px; ">
+                        {% if attach.thumbnail %}
+                          <a href="{{ attach.url }}">
+                            <img src="{{ attach.thumbnail }}" alt="{{ attach.name }}" class="img-thumbnail" />
+                          </a>
+                        {% else %}
+                          <a class="btn btn-default btn-block" type="button" href="{{ attach.url }}">
+                            <h1 style="font-size: 4em; " class="hidden-xs">
+                              <span class="glyphicon glyphicon-file"></span>
+                            </h1>
+                            <span class="hidden-xs">{{ attach.name }}</span>
+                            <span class="visible-xs-block">
+                              <span class="glyphicon glyphicon-file"></span>
+                              {{ attach.name }}
+                            </span>
+                          </a>
+                        {% endif %}
+                      </div>
+                      {% if not attach.index2 %}
+                        <div class="col-sm-12 visible-sm-block"></div>
+                      {% endif %}
+                      {% if not attach.index3 %}
+                        <div class="col-md-12 visible-md-block visible-lg-block"></div>
+                      {% endif %}
+                    {% endfor %}
+                    <div class="col-sm-6 col-md-4" style="margin-bottom: 15px; padding: 0px 7.5px; ">
+                      <a class="btn btn-default btn-block" type="button" href="/share/{{ i.attach_uuid }}/">
+                        <h1 style="font-size: 4em; " class="hidden-xs">
+                          <span class="glyphicon glyphicon-link"></span>
+                        </h1>
+                        <span class="hidden-xs">{% t_ '详细信息' %}</span>
+                        <span class="visible-xs-block">
+                          <span class="glyphicon glyphicon-link"></span> {% t_ '详细信息' %}
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+              
+              {% ifnotequal i.relation 'thread' %}
+                <div style="margin-top: 1em; padding: 10px 20px 10px 20px; margin: 20px 0 0; border-left: 5px solid #eee; background-color: #f8f8f8">
+                  <div id="chat-list-{{ i.data.id }}">
+                    {% for j in i.children_list %}
+                      <p>
+                        <a href="/user/{{ j.sname }}/">{{ j.nickname }}</a>:
+                        {{ j.data.content }}
+                        {% if request.user.id %}
+                          {% ifnotequal j.data.send_id request.user.id %}
+                            - <a onclick="update_at({{ i.data.id }}, '{{ j.nickname }}'); ">({% t_ '回复' %})</a>
+                          {% endifnotequal %}
+                          {% if j.can_delete %}
+                            - <a data-toggle="modal" data-target="#delete-warning" onclick="forum_delete('response', '{{ j.data.id }}'); ">({% t_ '删除' %})</a>
+                          {% endif %}
+                        {% endif %}
+                      </p>
+                    {% endfor %}
+                  </div>
+                  <div id="form-inline-feedback-{{ i.data.id }}"></div>
+                  <form class="form-horizontal" id="form-inline-{{ i.data.id }}" onsubmit="event.preventDefault(); inline_post({{ i.data.id }}, true);">
+                    <div class="form-group form-group-sm" style="margin-bottom: 0px; margin-right: 0px; margin-left: 0px;">
+                      {% if request.user.id %}
+                        <div class="col-sm-10" style="padding-left: 0px; padding-right: 5px; ">
+                          <input class="form-control" style="margin-bottom: 5px; " type="text" id="input-inline-{{ i.data.id }}" placeholder="{% t_ '有什么想法？' %}">
+                        </div>
+                        <div class="col-sm-2" style="padding-left: 0px; padding-right: 0px; ">
+                          <button type="button" class="btn btn-default btn-sm" style="margin-bottom: 5px; " onclick="inline_post({{ i.data.id }}, false);">{% t_ '发表' %}</button>
+                        </div>
+                      {% else %}
+                        <div class="col-sm-10" style="padding-left: 0px; padding-right: 5px; ">
+                          <input class="form-control" style="margin-bottom: 5px; " type="text" id="input-inline-{{ i.data.id }}" placeholder="{% t_ '登录以发表观点' %}" disabled="disabled">
+                        </div>
+                        <div class="col-sm-2" style="padding-left: 0px; padding-right: 0px; ">
+                          <button type="button" class="btn btn-default btn-sm disabled" style="margin-bottom: 5px; ">{% t_ '发表' %}</button>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </form>
+                </div>
+              {% endifnotequal %}
+            </div>
+          </div>
+        {% endfor %}
+        
+        {% if not dependence %}
+          {% ifnotequal page_len 1 %}
+            <div class="row">
+              <div align="left" class="col-sm-3">
+                <nav>
+                  <ul class="pagination">
+                    {% if page_pre %}
+                    <li><a href="?index={{ page_pre }}" class="hidden-xs">&larr; {% t_ '上一页' %}</a></li>
+                    {% else %}
+                    <li class="disabled hidden-xs"><span>&larr; {% t_ '上一页' %}</span></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+              <div align="center" class="col-sm-6">
+                <nav>
+                  <ul class="pagination">
+                    {% if not page_pre %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% else %}
+                    <li><a href="?index=1">&laquo;</a></li>
+                    {% endif %}
+                    {% for i in page_list %}
+                    <li{% ifequal i page_index %} class="active"{% endifequal %}>
+                      <a href="?index={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endfor %}
+                    {% if not page_next %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% else %}
+                    <li><a href="?index={{ page_len }}">&raquo;</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+              
+              <div align="right" class="col-sm-3 hidden-xs">
+                <nav>
+                  <ul class="pagination">
+                    {% if page_next %}
+                    <li><a href="?index={{ page_next }}">{% t_ '下一页' %} &rarr;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>{% t_ '下一页' %} &rarr;</span></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+              
+              <div align="right" class="col-sm-3 visible-xs-block">
+                <nav>
+                  
+                    {% if page_next %}
+                    <a class="btn btn-default btn-block" href="?index={{ page_next }}">{% t_ '下一页' %} &rarr;</a>
+                    {% endif %}
+                </nav>
+              </div>
+            </div>
+          {% endifnotequal %}
+        {% endif %}
+
+        <hr />
+        
+        {% if request.user.id %}
+          <div class="row">
+            <div class="col-sm-offset-1 col-sm-10">
+              <h3 id="reply_title" class="text-center" style="margin-bottom: 1em; ">{% t_ '发表回复' %}</h3>
+            </div>
+          </div>
+          <form id="contain_form" method="post" class="form-horizontal" action="/share/upload/?status=query" target="upload_frame" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="content" class="col-sm-1 control-label">{% t_ '内容' %}</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="10" name="content" id="content" placeholder=""></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputFileDiv" class="col-sm-1 control-label">{% t_ '附件' %}</label>
+              <div id="inputFileDiv" class="col-sm-10">
+                <input name="multiple-file" type="file" multiple="multiple" class="btn btn-default btn-block" id="inputFile" title="{% t_ '添加附件' %}" onchange="testBtn();" data-filename-placement="inside">
+                <div id="file_info_group"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-1 col-sm-10">
+                <button id="content_submit" type="button" class="btn btn-default btn-block" onclick="forum_submit();">{% t_ '发表' %}</button>
+              </div>
+            </div>
+          </form>
+        {% else %}
+          <div class="row">
+            <div class="col-sm-offset-1 col-sm-10">
+              <h3 id="reply_title" class="text-center" style="margin-bottom: 1em; ">{% t_ '发表回复前请先登录' %}</h3>
+            </div>
+          </div>
+          <form id="contain_form" method="post" class="form-horizontal" action="" target="upload_frame" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="content_fake" class="col-sm-1 control-label">{% t_ '内容' %}</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="10" name="content" id="content_fake" placeholder="" disabled="disabled"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputFileDiv" class="col-sm-1 control-label">{% t_ '附件' %}</label>
+              <div id="inputFileDiv" class="col-sm-10">
+                <button class="btn btn-block btn-default disabled">{% t_ '添加附件' %}</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-1 col-sm-10">
+                <button id="content_submit" type="button" class="btn btn-default btn-block disabled">{% t_ '发表' %}</button>
+              </div>
+            </div>
+          </form>
+        {% endif %}
+      </div>
+
+      {% include 'forum_side.html' %}
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="delete-warning" tabindex="-1" role="dialog" aria-labelledby="delete-warning-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="delete-warning-label">{% t_ '删除确认' %}</h4>
+      </div>
+      <div class="modal-body" id="delete-modal-body">
+        {% t_ '您确定删除吗？这个动作不可逆。' %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '取消' %}</button>
+        <button type="button" class="btn btn-danger" onclick="delete_confirmed();">{% t_ '删除' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% verbatim %}
+<script id="chat-add-template" type="x-tmpl-mustache">
+  <p>
+    <a href="/user/{{ sname }}/">{{ nickname }}</a>:
+    {{ content }}
+    - <a data-toggle="modal" data-target="#delete-warning" onclick="forum_delete('response', '{{ rid }}'); ">({{ delete_zh }})</a>
+  </p>
+</script>
+{% endverbatim %}
+
+{% include 'comp/progress.html' %}
+
+<script type="text/javascript">
+// $(".masonry-needed").masonry();
+
+function forum_submit(){
+	ajaxBanner("/forum/{{ group_data.simp_name }}/{{ thread_data.id }}/post/", {
+		action: "new", 
+		relation: "response", 
+		reply_aid: "{{ thread_data.id }}", 
+		attach_uuid: attach_uuid, 
+		data: getFormJson($("#contain_form")), 
+	}, "#contain_form", function (msg){
+		if (msg["status"] == "success") {
+			progress_activated = 0; 
+		}
+		if (msg["content"] == "{% t_ '内容中包含非法字符' %}") {
+			var c = $("#content").val();
+			alert('{% t_ '内容中包含非法字符，请将以下内容反馈给HCC' %}: \n' + c);
+		}
+	});
+}
+
+var delete_relation = undefined;
+var delete_aid = undefined;
+
+function delete_confirmed(){
+	ajaxBanner("/forum/{{ group_data.simp_name }}/delete/", {
+		relation: delete_relation, 
+		aid: delete_aid, 
+	}, "#delete-modal-body");
+}
+
+function forum_delete(relation, aid) {
+	delete_relation = relation;
+	delete_aid = aid;
+}
+
+function update_at(rid, nname) {
+	var t = $("#input-inline-" + rid).val();	// 原字符串
+	var m = "{% t_ '：' %}"						// 冒号，可能会被翻译
+	var c = t.indexOf(m);						// 冒号的位置
+	var s = t;									// 抛弃原有的at信息
+	if (t.indexOf("@") == 0 && c != -1) {
+		s = t.substring(c + m.length);
+	}
+	$("#input-inline-" + rid).val("@" + nname + m + s);
+}
+
+function inline_post(rid, ignore_empty) {
+	var content = $("#input-inline-" + rid).val()
+	if (ignore_empty && !content) {
+		return;
+	}
+	ajaxBanner("/forum/{{ group_data.simp_name }}/{{ thread_data.id }}/chat/", {
+		rid: rid, 
+		content: content, 
+	}, "#form-inline-feedback-" + rid, function(msg){
+		if (msg["status"] == "success") {
+			var rendered = Mustache.render($("#chat-add-template").html(), {
+				sname: "{{ request.user.simp_name }}", 
+				nickname: msg["nickname"], 
+				rid: msg["rid"], 
+				content: content, 
+				delete_zh: "{% t_ '删除' %}", 
+			});
+			$("#input-inline-" + rid).val("");
+			$("#chat-list-" + rid).append(rendered);
+			return "preventDefault";
+		}
+	});
+}
+
+function attach_show(attach_uuid) {
+	$('#attach-' + attach_uuid).removeClass('hidden-xs');
+	$('#attach-' + attach_uuid).removeClass('hidden-sm');
+	$('#attach-button-' + attach_uuid).removeClass("visible-xs-block");
+	$('#attach-button-' + attach_uuid).removeClass("visible-sm-block");
+	$('#attach-button-' + attach_uuid).fadeOut(1000);
+}
+
+{% if request.user.id %}
+var editor = new Simditor({
+	textarea: $('#content'),
+	toolbar: ['title', 'bold', 'underline', 'strikethrough', 'color', 'image', 
+				'hr', 'blockquote', 'indent', 'outdent', 'ol', 'ul', 'code'],
+});
+{% endif %}
+</script>
+{% endblock %}

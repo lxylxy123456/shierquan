@@ -1,0 +1,111 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <!-- style="margin:10px;padding:10px; border-width: 0px 4px 0px 0px; border-style: solid; border-color: black;" -->
+    <div class="col-sm-12 col-md-10 col-md-offset-1" id="ajax_feedback">
+      <div class="row">
+        {% for event in event_list %}
+        <div class="col-sm-12 col-md-6">
+          <div class="media">
+            <div class="media-left" style="padding:4px;">
+              <a style="width: 90px; height: 90px;" href="/club/{{ event.sponsor }}/" class="thumbnail">
+                <img style="width: 80px; height: 80px;" src="{{ event.avatar }}">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <span class="event-title">{{ event.sponsor_fname }} - {{ event.data.subject }}</span>
+                <small><span id="follow_{{ event.data.id }}">{{ event.follower }}</span>{% t_ '次关注' %}</small>
+              </h4>
+              <p>
+                <span class="glyphicon glyphicon-map-marker"></span> {{ event.data.location }} 
+                <span class="glyphicon glyphicon-time" style="margin-left:20px;"></span> {{ event.day_set }} {{ event.time_set }}
+              </p>
+              <div class="form-group">
+                <a class="btn btn-default quan-badge" href="/event/{{ event.data.id }}/">
+                  <span class="glyphicon glyphicon-align-justify"></span> {% t_ '详细信息' %}
+                </a>
+                <div class="btn-group quan-badge" role="group" aria-label="...">
+                  <button class="btn btn-danger" id="event_nice_{{ event.data.id }}" onclick="event_nice({{ event.data.id }});"{% if event.niced %} disabled="disabled"{% endif %}>
+                    <span class="glyphicon glyphicon-heart"></span>
+                  </button>
+                  <button class="btn btn-warning" id="event_follow_{{ event.data.id }}" onclick="event_follow({{ event.data.id }});"{% if event.followed %} disabled="disabled"{% endif %}>
+                    <span class="glyphicon glyphicon-eye-open"></span> 
+                  </button>
+                  <a class="btn btn-success" data-toggle="collapse" href="#collapse-{{ event.data.id }}" aria-expanded="false" aria-controls="collapse-{{ event.data.id }}">
+                    <span class="glyphicon glyphicon-menu-down"></span>
+                  </a>
+                </div>
+              </div>
+              <div class="collapse" id="collapse-{{ event.data.id }}">
+                <div class="well">
+                  {{ event.data.content }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <nav>
+        <ul class="pagination">
+          {% if not page_pre %}
+          <li class="disabled"><span>&laquo;</span></li>
+          {% else %}
+          <li><a href="?index=1">&laquo;</a></li>
+          {% endif %}
+          {% for i in page_list %}
+          <li{% ifequal i page_index %} class="active"{% endifequal %}>
+            <a href="?index={{ i }}">{{ i }}</a>
+          </li>
+          {% endfor %}
+          {% if not page_next %}
+          <li class="disabled"><span>&raquo;</span></li>
+          {% else %}
+          <li><a href="?index={{ page_len }}">&raquo;</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+title_list = $(".event-title")
+for (var i = 0; i < title_list.length; i+=1){
+	var ih = title_list[i].innerHTML;
+	if (ih.length > 20){
+		title_list[i].innerHTML = ih.substring(0, 20) + '...';
+	}
+}
+
+function event_follow(evid){
+	ajaxBanner("/event/follow/", {
+		evid: evid
+	}, "#ajax_feedback", function(msg){
+		if (msg["status"] == "success") {
+			$("#event_follow_" + evid).attr('disabled', 'disabled');
+			return "preventDefault";
+		}
+	});
+}
+function event_nice(evid){
+	ajaxBanner("/event/nice/", { evid: evid }, "#ajax_feedback", function(msg){
+		if (msg["status"] == "success") {
+			$("#event_nice_" + evid).attr('disabled', 'disabled');
+			return "preventDefault";
+		}
+	});
+}
+</script>
+
+{% endblock %}
+

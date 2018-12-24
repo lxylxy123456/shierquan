@@ -1,0 +1,93 @@
+msgid "请输入论坛所属群组"
+msgstr "Please input the group for the forum"
+
+msgid "删除成功"
+msgstr "Deleted successfully"
+
+msgid "[附件] 无法找到这个AttachID"
+msgstr "[Attachment] AttachID not found"
+
+msgid "标题或内容不全"
+msgstr "Incomplete subject or content"
+
+msgid "[附件] 不允许的操作"
+msgstr "[Attachment] Operation not allowed"
+
+msgid "内容中包含非法字符"
+msgstr "Illegal characters detected in the content"
+
+msgid " - 论坛"
+msgstr " - Forum"
+
+msgid "参数不完整"
+msgstr "Incomplete parameters"
+
+msgid "附件已被分享"
+msgstr "The attachment is already shared"
+
+msgid "标题或内容过长"
+msgstr "Too long subject or content"
+
+msgid "找不到对象"
+msgstr "Object not found"
+
+msgid "数据已损坏"
+msgstr "Data broken"
+
+msgid " - 创建板块"
+msgstr " - Create Forum Group"
+
+msgid "请使用小写字母和连线符组合链接 如：test-forum"
+msgstr "Please use letters and the minus sign, e.g. test-forum"
+
+msgid "功能已被禁用"
+msgstr "Function disabled"
+
+msgid "您没有权限查看本页面"
+msgstr "You do not have the permission to access this page"
+
+msgid "内容为空"
+msgstr "Empty content"
+
+msgid "内容太长"
+msgstr "Content too long"
+
+msgid "找不到群组"
+msgstr "Cannot find the group"
+
+msgid "您没有权限"
+msgstr "Permission denied"
+
+msgid "请输入正确的用户链接"
+msgstr "Please input the correct user link"
+
+msgid "请选择论坛是否私密"
+msgstr "Please choose whether the forum is secret"
+
+msgid "参数错误"
+msgstr "Parameter Error"
+
+msgid "请求被拒绝，请联系HCC社团以实现"
+msgstr "Access denied, please contact HCC Computer Community"
+
+msgid " - %s"
+msgstr " - %s"
+
+msgid "关系错误"
+msgstr "Relationship Error"
+
+msgid "数据太长"
+msgstr "Data too long"
+
+msgid " - 发表帖子"
+msgstr " - Post Forum Thread"
+
+msgid "发表成功"
+msgstr "Posted successfully"
+
+msgid "数据错误"
+msgstr "Data Error"
+
+msgid "链接已被注册"
+msgstr "The link is already occupied"
+

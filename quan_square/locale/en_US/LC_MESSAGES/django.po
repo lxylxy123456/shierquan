@@ -1,0 +1,30 @@
+msgid " - 帮助手册"
+msgstr " - Documentation"
+
+msgid " - %s搜索"
+msgstr " - %s Searching"
+
+msgid "社团"
+msgstr "Club"
+
+msgid "活动"
+msgstr "Event"
+
+msgid "分享"
+msgstr "Share"
+
+msgid " - 社团名录"
+msgstr " - Club List"
+
+msgid " - 活动一览"
+msgstr " - Event Square"
+
+msgid "成功发送反馈"
+msgstr "Feedback submitted successfully"
+
+msgid " - 社团广场"
+msgstr " - Club Square"
+
+msgid "反馈发送失败"
+msgstr "Failed to submit feedback"
+

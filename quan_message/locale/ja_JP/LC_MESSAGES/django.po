@@ -1,0 +1,33 @@
+msgid "权限错误"
+msgstr ""
+
+msgid "您还没有登录"
+msgstr ""
+
+msgid "请指明收件人"
+msgstr ""
+
+msgid "不能发送空白消息"
+msgstr ""
+
+msgid "参数错误"
+msgstr ""
+
+msgid "请先登录"
+msgstr ""
+
+msgid "请先登录再发送消息"
+msgstr ""
+
+msgid "参数错误，请联系HCC社团以解决"
+msgstr ""
+
+msgid "投递成功"
+msgstr ""
+
+msgid "请写内容"
+msgstr ""
+
+msgid "请求方法不正确"
+msgstr ""
+

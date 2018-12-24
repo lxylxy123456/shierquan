@@ -1,0 +1,93 @@
+{% extends 'form_simp_base.html' %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2" id="news_message_div">
+      <div class="form-group text-right">
+        {% if is_auth %}
+        <div>
+          <a class="btn btn-default" href="/news/post/?nid={{ data.id }}">
+            <span class="glyphicon glyphicon-pencil"></span> {% t_ '编辑' %}
+          </a>
+          <button onclick="news_delete();" class="btn btn-danger">
+             <span class="glyphicon glyphicon-trash"></span> {% t_ '删除' %}
+          </button>
+        </div>
+        {% endif %}
+      </div>
+      <h1 class="text-center">{{ data.subject }}</h1>
+      <p class="text-center"><small>{{ sname }} {% t_ '发布于' %} {{ time_create }}</small></p>
+      <hr />
+      {% autoescape off %}
+        {{ data.content }}
+      {% endautoescape %}
+      <br />
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+          {% for image in image_list %}
+          <div class="thumbnail">
+            <img src="{{ image.url }}" style="width:100%;"/>
+            <div class="caption">
+              <p class="text-center">{{ image.name }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {# copy from share_view #}
+        <div class="col-sm-12 col-sm-6 col-md-6">
+          <h3 class="text-center"><small><span class="glyphicon glyphicon-comment"></span> {% t_ '七嘴八舌' %} </small></h3>
+          <hr />
+          {% for i in chat_list %}
+          <div class="media">
+            <a class="pull-left media-left" href="#">
+              <img class="media-object img-circle" data-holder-rendered="true" src="{{ i.avatar }}" style="width: 64px; height: 64px;" data-src="holder.js/64x64" alt="64x64">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">{{ i.data.subject }}</h4>{{ i.data.content }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col-sm-12 col-sm-6 col-md-6">
+          <h3 class="text-center"><small><span class="glyphicon glyphicon-chevron-right"></span> {% t_ '添加评论' %} </small></h3>
+          <hr />
+          <form id="share_chat" method="post" class="form" action="/share/chat/">
+            {% csrf_token %}
+            <div class="form-group">
+              <textarea id="context" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-share-alt"></span> {% t_ '发送' %}</button>
+            </div>
+          </form>
+        </div>
+        <script type="text/javascript">
+		$(document).ready(function(){
+			$("#share_chat").on("submit", function(event) {
+				event.preventDefault();
+				ajaxBanner(this.action, {
+					context: $('#context').val(), 
+					suid: "{{ data.attach_uuid }}", 
+					src: 'share', 
+				}, "#share_chat");
+			});
+		});
+		
+		function news_delete(){
+			ajaxBanner('/news/{{ tid }}/delete/', {}, "#news_message_div");
+		}
+		
+        </script>
+        {# endcopy #}
+        <div class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+          <ul class="pager">
+            <li class="previous disabled"><a href="javascript:void(0)">← Older</a></li>
+            <li class="next"><a href="javascript:void(0)">Newer →</a></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

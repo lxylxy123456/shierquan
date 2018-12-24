@@ -1,0 +1,110 @@
+{% load translate %}
+
+{% verbatim %}
+  <script id="public-message-template" type="x-tmpl-mustache">
+    <div class="col-xs-12 col-sm-12 col-md-12 message" style="display: None; " message_id="{{ id }}">
+      {{ #hr_top }}<hr style="margin:2px;" />{{ /hr_top }}
+      <div class="media">
+        <div class="media-left">
+          <img style="width: 32px; height: 32px;" src="{{ major.image }}" class="thumbnail">
+        </div>
+        <div class="media-body">
+          <p>
+            {{ head }}
+            <a href="{{ major.link }}">{{ major.text }}</a>
+            {{ body }}
+            <a href="{{ minor.link }}">{{ minor.text }}</a>
+            {{ tail }}
+          </p>
+          <p>
+            <small>
+              <span class="time_update_needed" start="{{ start }}">
+                {{ time_ago }}
+              </span>
+              - {{ platform }}
+            </small>
+          </p>
+        </div>
+        {{ #minor.image }}
+        <div class="media-right">
+          <img style="width: 32px; height: 32px;" src="{{ minor.image }}" class="thumbnail">
+        </div>
+        {{ /minor.image }}
+      </div>
+      {{ #hr_bottom }}<hr style="margin:0.5em 0px 1em 0px" />{{ /hr_bottom }}
+    </div>
+  </script>
+{% endverbatim %}
+
+<script type="text/javascript">
+	{% ifequal request.META.HTTP_HOST 'shiyiquan.net' %}
+	var public_message_url = "http://beta.shiyiquan.net/message/global/";
+	{% else %}
+	var public_message_url = "/message/global/";
+	{% endifequal %}
+	public_message_template = $('#public-message-template').html();
+	Mustache.parse(public_message_template);
+	function time_delta_to_string(time_delta) {
+		if (time_delta < 0)
+			return "{% t_ '在不久的将来' %}";
+		else if (time_delta > 86400000)
+			return parseInt(time_delta / 86400000) + "{% t_ '天前' %}";
+		else if (time_delta > 3600000)
+			return parseInt(time_delta / 3600000) + "{% t_ '小时前' %}";
+		else if (time_delta > 60000)
+			return parseInt(time_delta / 60000) + "{% t_ '分钟前' %}";
+		return "{% t_ '不到一分钟前' %}";
+	}
+	
+	function public_message_time_update() {
+		c = $(".time_update_needed");
+		for(var i = 0; i < c.length; i += 1) {
+			var time_delta = Date.now() - c[i].attributes.start.value;
+			c[i].innerHTML = time_delta_to_string(time_delta);
+		}
+	}
+
+	setInterval(public_message_time_update, 10000);
+
+	function public_message_render(target, data, status, hr){
+		function render_i(info, hr, time_now) {
+			if (hr) {
+				info["hr_top"] = true;
+			}
+			else {
+				info["hr_bottom"] = true;
+			}
+			info["start"] = (info.time_stamp - time_now) * 1000 + Date.now();
+			return Mustache.render(public_message_template, info);
+		}
+		function find_message(mid) {
+			c = target.children();
+			for (var i = 0; i < c.length; i += 1) {
+				if (c[i].attributes.message_id.value == mid) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		if(status){
+			for (var i = 0; i < data['msglist'].length; i += 1) {
+				if (find_message(data.msglist[i].id)) {
+					continue
+				}
+				target.prepend(render_i(data.msglist[i], hr, data.time_now));
+			}
+		}
+		else{
+			for (var i = data['msglist'].length - 1; i >= 0; i -= 1) {
+				if (find_message(data.msglist[i].id)) {
+					continue
+				}
+				target.append(render_i(data.msglist[i], hr, data.time_now));
+			}
+		}
+		$(".message").fadeIn("slow");
+		time_delta_to_string();
+	}
+</script>
+

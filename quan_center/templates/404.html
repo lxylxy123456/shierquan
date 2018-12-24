@@ -1,0 +1,18 @@
+{% extends "form_error_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="jumbotron list-group-item-warning" style="padding:64px 24px 64px 24px;">
+      <h1 class="text-center"><span class="glyphicon glyphicon-hdd"></span> {% t_ '出错了耶...' %}</h1>
+      <p class="text-center">{% t_ '服务器返回了一个404。嗯，页面 not Found！' %}</p>
+      {% if exception %}
+      <p class="text-center"><a id="popover" href="#" tabindex="0" class="btn btn-lg btn-warning" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="{% t_ '详细信息' %}" data-content="{{ exception }}">{% t_ '详细信息' %}</a></p>
+      {% else %}
+      <p class="text-center"><a id="popover" href="#" tabindex="0" class="btn btn-lg btn-warning" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="{% t_ '详细信息' %}" data-content="{% t_ '无额外错误信息。不过...谢谢单击！' %}">{% t_ '详细信息' %}</a></p>
+      {% endif %}
+    </div>
+</div>
+
+{% endblock %}

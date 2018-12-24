@@ -1,0 +1,246 @@
+{% load translate %}
+
+<script id="contact-share" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-warning well-lg">
+          <span class="glyphicon glyphicon-download-alt"></span> 
+          <strong>{% t_ '分享' %}</strong> - 
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/">{% r_ '{{ data.subject }}' %}</a> 
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/"><span class="glyphicon glyphicon-new-window"></span></a>
+          {% r_ '{{# attach }}' %}
+          <h5 style="text-indent:1em;">
+            <span class="glyphicon glyphicon-file"></span>
+            <strong>{% r_ '{{ data.name_raw }}' %}</strong>
+            <small class="hidden">{% r_ '{{ data.downloads }}' %}{% t_ '次下载' %}</small>
+            <a target="_blank" href="{% r_ '{{ url }}' %}" class="btn btn-primary btn-xs">{% t_ '单击下载' %}</a>
+          </h5>
+          {% r_ '{{/ attach }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-share-other" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-info well-lg">
+          <span class="glyphicon glyphicon-download-alt"></span> 
+          <strong>{% t_ '分享' %}</strong> - 
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/">{% r_ '{{ data.subject }}' %}</a> 
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/"><span class="glyphicon glyphicon-new-window"></span></a>
+          {% r_ '{{# attach }}' %}
+          <h5 style="text-indent:1em;">
+            <span class="glyphicon glyphicon-file"></span>
+            <strong>{% r_ '{{ data.name_raw }}' %}</strong>
+            <small class="hidden">{% r_ '{{ data.downloads }}' %}{% t_ '次下载' %}</small>
+            <a target="_blank" href="{% r_ '{{ url }}' %}" class="btn btn-primary btn-xs">{% t_ '单击下载' %}</a>
+          </h5>
+          {% r_ '{{/ attach }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-share-self" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-right" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-body">
+        <div class="bg-success well-lg">
+          <span class="glyphicon glyphicon-download-alt"></span> 
+          <strong>{% t_ '分享' %}</strong> - 
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/">{% r_ '{{ data.subject }}' %}</a>
+          <a target="_blank" href="/share/{% r_ '{{ data.uuid }}' %}/"><span class="glyphicon glyphicon-new-window"></span></a>
+          {% r_ '{{# attach }}' %}
+          <h5 style="text-indent:1em;">
+            <span class="glyphicon glyphicon-file"></span>
+            <strong>{% r_ '{{ data.name_raw }}' %}</strong>
+            <small class="hidden">{% r_ '{{ data.downloads }}' %}{% t_ '次下载' %}</small>
+            <a target="_blank" href="{% r_ '{{ url }}' %}" class="btn btn-primary btn-xs">{% t_ '单击下载' %}</a>
+          </h5>
+          {% r_ '{{/ attach }}' %}
+        </div>
+      </div>
+      <div class="media-right">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-event" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-danger well-lg">
+          <span class="glyphicon glyphicon-flag"></span> 
+          <strong>{% t_ '活动' %}</strong> - 
+          <a target="_blank" href="/event/{% r_ '{{ data.id }}' %}/">
+            {% r_ '{{ data.subject }}' %}
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+          <span> - {% r_ '{{ club.full_name }}' %}</span>
+          <dt><h5 style="text-indent:1em;">
+            <span class="glyphicon glyphicon-map-marker"></span> 
+            <strong>{% t_ '地点' %}</strong>
+          </h5></dt>
+          <dd><h5 style="text-indent:3em;">{% r_ '{{ data.location }}' %}</h5></dd>
+          <dt><h5 style="text-indent:1em;">
+            <span class="glyphicon glyphicon-time"></span> 
+            <strong>{% t_ '时间' %}</strong>
+          </h5></dt>
+          <dd><h5 style="text-indent:3em;">{% r_ '{{ date.0 }}' %}{% r_ '{{ date.1 }}' %}</h5></dd>
+          <h5 style="text-indent:2em;">
+            {% r_ '{{ data.content }}' %}
+            <button type="button" class="btn btn-primary btn-xs" disabled="disabled">{% t_ '分享' %}</button><!--/media/images/qrcode/event-{% r_ '{{ data.id }}' %}.png-->
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-event-signup" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-warning well-lg">
+          <strong>{% t_ '活动' %}</strong> - 
+          <a target="_blank" href="/event/{% r_ '{{ data.id }}' %}/">
+            {% r_ '{{ data.subject }}' %}
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+          - {% r_ '{{ content }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-self" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-right" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-body">
+        <div class="bg-success well-lg">
+          {% r_ '{{ content }}' %}
+        </div>
+      </div>
+      <div class="media-right">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-other" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-info well-lg">
+          {% r_ '{{ content }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-club" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-warning well-lg">
+          {% r_ '{{ content }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-badge" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-warning well-lg">
+          {% t_ '你获得了徽章' %}
+          <a target="_blank" href="/club/{% r_ '{{ club.simp_name }}' %}/">
+            {% r_ '{{ name }}' %}
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-friend" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.medium }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-danger well-lg">
+          <span class="glyphicon glyphicon-flag"></span> 
+          <strong>{% t_ '好友请求' %}</strong> - 
+          <a target="_blank" href="/user/{% r_ '{{ sname }}' %}/">{% r_ '{{ nickname }}' %}</a> 
+          <h5 style="text-indent:2em;">
+            {% t_ '请求和你成为好友' %}
+            <button type="button" class="btn btn-primary btn-xs friend_button_{% r_ '{{ id }}' %}" onclick="contact_agree('{% r_ '{{ id }}' %}', '{% r_ '{{ avatar.large }}' %}', '{% r_ '{{ nickname }}' %}', '{% r_ '{{ sname }}' %}');" {% r_ '{{ disable }}' %}>{% t_ '通过' %}</button>
+            <button type="button" class="btn btn-default btn-xs friend_button_{% r_ '{{ id }}' %}" onclick="contact_reject('{% r_ '{{ id }}' %}');" {% r_ '{{ disable }}' %}>{% t_ '拒绝' %}</button>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-hi" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.medium }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-danger well-lg">
+          <span class="glyphicon glyphicon-flag"></span> 
+          <strong>{% t_ '问候' %}</strong> - 
+          <a target="_blank" href="/user/{% r_ '{{ nickname }}' %}/">{% r_ '{{ nickname }}' %}</a> 
+          <h5 style="text-indent:2em;">
+            {% t_ '向你打招呼' %}: {% r_ '{{ content }}' %}
+            <button class="btn btn-default btn-xs friend_button_{% r_ '{{ id }}' %}" type="button" class="btn btn-primary btn-xs" onclick="contact_agree('{% r_ '{{ id }}' %}', '{% r_ '{{ avatar.large }}' %}', '{% r_ '{{ nickname }}' %}', '{% r_ '{{ sname }}' %}');" {% r_ '{{ disable }}' %}>{% t_ '加为好友' %}</button>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="contact-leave" type="x-tmpl-mustache">
+  <div class="col-md-11 pull-left" id="prv_msg_{% r_ '{{ time_stamp }}' %}">
+    <div class="media" style="margin:10px;">
+      <div class="media-left">
+        <img class="img-rounded" style="height:32px;width:32px;" src="{% r_ '{{ avatar.small }}' %}">
+      </div>
+      <div class="media-body">
+        <div class="bg-info well-lg">
+          {% r_ '{{ fname }}' %}{% t_ '在' %}{% r_ '{{ cname }}' %}{% t_ '社团主页留言：' %} {% r_ '{{ content }}' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+

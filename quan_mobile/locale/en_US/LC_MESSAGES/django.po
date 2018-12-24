@@ -1,0 +1,9 @@
+msgid "找不到对象"
+msgstr "Object not found"
+
+msgid "对象没有被指定"
+msgstr "Object not assigned"
+
+msgid " - 隐私政策"
+msgstr " - Privacy Policy"
+

@@ -1,0 +1,98 @@
+{% load translate %}
+
+    <div div class="col-sm-12 col-md-12">
+      <nav id="anchor">
+        <ul class="pager">
+          {% if page_pre %}
+          <li class="previous"><a onclick="fetch_index({{ page_pre }});">&larr; {% t_ '向前翻' %}</a></li>
+          {% endif %}
+          {% if page_next %}
+          <li class="next"><a onclick="fetch_index({{ page_next }});" style="margin-right:20px;">{% t_ '换一换' %} &rarr;</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <div id="feedback">
+    <div class="col-sm-12 col-md-12" id="container">
+      {% for club_dict in show_club %}
+      <div class="hidden-xs masonry-club-item" style="width:340px; margin: 5px;">
+        <div class="thumbnail" style="margin-bottom:5px;border: 1px dashed #CCC;border-radius:0px;">
+          <div class="caption">
+            <div class="row">
+              <div class="col-sm-6 col-md-5">
+                <a href="#"><img src="{{ club_dict.avatar.large }}" class="img-responsive img-circle" style="margin:0px auto;"></a>
+                <p class="h4 text-center">{{ club_dict.data.full_name }}</p>
+              </div>
+              <div class="col-sm-6 col-md-7">
+                <hr />
+                <p class="text-center"><span class="glyphicon glyphicon-inbox"></span> {% t_ '社团简介' %}</p>
+                <p style="text-indent: 2em;">{{ club_dict.data.simp_intro }}</p>
+                <hr />
+                {% if club_dict.followed %}
+                <button class="btn btn-primary quan-badge" type="button" onclick="follow('{{ club_dict.data.simp_name }}')">
+                  {% t_ '取消关注' %}
+                </button>
+                {% else %}
+                <button class="btn btn-primary quan-badge" type="button" onclick="follow('{{ club_dict.data.simp_name }}')">
+                  {% t_ '喜欢' %}
+                  <span id="love_{{ club_dict.data.simp_name }}" class="badge">{{ club_dict.follow }}</span>
+                </button>
+                {% endif %}
+                <a href="/club/{{ club_dict.data.simp_name }}/" class="btn btn-default quan-badge" role="button">{% t_ '主页' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="thumbnail visible-xs-block" style="margin-bottom:5px;border: 1px dashed #CCC;border-radius:0px;">
+        <div class="caption">
+          <div class="row">
+            <div class="col-sm-6 col-md-5">
+              <a href="#"><img src="{{ club_dict.avatar.large }}" class="img-responsive img-circle" style="margin:0px auto;"></a>
+              <p class="h4 text-center">{{ club_dict.data.full_name }}</p>
+            </div>
+            <div class="col-sm-6 col-md-7">
+              <hr />
+              <p class="text-center"><span class="glyphicon glyphicon-inbox"></span> {% t_ '社团简介' %}</p>
+              <p style="text-indent: 2em;">{{ club_dict.data.simp_intro }}</p>
+              <hr />
+              {% if club_dict.followed %}
+              <button class="btn btn-primary quan-badge" type="button" onclick="follow('{{ club_dict.data.simp_name }}')">
+                {% t_ '取消关注' %}
+              </button>
+              {% else %}
+              <button class="btn btn-primary quan-badge" type="button" onclick="follow('{{ club_dict.data.simp_name }}')">
+                {% t_ '喜欢' %}
+                <span id="love_{{ club_dict.data.simp_name }}" class="badge">{{ club_dict.follow }}</span>
+              </button>
+              {% endif %}
+              <a href="/club/{{ club_dict.data.simp_name }}/" class="btn btn-default quan-badge" role="button">{% t_ '主页' %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    <div class="col-sm-12 col-md-12 hidden-xs">
+      <nav class="text-center">
+        <ul class="pagination">
+          {% if not page_pre %}
+          <li class="disabled"><span>&laquo;</span></li>
+          {% else %}
+          <li><a onclick="fetch_index(1);">&laquo;</a></li>
+          {% endif %}
+          {% for i in page_list %}
+          <li{% ifequal i page_index %} class="active"{% endifequal %}>
+            <a onclick="fetch_index({{ i }});">{{ i }}</a>
+          </li>
+          {% endfor %}
+          {% if not page_next %}
+          <li class="disabled"><span>&raquo;</span></li>
+          {% else %}
+          <li><a onclick="fetch_index({{ page_len }});">&raquo;</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>

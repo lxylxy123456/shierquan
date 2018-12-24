@@ -1,0 +1,57 @@
+{% include 'club/prv_event_list.html' %}
+{% load translate %}
+
+<div class="modal fade" id="event_add_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="fintro_label">{% t_ '添加活动' %} - {{ club.full_name }}</h4>
+      </div>
+      <form id="club_prv_event" class="form" method="POST" action="/event/create/">
+        <div class="modal-body">
+          {% csrf_token %}
+          <div class="form-group">
+            <input name="subject" type="text" class="form-control" placeholder="{% t_ '活动名称' %}">
+          </div>
+          <div class="form-group">
+            <input type="text" name="location" class="form-control" placeholder="{% t_ '活动地点' %}">
+          </div>
+
+          <div class="form-group">
+            <input type='text' placeholder="{% t_ '活动开始时间' %}" class="form-control" name='time_set' data-date-format="YYYY/MM/DD HH:mm" id="time_set" />
+          </div>
+          <div class="form-group">
+            <input type='text' placeholder="{% t_ '活动结束时间' %}" class="form-control" name='time_end' data-date-format="YYYY/MM/DD HH:mm" id="time_end" />
+          </div>
+          <script type="text/javascript">
+			$(function () {
+				$('#time_set').datetimepicker();
+				$('#time_end').datetimepicker();
+			});
+          </script>
+          <div class="form-group">
+            <textarea name="content" class="form-control" rows="3" placeholder="{% t_ '活动内容' %}"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" value="{% t_ '添加' %}" class="btn btn-primary" />
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '取消' %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#club_prv_event").on("submit", function(event) {
+		event.preventDefault();
+		ajaxBanner(this.action, {
+			data: getFormJson(this), 
+			aid: {{ club.id }},
+			src: 'club',
+		}, "#club_prv_event");
+	});
+	return false;
+});
+</script>

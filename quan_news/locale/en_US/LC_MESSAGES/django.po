@@ -1,0 +1,54 @@
+msgid "成功删除"
+msgstr "Deleted successfully"
+
+msgid "标题太长"
+msgstr "Subject too long"
+
+msgid "找不到用户/社团"
+msgstr "Cannot find the user / club"
+
+msgid "不是新闻作者"
+msgstr "You are not the author of the news"
+
+msgid " - 编辑新闻"
+msgstr " - News Editing"
+
+msgid "找不到新闻"
+msgstr "News not found"
+
+msgid "包含非法字符"
+msgstr "Invalid characters detected"
+
+msgid "找不到对象"
+msgstr "Object not found"
+
+msgid " - 发表新闻"
+msgstr " - News Post"
+
+msgid "投递成功"
+msgstr "News successfully posted"
+
+msgid "请写一点标题"
+msgstr "Subject too short"
+
+msgid "请写一点内容"
+msgstr "Content too short"
+
+msgid " - %s"
+msgstr " - %s"
+
+msgid " - 新闻"
+msgstr " - News"
+
+msgid "无法找到这个AttachID"
+msgstr "Cannot find this Attach ID"
+
+msgid "内容太长"
+msgstr "Content too long"
+
+msgid "无法找到更改项目"
+msgstr "Cannot find object to modify"
+
+msgid "冒充别人"
+msgstr "Permission error"
+

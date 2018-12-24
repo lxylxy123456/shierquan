@@ -1,0 +1,91 @@
+{% extends 'material_base.html' %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div class="inputs">
+        <div class="form-control-wrapper">
+          <input class="form-control empty" style="font-size:20px;" type="text" id="subject" value="{{ data.subject }}" placeholder="{% t_ '编辑新闻标题' %}">
+
+          <span class="material-input"></span>
+        </div>
+      </div>
+      <br />
+      <form id="news_post_form" action="/news/post/" class="">
+        <div class="form-group">
+          <textarea style="display:None"></textarea>
+          <textarea id="editor" placeholder="" autofocus>{{ data.content }}</textarea>
+        </div>
+        <div id="ajax_feedback"></div>
+        <div class="form-group text-right">
+          <button id="content_submit" type="submit" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-send"></span> {% t_ '投递新闻' %}</button>
+          <!--<button class="btn btn-success btn-lg" onclick="view();"><span class="glyphicon glyphicon-check"></span> {% t_ '预览' %}</button>-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <small>alternatives.png</small>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" style="width: 60%;"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input class="form-control floating-label" id="focusedInput" placeholder="{% t_ '文件描述' %}" type="text">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div id="form_group" class="form-group">
+        <div class="form-group">
+          <label for="inputFile" class="col-lg-2 control-label">{% t_ '添加随文图片及附件' %}</label>
+          <form id="contain_form" method="post" action="/share/upload/?status=query" enctype="multipart/form-data" target="upload_frame">
+            {% csrf_token %}
+            <div id="inputFileDiv" class="form-group text-center">
+              <input name="multiple-file" type="file" multiple="multiple" class="btn btn-info btn-lg" id="inputFile" title="Select upload file" onchange="testBtn();" data-filename-placement="inside" >
+            </div>
+            <script id="inputFileTemplate" type="x-tmpl-mustache">
+              <input name="multiple-file" type="file" multiple="multiple" class="btn btn-info btn-lg" id="inputFile" title="Select upload file" onchange="testBtn();" data-filename-placement="inside" >
+            </script>
+          </form>
+          <div class="col-xs-12 col-md-6">
+            <h4 class="text-left"><span class="glyphicon glyphicon-list-alt"></span> File List</h4>
+            <div id="file_info_group"></div>
+          </div>
+        </div>
+      </div>
+      <div id="view" class=""></div>
+    </div>
+  </div>
+</div>
+<iframe id="upload_frame" name="upload_frame" style="display:none;"></iframe>
+<script type="text/javascript">
+	var editor = new Simditor({
+		textarea: $('#editor'),
+		toolbar: ['title', 'bold', 'underline', 'strikethrough', 'color', 'hr', 'blockquote', 
+			'indent', 'outdent', 'ol', 'ul'],
+	});
+	var attach_uuid = "";
+	$(document).ready(function(){
+		$("#news_post_form").on("submit", function(event) {
+			event.preventDefault();
+			ajaxBanner(this.action, {
+				'attach_uuid': attach_uuid, 
+				'src': "{{ src }}", 
+				'aid': "{{ aid }}", 
+				'subject': $('#subject').val(), 
+				'content': $('#editor').val(), 
+				'nid': "{{ nid }}", 
+			}, "#ajax_feedback");
+		});
+	});
+	function view(){
+		$("#view").html($('#editor').val());
+	}
+</script>
+
+{% include 'comp/progress.html' %}
+
+{% endblock %}

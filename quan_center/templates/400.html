@@ -1,0 +1,14 @@
+{% extends "form_error_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="jumbotron list-group-item-warning" style="padding:64px;">
+      <h1><span class="glyphicon glyphicon-floppy-remove"></span> {% t_ '请求被华丽丽地忽略了' %}...</h1>
+      <p>{% t_ '服务器返回了一个400。可能你在试图上传一个大文件' %}？</p>
+      <p><a class="btn btn-warning btn-lg" href="#" role="button">{% t_ '详细信息' %}</a></p>
+    </div>
+</div>
+
+{% endblock %}

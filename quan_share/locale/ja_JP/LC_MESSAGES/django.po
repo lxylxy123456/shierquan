@@ -1,0 +1,75 @@
+msgid "投递错误"
+msgstr ""
+
+msgid "服务器认为只有登录用户才能访问"
+msgstr ""
+
+msgid "评论频率过高"
+msgstr ""
+
+msgid "文件过大[已抛弃]"
+msgstr ""
+
+msgid "或许已被删除"
+msgstr ""
+
+msgid "成功删除分享"
+msgstr ""
+
+msgid "分享内容不完整。"
+msgstr ""
+
+msgid "似乎没有添加文件？"
+msgstr ""
+
+msgid "发生未知错误，请重试或联系HCC"
+msgstr ""
+
+msgid " - %s - %s的分享"
+msgstr ""
+
+msgid "附件已被分享"
+msgstr ""
+
+msgid "无法找到这个AttachID"
+msgstr ""
+
+msgid " - %s"
+msgstr ""
+
+msgid "文件上传成功"
+msgstr ""
+
+msgid "似乎在对我做一些不好的事情"
+msgstr ""
+
+msgid "今天的分享数量已到上限。"
+msgstr ""
+
+msgid "找不到收件人"
+msgstr ""
+
+msgid " - 上传附件"
+msgstr ""
+
+msgid "分享内容不完整或字数过多。"
+msgstr ""
+
+msgid "找不到进程ID"
+msgstr ""
+
+msgid "似乎输入为空"
+msgstr ""
+
+msgid "很顺利地添加了评论"
+msgstr ""
+
+msgid "找不到文件"
+msgstr ""
+
+msgid "分享频率过高。"
+msgstr ""
+
+msgid "<strong><a href=\"/share/%s/\">[%s]</a></strong> 已成功创建分享"
+msgstr ""
+

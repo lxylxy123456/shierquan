@@ -1,0 +1,53 @@
+{% load translate %}
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4 class="text-center">{% t_ '社团状态' %}</h4>
+          <hr>
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="Large button group">
+            {% if inc_admin %}
+            <a href="/club/{{ club.simp_name }}/manage/" class="btn btn-default">
+              <h3 class="text-center">{{ club_wait_num }}</h3>
+              <small>{% t_ '新申请数量' %}</small>
+            </a>
+            {% else %}
+            <a href="#" class="btn btn-default disabled">
+              <h3 class="text-center">{{ club_member_total }}</h3>
+              <small>{% t_ '成员总数' %}</small>
+            </a>
+            {% endif %}
+            <a href="/club/{{ club.simp_name }}/follower/" class="btn btn-default">
+              <h3 class="text-center">{{ club_follower_total }}</h3>
+              <small>{% t_ '关注者' %}</small>
+            </a>
+            <a href="#" class="btn btn-default disabled">
+              <h3 class="text-center">{{ visitors }}</h3>
+              <small>{% t_ '访问数量' %}</small>
+            </a>
+          </div>
+        </div>
+        <div class="list-group">
+          <a href="/user/{{ club_head_sname }}/" class="list-group-item">
+            <span class="pull-right">{{ club_head }}</span>
+            <span class="glyphicon glyphicon-align-justify">
+            <strong>{% t_ '社长' %}</strong>
+          </a>
+          {% if club_vice %}
+          <a href="/user/{{ club_vice_sname }}/" class="list-group-item">
+            <span class="pull-right">{{ club_vice }}</span>
+            <span class="glyphicon glyphicon-align-center"> 
+            <strong>{% t_ '副社长' %}</strong>
+          </a>
+          {% endif %}
+        </div>
+<!--
+        <a href="#" class="list-group-item">
+          <span class="badge">{{ club_event_num }}</span>
+          {% t_ '活动总计' %}
+        </a>
+        <a href="#" class="list-group-item">
+          <span class="badge">{{ club_attendance }}%</span>
+          {% t_ '参与率' %}
+        </a>
+-->
+      </div>

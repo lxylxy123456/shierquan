@@ -1,0 +1,87 @@
+{% extends "form_simp_base.html" %}
+{% load translate %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{% t_ '添加新社团' %}</div>
+        <div class="panel-body">
+          <form id="create_form" class="form-horizontal" role="form" method="post" action="/create/">
+          {% csrf_token %}
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group row has-feedback" id="group_inputName">
+                <label for="inputName" class="col-sm-2 control-label">{% t_ '社团名称' %}</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="full_name" id="inputName" placeholder="{% t_ '社团名称' %}" oninput="character_verify('inputName', 20);" value="{{ form_full_name }}">
+                </div>
+              </div>
+              <div class="form-group row has-feedback" id="group_simp_intro">
+                <label for="simp_intro" class="col-sm-2 control-label">{% t_ '社团简介' %}</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="simp_intro" name="simp_intro" placeholder="{% t_ '一句话介绍你的社团（不多于30字）' %}" oninput="character_verify('simp_intro', 30);" value="{{ form_simp_intro }}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 control-label">{% t_ '社团分类' %}</label>
+                <div class="col-sm-10">
+                  <div class="btn-group" data-toggle="buttons">
+                    {% for i in category_list %}
+                    <label class="btn btn-primary">
+                      <input name="category" value="{{ i.0 }}" id="{{ i.0 }}" type="radio" name="options"> {{ i.1 }}
+                    </label>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row has-feedback" id="group_full_intro">
+                <label for="full_intro" class="col-sm-2 control-label">{% t_ '社团概况' %}</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="full_intro" name="full_intro" rows="7" placeholder="{% t_ '社团概况（不多于100字）' %}" oninput="character_verify('full_intro', 160);">{{ form_full_intro }}</textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="simp_name" class="col-sm-2 control-label">{% t_ '社团主页链接' %}</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <div class="input-group-addon">shiyiquan.net/club/</div>
+                      <input name="simp_name" class="form-control" type="text" placeholder="{% t_ '建议使用小写' %}" value="{{ form_simp_name }}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary">{% t_ '提交' %}</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+	function character_verify(id, len){
+		content = $("#"+id).val();
+		if (content.length > len) {
+			$("#group_"+id).addClass('has-error');
+		} else {
+			$("#group_"+id).removeClass('has-error');
+		}
+	}
+	
+	$("#create_form").on("submit", function (event){
+		event.preventDefault();
+		ajaxBanner(this.action, {
+			data: getFormJson(this), 
+		}, "#create_form");
+	});
+  </script>
+</div>
+
+{% endblock %}

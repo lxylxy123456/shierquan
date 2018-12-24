@@ -1,0 +1,33 @@
+msgid "已经向%s授予过这枚徽章了"
+msgstr "You have already granted %s this badge"
+
+msgid "提交频率过高"
+msgstr "Commit frequency too high"
+
+msgid "徽章授予成功"
+msgstr "Badge successfully granted"
+
+msgid "成功撤回了授予的徽章"
+msgstr "Badge successfully withdrawn"
+
+msgid "徽章内容不完整"
+msgstr "Incomplete badge content"
+
+msgid "找不到接受者，请检查姓名拼写"
+msgstr "Cannot find receiver, please check the spelling"
+
+msgid "已成功创建徽章"
+msgstr "Badge created successfully"
+
+msgid "不合规定的操作#badge"
+msgstr "Empty content"
+
+msgid "参数错误"
+msgstr "Parameter error"
+
+msgid "找不到徽章"
+msgstr "Badge not found"
+
+msgid "徽章删除成功"
+msgstr "Badge deleted successfully"
+

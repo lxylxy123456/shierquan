@@ -1,0 +1,126 @@
+{% extends "form_comp_base.html" %}
+{% load translate %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+       <div class="jumbotron list-group-item-info" style="padding:24px;">
+          <script type="text/javascript">
+			$(document).ready(function(){
+				$("#save-as-picset").click(function(){
+					$("#upload-to").attr("value",'picset');
+ 				});
+				$("#save-as-fileset").click(function(){
+					$("#upload-to").attr("value",'fileset');
+ 				});
+			});
+          </script>
+          <h1 class="text-center">{% t_ '添加附件' %} <small>Hello, {{ request.user.first_name }}! </small></h1>
+          <hr />
+          <div class="row">
+          {% if not attach_uuid %}
+            <form action="/share/upload/" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div id="step1" class="col-xs-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <h1><span class="label label-info">1</span></h1>
+                  </div>
+                  <div class="col-sm-8 col-md-9">
+                    <h3>{% t_ '首先，选择需要存储的文件。' %}</h3>
+                    <div class="form-group">
+                      <input name="multiple-file" type="file" multiple="multiple" class="btn btn-default btn-lg btn-block" id="exampleInputFile" title="{% t_ '选择上传文件' %}" data-filename-placement="inside">
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+
+              <div id="step2" class="col-xs-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <h1><span class="label label-info">2</span></h1>
+                  </div>
+                  <div class="col-sm-8 col-md-9">
+                    <h3>{% t_ '然后，点击上传按钮。' %}</h3>
+                    <input type="submit" value="{% t_ '上传' %}" class="btn btn-block btn-lg btn-primary" />
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          {% else %}
+            {% if content %}
+              <div id="step3" class="col-xs-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <h1><span class="label label-default">3</span></h1>
+                  </div>
+                  <div class="col-sm-8 col-md-9">
+                    <h3>{{content}}</h3>
+                    <a href="/share/upload/" class="btn btn-warning btn-lg" role="button">{% t_ '点击返回' %}</a>
+                  </div>
+                </div>
+              </div>
+
+            {% else %}
+              <div id="step3" class="col-sm-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <h1><span class="label label-primary">3</span></h1>
+                  </div>
+                  <div class="col-sm-8 col-md-9">
+                    <h3>{% t_ 'AttachID已生成，请剪切它。' %}</h3>
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon">AttachID</span>
+                      <input id="AttachID" type="text" class="form-control" placeholder="" value="{{ attach_uuid }}">
+                    </div>
+                    <hr />
+                  </div>
+                  <div class="col-sm-12 col-md-12">
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-block btn-lg" onclick="examine_n_close();">
+                        <span class="glyphicon glyphicon-remove-circle"></span> {% t_ '关闭页面' %}</button>
+                    </div>
+                    <script type="text/javascript">
+					function examine_n_close() {
+						val = $("#AttachID").val();
+						if(val == "")
+							window.close();
+						else
+							alert("{% t_ '请剪切AttachID。' %}");
+					}
+                    </script>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step4" class="col-sm-12 col-md-6">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <h1><span class="label label-primary">4</span></h1>
+                  </div>
+                  <div class="col-sm-8 col-md-9">
+                    <h3>{% t_ '存储文件清单' %}</h3>
+                    <ul class="nav nav-pills nav-stacked" role="tablist">
+                    {% for i in file_list %}
+                      <li role="presentation">
+                        <a href="{{ i.url }}"><span class="glyphicon glyphicon-link"></span> {{ i.name }}</a>
+                      </li>
+                    {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

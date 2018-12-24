@@ -1,0 +1,246 @@
+{% extends "form_fluid_base.html" %}
+{% load translate %}
+
+{% block content %}
+<img style="display:None;" src="{{ avatar }}" />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ol class="breadcrumb">
+            <li><a href="/">{% t_ '主页' %}</a></li>
+            <li><a href="/{{ data.relation }}/{{ sname }}/">{{ fname }}</a></li>
+            <li class="active">{% t_ '分享' %}</li>
+          </ol>
+          <h3 class="text-center">
+            <a href="#" data-toggle="modal" data-target=".bs-example-modal-md">
+              <span class="glyphicon glyphicon-share"></span>
+            </a> 
+            {{ data.subject }} <small> by {{ fname }}</small>
+          </h3>
+          <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title">{% t_ '获取二维码' %}</h4>
+                </div>
+                <div class="modal-body">
+                  <div  class="text-center" >
+                    <img style="width:60%;margin:0px auto;" src="/media/images/qrcode/share-{{ data.attach_uuid }}.png" />
+                      <p class="text-center"><small>{% t_ '使用微信“扫一扫”功能将分享转发到朋友圈中。' %}</small></p>
+                   </div>
+                </div>
+              </div><!-- /.modal-content -->
+            </div>
+          </div>
+          <hr />
+
+          <div class="row">
+            {% if file_list %}
+            <div class="col-sm-6 col-md-6">
+            {% else %}
+            <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            {% endif %}
+              <h3 class="text-center">
+                <small><span class="glyphicon glyphicon-th"></span> {% t_ '详细信息' %}</small>
+              </h3>
+              {% if data %}
+              <blockquote>
+                {% for i in share_content %}
+                  <p style="text-indent:2em; line-height:1.5em; word-wrap: break-word; ">{{ i }}</p>
+                {% endfor %}
+                <footer class="text-center">{% t_ '发布时间' %}: {{ time }}</footer>
+              </blockquote>
+              {% endif %}
+              <form action="" method="POST" id="delete_form">
+                <a href="#" class="btn btn-success quan-badge" data-toggle="modal" data-target=".bs-example-modal-md">
+                  <span class="glyphicon glyphicon-qrcode"></span> {% t_ '二维码' %}
+                </a>
+                {% if leader %}
+                  {% csrf_token %}
+                  <button type="submit" name="submit" class="btn btn-danger quan-badge">
+                    <span class="glyphicon glyphicon-trash"></span> {% t_ '删除' %}
+                  </button>
+                {% endif %}
+                {% if file_list and archive_size %} 
+                <a href="/share/download/?uuid={{ data.attach_uuid }}&type=zipball;" class="btn btn-info quan-badge">
+                  <span class="glyphicon glyphicon-compressed"></span>
+                  {% t_ '打包机' %}
+                  <span class="badge">{{ archive_size }}</span>
+                </a> 
+                {% endif %}
+              </form>
+              <hr>
+              {% if image_list %}
+              <h3 class="text-center">
+                <small><span class="glyphicon glyphicon-picture"></span> {% t_ '分享的图片' %}</small>
+              </h3>
+              <div class="row" id="container">
+                {% for i in image_list %}
+                <div class="col-xs-12 col-md-6 masonry-club-item">
+                  <a href="{{ i.url }}" class="thumbnail">
+                    <img src="{{ i.thumbnail }}" style="display: block;" alt="{{i.name}}">
+                  </a>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if stream_list %}
+              <h3 class="text-center">
+                <small><span class="glyphicon glyphicon-video"></span> {% t_ '分享的视频' %}</small>
+              </h3>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  {% for i in stream_list %}
+                  {% ifequal i.status 0 %}
+                  <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                    {% t_ '视频还在转换中，请稍候' %}
+                  </div>
+                  {% endifequal %}
+                  {% ifequal i.status 2 %}
+                  <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                    {% t_ '视频转换失败' %}
+                  </div>
+                  {% endifequal %}
+                  {% if Android %}
+                  <div style="margin-bottom: 20px; width: 100%; ">
+                    <a href="{{ i.url }}.mp4">
+                      <img src="{{ i.url }}.png" style="width: 100%; "/>
+                    </a>
+                  </div>
+                  {% else %}
+                  {% if i.show_player %}
+                  <video id="video-{{ i.data.attach_uuid }}" class="video-js" controls preload="auto" poster="{{ i.url }}.png" data-setup="{}" style="margin-bottom: 20px; width: 100%; ">
+                    {% ifequal i.data.webm_status 1 %}
+                    <source src="{{ i.url }}.webm" type='video/webm; codecs="vp8.0, vorbis"'>
+                    {% endifequal %}
+                    {% ifequal i.data.mp4_status 1 %}
+                    <source src="{{ i.url }}.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
+                    {% endifequal %}
+                    {# <source src="movie.ogg" type='video/ogg; codecs="theora, vorbis"'>  #}
+                    <p class="vjs-no-js">
+                      {% t_ '您的浏览器看似不支持在线播放视频' %}
+                    </p>
+                  </video>
+                  {% else %}
+                  <img src="{{ i.url }}.png" alt="{{ i.data.name_raw }}" style="margin-bottom: 20px; width: 100%; "/>
+                  {% endif %}
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            {% if file_list %}
+            <div class="col-sm-6 col-md-6">
+              <h3 class="text-center">
+                <small><span class="glyphicon glyphicon-save"></span> {% t_ '附件下载' %}</small>
+              </h3>
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+              {% for i in file_list %}
+                <li role="presentation">
+                  <a href="{{ i.url }}">
+                    <span class="glyphicon glyphicon-link"></span> 
+                    {{ i.name }}
+                    <strong class="pull-right">{{ i.data.downloads }}</strong>
+                    <span class="badge pull-right" style="margin-right: 10px; ">{{ i.size }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+	var $container = $('#container');
+	$container.imagesLoaded(function(){
+		$container.masonry({
+			itemSelector : '.masonry-club-item',
+		});
+	});
+	$("#delete_form").on("submit", function(e) {
+		e.preventDefault();
+		ajaxBanner(this.action, {}, "#delete_form")
+	});
+	/*
+	$(document).ready(function(){
+		$("#share_chat").on("submit", function(event) {
+			event.preventDefault();
+			ajax Load(this.action, {	// 将 ajax Load 的空格删除
+					context: $('#context').val(), 
+					suid: "{{ data.attach_uuid }}",
+					src: 'share',
+				}, "html", 
+				function(msg){
+					$("#share_chat").prepend(msg);
+		        	$(".alert").fadeOut(3000);
+					setTimeout("window.location.reload();", 3000);
+				}
+			);
+		});
+		return false;
+	});
+	*/
+    </script>
+  </div>
+</div>
+
+            <!--
+            <div class="col-sm-12 col-sm-6 col-md-6">
+              <h3 class="text-center"><small><span class="glyphicon glyphicon-comment"></span> {% t_ '七嘴八舌' %} </small></h3>
+              <hr />
+              {% for i in chat_list %}
+              <div class="media">
+                <a class="pull-left media-left" href="#">
+                  <img class="media-object img-circle" data-holder-rendered="true" src="{{ i.avatar }}" style="width: 64px; height: 64px;" data-src="holder.js/64x64" alt="64x64">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ i.data.subject }}</h4>{{ i.data.content }}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="col-sm-12 col-sm-6 col-md-6">
+              <h3 class="text-center"><small><span class="glyphicon glyphicon-chevron-right"></span> {% t_ '添加评论' %} </small></h3>
+              <hr />
+              <form id="share_chat" method="post" class="form" action="/share/chat/">
+                {% csrf_token %}
+                <div class="form-group">
+                  <textarea id="context" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-share-alt"></span> {% t_ '发送' %}</button>
+                </div>
+              </form>
+            </div>
+            -->
+
+<script type="text/javascript">
+function resize_message_box_group(){
+	var hw, wh;
+	style_str = "margin-bottom: 20px; width: 100%; "
+	{% for i in stream_list %}
+	hw = {{ i.data.video_height }} / {{ i.data.video_width }};
+	wh = {{ i.data.video_width }} / {{ i.data.video_height }};
+	video_id = "#video-{{ i.data.attach_uuid }}";
+	$(video_id).attr("style", "margin: 0 auto; " + style_str)
+	$(video_id).height($(video_id).width() * hw);
+	if ($(video_id).height() > window.innerHeight){
+		$(video_id).height(window.innerHeight - 10);
+		$(video_id).width($(video_id).height() * wh);
+	}
+	$(video_id + "_html5_api").attr("style", style_str);
+	{% endfor %}
+}
+
+window.onresize = resize_message_box_group;
+resize_message_box_group();
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,1801 @@
+msgid "十一论坛"
+msgstr "BNDS Forum"
+
+msgid "十一圈"
+msgstr "BNDS Circle"
+
+msgid "回到个人主页"
+msgstr "User Homepage"
+
+msgid "最近的活动"
+msgstr "Current Events"
+
+msgid "暂无分类"
+msgstr "No category"
+
+msgid "探索"
+msgstr "Explore"
+
+msgid "输入社团关键词"
+msgstr "Input query strings"
+
+msgid "更多"
+msgstr "More"
+
+msgid "来自"
+msgstr "From "
+
+msgid "社团名录"
+msgstr "Clubs List"
+
+msgid "APP下载"
+msgstr "Download Applications"
+
+msgid "搜索社团"
+msgstr "Club Searching"
+
+msgid "登录十一圈"
+msgstr "Login"
+
+msgid "注册"
+msgstr "Register"
+
+msgid "更新"
+msgstr "Refresh"
+
+msgid "重置密码"
+msgstr "Password Reset"
+
+msgid "正在想什么？"
+msgstr "What are you thinking about?"
+
+msgid "审核进度"
+msgstr "Rating Application"
+
+msgid "活动一览"
+msgstr "Event Square"
+
+msgid "搜索"
+msgstr "Search"
+
+msgid "输入社团名称"
+msgstr "Input the name of the club"
+
+msgid "手气不错"
+msgstr "I'm Feeling Lucky"
+
+msgid "用户设置"
+msgstr "Settings"
+
+msgid "登出"
+msgstr "Log-out"
+
+msgid "欢迎"
+msgstr "Welcome"
+
+msgid "帮助手册"
+msgstr "Documentation"
+
+msgid "人关注"
+msgstr "people are following"
+
+msgid "分类"
+msgstr " Category"
+
+msgid "个人主页"
+msgstr "User Homepage"
+
+msgid "便捷的社团活动发布&amp;管理平台。"
+msgstr "An easy event publication & management platform"
+
+msgid "登录后开启天台"
+msgstr "Login to comment"
+
+msgid "查看详情"
+msgstr "Details"
+
+msgid "社团联合会通知"
+msgstr "Announcement from Club Union"
+
+msgid "暂时没有通知"
+msgstr "There are no announcements currently "
+
+msgid "晓得"
+msgstr "Known"
+
+msgid "天台"
+msgstr "Platform"
+
+msgid "注册账户"
+msgstr "Register"
+
+msgid "登录"
+msgstr "Login"
+
+msgid "地点"
+msgstr "Location"
+
+msgid "社团广场"
+msgstr "Club Square"
+
+msgid "时间"
+msgstr "Time"
+
+msgid "载入更多动态"
+msgstr "Load more dynamics"
+
+msgid "成功更新动态"
+msgstr "Successfully updated dynamics"
+
+msgid "0 人关注"
+msgstr "0 people are following"
+
+msgid "查看更多社团"
+msgstr "View more clubs"
+
+msgid "创建社团"
+msgstr "Create a club"
+
+msgid "社团联合会"
+msgstr "Club Union"
+
+msgid "/static/js/obj2json.js"
+msgstr "/static/js/obj2json.en.js"
+
+msgid "添加新社团"
+msgstr "New Club"
+
+msgid "社团主页链接"
+msgstr "Link"
+
+msgid "社团简介"
+msgstr "Brief Introduction"
+
+msgid "一句话介绍你的社团（不多于30字）"
+msgstr "Introduce your club in less than 30 words"
+
+msgid "社团分类"
+msgstr "Category"
+
+msgid "社团概况"
+msgstr "Introduction"
+
+msgid "建议使用小写"
+msgstr "Lower case is recommended"
+
+msgid "社团名称"
+msgstr "Name"
+
+msgid "社团概况（不多于100字）"
+msgstr "Introduce in less than 100 words"
+
+msgid "提交"
+msgstr "Submit"
+
+msgid "新社团简介"
+msgstr "Brief Introduction"
+
+msgid "更改社团信息"
+msgstr "Modify Club Information"
+
+msgid "新社团名称"
+msgstr "Name"
+
+msgid "更改"
+msgstr "Change"
+
+msgid "提交修改"
+msgstr "Submit Modification"
+
+msgid "新社团概况"
+msgstr "Club Introduction"
+
+msgid "主页"
+msgstr "Link"
+
+msgid "修改社团头像"
+msgstr "Modify Club Avatar"
+
+msgid "对社团的一句话简介（不多于30字）"
+msgstr "Introduce your club in less than 30 words"
+
+msgid "新社团分类"
+msgstr "Category"
+
+msgid "社团概况&活动情况&历史等（不多于100字）"
+msgstr "Introduction & event information & history (less than 100 words)"
+
+msgid "警告"
+msgstr "Warning: "
+
+msgid "请输入一个昵称"
+msgstr "Input a new nickname"
+
+msgid "新昵称"
+msgstr "Nickname"
+
+msgid "邮箱"
+msgstr "Email"
+
+msgid "修改个人头像"
+msgstr "Modify User Avatar"
+
+msgid "您已经成功落户十一圈"
+msgstr "You have successfully signed up in BNDS Circle"
+
+msgid "我"
+msgstr "Me"
+
+msgid "密码"
+msgstr "Password"
+
+msgid "请输入一个签名"
+msgstr "Input a signature"
+
+msgid "新签名"
+msgstr "Signature"
+
+msgid "更改个人信息"
+msgstr "Modify User Information"
+
+msgid "请使用小写与连线符组合"
+msgstr "Please use letters and the minus sign"
+
+msgid "原密码"
+msgstr "Original"
+
+msgid "高三"
+msgstr "12"
+
+msgid "初二"
+msgstr "8"
+
+msgid "加入十一圈"
+msgstr "Join BNDS Circle"
+
+msgid "重复密码"
+msgstr "Repeat"
+
+msgid "年级"
+msgstr "Grade"
+
+msgid "外星人"
+msgstr "Alien"
+
+msgid "主页链接"
+msgstr "Link"
+
+msgid "高二"
+msgstr "11"
+
+msgid "手机"
+msgstr "Phone"
+
+msgid "初一"
+msgstr "7"
+
+msgid "更改密码"
+msgstr "Change Password"
+
+msgid "高一"
+msgstr "10"
+
+msgid "姓名"
+msgstr "Real Name"
+
+msgid "初三"
+msgstr "9"
+
+msgid "通过"
+msgstr "Granted"
+
+msgid "填写中"
+msgstr "Preparing"
+
+msgid "申请社团"
+msgstr "Club"
+
+msgid "审核状态"
+msgstr "Status"
+
+msgid "当前状态"
+msgstr "Status"
+
+msgid "刷新"
+msgstr "Refresh"
+
+msgid "附件损坏"
+msgstr "Attachment Broken"
+
+msgid "名称"
+msgstr "Name"
+
+msgid "处罚"
+msgstr "Punishment"
+
+msgid "审核通过"
+msgstr "Granted"
+
+msgid "查看全部"
+msgstr "View all"
+
+msgid "材料不足"
+msgstr "Lack of Materials"
+
+msgid "已通过"
+msgstr "Granted"
+
+msgid "申请前台"
+msgstr "Rating Application"
+
+# Deprecated
+msgid "待审核"
+msgstr "Waiting for Verification"
+
+msgid "修改时间"
+msgstr "Modification time"
+
+msgid "编辑"
+msgstr "Edit"
+
+msgid "不通过"
+msgstr "Rejected"
+
+msgid "社团ID"
+msgstr "Club ID"
+
+msgid "提交时间"
+msgstr "Submit Time"
+
+msgid "尚未审核"
+msgstr "Waiting for Verification"
+
+msgid "所有申请"
+msgstr "All Applications"
+
+msgid "评分标准"
+msgstr "Rubric"
+
+msgid "审核不通过"
+msgstr "Rejected"
+
+msgid "社团星级申报"
+msgstr "Rating Application"
+
+msgid "未通过"
+msgstr "Rejected"
+
+msgid "操作"
+msgstr "Operation"
+
+msgid "（十一圈将会重新整理数据格式并排序，所以不必担心格式不美观）"
+msgstr "(BNDS Circle will indent in back-end)"
+
+msgid "返回"
+msgstr "Return"
+
+msgid "每行代表一个评分标准，第一列是标准说明，其他列是标准的分数选项。"
+msgstr "Every line represents a perspective. The first column is the introduction, and other rows are score choices. "
+
+msgid "示例："
+msgstr "Example: "
+
+msgid "说明和示例"
+msgstr "Documentation and Examples"
+
+msgid "通过输入一个表格来编辑评分标准。表格竖方向用回车分隔，横向用空格或Tab分隔"
+msgstr "Input a form to edit the rubric. Use Enter for rows and space or tabs for columns. "
+
+msgid "帮助"
+msgstr "Help"
+
+msgid "数据表格"
+msgstr "Data form"
+
+msgid "编辑评分"
+msgstr "Edit Rubric"
+
+msgid "满分"
+msgstr "Full Score"
+
+msgid "处罚次数"
+msgstr "Punishment"
+
+msgid "管理社团群"
+msgstr "Manage Clubs"
+
+msgid "删除"
+msgstr "Delete"
+
+msgid "删除确认"
+msgstr "Delete Confirmation"
+
+msgid "（简称为"
+msgstr "(whose nickname is "
+
+msgid "出勤率"
+msgstr "Attendance"
+
+msgid "吗？"
+msgstr "?"
+
+msgid "确定要删除社团"
+msgstr "Are you sure to delete club "
+
+msgid "成员总数"
+msgstr "Total Members"
+
+msgid "标题"
+msgstr "Title"
+
+msgid "您选择申报的星级为"
+msgstr "The ranking you chose is "
+
+msgid "以更改"
+msgstr "to modify"
+
+msgid "发布分享并重新点击“刷新”按钮"
+msgstr "Submit share and click \"Refresh\" button again"
+
+msgid "提交个性评分"
+msgstr "Submit category score"
+
+msgid "请勿同时编辑两个评分项目"
+msgstr "Please do not edit two scores at once"
+
+msgid "申请材料"
+msgstr "Application Materials"
+
+msgid "活动"
+msgstr "Event"
+
+msgid "社团星级评价申请"
+msgstr "Club Rating Application"
+
+msgid "分享材料"
+msgstr "Shared Materials"
+
+msgid "没有选择“"
+msgstr "Not Chosen: \""
+
+msgid "”"
+msgstr "\""
+
+msgid "社团成员构成"
+msgstr "Member Makeup"
+
+msgid "强迫症刷新"
+msgstr "Force Refresh"
+
+msgid "投递"
+msgstr "Submit"
+
+msgid "社长姓名"
+msgstr "President"
+
+msgid "编辑活动资料"
+msgstr "Edit event information"
+
+msgid "您可以通过添加"
+msgstr "You can add "
+
+msgid "活动名称"
+msgstr "Event name"
+
+msgid "分数计算"
+msgstr "Score Calculation"
+
+msgid "撰写个性评分标准"
+msgstr "Edit category rubric"
+
+msgid "综合评分"
+msgstr "General scoring"
+
+msgid "提交综合评分"
+msgstr "Submit General Score"
+
+msgid "添加社团活动"
+msgstr "Add club events"
+
+msgid "影响力"
+msgstr "Influence"
+
+msgid "选择您选择申报的星级"
+msgstr "Please choose your intended rating"
+
+msgid "添加"
+msgstr "Add"
+
+msgid "尚未撰写评分标准"
+msgstr "Rubric is not written"
+
+msgid "个历史活动和分享来达到要求"
+msgstr " events and shares to fulfill the requirement"
+
+msgid "比例"
+msgstr "Ratio"
+
+msgid "活动材料"
+msgstr "Event materials"
+
+msgid "星级申报材料"
+msgstr "Rating Application Materials"
+
+msgid "人数"
+msgstr "People"
+
+msgid "人参加了活动"
+msgstr "people joined the event"
+
+msgid "所在年级"
+msgstr "Grade"
+
+msgid "社团"
+msgstr "Club"
+
+msgid "回到社团主页以修改信息"
+msgstr "Return to club homepage to edit information"
+
+msgid "该社团申报的星级是"
+msgstr "The club is applying for"
+
+msgid "对应年级"
+msgstr "Grade"
+
+msgid "活动地点"
+msgstr "Event Location"
+
+msgid "活动开始时间"
+msgstr "Start Time"
+
+msgid "添加附件（活动的记录资料）"
+msgstr "Add Attachment (Event Record)"
+
+msgid "修改头像"
+msgstr "Edit Avatar"
+
+msgid "个性评分"
+msgstr "Category Scoring"
+
+msgid "点击"
+msgstr "Click"
+
+msgid "分享"
+msgstr "Share"
+
+msgid "撰写综合评分标准"
+msgstr "Edit General Rubric"
+
+msgid "社团星级评价资料"
+msgstr "Club Rating Materials"
+
+msgid "提示"
+msgstr "Hint: "
+
+msgid "提交星级申报材料"
+msgstr "Submit Rating Application"
+
+msgid "经计算，您可以申报的星级为"
+msgstr "According to calculation, the highest rating you can apply for is: "
+
+msgid "申请"
+msgstr "Apply"
+
+msgid "资料标题"
+msgstr "Material Title"
+
+msgid "状态"
+msgstr "Status"
+
+msgid "社团资金申请审核"
+msgstr "Verification of Funds Application"
+
+msgid "还没有社团提交申请"
+msgstr "There are not any applications submitted"
+
+msgid "申请列表"
+msgstr "Application List"
+
+msgid "类型"
+msgstr "Category"
+
+msgid "打包下载"
+msgstr "Download in ZIP format"
+
+msgid "社团发展基金"
+msgstr "Club Foundation (社团发展基金)"
+
+msgid "联系方式"
+msgstr "Contact Method"
+
+msgid "基本信息"
+msgstr "Basic Information"
+
+msgid "社团全称"
+msgstr "Club Full Name"
+
+msgid "申请资金"
+msgstr "Foundation Application"
+
+msgid "社团借款（暂不可用）"
+msgstr "Club Loan (社团借款) (Currently Unavailable)"
+
+msgid "社团资金申请"
+msgstr "Club Foundation Application"
+
+msgid "申请项目摘要"
+msgstr "Abstract of the applying project"
+
+msgid "请简要列举你要申请资金项目"
+msgstr "Please list the projects which need foundation"
+
+msgid "资金类型"
+msgstr "Foundation Type"
+
+msgid "如果以上信息有误，请在十一论坛中反馈"
+msgstr "If any information beyond is incorrect, please feedback in BNDS Forum"
+
+msgid "新建申请"
+msgstr "New Application"
+
+msgid "查看协议"
+msgstr "View Agreement"
+
+msgid "关闭"
+msgstr "Close"
+
+msgid "还没有提交申请"
+msgstr "No applications are created"
+
+msgid "，此操作无法恢复。"
+msgstr "; this operation cannot be recovered. "
+
+msgid "社联反馈意见"
+msgstr "Feedback from Club Union"
+
+msgid "申请失败"
+msgstr "Application Failed"
+
+msgid "下载表格"
+msgstr "Form Download"
+
+msgid "修改内容"
+msgstr "Modify Content"
+
+msgid "申请通过"
+msgstr "Application Granted"
+
+msgid "材料缺失"
+msgstr "Lack of Materials"
+
+msgid "您将要删除"
+msgstr "You are going to delete "
+
+msgid "删除申请"
+msgstr "Delete Application"
+
+msgid "申请活动区域"
+msgstr "Apply for Event Areas"
+
+msgid "然后，点击绿色按钮上传。"
+msgstr "Then, click the green button up upload it. "
+
+msgid "选择头像"
+msgstr "Select Avatar"
+
+msgid "首先，单击下面的按钮选择一张图片。"
+msgstr "First, click the button bellow to select an image. "
+
+msgid "头像"
+msgstr " Avatar"
+
+msgid "上传"
+msgstr "Upload "
+
+msgid "详细信息"
+msgstr "Detailed Information"
+
+msgid "请求被华丽丽地忽略了"
+msgstr "The request is ignored"
+
+msgid "服务器返回了一个400。可能你在试图上传一个大文件"
+msgstr "The server returns a 400. Maybe you are trying to upload a huge file"
+
+msgid "服务器返回了一个403。嗯，访问 Forbidden"
+msgstr "The server returns a 403. Yes, access forbidden"
+
+msgid "您的请求被锯了"
+msgstr "Your request is rejected"
+
+msgid "无额外错误信息。"
+msgstr "No extra error information available"
+
+msgid "出错了耶..."
+msgstr "Something is wrong ..."
+
+msgid "无额外错误信息。不过...谢谢单击！"
+msgstr "No extra error information available, but thanks for clicking!"
+
+msgid "服务器返回了一个404。嗯，页面 not Found！"
+msgstr "The server returns a 404. Yes, page not found!"
+
+msgid "二维码"
+msgstr "QR Code"
+
+msgid "跳转链接"
+msgstr "Short Links"
+
+msgid "查看所有关注者"
+msgstr "View all followers"
+
+msgid "目前没有任何链接"
+msgstr "There are currently no short links"
+
+msgid "新增"
+msgstr "Append"
+
+msgid "关注者"
+msgstr "Followers"
+
+msgid "暂时没有二维码。"
+msgstr "There are currently no QR code"
+
+msgid "通过添加链接让同学们快速访问社团网站"
+msgstr "Let students view the club faster by adding short links"
+
+msgid "点击查看详情"
+msgstr "Click to view details"
+
+msgid "添加链接"
+msgstr "Add Link"
+
+msgid "填写30个以内的大小写字母或减号"
+msgstr "Please input less than 30 letters or the minus sign"
+
+msgid "暂时没有分享图片"
+msgstr "There are currently no shared pictures available"
+
+msgid "暂时没有关注者"
+msgstr "There are currently no followers"
+
+msgid "全部社员"
+msgstr "All members"
+
+msgid "交接社长"
+msgstr "Change President"
+
+msgid "申请时间"
+msgstr "Application time"
+
+msgid "输入姓名"
+msgstr "Input real name"
+
+msgid "身份"
+msgstr "Status"
+
+msgid "交接"
+msgstr "Change"
+
+msgid "拒绝"
+msgstr "Reject"
+
+msgid "暂时没有成员。邀请同学加入吧！"
+msgstr "There are currently no members. Why not invite your classmates? "
+
+msgid "管理社团成员"
+msgstr "Manage Club Members"
+
+msgid "参与率"
+msgstr "Ratio of Joining"
+
+msgid "管理交接"
+msgstr "Authority Management"
+
+msgid "没有未审核成员。"
+msgstr "There are currently no unverified members"
+
+msgid "设为核心"
+msgstr "Mark as Core"
+
+msgid "邀请同学加入吧！"
+msgstr "Invite classmates to join! "
+
+msgid "移除"
+msgstr "Remove"
+
+msgid "移出核心"
+msgstr "Mark as not Core"
+
+msgid "学分"
+msgstr "Credits"
+
+msgid "未处理申请"
+msgstr "Unverified Applications"
+
+msgid "设置副社长"
+msgstr "Set Vice President"
+
+msgid "留言板"
+msgstr "Message Board"
+
+msgid "发送"
+msgstr "Send"
+
+msgid "写下对社团的建议"
+msgstr "Leave your advises to the club"
+
+msgid "个人分享"
+msgstr "Personal Shares"
+
+msgid "已发送"
+msgstr "Sent"
+
+msgid "社团分享"
+msgstr "Club Shares"
+
+msgid "动态"
+msgstr "Dynamics"
+
+msgid "我的关注"
+msgstr "My Following List"
+
+msgid "收件箱"
+msgstr "In Box"
+
+msgid "社团活动"
+msgstr "Club Events"
+
+msgid "错误"
+msgstr "Error"
+
+msgid "联系人"
+msgstr "Contacts"
+
+msgid "本社团没有进行任何活动。"
+msgstr "This club has not held any events yet"
+
+msgid "进入"
+msgstr "Enter"
+
+msgid "暂时没有添加任何人为好友"
+msgstr "You have not added anyone for friends yet"
+
+msgid "没有关注的社团"
+msgstr "No clubs followed"
+
+msgid "位成员"
+msgstr "Members"
+
+msgid "写下群聊内容"
+msgstr "Write down group chat message"
+
+msgid "请在上传全部完成后发送消息以携带附件"
+msgstr "Please send the message after all the files are uploaded"
+
+msgid "去广场逛逛"
+msgstr "Explore in Club Square"
+
+msgid "清空消息"
+msgstr "Clear Messages"
+
+msgid "人订阅"
+msgstr "users followed"
+
+msgid "已经渲染消息"
+msgstr "Message Already Rendered"
+
+msgid "输入好友昵称或姓名"
+msgstr "Friend's nickname or real name"
+
+msgid "载入历史"
+msgstr "Load History"
+
+msgid "添加附件"
+msgstr "Add attachments"
+
+msgid "写下消息内容"
+msgstr "Write down message content"
+
+msgid "修改密码"
+msgstr "Change Password"
+
+msgid "次活动"
+msgstr "Events"
+
+msgid "暂时没有会话内容"
+msgstr "Currently empty"
+
+msgid "没有加入的社团"
+msgstr "No clubs joined"
+
+msgid "修改个人信息"
+msgstr "Modify user information"
+
+msgid "加入新社团"
+msgstr "Join new clubs"
+
+msgid "发起会话"
+msgstr "Launch a topic"
+
+msgid "选择附加文件"
+msgstr "Select Attachment"
+
+msgid "系统通知"
+msgstr "System Notifications"
+
+msgid "随便看看"
+msgstr "I'm Feeling Lucky"
+
+msgid "暂时没有群聊。"
+msgstr "Currently empty"
+
+msgid "通过“寻找...”模块搜索并添加好友"
+msgstr "Search for friends in \"Look For ...\" tab"
+
+msgid "进入主页"
+msgstr "Enter Homepage"
+
+msgid "寻找"
+msgstr "Search"
+
+msgid "等"
+msgstr "and so on"
+
+msgid "寻找..."
+msgstr "Look For ..."
+
+msgid "写下对十一圈的建议"
+msgstr "Write down advises for BNDS Circle"
+
+msgid "暂时没有任何分享"
+msgstr "Currently no shares available"
+
+msgid "暂时没有聊天。"
+msgstr "Currently empty"
+
+msgid "发送邀约"
+msgstr "Send Invitation"
+
+msgid "关注TA"
+msgstr "Follow Him / Her"
+
+msgid "请阐明来意"
+msgstr "Who are you? "
+
+msgid "加入十一圈。"
+msgstr " "
+
+msgid "次。"
+msgstr "times. "
+
+msgid "接下来将参加"
+msgstr "Next event: "
+
+msgid "取消关注"
+msgstr "Cancel Following"
+
+msgid "统计信息"
+msgstr "Statistics"
+
+msgid "暂时没有参与的活动"
+msgstr "This user is currently not joining any events"
+
+msgid "该用户于"
+msgstr "This user joins BNDS Circle "
+
+msgid "拒绝申请"
+msgstr "Reject"
+
+msgid "参加的活动"
+msgstr "Activities"
+
+msgid "所属社团"
+msgstr "Clubs"
+
+msgid "没有下一次活动"
+msgstr "No next event"
+
+msgid "加为联系人"
+msgstr "Add as contact"
+
+msgid "打招呼"
+msgstr "Say Hello"
+
+msgid "TA的主页被访问过"
+msgstr "His / her homepage has been visited "
+
+msgid "足迹"
+msgstr "Footprint"
+
+msgid "订阅列表"
+msgstr "Following List"
+
+msgid "邀请就餐"
+msgstr "Meal inviting"
+
+msgid "Hello, 我是..."
+msgstr "Hello, I am ..."
+
+msgid "发送成功"
+msgstr "Sent successfully"
+
+msgid "所有社长"
+msgstr "All presidents"
+
+msgid "所有用户"
+msgstr "All users"
+
+msgid "内容"
+msgstr "Content"
+
+msgid "收件人"
+msgstr "Receiver"
+
+msgid "群发邮件"
+msgstr "Batch Sender"
+
+msgid "收件人列表"
+msgstr "Receiver List"
+
+msgid "如果忘记邮箱，可以在输入姓名后点击“重置密码”来获取提示"
+msgstr "If your email address is forgotten, click \"Password Reset\" after entering your real name to get a hint"
+
+msgid "获取二维码"
+msgstr "Get QR Code"
+
+msgid "人报名"
+msgstr "people registered"
+
+msgid "问题"
+msgstr "Question"
+
+msgid "人准备参加这个活动"
+msgstr "people prepare to join this event"
+
+msgid "选项"
+msgstr "Choices"
+
+msgid "成员补签"
+msgstr "Sign Up Assistance"
+
+msgid "人参与 / 共计"
+msgstr "people joins / "
+
+msgid "选项B"
+msgstr "Choice B"
+
+msgid "恭喜"
+msgstr "Congratulations: "
+
+msgid "签到二维码"
+msgstr "Sign Up QR Code"
+
+msgid "添加签到"
+msgstr "Add Sign Up"
+
+msgid "日期"
+msgstr "Date"
+
+msgid "共计"
+msgstr " "
+
+msgid "签到"
+msgstr "Sign Up"
+
+msgid "等级"
+msgstr "Level"
+
+msgid "参与人数"
+msgstr "Attendance"
+
+msgid "删除活动"
+msgstr "Delete Event"
+
+msgid "关联分享"
+msgstr "Associate Share"
+
+msgid "选项A"
+msgstr "Choice A"
+
+msgid "签到成功"
+msgstr "Signed up successfully"
+
+msgid "设置签到"
+msgstr "Submit Sign Up"
+
+msgid "设置签到的方法"
+msgstr "How to set a sign up"
+
+msgid "结束时间"
+msgstr "Ending Time"
+
+msgid "正确答案"
+msgstr "Correct Answer"
+
+msgid "使用微信“扫一扫”功能签到。"
+msgstr "Scan the QR Code to sign up"
+
+msgid "使用微信“扫一扫”功能将活动分享到朋友圈中。"
+msgstr "Scan the QR Code and share the event to your \"Moments\" in WeChat"
+
+msgid "准备参与者"
+msgstr "Registered for the Event"
+
+msgid "请输入成员姓名"
+msgstr "Please enter the real name of the member"
+
+msgid "参与情况"
+msgstr "Attendance"
+
+msgid "签到状况"
+msgstr "Status"
+
+msgid "开始时间"
+msgstr "Starting Time"
+
+msgid "签到失败"
+msgstr "Sign up failed"
+
+msgid "关注 + 推广"
+msgstr "Follow + Propagate"
+
+msgid "人准备参与活动"
+msgstr "people prepare to join"
+
+msgid "选项C"
+msgstr "Choice C"
+
+msgid "分享至微信"
+msgstr "Share to WeChat"
+
+msgid "活动简介"
+msgstr "Introduction"
+
+msgid "回复"
+msgstr "Reply "
+
+msgid "编辑封面"
+msgstr "Edit Avatar"
+
+msgid "添加封面"
+msgstr "Add Avatar"
+
+msgid "编辑介绍"
+msgstr "Edit Introduction"
+
+msgid "楼主"
+msgstr "Creater"
+
+msgid "暂时没有帖子"
+msgstr "Currently no threads available"
+
+msgid "暂时没有帖子，为何不创建一个呢？"
+msgstr "Currently no threads available, why not create a new one? "
+
+msgid "发帖"
+msgstr "Create a Thread"
+
+msgid "发表帖子"
+msgstr "Create a Thread"
+
+msgid "帖数"
+msgstr "Thread Number"
+
+msgid "创建群组"
+msgstr "Create Group"
+
+msgid "最后发表"
+msgstr "Last Post"
+
+msgid "主题"
+msgstr "Topic"
+
+msgid "是"
+msgstr "Yes"
+
+msgid "否"
+msgstr "No"
+
+msgid "发表"
+msgstr "Post"
+
+msgid "附件"
+msgstr "Attachments"
+
+msgid "管理员"
+msgstr "Admin"
+
+msgid "链接"
+msgstr "Link"
+
+msgid "私密群组的帖子只有社联核心成员和发帖者可见"
+msgstr "Only the creator and core members of Club Union can view threads in private groups"
+
+msgid "您确定要删除吗？此操作将无法恢复"
+msgstr "Are you sure to delete it? this operation cannot be recovered. "
+
+msgid "对一个经常被访问的板块而言这可能是一个重大与唐突的更改；请在行动前先确定您了解其所可能带来的后果"
+msgstr "This may be a huge modification for a hot group; please think before modifying. "
+
+msgid "私密"
+msgstr "Private"
+
+msgid "输入用户主页的链接，例如 shiyiquan-test"
+msgstr "Input the link of the user's homepage; e.g. shiyiquan-test"
+
+msgid "板块在论坛主页所属的分组，名称需要和别的板块一致"
+msgstr "The topic of the group, whose name should be the same as other groups"
+
+msgid "板块组"
+msgstr "Forum group"
+
+msgid "下一页"
+msgstr "Page Down"
+
+msgid "查看"
+msgstr "View"
+
+msgid "内容中包含非法字符"
+msgstr "Illegal characters detected in the content"
+
+msgid "查"
+msgstr "V"
+
+msgid "展开全部关系"
+msgstr "Open all relationships"
+
+msgid "分层显示"
+msgstr "View by Floors"
+
+msgid "上一页"
+msgstr "Page Up"
+
+msgid "发表回复"
+msgstr "Post Reply"
+
+msgid "回复帖子"
+msgstr "Reply Thread"
+
+msgid "显示附件（"
+msgstr "Show Attachments ("
+
+msgid "七嘴八舌"
+msgstr "Comments"
+
+msgid "个）"
+msgstr ")"
+
+msgid "论"
+msgstr "T"
+
+msgid "编"
+msgstr "E"
+
+msgid "展开关系"
+msgstr "Open Relationships"
+
+msgid "折叠关系"
+msgstr "Close Relationships"
+
+msgid "内容中包含非法字符，请将以下内容反馈给HCC"
+msgstr "Illegal characters detected in the content, please report the following content to HCC Computer Community"
+
+msgid "默认排版"
+msgstr "Default Layout"
+
+msgid "讨论"
+msgstr "Discuss"
+
+msgid "折叠全部关系"
+msgstr "Close all Relationships"
+
+msgid "热门帖子"
+msgstr "Hot Threads"
+
+msgid "欢迎来到十一论坛"
+msgstr "Welcome to BNDS Forum"
+
+msgid "私密论坛板块仅社联和发布者可见"
+msgstr "Private groups are only visible to Club Union and the creator"
+
+msgid "随机帖子"
+msgstr "Random Thread"
+
+msgid "暂无"
+msgstr "Currently unavailable"
+
+msgid "您确定删除吗？这个动作不可逆。"
+msgstr "Are you sure to delete it? this operation cannot be recovered. "
+
+msgid "有什么想法？"
+msgstr "What are you thinking about?"
+
+msgid "："
+msgstr ": "
+
+msgid "登录以发表观点"
+msgstr "Login to post your ideas"
+
+msgid "取消"
+msgstr "Cancel"
+
+msgid "发表回复前请先登录"
+msgstr "Please login before posting a reply"
+
+msgid "隐私政策"
+msgstr "Privacy Policy"
+
+msgid "新闻模块"
+msgstr "News"
+
+msgid "返回社团主页"
+msgstr "Return to Club Homepage"
+
+msgid "新闻列表"
+msgstr "News List"
+
+msgid "继续阅读"
+msgstr "Continue Reading"
+
+msgid "发布时间："
+msgstr "Post Time: "
+
+msgid "添加随文图片及附件"
+msgstr "Add pictures and attachments"
+
+msgid "编辑新闻标题"
+msgstr "Edit news title"
+
+msgid "文件描述"
+msgstr "File description"
+
+msgid "预览"
+msgstr "Preview"
+
+msgid "投递新闻"
+msgstr "Post News"
+
+msgid "发布于"
+msgstr "posted at"
+
+msgid "添加评论"
+msgstr "Add Comment"
+
+msgid "然后，点击上传按钮。"
+msgstr "Then, click the \"Upload\" button"
+
+msgid "点击返回"
+msgstr "Click to Return"
+
+msgid "首先，选择需要存储的文件。"
+msgstr "First, select the files to upload"
+
+msgid "选择上传文件"
+msgstr "Select Files"
+
+msgid "请剪切AttachID。"
+msgstr "Please copy the AttachID"
+
+msgid "存储文件清单"
+msgstr "File List"
+
+msgid "关闭页面"
+msgstr "Close this page"
+
+msgid "AttachID已生成，请剪切它。"
+msgstr "AttachID is generated, please copy it. "
+
+msgid "分享的图片"
+msgstr "Shared Pictures"
+
+msgid "使用微信“扫一扫”功能将分享转发到朋友圈中。"
+msgstr "Scan the QR Code and share the share to your \"Moments\" in WeChat"
+
+msgid "分享的视频"
+msgstr "Shared Videos"
+
+msgid "视频还在转换中，请稍候"
+msgstr "The video is under process, please wait a minute"
+
+msgid "打包机"
+msgstr "Zip Package"
+
+msgid "您的浏览器看似不支持在线播放视频"
+msgstr "Your browser does not support watching the video online"
+
+msgid "附件下载"
+msgstr "Attachment Download"
+
+msgid "视频转换失败"
+msgstr "The server fails to process the video"
+
+msgid "发布时间"
+msgstr "Post date"
+
+msgid "向前翻"
+msgstr "Previous"
+
+msgid "喜欢"
+msgstr "Like"
+
+msgid "换一换"
+msgstr "Change"
+
+msgid "社团一览"
+msgstr "Club Square"
+
+msgid "社团搜索"
+msgstr "Club Searching"
+
+msgid "没有找到相关结果。"
+msgstr "Failed to find relevant results"
+
+msgid "创建时间"
+msgstr "Created Time"
+
+msgid "近期活动"
+msgstr "Recent Events"
+
+msgid "在上方输入查询内容"
+msgstr "Enter query string above"
+
+msgid "关键词"
+msgstr "Key Words"
+
+msgid "分享搜索"
+msgstr "Share Searching"
+
+msgid "推荐社团"
+msgstr "Recommended Clubs"
+
+msgid "查看更多"
+msgstr "View More"
+
+msgid "落户时间"
+msgstr "Registered Time"
+
+msgid "活动搜索"
+msgstr "Event Searching"
+
+msgid "次关注"
+msgstr "people followed"
+
+msgid "十一圈名录"
+msgstr "BNDS Circle Club List"
+
+msgid "家社团在十一圈落户。"
+msgstr " clubs have registered in BNDS Circle. "
+
+msgid "，已经有"
+msgstr ", "
+
+msgid "截止到"
+msgstr "Until "
+
+msgid "根据社团名称拼音排序"
+msgstr "Sorted alphabetically"
+
+msgid "缎带"
+msgstr "Ribbon"
+
+msgid "创建徽章"
+msgstr "Create Badge"
+
+msgid "人被授予徽章"
+msgstr "people have received this badge"
+
+msgid "管理"
+msgstr "Manage"
+
+msgid "订阅"
+msgstr "Follow"
+
+msgid "撤回"
+msgstr "Cancel"
+
+msgid "授予时间"
+msgstr "Granted Time"
+
+msgid "还没有人获得过这个徽章"
+msgstr "Nobody has received this badge"
+
+msgid "没有创建徽章"
+msgstr "There are no badges available"
+
+msgid "加载中"
+msgstr "Loading"
+
+msgid "资金申请"
+msgstr "Funds Application"
+
+msgid "退出社团"
+msgstr "Quit"
+
+msgid "查看说明"
+msgstr "View Explanation"
+
+msgid "取消订阅"
+msgstr "Stop Following"
+
+msgid "被授予成员姓名"
+msgstr "Name"
+
+msgid "徽章信息"
+msgstr "Badge Info"
+
+msgid "管理成员"
+msgstr "Member Management"
+
+msgid "授予"
+msgstr "Grant"
+
+msgid "徽章"
+msgstr "Badge"
+
+msgid "编辑信息"
+msgstr "Edit Information"
+
+msgid "授予徽章"
+msgstr "Grant Badge"
+
+msgid "被授予缘由"
+msgstr "Reason"
+
+msgid "加入"
+msgstr "Join"
+
+msgid "提交审核"
+msgstr "Rating Application"
+
+msgid "创建新徽章"
+msgstr "Create a New Badge"
+
+msgid "空空如也"
+msgstr "Empty"
+
+msgid "徽章是一个用来个人身份的标识。"
+msgstr "Badge is a label for club members' identities"
+
+msgid "关于徽章"
+msgstr "About Badges"
+
+msgid "例：蓝翔高级技工"
+msgstr "e.g. Engineer from Shandong Lanxiang Vocational School"
+
+msgid "这个用户喜欢"
+msgstr "This user likes"
+
+msgid "徽章是神马？"
+msgstr "What is Badge?"
+
+msgid "暂时没有标签"
+msgstr "Currently no tags available"
+
+msgid "标签"
+msgstr "Tags"
+
+msgid "社团状态"
+msgstr "Club Status"
+
+msgid "活动总计"
+msgstr "Event Count"
+
+msgid "访问数量"
+msgstr "Visit Count"
+
+msgid "新申请数量"
+msgstr "New Members"
+
+msgid "副社长"
+msgstr "Vice President"
+
+msgid "社长"
+msgstr "President"
+
+msgid "公告"
+msgstr "Notice: "
+
+msgid "午餐邀请"
+msgstr "Meal Invitation"
+
+msgid "活动内容"
+msgstr "Event Description"
+
+msgid "添加活动"
+msgstr "Add Event"
+
+msgid "活动结束时间"
+msgstr "End Time"
+
+msgid "地点："
+msgstr "Location: "
+
+msgid "下一次活动"
+msgstr "Next Event"
+
+msgid "暂时没有活动"
+msgstr "Currently no events possible"
+
+msgid "答案"
+msgstr "Answer"
+
+msgid "补签"
+msgstr "Sign Up Assistance"
+
+msgid "赞"
+msgstr "Nice"
+
+msgid "时间："
+msgstr "Time: "
+
+msgid "主题："
+msgstr "Description: "
+
+msgid "关注"
+msgstr "Follow"
+
+msgid "日期："
+msgstr "Date: "
+
+msgid "活动进行中"
+msgstr "The event has begun"
+
+msgid "但是社长似乎仍未设置签到"
+msgstr "But the president has not set the sign up yet"
+
+msgid "不过你已经进行过签到"
+msgstr "But you have already signed up"
+
+msgid "活动签到"
+msgstr "Event Sign Up"
+
+msgid "取消活动"
+msgstr "Cancel Event"
+
+msgid "项目："
+msgstr "Project: "
+
+msgid "审核过往签到"
+msgstr "Verify Sign Up History"
+
+msgid "添加到我的关注列表"
+msgstr "Add to my following list"
+
+msgid "创建签到问题"
+msgstr "Create sign up question"
+
+msgid "在"
+msgstr " leaves a message at "
+
+msgid "问候"
+msgstr "Greet"
+
+msgid "向你打招呼"
+msgstr "Greets you"
+
+msgid "单击下载"
+msgstr "Click to download"
+
+msgid "好友请求"
+msgstr "Friend Request"
+
+msgid "次下载"
+msgstr " downloads"
+
+msgid "加为好友"
+msgstr "Become friends"
+
+msgid "请求和你成为好友"
+msgstr "Wants to become friends with you"
+
+msgid "你获得了徽章"
+msgstr "You received badge"
+
+msgid "社团主页留言："
+msgstr "'s club homepage: "
+
+msgid "分钟前"
+msgstr "minutes earlier"
+
+msgid "小时前"
+msgstr "hours earlier"
+
+msgid "不到一分钟前"
+msgstr "Less than one minute earlier"
+
+msgid "天前"
+msgstr "days earlier"
+
+msgid "在不久的将来"
+msgstr "In the near future"
+
+msgid "探讨事宜"
+msgstr "Topic"
+
+msgid "午饭邀请"
+msgstr "Meal Invitation"
+
+msgid "发送邀请"
+msgstr "Send Invitation"
+
+msgid "上传后自动发送"
+msgstr "Post automatically after uploading"
+
+msgid "查看所有分享"
+msgstr "View All Shares"
+
+msgid "记录"
+msgstr "Record"
+
+msgid "资料"
+msgstr "Material"
+
+msgid "投递分享"
+msgstr "Send Share"
+
+msgid "警告: 这是一个实验功能"
+msgstr "Warning: This is a testing function"
+
+msgid "暂时没有分享"
+msgstr "Currently no shares available"
+
+msgid "分享密码"
+msgstr "Share Password"
+
+msgid "添加分享"
+msgstr "Add Share"
+
+msgid "分享标题"
+msgstr "Share Title"
+
+msgid "说明内容"
+msgstr "Introduce the content"
+
+msgid "申请表"
+msgstr "Application Form"
+
+msgid "上传新分享"
+msgstr "Upload new share"
+
+msgid "快讯"
+msgstr "News"
+
+msgid "媒体中心"
+msgstr "Media Center"
+
+msgid "杂烩"
+msgstr "Mixed"
+
+msgid "社团新闻"
+msgstr "Club News"
+
+msgid "社长似乎没有上传任何活动图片"
+msgstr "The president has not posted any pictures"
+
+msgid "最新"
+msgstr "Latest"
+
+msgid "照片数量不足"
+msgstr "There are not enough pictures"
+
+msgid "全部"
+msgstr "All"
+
+msgid "确定要关闭此页吗？"
+msgstr "Are you sure to close this page?"
+
+msgid "English"
+msgstr "中文"
+
+msgid "http://en.shiyiquan.net"
+msgstr "http://shiyiquan.net"
+
+msgid "）"
+msgstr ")"
+
+msgid "http://ja.shiyiquan.net"
+msgstr "http://ja.shiyiquan.net"
+
+msgid "日本語"
+msgstr "日本語"
+

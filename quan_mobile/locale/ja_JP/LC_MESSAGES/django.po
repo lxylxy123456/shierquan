@@ -1,0 +1,9 @@
+msgid "找不到对象"
+msgstr ""
+
+msgid " - 隐私政策"
+msgstr ""
+
+msgid "对象没有被指定"
+msgstr ""
+

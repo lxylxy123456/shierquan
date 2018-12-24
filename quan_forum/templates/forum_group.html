@@ -1,0 +1,139 @@
+{% extends 'form_comp_base.html' %}
+{% load translate %}
+
+{% block content %} 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+
+      <div class="col-md-9">
+
+        <ol class="breadcrumb">
+          <li><a href="/forum/">{% t_ '十一论坛' %}</a></li>
+          <li class="active">{{ data.subject }}</li>
+        </ol>
+
+        {% ifequal page_index 1 %}
+          <div class="jumbotron">
+            <div>
+              <div class="pull-left">
+                <h1>{{ data.subject }}</h1>
+              </div>
+              {% if avatar %}
+                <div class="pull-right">
+                  <img class="img-rounded" src="{{ avatar }}" height="100px" width="100px"/>
+                </div>
+              {% endif %}
+              <div class="clearfix"></div>
+            </div>
+            <p>{% autoescape off %}{{ data.content }}{% endautoescape %}</p>
+            <p>
+              {% if request.user.id %}
+              <a class="btn btn-primary btn-lg" href="/forum/{{ data.simp_name }}/post/?action=new&relation=thread">
+                {% t_ '发表帖子' %}
+              </a>
+              {% else %}
+              <a class="btn btn-primary btn-lg" href="/login/?url=/forum/{{ data.simp_name }}/">
+                {% t_ '登录十一圈' %}
+              </a>
+              {% endif %}
+            </p>
+          </div>
+        {% else %}
+          <h1>{{ data.subject }}</h1>
+        {% endifequal %}
+
+        <div class="list-group" style="margin-top: 1em; ">
+          <li href="#" class="list-group-item" style="color: #777; background-color: #eee; ">
+            <div class="row">
+              <div class="col-md-7">{% t_ '标题' %}</div>
+              <div class="col-md-2">{% t_ '楼主' %}</div>
+              <div class="col-md-2">{% t_ '时间' %}</div>
+              <div class="col-md-1">{% t_ '回复' %}</div>
+            </div>
+           </li>
+           {% for thread in thread_list %}
+           <a href="/forum/{{ data.simp_name }}/{{ thread.data.id }}/" class="list-group-item">
+             <div class="row">
+               <div class="col-md-7">
+                 {{ thread.data.subject }}
+               </div>
+               <div class="col-md-2">
+                 {{ thread.send_nickname }}
+               </div>
+               <div class="col-md-2">
+                 {{ thread.time_update.0 }}{{ thread.time_update.1 }}
+               </div>
+               <div class="col-md-1">
+                 {{ thread.reply_number }}
+               </div>
+             </div>
+           </a>
+           {% empty %}
+             {% if request.user.id %}
+               <a class="list-group-item text-center" href="/forum/{{ data.simp_name }}/post/?action=new&relation=thread">
+                 {% t_ '暂时没有帖子，为何不创建一个呢？' %}
+               </a>
+             {% else %}
+               <a class="list-group-item text-center" href="/login/?url=/forum/{{ data.simp_name }}/">
+                 {% t_ '暂时没有帖子' %}
+               </a>
+             {% endif %}
+           {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="btn-group" role="group" style="margin: 20px 0px; ">
+              {% if request.user.id %}
+              <a class="btn btn-success" href="/forum/{{ data.simp_name }}/post/?action=new&relation=thread">
+                {% t_ '发帖' %}
+              </a>
+              {% else %}
+              <a class="btn btn-primary" href="/login/?url=/forum/{{ data.simp_name }}/">
+                {% t_ '登录' %}
+              </a>
+              {% endif %}
+              {% if is_admin %}
+              <a class="btn btn-info" href="/avatar/forum/{{ data.simp_name }}/">
+                {% if avatar %}
+                  {% t_ '编辑封面' %}
+                {% else %}
+                  {% t_ '添加封面' %}
+                {% endif %}
+              </a>
+              <a class="btn btn-warning" href="/forum/{{ data.simp_name }}/edit/?action=edit&relation=group">
+                {% t_ '编辑介绍' %}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-8" align="right">
+            <nav>
+              <ul class="pagination">
+                {% if not page_pre %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% else %}
+                <li><a href="?index=1">&laquo;</a></li>
+                {% endif %}
+                {% for i in page_list %}
+                <li{% ifequal i page_index %} class="active"{% endifequal %}>
+                  <a href="?index={{ i }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                {% if not page_next %}
+                <li class="disabled"><span>&raquo;</span></li>
+                {% else %}
+                <li><a href="?index={{ page_len }}">&raquo;</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      
+      {% include 'forum_side.html' %}
+    </div>
+  </div>
+</div>
+{% endblock %}

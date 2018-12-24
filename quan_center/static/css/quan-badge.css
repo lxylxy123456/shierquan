@@ -1,0 +1,22 @@
+.quan-badge {
+  display: inline-block;
+  margin: 1%;
+}
+
+input[type="text"].quan-form {
+  border-width:0px;
+  border-bottom-width:1px;
+  border-color:#000;
+  width:90%;
+  font-size:20px;
+  padding: 4px;
+}
+
+input[type="text"].quan-form:hover {
+  border-color:#878787;
+}
+
+textarea {
+  resize: vertical;
+}
+

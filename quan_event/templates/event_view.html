@@ -1,0 +1,462 @@
+{% extends 'form_comp_base.html' %}
+{% load translate %}
+
+{% block content %}
+<img style="display:None;" src="{{ event.avatar }}" />
+<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">{% t_ '获取二维码' %}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          {% if event.signup_qrcode %}
+          <img style="width:60%;margin:0px auto;" src="{{ event.signup_qrcode }}" />
+          <p class="text-center"><small>{% t_ '使用微信“扫一扫”功能签到。' %}</small></p>
+          {% else %}
+          <img style="width:60%;margin:0px auto;" src="/media/images/qrcode/event-{{ event.data.id }}.png" />
+          <p class="text-center"><small>{% t_ '使用微信“扫一扫”功能将活动分享到朋友圈中。' %}</small></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  {% if signup_status %}
+    <div class="alert alert-{{ signup_status }} alert-dismissible fade in" role="alert" id="{{ signup_status }}-message">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      {% ifequal signup_status 'success' %}
+        <strong>{% t_ '恭喜' %}</strong> {% t_ '签到成功' %}
+      {% else %}
+        <strong>{% t_ '警告' %}</strong> {% t_ '签到失败' %}
+      {% endifequal %}
+    </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ol class="breadcrumb">
+            <li><a href="/">{% t_ '主页' %}</a></li>
+            <li><a href="/{{ event.data.relation }}/{{ event.sponsor_sname }}/">{{ event.sponsor_fname }}</a></li>
+            <li class="active">{% t_ '活动' %}</li>
+          </ol>
+          <h3 class="text-center">
+            <a href="#" data-toggle="modal" data-target=".bs-example-modal-md">
+              <span class="glyphicon glyphicon-flag"></span>
+            </a> 
+            {{ event.data.subject }} 
+            <small> by {{ event.sponsor_fname }}</small>
+          </h3>
+          <hr />
+          <div class="row">
+            <div class="col-sm-12 col-sm-6 col-md-6">
+              <h3>
+                <small><span class="glyphicon glyphicon-list"></span> {% t_ '详细信息' %} </small>
+              </h3>
+              <dl class="dl-horizontal">
+                <dt><h4><span class="glyphicon glyphicon-info-sign"></span> {% t_ '活动简介' %}</h4></dt>
+                <dd style="margin-top: 1em; ">
+                  {% for i in event.content %}
+                    {% if forloop.counter0 %}
+                      <h4 style="line-height:1.5em;margin-top: 0em; margin-bottom: 0em; ">{{ i }}</h4>
+                    {% else %}
+                      <h4 style="line-height:1.5em; margin-bottom: 0em; ">{{ i }}</h4>
+                    {% endif %}
+                  {% endfor %}
+                </dd>
+                <dt><h4><span class="glyphicon glyphicon-map-marker"></span> {% t_ '地点' %}</h4></dt>
+                <dd><h4 style="">{{ event.data.location }}</h4> </dd>
+                <dt><h4><span class="glyphicon glyphicon-calendar"></span> {% t_ '日期' %} </h4></dt>
+                <dd><h4 style="">{{ event.day_set }}</h4> </dd>
+                <dt><h4><span class="glyphicon glyphicon-play-circle"></span> {% t_ '开始时间' %}</h4></dt>
+                <dd><h4 style="">{{ event.time_set }}</h4> </dd>
+                <dt><h4><span class="glyphicon glyphicon-time"></span> {% t_ '结束时间' %}</h4></dt>
+                <dd><h4 style="">{{ event.time_end }}</h4> </dd>
+                <dt><h4><span class="glyphicon glyphicon-user"></span> {% t_ '参与人数' %}</h4> </dt>
+                <dd><h4 style="">{{ event.participator }} </h4> </dd>
+              </dl>
+              <hr />
+              {% for j in event.share_list %}
+              {% for i in j %}
+              {% if i.related %}
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="text-center">
+                    <img src="{{ i.thumbnail }}" alt="{{ i.data.subject }}" class="img-rounded" />
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h4>
+                    <a href="/share/{{ i.data.attach_uuid }}/">{{ i.data.subject }}</a> - {{ i.date.0 }}
+                  </h4>
+                  {% for i in i.content %}
+                    <p style="text-indent:2em; line-height:1.5em; word-wrap: break-word; ">{{ i }}</p>
+                  {% endfor %}
+                </div>
+              </div>
+              <hr />
+              {% endif %}
+              {% endfor %}
+              {% endfor %}
+              <div class="clearfix">
+                {% if event.president %}
+                <button type="button" class="btn btn-success pull-right quan-badge" data-toggle="modal" data-target="#se_modal">
+                  <span class="glyphicon glyphicon-plus"></span> {% t_ '关联分享' %}
+                </button>
+                {% endif %}
+                {% if event.president and event.data.category %}
+                <div id="remove_button" class="form-group pull-right quan-badge">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="event_remove();"><span class="glyphicon glyphicon-trash"></span> {% t_ '删除活动' %}</button>
+                </div>
+                <script type="text/javascript">
+				function event_remove(){
+					ajaxBanner("/event/cancel/", {
+						evid: {{ event.data.id }}, 
+						src: 'club', 
+						aid: {{ event.data.account_id }}
+					}, "#remove_button");
+				}
+                </script>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-sm-12 col-sm-6 col-md-6">
+            {% if event.show_signup_set %}
+              <h3><small><span class="glyphicon glyphicon-flag"></span> {% t_ '添加签到' %}</small></h3>
+              <div class="text-right">
+                <a href="/guide/#pf13" target="_blank">{% t_ '设置签到的方法' %}</a>
+              </div>
+              <form id="club_prv_signup" class="form" method="POST" action="/event/signup/create/">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="quest">{% t_ '问题' %}</label>
+                  <input name="quest" type="text" class="form-control" placeholder="{% t_ '标题' %}" />
+                </div>
+                <div class="form-group">
+                  <label for="OptionA">{% t_ '选项' %}</label>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">A.</div>
+                    <input class="form-control" type="text" name="option_A" id="option_A"  placeholder="{% t_ '选项A' %}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">B.</div>
+                    <input class="form-control" type="text" name="option_B" id="option_B"  placeholder="{% t_ '选项B' %}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">C.</div>
+                    <input class="form-control" type="text" name="option_C" id="option_C"  placeholder="{% t_ '选项C' %}">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 col-md-8">
+                    <div class="form-group">
+                      <label for="answer">{% t_ '正确答案' %}</label>
+                      <div class="btn-group" data-toggle="buttons" id="answer">
+                        <label class="btn btn-primary active">
+                          <input type="radio" value="A" name="answer" id="option1" autocomplete="off" checked>A
+                        </label>
+                        <label class="btn btn-primary">
+                          <input type="radio" value="B" name="answer" id="option2" autocomplete="off">B
+                        </label>
+                        <label class="btn btn-primary">
+                          <input type="radio" value="C" name="answer" id="option3" autocomplete="off">C  
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-block btn-primary" value="{% t_ '设置签到' %}" />
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <script type="text/javascript">
+				$(document).ready(function(){
+					$("#club_prv_signup").on("submit", function(event) {
+						event.preventDefault();
+						ajaxBanner(this.action, {
+							data: getFormJson(this), 
+							aid: {{ event.data.account_id }},
+							src: 'club',
+						}, "#club_prv_signup");
+					});
+				});
+              </script>
+            {% endif %}
+
+            {% if event.show_join and event.club_member %}
+              <h3>
+                <small><span class="glyphicon glyphicon-user"></span> {% t_ '参与情况' %}</small>
+              </h3>
+              <div class="panel panel-default">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>{% t_ '姓名' %}</th>
+                      <th>{% t_ '年级' %}</th>
+                      <th>{% t_ '等级' %}</th>
+                      <th>{% t_ '参与率' %}</th>
+                      <th>{% t_ '签到状况' %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in event.club_member %}
+                    <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ i.name }}</td>
+                      <td>{{ i.grade }}</td>
+                      <td>{{ i.rank }}</td>
+                      <td>{{ i.participate }}</td>
+                      <td>{{ i.status }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+
+            {% if event.show_signup_manual %}
+              <h3>
+                <small><span class="glyphicon glyphicon-flag"></span> {% t_ '成员补签' %}</small>
+              </h3>
+              <form id="signup_manual" class="form" method="POST" action="/event/{{ event.data.id }}/manual/" onsubmit="signup_manual(event);">
+                {% csrf_token %}
+                <div class="input-group">
+                  <span class="input-group-addon">{% t_ '姓名' %}</span>
+                  <input id="fname" name="full_name" type="text" class="form-control" placeholder="{% t_ '请输入成员姓名' %}">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                      <span class="glyphicon glyphicon-check"></span> {% t_ '提交' %}
+                    </button>
+                  </span>
+                </div>
+              </form>
+              <script type="text/javascript">
+				function signup_manual(event) {
+					event.preventDefault();
+					ajaxBanner("/event/{{ event.data.id }}/manual/", {
+						fname: $("#fname").val()
+					}, "#signup_manual");
+				};
+              </script>
+            {% endif %}
+
+            {% if event.signup_qrcode %}
+              <h3>
+                <small><span class="glyphicon glyphicon-qrcode"></span> {% t_ '签到二维码' %}</small>
+              </h3>
+              <div class="text-center">
+                <img class="img-thumbnail" style="width:60%;margin:0px auto;" src="{{ event.signup_qrcode }}" />
+              </div>
+            {% endif %}
+
+            <script type="text/javascript">
+			function event_follow(evid){
+				ajaxBanner("/event/follow/", {
+					'evid': evid
+				}, "#follow_button_div", function(msg){
+					if (msg["status"] == "success") {
+						$("#number_follow").html(msg.follower_total);
+						$("#follow_button").attr('disabled', 'disabled');
+						return "preventDefault";
+					}
+				});
+			}
+            </script>
+            <h3>
+              <small><span class="glyphicon glyphicon-star"></span> {% t_ '关注 + 推广' %}</small>
+            </h3>
+            <div id="follow_button_div">
+            </div>
+            <div class="btn-group btn-group-justified" role="group">
+              <div class="btn-group btn-group-lg" role="group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-md">
+                  <span class="glyphicon glyphicon-qrcode" style="font-size:80px;padding:8px;"></span>
+                  <h5 class="text-muted text-center">{% t_ '分享至微信' %}</h5>
+                </button>
+              </div>
+              <div class="btn-group btn-group-lg" role="group">
+                {% if event.president %}
+                <button data-toggle="modal" data-target="#follower_box" class="btn btn-default quan-badge">
+                {% else %}
+                <button id="follow_button" class="btn btn-default quan-badge" onclick="event_follow({{ event.data.id }});" {% if event.followd %}disabled="disabled"{% endif %}>
+                {% endif %}
+                  <span class="glyphicon glyphicon-thumbs-up" style="font-size:80px;padding:8px;"></span>  
+                  <h5 class="text-muted text-center">
+                    <span id="number_follow">{{ event.follower }}</span>
+                    {% t_ '人准备参加这个活动' %}
+                  </h5>
+                </button>
+              </div>
+            </div>
+
+            {% if event.show_signup %}
+            <h3>
+              <small><span class="glyphicon glyphicon-pencil"></span> {% t_ '签到' %}</small>
+            </h3>
+            <div class="list-group">
+              <a href="#" class="list-group-item disabled">
+                Q: {{ event.quest.quest }}
+              </a>
+              <a onclick="signup_button('A')" class="list-group-item sgn_choice">
+                A. {{ event.quest.option_A }}
+              </a>
+              <a onclick="signup_button('B')" class="list-group-item sgn_choice">
+                B. {{ event.quest.option_B }}
+              </a>
+              <a onclick="signup_button('C')" class="list-group-item sgn_choice">
+                C. {{ event.quest.option_C }}
+              </a>
+              <a class="list-group-item disabled" id="signup-block" style="display: none;">
+                <h5 class="text-center" id="signup-insert-text"></h5>
+              </a>
+            </div>
+            <script type="text/javascript">
+				function signup_button(choice){//choice in ('A','B','C')
+					ajaxBanner("/event/signup/submit/", {	
+						'src': 'user',
+						'evid': {{ event.quest.event_id }},
+						'choice': choice,
+					}, "", function(data){
+						$("#signup-insert-text").empty();
+						$("#signup-insert-text").append(data.content);
+	        			$("#signup-block").fadeIn();
+	        			$(".sgn_choice").attr("onclick", "");
+					});
+				};
+			</script>
+            {% endif %}
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if event.president %}
+<div class="modal fade" id="se_modal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">{% t_ '关联分享' %}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2" id="relate_feedback">
+            <div class="tab-content">
+              {% for j in event.share_list %}
+              <div role="tabpanel" class="tab-pane{% if not forloop.counter0 %} active{% endif %}" id="share_{{ forloop.counter }}">
+                {% for i in j %}
+                <div class="checkbox">
+                  <label style="line-height: 2.5em; width: 100%; " class="clear-fix">
+                    <input class="icheck-target" share-id="{{ i.data.id }}" id="se_{{ i.data.id }}" type="checkbox" autocomplete="off"{% if i.related %} checked{% endif %}>
+                    <span>&nbsp;&nbsp;{{ i.data.subject }}</span>
+                    <span class="text-muted pull-right">{{ i.date.0 }}{{ i.date.1 }}</span>
+                  </label>
+                </div>
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <nav>
+            <ul class="pagination">
+              {% for i in event.share_list %}
+              {% if forloop.counter0 %}
+              <li role=""><a href="#share_{{ forloop.counter }}" aria-controls="share_{{ forloop.counter }}" role="tab" data-toggle="tab">{{ forloop.counter }}</a></li>
+              {% else %}
+              <li role="" class="active"><a href="#share_{{ forloop.counter }}" aria-controls="share_{{ forloop.counter }}" role="tab" data-toggle="tab">{{ forloop.counter }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function box_clicked(event) {
+	var id = $($(event.target).parent().children()[0]).attr("share-id");
+	se_relate(id);
+}
+function se_relate(sid){
+	ajaxBanner("/event/{{ event.data.id }}/relate/", {
+		sid: sid, 
+		relate: $("#se_" + sid)[0].checked, 
+	}, "#relate_feedback");
+}
+$(document).ready(function(){
+	$('input.icheck-target').iCheck({
+		checkboxClass: 'icheckbox_flat-green',
+		radioClass: 'iradio_flat-green', 
+	});
+	$(".iCheck-helper").on("click", box_clicked);
+});
+</script>
+
+  <div class="modal fade" id="follower_box" tabindex="-1" role="dialog" aria-labelledby="fintro_label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="fintro_label">{% t_ '准备参与者' %} - {{ event.data.subject }}</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            {% if event.show_join and event.club_member %}
+            <caption class="text-center"><span id="badge-grant-user">{{ event.club_member_number }}</span> {% t_ '人参与 / 共计' %} <span id="badge-grant-user">{{ event.follower }}</span> {% t_ '人报名' %}<span id="badge-name"></span></caption>
+            {% else %}
+            <caption class="text-center">{% t_ '共计' %}<span id="badge-grant-user">{{ event.follower }}</span>{% t_ '人准备参与活动' %}<span id="badge-name"></span></caption>
+            {% endif %}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>{% t_ '姓名' %}</th>
+                <th>{% t_ '时间' %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in event.follower_list %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.name }}</td>
+                <td>{{ i.follow_time }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% t_ '关闭' %}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

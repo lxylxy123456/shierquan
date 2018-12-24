@@ -1,0 +1,27 @@
+# Backup files
+*~
+
+# Django Runtime Log
+*.log
+
+# Python cache files
+*.pyc
+
+# Media files
+media/
+
+# Static files
+/static/
+
+# Python 
+__pycache__
+
+# Database Migrations
+migrations
+
+# Log files
+debug.log
+
+# Ignore translation
+locale/*.pickle
+

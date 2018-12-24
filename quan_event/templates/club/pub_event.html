@@ -1,0 +1,76 @@
+{% load translate %}
+
+      <div class="panel panel-info">
+        <div class="panel-body">
+          {% if event_next %}
+          <h4 class="text-center">{% t_ '下一次活动' %}</h4>
+          {% else %}
+          <h4 class="text-center">{% t_ '活动一览' %}</h4>
+          {% endif %}
+        </div>
+        {% if event %}
+        <div class="panel-body" id="next-event-head">
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <p><strong>{% t_ '主题：' %}</strong>{{ event.data.subject }}</p>
+              <p><strong>{% t_ '地点：' %}</strong>{{ event.data.location }}</p>
+              <p><strong>{% t_ '日期：' %}</strong>{{ event.date }}</p>
+              <p><strong>{% t_ '时间：' %}</strong>{{ event.time }}</p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <button id="event_nice" class="btn btn-primary btn-block " type="button" onclick="event_nice({{ event.data.id }});"{% if niced %} disabled="disabled"{% endif %}>
+                {% t_ '赞' %} <span class="badge" id="number_nice">{{ nice_total }}</span>
+              </button>
+              <button id="event_follow" class="btn btn-info btn-block" type="button" onclick="event_follow({{ event.data.id }});"{% if event_followed %} disabled="disabled"{% endif %}>
+                {% t_ '关注' %} <span class="badge" id="number_follow">{{ follower_total }}</span>
+              </button>
+              <a href="/event/{{ event.data.id }}/" class="btn btn-default btn-block" role="button">
+                {% t_ '查看' %}
+              </a>
+            </div>
+            <div class="col-sm-12 col-md-12 hidden-xs">
+              <pre>{{ event.data.content }}</pre>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="list-group">
+          {% for event in ev_list %}
+          <a href="/event/{{ event.data.id }}/" id="message-pop" class="list-group-item">
+            <h4 class="list-group-item-heading">[{{ event.date }}] {{ event.data.subject }}</h4>
+            <p class="list-group-item-text">{% t_ '地点：' %}{{ event.data.location }}</p>
+          </a>
+          {% endfor %}
+          {% if not event %}
+          <a href="/square/" class="list-group-item">{% t_ '暂时没有活动' %}</a>
+          {% else %}
+          <a href="/club/{{ club.simp_name }}/detail/?category=event;" class="list-group-item list-group-item-info">
+            {% t_ '查看更多' %}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+<script type="text/javascript">
+function event_follow(evid){
+	ajaxBanner("/event/follow/", {
+		'evid': evid
+	}, "#next-event-head", function(msg){
+		$("#number_follow").html(msg.follower_total);
+		if (msg["status"] == "success") {
+			$("#event_follow").attr("disabled", "disabled");
+			return "preventDefault";
+		}
+	});
+}
+function event_nice(evid){
+	ajaxBanner("/event/nice/", {
+		'evid': evid
+	}, "#next-event-head", function(msg){
+		$("#number_nice").html(msg.nice_total);
+		if (msg["status"] == "success") {
+			$("#event_nice").attr("disabled", "disabled");
+			return "preventDefault";
+		}
+	});
+}
+</script>

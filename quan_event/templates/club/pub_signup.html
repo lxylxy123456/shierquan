@@ -1,0 +1,56 @@
+{% load translate %}
+      <!--社团公共活动签到模块-->
+      <div class="panel panel-default">
+        <script type="text/javascript">
+			function signup_button(choice){//choice in ('A','B','C')
+				ajaxBanner("/event/signup/submit/", {
+					'src': 'user',
+					'evid': {{ question.event_id }},
+					'choice': choice,
+				}, "", function(data){
+					$("#signup-insert-text").empty();
+					$("#signup-insert-text").append(data.content);
+					$("#signup-block").fadeIn();
+					$(".sgn_choice").attr("onclick", "");
+				});
+			};
+		</script>
+        {% if not signed_set %}
+          {% if question %}
+          <div class="panel-body">
+            <h4 class="text-center">{% t_ '活动签到' %}</h4>
+            <hr>
+            <h3>
+              <strong>Q:</strong> 
+              {{ question.quest }}
+              <span id="club_pub_signup"></span>
+            </h3>
+          </div>
+          <ul class="list-group">
+            <a class="list-group-item sgn_choice" onclick="signup_button('A')">
+              <strong>A.</strong> {{ question.option_A }}
+            </a>
+            <a class="list-group-item sgn_choice" onclick="signup_button('B')">
+              <strong>B.</strong> {{ question.option_B }}
+            </a>
+            <a class="list-group-item sgn_choice" onclick="signup_button('C')">
+              <strong>C.</strong> {{ question.option_C }}
+            </a>
+          </ul>
+          {% else %}
+          <div class="panel-heading">
+            <h1 class="text-center">{% t_ '活动进行中' %}</h1>
+            <p class="text-center">{% t_ '但是社长似乎仍未设置签到' %}</p>
+          </div>
+          {% endif %}
+        {% else %}
+        <div class="panel-heading">
+          <h1 class="text-center">{% t_ '活动进行中' %}</h1>
+          <p class="text-center">{% t_ '不过你已经进行过签到' %}</p>
+        </div>
+        {% endif %}
+        <div class="panel-footer" id="signup-block" style="display: none;">
+          <h5 class="text-center" id="signup-insert-text">
+          </h5>
+        </div>
+      </div>

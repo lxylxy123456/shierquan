@@ -34,7 +34,7 @@ class EmailSnap :
 
 	def sendmail(reciever, subject, content, subtype='plain', charset='utf-8') :
 		'''
-			sending mail for shiyiquan which have less parameters
+			sending mail for shierquan which have less parameters
 			including saving to EmailInfo
 			仅仅支持发送给一个人(reciever应该写为字符串)
 			返回值为("错误信息", 邮件对应EmailInfo)
@@ -42,9 +42,9 @@ class EmailSnap :
 		nickname = '=?utf-8?B?%s?=' % \
 			base64.b64encode('十二圈'.encode('utf-8')).decode()
 		sender = {
-			'HCCSERVER': 	lambda x: '"%s" <shiyiquan@shiyiquan.net>' % x, 
-			'HCCSERVER-B': 	lambda x: '"%s" <shiyiquan@hcc.io>' % x, 
-			'HCCSERVER-C': 	lambda x: '"%s" <shiyiquan@mail.hcc.io>' % x, 
+			'HCCSERVER': 	lambda x: '"%s" <shierquan@shierquan.tk>' % x, 
+			'HCCSERVER-B': 	lambda x: '"%s" <shierquan@hcc.io>' % x, 
+			'HCCSERVER-C': 	lambda x: '"%s" <shierquan@mail.hcc.io>' % x, 
 		}.get(socket.gethostname(), lambda x: '')(nickname)
 		if EmailInfo.objects.filter(reciever=reciever, time_create__gte=\
 			datetime.now()-timedelta(0, 60, 0)).exists() :

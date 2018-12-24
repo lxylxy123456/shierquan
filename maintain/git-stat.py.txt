@@ -17,7 +17,7 @@ tran = {
 
 day_list = []
 
-for i in reversed(open('/tmp/shiyiquan').read().split('\n')) :
+for i in reversed(open('/tmp/shierquan').read().split('\n')) :
 	if not i :
 		continue
 	ii = i.split()

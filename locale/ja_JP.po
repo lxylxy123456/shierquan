@@ -499,8 +499,8 @@ msgstr "のマインページにメッセージを残します："
 msgid "全部社员"
 msgstr "全部の部員"
 
-msgid "输入用户主页的链接，例如 shiyiquan-test"
-msgstr "ホームページのリンクを入力、例えば shiyiquan-test"
+msgid "输入用户主页的链接，例如 shierquan-test"
+msgstr "ホームページのリンクを入力、例えば shierquan-test"
 
 msgid "欢迎"
 msgstr "ようこそ"
@@ -1783,14 +1783,14 @@ msgstr "送信されました"
 msgid "English"
 msgstr "English"
 
-msgid "http://en.shiyiquan.net"
-msgstr "http://en.shiyiquan.net"
+msgid "http://en.shierquan.tk"
+msgstr "http://en.shierquan.tk"
 
 msgid "）"
 msgstr "）"
 
-msgid "http://ja.shiyiquan.net"
-msgstr "http://shiyiquan.net"
+msgid "http://ja.shierquan.tk"
+msgstr "http://shierquan.tk"
 
 msgid "日本語"
 msgstr "中文"

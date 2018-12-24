@@ -23,7 +23,7 @@
 
 * banner_render 可用于渲染一个banner的前端模板
 
-* 通过 ajaxSlow 防止 beta.shiyiquan.net 出现 503
+* 通过 ajaxSlow 防止 beta.shierquan.tk 出现 503
 	* ajaxSlow 和 ajaxGet 类似，区别是阻止了同时请求一个资源的情况
 		* 发送第二次请求时如果第一次没有结束，则会直接 return
 	* 同时，如果请求返回了错误，会随机等待几个间隔，然后重新发送请求

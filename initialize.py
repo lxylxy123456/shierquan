@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os, sys, django, socket
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shiyiquan.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shierquan.settings")
 django.setup()
 from django.conf import settings
 from quan_account.views import *

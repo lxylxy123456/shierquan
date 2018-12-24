@@ -1220,8 +1220,8 @@ msgstr "This may be a huge modification for a hot group; please think before mod
 msgid "私密"
 msgstr "Private"
 
-msgid "输入用户主页的链接，例如 shiyiquan-test"
-msgstr "Input the link of the user's homepage; e.g. shiyiquan-test"
+msgid "输入用户主页的链接，例如 shierquan-test"
+msgstr "Input the link of the user's homepage; e.g. shierquan-test"
 
 msgid "板块在论坛主页所属的分组，名称需要和别的板块一致"
 msgstr "The topic of the group, whose name should be the same as other groups"
@@ -1787,14 +1787,14 @@ msgstr "Are you sure to close this page?"
 msgid "English"
 msgstr "中文"
 
-msgid "http://en.shiyiquan.net"
-msgstr "http://shiyiquan.net"
+msgid "http://en.shierquan.tk"
+msgstr "http://shierquan.tk"
 
 msgid "）"
 msgstr ")"
 
-msgid "http://ja.shiyiquan.net"
-msgstr "http://ja.shiyiquan.net"
+msgid "http://ja.shierquan.tk"
+msgstr "http://ja.shierquan.tk"
 
 msgid "日本語"
 msgstr "日本語"

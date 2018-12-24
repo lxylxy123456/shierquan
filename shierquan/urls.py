@@ -14,7 +14,7 @@ admin.site.index_title = '站点管理'
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'shiyiquan.views.home', name='home'),
+    # url(r'^$', 'shierquan.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^static/(?P<path>.*)$', serve, settings.STATIC_DICT),

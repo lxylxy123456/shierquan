@@ -97,7 +97,7 @@ class ShareSnap:
 
 	def add_process() :
 		'[stream] fork 新的daemon.py进程'
-		lock = '/tmp/shiyiquan-daemon-lock-file'
+		lock = '/tmp/shierquan-daemon-lock-file'
 		daemon = os.path.join(settings.BASE_DIR, 'daemon.py')
 		if not os.path.exists(lock) :
 			logger.error('open daemon lock file 1 ' + repr(datetime.now()))

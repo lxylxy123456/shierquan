@@ -18,9 +18,9 @@ def get_language(request=None) :
 			pass
 	if request != None :
 		language = {
-			'en.shiyiquan.net': 'en', 
-			'ja.shiyiquan.net': 'ja', 
-			'zh.shiyiquan.net': 'zh', 
+			'en.shierquan.tk': 'en', 
+			'ja.shierquan.tk': 'ja', 
+			'zh.shierquan.tk': 'zh', 
 		}.get(request.META.get('HTTP_HOST'))
 		if language :
 			return language

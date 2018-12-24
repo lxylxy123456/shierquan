@@ -1,2 +1,2 @@
-Sitemap: http://{{ request.META.HTTP_HOST }}/shiyiquan-sitemap.xml
+Sitemap: http://{{ request.META.HTTP_HOST }}/shierquan-sitemap.xml
 

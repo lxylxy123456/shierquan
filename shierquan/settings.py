@@ -1,5 +1,5 @@
 """
-Django settings for shiyiquan project.
+Django settings for shierquan project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -31,8 +31,8 @@ else:
 	# SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
     ALLOWED_HOSTS = [
-       '.shiyiquan.net',	# Allow domain and subdomains
-       '.shiyiquan.net.',	# Also allow FQDN and subdomains
+       '.shierquan.tk',	# Allow domain and subdomains
+       '.shierquan.tk.',	# Also allow FQDN and subdomains
     ]
 
 KEEP_EN = 'yes'	# 这里的值只要是真就会被忽略。如果不想保留英文，将其改为 ''
@@ -76,9 +76,9 @@ MIDDLEWARE_CLASSES = (
 #    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'shiyiquan.urls'
+ROOT_URLCONF = 'shierquan.urls'
 
-WSGI_APPLICATION = 'shiyiquan.wsgi.application'
+WSGI_APPLICATION = 'shierquan.wsgi.application'
 
 
 # Database
@@ -137,11 +137,11 @@ MEDIA_DICT = {
 if hostname in ('laptop', ):
 	MEDIA_ROOT = BASE_DIR + MEDIA_URL
 else :
-	MEDIA_ROOT = '/opt/shiyiquan' + MEDIA_URL
+	MEDIA_ROOT = '/opt/shierquan' + MEDIA_URL
 
 ADMINS = (
-    ('Admin', 'admin@shiyiquan.net'),
-    ('Logger', 'shiyiquan@localhost'),
+    ('Admin', 'admin@shierquan.tk'),
+    ('Logger', 'shierquan@localhost'),
 )
 
 LOGIN_URL = '/login/'
@@ -170,10 +170,10 @@ if hostname in ('HCCSERVER', ) :
 	EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 else :
 	EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-SERVER_EMAIL = 'admin@shiyiquan.net'
+SERVER_EMAIL = 'admin@shierquan.tk'
 
 from django.conf import global_settings
-handle_mod = 'shiyiquan.handler.UploadProgressCachedHandler'
+handle_mod = 'shierquan.handler.UploadProgressCachedHandler'
 FILE_UPLOAD_HANDLERS = [handle_mod, ] + \
     list(global_settings.FILE_UPLOAD_HANDLERS)
 

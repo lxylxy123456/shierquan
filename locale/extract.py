@@ -368,7 +368,7 @@ def read_code(lines, indent='') :
 
 if __name__ == '__main__' :
 	if not sys.argv[1:] :
-		path = '/tmp/shiyiquan-fake/'
+		path = '/tmp/shierquan-fake/'
 		if input('是否将 %s 覆盖？（回答イエス的英文）' % path) == 'yes' :
 			for i in filter(lambda x: x.startswith('quan_'), os.listdir()) :
 				f = os.path.join(i, 'views.py')

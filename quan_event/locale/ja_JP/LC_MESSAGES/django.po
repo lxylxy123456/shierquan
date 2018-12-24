@@ -34,7 +34,7 @@ msgstr ""
 msgid "活动已成功提交"
 msgstr ""
 
-msgid "十一圈中似乎还没有活动"
+msgid "十二圈中似乎还没有活动"
 msgstr ""
 
 msgid "没有找到这个活动，似乎过期了？"

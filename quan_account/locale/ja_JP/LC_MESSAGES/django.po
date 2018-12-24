@@ -1,4 +1,4 @@
-msgid "社团的新社长尚未在十一圈落户"
+msgid "社团的新社长尚未在十二圈落户"
 msgstr ""
 
 msgid "Authentication error"
@@ -16,7 +16,7 @@ msgstr ""
 msgid " - 创建社团"
 msgstr ""
 
-msgid "指派的副社长尚未在十一圈落户"
+msgid "指派的副社长尚未在十二圈落户"
 msgstr ""
 
 msgid "请重新输入邮箱地址"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "请指定被跟随者"
 msgstr ""
 
-msgid "请登录十一圈后再进行操作"
+msgid "请登录十二圈后再进行操作"
 msgstr ""
 
 msgid "成功退出社团，请刷新"

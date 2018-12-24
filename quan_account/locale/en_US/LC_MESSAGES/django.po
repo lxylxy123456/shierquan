@@ -55,7 +55,7 @@ msgstr "Successfully modified user information"
 msgid "表单输入有误，请重新输入"
 msgstr "Invalid form content, please fill it in again"
 
-msgid "请登录十一圈后再进行操作"
+msgid "请登录十二圈后再进行操作"
 msgstr "Please operate after logging into Twelve Circle"
 
 msgid "社团名称已被注册"
@@ -94,7 +94,7 @@ msgstr "Vice president is not a club member"
 msgid "成功注册。重定向至shiyiquan.net/login/"
 msgstr "Successfully register, redirecting to shiyiquan.net/login/"
 
-msgid "社团的新社长尚未在十一圈落户"
+msgid "社团的新社长尚未在十二圈落户"
 msgstr "New president is not registered in Twelve Circle"
 
 msgid "密码不可为空"
@@ -181,7 +181,7 @@ msgstr "You do not have the administration permission for the club"
 msgid "请指定被跟随者"
 msgstr "Please assign the followed object"
 
-msgid "指派的副社长尚未在十一圈落户"
+msgid "指派的副社长尚未在十二圈落户"
 msgstr "Assigned vice president has not registered in Twelve Circle"
 
 msgid "没能找到相关信息"

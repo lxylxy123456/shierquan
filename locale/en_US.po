@@ -1,7 +1,7 @@
 msgid "十一论坛"
 msgstr "Twelve Forum"
 
-msgid "十一圈"
+msgid "十二圈"
 msgstr "Twelve Circle"
 
 msgid "回到个人主页"
@@ -34,7 +34,7 @@ msgstr "Download Applications"
 msgid "搜索社团"
 msgstr "Club Searching"
 
-msgid "登录十一圈"
+msgid "登录十二圈"
 msgstr "Login"
 
 msgid "注册"
@@ -220,7 +220,7 @@ msgstr "Email"
 msgid "修改个人头像"
 msgstr "Modify User Avatar"
 
-msgid "您已经成功落户十一圈"
+msgid "您已经成功落户十二圈"
 msgstr "You have successfully signed up in Twelve Circle"
 
 msgid "我"
@@ -250,7 +250,7 @@ msgstr "12"
 msgid "初二"
 msgstr "8"
 
-msgid "加入十一圈"
+msgid "加入十二圈"
 msgstr "Join Twelve Circle"
 
 msgid "重复密码"
@@ -368,7 +368,7 @@ msgstr "Rejected"
 msgid "操作"
 msgstr "Operation"
 
-msgid "（十一圈将会重新整理数据格式并排序，所以不必担心格式不美观）"
+msgid "（十二圈将会重新整理数据格式并排序，所以不必担心格式不美观）"
 msgstr "(Twelve Circle will indent in back-end)"
 
 msgid "返回"
@@ -944,7 +944,7 @@ msgstr "and so on"
 msgid "寻找..."
 msgstr "Look For ..."
 
-msgid "写下对十一圈的建议"
+msgid "写下对十二圈的建议"
 msgstr "Write down advises for Twelve Circle"
 
 msgid "暂时没有任何分享"
@@ -962,7 +962,7 @@ msgstr "Follow Him / Her"
 msgid "请阐明来意"
 msgstr "Who are you? "
 
-msgid "加入十一圈。"
+msgid "加入十二圈。"
 msgstr " "
 
 msgid "次。"
@@ -1460,10 +1460,10 @@ msgstr "Event Searching"
 msgid "次关注"
 msgstr "people followed"
 
-msgid "十一圈名录"
+msgid "十二圈名录"
 msgstr "Twelve Circle Club List"
 
-msgid "家社团在十一圈落户。"
+msgid "家社团在十二圈落户。"
 msgstr " clubs have registered in Twelve Circle. "
 
 msgid "，已经有"

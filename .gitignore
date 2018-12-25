@@ -25,3 +25,6 @@ debug.log
 # Ignore translation
 locale/*.pickle
 
+# Password files
+db_passwd.txt
+

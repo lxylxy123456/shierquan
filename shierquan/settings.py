@@ -113,9 +113,10 @@ else :
 	DATABASES = {
 		'default': {
 			'ENGINE': 'django.db.backends.postgresql_psycopg2',
-			'NAME': 'postgres',
+			'NAME': 'shierquan',
 			'USER': 'postgres',
-			'PASSWORD': 'DATABASE_PASSWORD',
+			'PASSWORD': open(os.path.join(os.path.dirname(__file__), 
+											'db_passwd.txt')).read(),
 			'HOST': '127.0.0.1',
 			'PORT': '5432',
 		}

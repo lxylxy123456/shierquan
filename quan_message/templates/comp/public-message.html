@@ -37,11 +37,7 @@
 {% endverbatim %}
 
 <script type="text/javascript">
-	{% ifequal request.META.HTTP_HOST 'shierquan.tk' %}
-	var public_message_url = "//beta.shierquan.tk/message/global/";
-	{% else %}
 	var public_message_url = "/message/global/";
-	{% endifequal %}
 	public_message_template = $('#public-message-template').html();
 	Mustache.parse(public_message_template);
 	function time_delta_to_string(time_delta) {

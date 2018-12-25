@@ -700,7 +700,8 @@ class MessageViews:
 			'time_last': time_last, 
 		}
 		resp = Snap.success(request, '', json_data)
-		resp['Access-Control-Allow-Origin'] = 'http://shierquan.tk'
+		resp['Access-Control-Allow-Origin'] = \
+			request.META['wsgi.url_scheme'] + '://shierquan.tk'
 		return resp
 
 	@never_cache

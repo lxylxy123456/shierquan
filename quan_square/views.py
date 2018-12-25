@@ -294,15 +294,69 @@ class SquareViews:
 	@vary_on_headers('User-Agent', 'Cookie')
 	def home_view(request) :
 		'主页视图'
-		n = 0
 		dict_render = UserAgentSnap.record(request)
 		dict_render['port'] = '@' + request.META['SERVER_PORT']
 		dict_render['background'] = True
 		dict_render['club_total'] = ClubSnap.club_total()
-		dict_render['background_path'] = str(n) + '.png'
-		if not 'random selecting pictures' :
-			chose = random.choice(tuple(itertools.permutations(range(1, 5), 2)))
-			dict_render['background_path'] = '2017-spring/%d%d.png' % chose
+		if 'random selecting pictures' :
+			month_date = (datetime.now().month, datetime.now().day)
+			if month_date <= (3, 21) :		season = 'F'
+			elif month_date <= (6, 21) :	season = 'H'
+			elif month_date <= (9, 21) :	season = 'N'
+			elif month_date <= (12, 21) :	season = 'A'
+			else :							season = 'F'
+			img_lib = {
+				'H': {
+					'2016-spring/0.png': 6, 
+					'2017-spring/12.png': 1, 
+					'2017-spring/13.png': 1, 
+					'2017-spring/14.png': 1, 
+					'2017-spring/21.png': 1, 
+					'2017-spring/23.png': 1, 
+					'2017-spring/24.png': 1, 
+					'2017-spring/31.png': 1, 
+					'2017-spring/32.png': 1, 
+					'2017-spring/34.png': 1, 
+					'2017-spring/41.png': 1, 
+					'2017-spring/42.png': 1, 
+					'2017-spring/43.png': 1, 
+				}, 
+				'N': {
+					'2015-summer/0.png': 1, 
+				}, 
+				'A': {
+					'2015-fall/0.png': 8, 
+					'2016-autumn/G.png': 1, 
+					'2016-autumn/G_P.png': 1, 
+					'2016-autumn/G_V.png': 1, 
+					'2016-autumn/G_Y.png': 1, 
+					'2016-autumn/P_G.png': 1, 
+					'2016-autumn/P.png': 1, 
+					'2016-autumn/P_V.png': 1, 
+					'2016-autumn/P_Y.png': 1, 
+					'2016-autumn/V_G.png': 1, 
+					'2016-autumn/V.png': 1, 
+					'2016-autumn/V_P.png': 1, 
+					'2016-autumn/V_Y.png': 1, 
+					'2016-autumn/Y_G.png': 1, 
+					'2016-autumn/Y.png': 1, 
+					'2016-autumn/Y_P.png': 1, 
+					'2016-autumn/Y_V.png': 1, 
+				}, 
+				'F': {
+					'2014-xmas/0.png': 1, 
+					'2014-xmas/1.png': 1, 
+					'2014-xmas/2.png': 1, 
+					'2014-xmas/3.png': 1, 
+					'2014-xmas/4.png': 1, 
+					'2015-winter/0.png': 5, 
+				}, 
+			}
+			choices = []
+			for k, v in img_lib[season].items() :
+				choices += [k] * v
+			dict_render['background_path'] = random.choice(choices)
+			
 	#	dict_render['background_color'] = color_list[n - 1]
 		dict_render.update(SquareDicts.home_dict(request))
 		dict_render['title'] = ''

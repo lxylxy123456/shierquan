@@ -1,3 +1,21 @@
+# 
+# Shierquan - a website similar to shiyiquan.net; see README.md
+# Copyright (C) 2018  lxylxy123456
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+# 
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# 
+
 from .models import *
 
 class Snap :
@@ -291,7 +309,7 @@ class UserAgentSnap:
 
 	def name_used(name) :
 		'返回真实姓名使用情况'
-		return not RealNameInfo.objects.filter(name=name, used=0).exists()
+		return RealNameInfo.objects.filter(name=name, used=0).exists()
 
 	def name_update(name, uid) :
 		'使用真实姓名成功注册'
@@ -299,13 +317,13 @@ class UserAgentSnap:
 			status = 'teacher'
 		else :
 			status = 'student'
-		qry = RealNameInfo.objects.filter(name=name, used=0, status=status)[0]
-		qry.used = 1
+		qry = RealNameInfo(name=name, used=0, status=status, account_id=uid)
 		qry.save()
 
 	def name_existed(name) :
 		'返回真实姓名存在与否'
-		return RealNameInfo.objects.filter(name=name).exists()
+		return True	# people outside the school can register in shierquan
+		# return RealNameInfo.objects.filter(name=name).exists()
 
 	def name_init() :
 		'初始化真实姓名数据库'

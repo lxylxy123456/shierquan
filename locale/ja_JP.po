@@ -80,7 +80,7 @@ msgid "上一页"
 msgstr "前のページ"
 
 msgid "便捷的社团活动发布&amp;管理平台。"
-msgstr "じゅういちけん"
+msgstr "ちゅうにけん"
 
 msgid "以更改"
 msgstr "をクリックしてください"

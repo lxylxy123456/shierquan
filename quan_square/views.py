@@ -299,12 +299,14 @@ class SquareViews:
 		dict_render['background'] = True
 		dict_render['club_total'] = ClubSnap.club_total()
 		if 'random selecting pictures' :
-			month_date = (datetime.now().month, datetime.now().day)
-			if month_date <= (3, 21) :		season = 'F'
-			elif month_date <= (6, 21) :	season = 'H'
-			elif month_date <= (9, 21) :	season = 'N'
-			elif month_date <= (12, 21) :	season = 'A'
-			else :							season = 'F'
+			now = datetime.now()
+			season = {
+				 1: 'AFF',  2: 'F',  3: 'FFH', 	# Winter: 	Dec 21 - Mar 21
+				 4: 'FHH',  5: 'H',  6: 'HHN', 	# Sprint: 	Mar 21 - Jun 21
+				 7: 'HNN',  8: 'N',  9: 'NNA', 	# Summer: 	Jun 21 - Sep 21
+				10: 'NAA', 11: 'A', 12: 'AAF', 	# Fall: 	Sep 21 - Dec 21
+				13: 'AFF', 
+			}[now.month + int(bool(now.day > 21))]
 			img_lib = {
 				'H': {
 					'2016-spring/0.png': 6, 
@@ -353,8 +355,9 @@ class SquareViews:
 				}, 
 			}
 			choices = []
-			for k, v in img_lib[season].items() :
-				choices += [k] * v
+			for i in season :
+				for k, v in img_lib[i].items() :
+					choices += [k] * v
 			dict_render['background_path'] = random.choice(choices)
 			
 	#	dict_render['background_color'] = color_list[n - 1]

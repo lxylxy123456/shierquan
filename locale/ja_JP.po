@@ -712,8 +712,8 @@ msgstr "あなたのメールアドレスを忘れた場合は、実際の名前
 msgid "活动简介"
 msgstr "活動の概要"
 
-msgid "社团联合会通知"
-msgstr "クラブユニオンの告示"
+msgid "HCC OB会通知"
+msgstr "HCC OB会の告示"
 
 msgid "拒绝"
 msgstr "拒否する"
@@ -1699,8 +1699,8 @@ msgstr "アバター"
 msgid "您将要删除"
 msgstr "あなたは"
 
-msgid "社团联合会"
-msgstr "クラブユニオン"
+msgid "HCC OB会"
+msgstr "HCC OB会"
 
 msgid "取消关注"
 msgstr "フォローを解除"

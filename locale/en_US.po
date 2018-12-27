@@ -112,8 +112,8 @@ msgstr "Login to comment"
 msgid "查看详情"
 msgstr "Details"
 
-msgid "社团联合会通知"
-msgstr "Announcement from Club Union"
+msgid "HCC OB会通知"
+msgstr "Announcement from HCC OB Association"
 
 msgid "暂时没有通知"
 msgstr "There are no announcements currently "
@@ -154,8 +154,8 @@ msgstr "View more clubs"
 msgid "创建社团"
 msgstr "Create a club"
 
-msgid "社团联合会"
-msgstr "Club Union"
+msgid "HCC OB会"
+msgstr "HCC OB Association"
 
 msgid "/static/js/obj2json.js"
 msgstr "/static/js/obj2json.en.js"

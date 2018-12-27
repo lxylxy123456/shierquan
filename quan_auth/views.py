@@ -462,7 +462,7 @@ class AuthViews :
 			#	unid = ClubSnap.cid_find_by_sname('club-union')
 			#	MessageSnap.qmsg_push('club-amerce', amid, 'user', hid, 
 			#			'[处罚] 名下的%s被社联给予处罚' % csname, 
-			#			'请遵守社团联合会的相关规章制度。', 'club', unid)
+			#			'请遵守HCC OB会的相关规章制度。', 'club', unid)
 				return Snap.success(request, '成功对涉事社团进行处罚，请刷新页面')
 			else :
 				raise Snap.error('似乎在对我做一些不好的事情')

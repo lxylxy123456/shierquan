@@ -19,7 +19,7 @@
 from common import *
 
 class AuthInfo(models.Model):
-	'社团联合会记录'
+	'HCC OB会记录'
 	'''
 		relation说明：
 			recommendation		社团推荐（account_id为社团ID）

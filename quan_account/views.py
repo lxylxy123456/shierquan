@@ -1555,6 +1555,7 @@ class AccountViews :
 		uid = UserSnap.uid_find_by_request(request)
 		if request.method == 'POST' :
 			UserSnap.nickname_set(uid, nickname)
+			CacheSnap.nickname_changed(uid)
 		return json.dumps({ 'nickname': UserSnap.nickname_find_by_uid(uid), })
 
 	@vary_on_cookie

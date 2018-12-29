@@ -185,10 +185,8 @@ LOGGING = {
     },
 }
 
-if hostname in ('HCCSERVER', ) :
-	EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-else :
-	EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SERVER_EMAIL = 'admin@shierquan.tk'
 
 from django.conf import global_settings
@@ -196,13 +194,12 @@ handle_mod = 'shierquan.handler.UploadProgressCachedHandler'
 FILE_UPLOAD_HANDLERS = [handle_mod, ] + \
     list(global_settings.FILE_UPLOAD_HANDLERS)
 
-if hostname in ('HCCSERVER', 'laptop', ) :
-	CACHES = {
-		'default': {
-			'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-			'LOCATION': '127.0.0.1:11211',
-		}
+CACHES = {
+	'default': {
+		'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+		'LOCATION': '127.0.0.1:11211',
 	}
+}
 
 TEMPLATES = [
     {

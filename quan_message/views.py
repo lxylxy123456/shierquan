@@ -739,7 +739,7 @@ class MessageViews:
 		else :
 			json_data['time_last'] = 946684800		# 2000 年 1 月 1 日 8 时
 		resp = Snap.success(request, '', json_data)
-		resp['Access-Control-Allow-Origin'] = 'http://shierquan.tk'
+		resp['Access-Control-Allow-Origin'] = 'https://shierquan.tk'
 		return resp
 
 	@vary_on_cookie

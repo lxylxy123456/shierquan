@@ -1801,14 +1801,14 @@ msgstr "送信されました"
 msgid "English"
 msgstr "English"
 
-msgid "http://en.shierquan.tk"
-msgstr "http://en.shierquan.tk"
+msgid "https://en.shierquan.tk"
+msgstr "https://en.shierquan.tk"
 
 msgid "）"
 msgstr "）"
 
-msgid "http://ja.shierquan.tk"
-msgstr "http://shierquan.tk"
+msgid "https://ja.shierquan.tk"
+msgstr "https://shierquan.tk"
 
 msgid "日本語"
 msgstr "中文"

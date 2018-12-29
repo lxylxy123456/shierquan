@@ -480,7 +480,7 @@ class UserAgentViews :
 						'content': qry.content, 
 					}
 				resp = Snap.success(request, '', { 'e': event_list })
-				resp['Access-Control-Allow-Origin'] = 'http://hcc.io'
+				resp['Access-Control-Allow-Origin'] = 'https://hcc.io'
 				return resp
 		raise Snap.error('参数错误')
 

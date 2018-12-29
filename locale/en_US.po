@@ -1805,14 +1805,14 @@ msgstr "Are you sure to close this page?"
 msgid "English"
 msgstr "中文"
 
-msgid "http://en.shierquan.tk"
-msgstr "http://shierquan.tk"
+msgid "https://en.shierquan.tk"
+msgstr "https://shierquan.tk"
 
 msgid "）"
 msgstr ")"
 
-msgid "http://ja.shierquan.tk"
-msgstr "http://ja.shierquan.tk"
+msgid "https://ja.shierquan.tk"
+msgstr "https://ja.shierquan.tk"
 
 msgid "日本語"
 msgstr "日本語"

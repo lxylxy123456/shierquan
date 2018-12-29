@@ -1064,7 +1064,7 @@ class QrcodeSnap :
 			'user':		lambda evid: '/user/%s/' % evid, 
 		}
 		fname = fname_dict[src](evid)
-		val = 'http://shierquan.tk' + val_dict[src](evid) + '?qrcode=true'
+		val = 'https://shierquan.tk' + val_dict[src](evid) + '?qrcode=true'
 		media_route = 'images/qrcode/'
 		try :
 			qrcode.make(val).save(settings.MEDIA_ROOT + media_route + fname)

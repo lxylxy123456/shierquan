@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # 
 
-msgid "十一论坛"
+msgid "十二论坛"
 msgstr "Twelve Forum"
 
 msgid "十二圈"
@@ -650,7 +650,7 @@ msgstr "Please list the projects which need foundation"
 msgid "资金类型"
 msgstr "Foundation Type"
 
-msgid "如果以上信息有误，请在十一论坛中反馈"
+msgid "如果以上信息有误，请在十二论坛中反馈"
 msgstr "If any information beyond is incorrect, please feedback in Twelve Forum"
 
 msgid "新建申请"
@@ -1310,7 +1310,7 @@ msgstr "Close all Relationships"
 msgid "热门帖子"
 msgstr "Hot Threads"
 
-msgid "欢迎来到十一论坛"
+msgid "欢迎来到十二论坛"
 msgstr "Welcome to Twelve Forum"
 
 msgid "私密论坛板块仅社联和发布者可见"

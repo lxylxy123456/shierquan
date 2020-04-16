@@ -109,8 +109,8 @@ msgstr "Link successfully added"
 msgid "副社长非本社团成员"
 msgstr "Vice president is not a club member"
 
-msgid "成功注册。重定向至shierquan.tk/login/"
-msgstr "Successfully register, redirecting to shierquan.tk/login/"
+msgid "成功注册。重定向至shierquan.ercli.dev/login/"
+msgstr "Successfully register, redirecting to shierquan.ercli.dev/login/"
 
 msgid "社团的新社长尚未在十二圈落户"
 msgstr "New president is not registered in Twelve Circle"

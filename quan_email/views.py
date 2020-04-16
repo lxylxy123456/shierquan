@@ -60,9 +60,7 @@ class EmailSnap :
 		nickname = '=?utf-8?B?%s?=' % \
 			base64.b64encode('十二圈'.encode('utf-8')).decode()
 		sender = {
-			'HCCSERVER': 	lambda x: '"%s" <shierquan@shierquan.tk>' % x, 
-			'HCCSERVER-B': 	lambda x: '"%s" <shierquan@hcc.io>' % x, 
-			'HCCSERVER-C': 	lambda x: '"%s" <shierquan@mail.hcc.io>' % x, 
+			'HCCSERVER-G': 	lambda x: '"%s" <shierquan@ercli.dev>' % x, 
 		}.get(socket.gethostname(), lambda x: '')(nickname)
 		if EmailInfo.objects.filter(reciever=reciever, time_create__gte=\
 			datetime.now()-timedelta(0, 60, 0)).exists() :

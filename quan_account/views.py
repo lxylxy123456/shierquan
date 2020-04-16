@@ -1064,7 +1064,7 @@ class QrcodeSnap :
 			'user':		lambda evid: '/user/%s/' % evid, 
 		}
 		fname = fname_dict[src](evid)
-		val = 'https://shierquan.tk' + val_dict[src](evid) + '?qrcode=true'
+		val = 'https://shierquan.ercli.dev' + val_dict[src](evid) + '?qrcode=true'
 		media_route = 'images/qrcode/'
 		try :
 			qrcode.make(val).save(settings.MEDIA_ROOT + media_route + fname)
@@ -1255,7 +1255,7 @@ class AccountViews :
 			url = '/login/'
 			if next_url :
 				url = '/login/?url=%s' % parse.quote(next_url)
-			return Snap.success(request, '成功注册。重定向至shierquan.tk/login/', 
+			return Snap.success(request, '成功注册。重定向至shierquan.ercli.dev/login/', 
 								{ 'redirect': url })
 		else :
 			if next_url :

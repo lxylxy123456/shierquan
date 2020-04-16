@@ -100,7 +100,7 @@ msgstr ""
 msgid "请使用小写字母和连线符组合链接 如：test-user"
 msgstr ""
 
-msgid "成功注册。重定向至shierquan.tk/login/"
+msgid "成功注册。重定向至shierquan.ercli.dev/login/"
 msgstr ""
 
 msgid "找不到记录，请刷新页面"

@@ -324,7 +324,7 @@ class EventSnap:
 		while not token :
 			token = datetime.now().microsecond
 		name = 'signup-%d-%d.png' % (evid, token)
-		templ = 'https://shierquan.tk/event/signup/qrcode/?evid=%d&token=%d'
+		templ = 'https://shierquan.ercli.dev/event/signup/qrcode/?evid=%d&token=%d'
 		content = templ % (evid, token)
 		path = os.path.join(settings.MEDIA_ROOT, 'images', 'qrcode', name)
 		qrcode.make(content).save(path)

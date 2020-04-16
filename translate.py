@@ -36,9 +36,12 @@ def get_language(request=None) :
 			pass
 	if request != None :
 		language = {
-			'en.shierquan.tk': 'en', 
-			'ja.shierquan.tk': 'ja', 
-			'zh.shierquan.tk': 'zh', 
+			'en.shierquan.ercli.tk': 'en', 
+			'ja.shierquan.ercli.tk': 'ja', 
+			'zh.shierquan.ercli.tk': 'zh', 
+			'en.shierquan.ercli.dev': 'en', 
+			'ja.shierquan.ercli.dev': 'ja', 
+			'zh.shierquan.ercli.dev': 'zh', 
 		}.get(request.META.get('HTTP_HOST'))
 		if language :
 			return language

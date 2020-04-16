@@ -49,8 +49,10 @@ else:
 	# SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
     ALLOWED_HOSTS = [
-       '.shierquan.tk',	# Allow domain and subdomains
-       '.shierquan.tk.',	# Also allow FQDN and subdomains
+       '.shierquan.ercli.tk',	# Allow domain and subdomains
+       '.shierquan.ercli.tk.',	# Also allow FQDN and subdomains
+       '.shierquan.ercli.dev',	# Allow domain and subdomains
+       '.shierquan.ercli.dev.',	# Also allow FQDN and subdomains
     ]
 
 KEEP_EN = 'yes'	# 这里的值只要是真就会被忽略。如果不想保留英文，将其改为 ''
@@ -159,7 +161,7 @@ else :
 	MEDIA_ROOT = '/opt/shierquan' + MEDIA_URL
 
 ADMINS = (
-    ('Admin', 'admin@shierquan.tk'),
+    ('Admin', 'lxy@ercli.dev'),
     ('Logger', 'shierquan@localhost'),
 )
 
@@ -187,7 +189,7 @@ LOGGING = {
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-SERVER_EMAIL = 'admin@shierquan.tk'
+SERVER_EMAIL = 'lxy@ercli.dev'
 
 from django.conf import global_settings
 handle_mod = 'shierquan.handler.UploadProgressCachedHandler'
